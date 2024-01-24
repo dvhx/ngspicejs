@@ -3,7 +3,7 @@
 // linter: ngspicejs-lint
 "use strict";
 
-audio('U1', 1, 0).v(1).filename('../../wav/1ms_sinewave_1khz_16bit_signed_pcm.m');
+audio('U1', 1, 0).v(1).filename('../../wav/1ms_sinewave_1khz_16bit_signed_pcm.wav');
 
 var a = ac().run();
 echo(Object.keys(a.data).sort().join('\n'));
