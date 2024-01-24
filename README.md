@@ -14,58 +14,60 @@ JS frontend to ngspice electronics simulation software
 # Example
 
 ```javascript
-    #!/usr/bin/env ngspicejs
-    // linter: ngspicejs-lint
-    "use strict";
+#!/usr/bin/env ngspicejs
+// linter: ngspicejs-lint
+"use strict";
 
-    // Simple common emitter amplifier 22x
-    battery('U1', 1, 0, 9);
-    sinewave('U2', 2, 0).v(0.01).f(196);
-    var r1 = resistor('R1', 1, 3, '68000');
-    var r2 = resistor('R2', 3, 0, '4700');
-    resistor('R3', 1, 4, '20k');
-    resistor('R4', 6, 0, '330');
-    resistor('R5', 5, 0, '50k');
-    capacitor('C1', 2, 3, '10u');
-    capacitor('C2', 4, 5, '10u');
-    npn('T1', 4, 3, 6, 'BC547');
+// Simple common emitter amplifier 22x
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(0.01).f(196);
+var r1 = resistor('R1', 1, 3, '68000');
+var r2 = resistor('R2', 3, 0, '4700');
+resistor('R3', 1, 4, '20k');
+resistor('R4', 6, 0, '330');
+resistor('R5', 5, 0, '50k');
+capacitor('C1', 2, 3, '10u');
+capacitor('C2', 4, 5, '10u');
+npn('T1', 4, 3, 6, 'BC547');
 
-    // transient analysis, chart, measure gain
-    var t = tran().run().chart(['V(2)', 'V(5)']);
-    t.last_chart.gif('hello_transient.gif');
-    var g = t.gain(2, 5);
-    echo('gain', g.toFixed(1));
+// transient analysis, chart, measure gain
+var t = tran().run().chart(['V(2)', 'V(5)']);
+t.last_chart.gif('hello_transient.gif');
+var g = t.gain(2, 5);
+echo('gain', g.toFixed(1));
 
-    // change R1 and R2 and find maximal gain
-    var x = [], y = [], gain = [], max = g;
-    series_e12(10, '1M').forEach(a => {
-        series_e12(10, '1M').forEach(b => {
-            r1.r(a);
-            r2.r(b);
-            x.push(a);
-            y.push(b);
-            g = tran().run().gain(2, 5);
-            gain.push(g);
-            if (g > max) {
-                max = g;
-                echo('r1', a, 'r2', b, 'gain', g.toFixed(3));
-            }
-        });
+// change R1 and R2 and find maximal gain
+var x = [], y = [], gain = [], max = g;
+series_e12(10, '1M').forEach(a => {
+    series_e12(10, '1M').forEach(b => {
+        r1.r(a);
+        r2.r(b);
+        x.push(a);
+        y.push(b);
+        g = tran().run().gain(2, 5);
+        gain.push(g);
+        if (g > max) {
+            max = g;
+            echo('r1', a, 'r2', b, 'gain', g.toFixed(3));
+        }
     });
+});
 
-    // Show chart and save it as gif
-    chart_scatter(x, y, gain)
-        .title('Common emitter gain depending on R1 and R2')
-        .log_x(true)
-        .log_y(true)
-        .label_x('R1')
-        .label_y('R2')
-        .size(12)
-        .show()
-        .gif('hello_gain.gif');
+// Show chart and save it as gif
+chart_scatter(x, y, gain)
+    .title('Common emitter gain depending on R1 and R2')
+    .log_x(true)
+    .log_y(true)
+    .label_x('R1')
+    .label_y('R2')
+    .size(12)
+    .show()
+    .gif('hello_gain.gif');
 ```
 
-    ![Transient analysis chart printed in terminal](hello_transient.gif)
+This script will print:
+
+![Transient analysis chart printed in terminal](hello_transient.gif)
 
     gain 22.5
     r1 1000 r2 82 gain 23.259
@@ -79,7 +81,7 @@ JS frontend to ngspice electronics simulation software
     r1 5600 r2 470 gain 35.260
     r1 390000 r2 39000 gain 35.740
 
-    ![Scatter chart of gain depending on R1 and R2](hello_gain.gif)
+![Scatter chart of gain depending on R1 and R2](hello_gain.gif)
 
 # Requirements
 
