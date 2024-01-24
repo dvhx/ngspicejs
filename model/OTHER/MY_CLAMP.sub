@@ -1,0 +1,7 @@
+* my diode clamp
+* REQUIRE DIODE 1N60P
+* NETS 2
+.subckt MY_CLAMP a b
+D1 a b D1N60P
+D2 b a D1N60P
+.ends

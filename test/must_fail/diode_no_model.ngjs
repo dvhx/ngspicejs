@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Diode bad model name FOO
+// linter: ngspicejs-lint
+"use strict";
+
+diode('D1', 1, 0, 'FOO');
+
+tran().run();
+

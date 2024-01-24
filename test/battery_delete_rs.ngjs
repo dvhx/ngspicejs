@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// delete battery rs
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+
+echo('I1', tran().run().avg('I(U1)').toEng());
+
+u1.rs(50);
+
+echo('I2', tran().run().avg('I(U1)').toEng());
+
+delete u1.attr.rs;
+
+echo('I2', tran().run().avg('I(U1)').toEng());
+

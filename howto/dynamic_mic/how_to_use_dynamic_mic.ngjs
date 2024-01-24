@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// How to use dynamic mic
+// linter: ngspicejs-lint
+"use strict";
+
+dynamic_mic('MIC1', 1, 0).v(0.1).f(440).halve('10m'); //!
+tran().run().chart('V(1)');

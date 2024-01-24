@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Test file_read
+// linter: ngspicejs-lint
+"use strict";
+
+echo(file_read('file_read.ngjs').length);
+
+
+

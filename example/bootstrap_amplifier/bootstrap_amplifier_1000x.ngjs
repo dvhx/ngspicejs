@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// Bootstrap amplifier 1000x gain, 2.5mA consumption, muddy AC
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 13, 0, 9);
+ammeter('A1', 13, 8);
+resistor('R1', 8, 9, '6k8');
+resistor('R2', 9, 10, '6k8');
+resistor('R3', 4, 5, '2k2');
+resistor('R4', 5, 0, '250');
+resistor('R5', 11, 0, '50k');
+capacitor('C1', 5, 0, '220u');
+capacitor('C2', 9, 4, '100u');
+capacitor('C3', 4, 11, '4u7');
+npn('T1', 10, 5, 6, 'BC547');
+npn('T2', 8, 10, 4, 'BC547');
+pickup('L1', 6, 0).l('1m').v('200u').rs(8).cp('2p').f(440).damping(0);
+
+var t = tran().run().chart('V(11)');
+echo('Current consumption', t.data['I(A1)'].avg().toEng());
+echo('Gain', t.gain(6, 11).toFixed(1));
+echo('Gain ideal', t.gain_ideal('200u', 11).toFixed(1));
+
+ac().run().chart('V(11)');

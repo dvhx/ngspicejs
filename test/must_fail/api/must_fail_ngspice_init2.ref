@@ -1,0 +1,11 @@
+error: ngspice_init() can only be called once
+  [must_fail_ngspice_init2.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_init();
+             ^
+
+Stack trace (1 frames):
+  [must_fail_ngspice_init2.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_init();
+             ^
+
+exit(4)

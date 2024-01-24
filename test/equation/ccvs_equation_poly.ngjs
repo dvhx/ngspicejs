@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// Equations in ccvs poly
+// linter: ngspicejs-lint
+"use strict";
+
+// 9V battery + 1k resistor = 9mA current
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+// 9V battery + 3k resistor = 3mA current
+battery('U2', 2, 0, 9);
+resistor('R2', 2, 0, 3000);
+// CCCS with poly
+var h3 = ccvs('H3', 3, 0).poly(['U1', 'U2'], [3, 4, 5, 6]);
+
+var t = tran().run();
+var i1 = t.avg('I(U1)');
+var i2 = t.avg('I(U2)');
+var v3 = t.avg('V(3)');
+echo('i1', i1.toEng(3));
+echo('i2', i2.toEng(3));
+echo('v3', v3.toEng(3), 'should be', (3 + 4 * i1 + 5 * i2 + 6 * i1 * i2).toEng(3), '(2.949)');
+echo_netlist();
+h3.poly(['U1', 'U2'], ['{2*1.5}', '{2+2}', '{2+3}', '{3+3}']);
+t = tran().run();
+v3 = t.avg('V(3)');
+echo('v3eq', v3.toEng(3), 'should be', (3 + 4 * i1 + 5 * i2 + 6 * i1 * i2).toEng(3), '(2.949)');
+echo_netlist();

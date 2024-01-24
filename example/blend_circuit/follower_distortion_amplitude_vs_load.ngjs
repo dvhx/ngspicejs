@@ -1,0 +1,40 @@
+#!/usr/bin/env ngspicejs
+// In emitter follower measure distortion for different input voltage and different loads
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('FOLLOWER', ['in', 'out', 'vcc', 'gnd'], {});
+s.capacitor('C1', 'in', 'b', '100u');
+s.resistor('R1', 'vcc', 'b', '100k');
+s.resistor('R2', 'b', 'gnd', '180k');
+s.npn('T1', 'vcc', 'b', 'e', 'BC547');
+s.resistor('R3', 'e', 'gnd', '10k');
+s.capacitor('C2', 'e', 'out', '100u');
+s.end();
+
+sub('X1', 'FOLLOWER', [1, 2, 3, 0], {});
+var u1 = sinewave('U1', 1, 0).f(196).v(1);
+battery('U2', 3, 0, 9);
+var r5 = resistor('R5', 2, 0, '10k');
+
+var a, r, thd, x = [], y = [], values = [];
+
+// change input amplitude from 0 to 4.5V
+for (a = 0.001; a < 4.5; a += 0.3) {
+    // change load from 1k to 100k
+    for (r = 1000; r < 100000; r += 5000) {
+        u1.v(a);
+        r5.r(r);
+        thd = fft().run('V(2)').thd(196);
+        x.push(a);
+        y.push(r);
+        values.push(thd);
+        echo('a', a.toFixed(3), 'r', r.toFixed(3), 'thd', thd.toFixed(3));
+    }
+}
+
+chart_scatter(x, y, values)
+    .title('Emitter follower distortion (x=amplitude, y=load resistance)')
+    .show()
+    .gif('follower_distortion_amplitude_vs_load.gif');
+

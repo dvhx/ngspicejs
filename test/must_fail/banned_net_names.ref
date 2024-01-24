@@ -1,0 +1,30 @@
+error: sinewave U1 attribute 'anode' is "time" - Certain words like "time" or "frequency" are not allowed as net names
+error: sinewave U1 contains invalid attribute
+  [banned_net_names.ngjs:0:0] in <anonymous>()
+    var t = tran().run().chart('V(time)');
+                   ^
+
+Stack trace (7 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    throw new Exception((aDevice.type || "device") + " " + (aDevice.attr.name || "<unnamed>") + " contains invalid attribute");
+          ^
+  [device/sinewave.js:0:0, core.js:0:0] in Sinewave.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [netlist/netlist_render.js:0:0, core.js:0:0] in netlist_render()
+    aNetlistDevices[i].validate();
+                       ^
+  [netlist/netlist_done.js:0:0, core.js:0:0] in netlist_done()
+    r.netlist = netlist_render(netlist_devices, netlist_line_markers, true, false);
+                ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    this.ret = netlist_done();
+               ^
+  [banned_net_names.ngjs:0:0] in <anonymous>()
+    var t = tran().run().chart('V(time)');
+                   ^
+
+exit(13)

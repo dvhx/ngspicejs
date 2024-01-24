@@ -1,0 +1,5 @@
+* custom resistor
+* NETS 2
+.subckt MY_RES1 a b
+R1 a b 1000
+.ends

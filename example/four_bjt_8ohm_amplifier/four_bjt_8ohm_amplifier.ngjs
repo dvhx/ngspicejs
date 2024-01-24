@@ -1,0 +1,50 @@
+#!/usr/bin/env ngspicejs
+// 4-transistor amplifier for 8ohm load
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 222, 0, 9).rs(10);
+ammeter('A1', 222, 2);
+ammeter('A2', 22, 23);
+
+resistor('R1', 13, 14, '15k');
+resistor('R2', 19, 18, '1');
+resistor('R3', 18, 17, '1');
+resistor('R4', 16, 0, '470');
+resistor('R5', 6, 7, '1k');
+resistor('R6', 6, 18, '22k');
+resistor('R7', 10, 0, '100k');
+resistor('R8', 23, 0, '8'); // load
+resistor('R9', 12, 10, '27k');
+resistor('R10', 13, 2, '330');
+resistor('R11', 12, 13, '27k');
+
+capacitor('C1', 12, 0, '100u');
+capacitor('C2', 13, 0, '100u');
+capacitor('C3', 2, 0, '470u');
+capacitor('C4', 18, 22, '470u');
+capacitor('C5', 7, 0, '47u');
+capacitor('C6', 11, 10, '10u');
+
+npn('T1', 14, 10, 6, 'BC547');
+pnp('T2', 3, 14, 2, 'BC557');
+npn('T3', 2, 3, 19, 'BD139');
+pnp('T4', 0, 16, 17, 'BD140');
+
+diode('D1', 3, 4, '1N4148');
+diode('D2', 4, 16, '1N4148');
+
+sinewave('U2', 11, 0).v('100m').f(196);
+
+echo('Output voltage');
+var t = tran().run().chart('V(22)');
+echo('Supply current:');
+t.chart('I(A1)');
+echo('Output current:');
+t.chart('I(A2)');
+echo('Isupply avg = ' + t.data['I(A1)'].avg().toEng() + ' (9V)');
+echo('Iload  ampl = ' + t.data['I(A2)'].amplitude().toEng() + ' (' + t.data['V(22)'].max().toFixed(1) + 'V)');
+t.chart('I(A2)');
+
+ac().fstop('20k').run().chart('V(22)');
+

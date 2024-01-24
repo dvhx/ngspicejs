@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// no arg needed
+// linter: ngspicejs-lint
+"use strict";
+
+v8_version(1);

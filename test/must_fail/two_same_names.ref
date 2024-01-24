@@ -1,0 +1,31 @@
+error: Device #1 diode D1 has duplicate name with device #0 diode D1
+  [two_same_names.ngjs:0:0] in <anonymous>()
+    diode('D1', 0, 1, '1N5819');
+    ^
+hint: Current device: diode <unnamed> (device #1)
+hint: Existing device #0: diode D1 model 1N4148 (device #0)
+hint: Given NetlistDevices(2):
+hint:   #0: diode D1 model 1N4148 (device #0)
+hint:   #1: diode <unnamed> (device #1)
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_name_unique.js:0:0, core.js:0:0] in assert_name_unique()
+    throw new Exception("Device #" + j + " " + aDevice.type + " " + aValue + " has duplicate name with device #" + i + " " + aNetlistDevices[i].type + " " + aNetlistDevices[i].attr.name);
+          ^
+  [device/diode.js:0:0, core.js:0:0] in Diode.name()
+    assert_name_unique(aName, this, this.netlist_devices);
+    ^
+  [device/diode.js:0:0, core.js:0:0] in Diode()
+    this.name(aName);
+         ^
+  [device/diode.js:0:0, core.js:0:0] in diode()
+    return new Diode(aName, aAnode, aCathode, aModel);
+           ^
+  [two_same_names.ngjs:0:0] in <anonymous>()
+    diode('D1', 0, 1, '1N5819');
+    ^
+
+exit(12)

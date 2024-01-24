@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Equations in capacitors
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v(5).pulse_width('10m').delay('5m').raise('1p'); //.pu(1/50);
+resistor('R1', 1, 2, 1000);
+var c1 = capacitor('C1', 2, 0, '1u').ls('100m').rs(2).rp('100k');
+tran().run().chart('V(2)');
+c1.c('{1*1u}').ls('{1*100e-3}').rs('{1*2}').rp('{1*100k}');
+tran().run().chart('V(2)');
+echo_netlist();

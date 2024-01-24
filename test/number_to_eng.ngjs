@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// test Number.toEng() function
+// linter: ngspicejs-lint
+"use strict";
+
+var o = file_read('number_to_eng.csv').trim().split('\n').map((a) => a.split(',')), ok = 0, bad = 0, i = 0;
+var seen = {};
+
+o.forEach((ne) => {
+    i++;
+    var n = ne[0];
+    if (seen[n]) {
+        error('dupe: ' + n + ', line ' + i);
+        exit(1);
+    }
+    seen[n] = 1;
+    var e = ne[1];
+    var x = parseFloat(n).toEng();
+    //echo('n', n, 'e', e, 'x', x);
+    if (e !== x) {
+        error(e + ' !== ' + x + ' (orig ' + n + ', near line ' + i + ')');
+        exit(1); // should be EXIT_CODE_TEST_FAIL
+        bad++;
+    } else {
+        ok++;
+    }
+});
+echo(ok, 'ok', bad, 'bad');
+
+
+

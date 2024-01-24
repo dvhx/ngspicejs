@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Save output of fuzz face to wav file
+// linter: ngspicejs-lint
+"use strict";
+
+// pnp fuzz face distortion
+battery('U1', 0, 4, 9);
+resistor('R1', 4, 5, '33k');
+resistor('R2', 7, 6, '8k2');
+resistor('R3', 4, 7, '470');
+resistor('R4', 1, 10, '100k');
+capacitor('C1', 2, 1, '2u2');
+capacitor('C2', 7, 8, '10n');
+capacitor('C3', 9, 0, '20u');
+pnp('T1', 5, 1, 0, 'AC128_87');
+pnp('T2', 6, 5, 10, 'AC128_125');
+pot('VOLUME', 0, 11, 8, '500k').percent(100);
+pot('GAIN', 0, 9, 10, '5k').percent(20);
+
+// audio source
+audio('U2', 2, 0).filename('../../wav/chord.wav').v(0.1);
+
+// 3s transient analysis
+var t = tran().step('20u').interval(3).run();
+
+// save output to wav
+file_write_wav('1.wav', t.data.time, t.data['V(11)']);
+echo('Wav saved');

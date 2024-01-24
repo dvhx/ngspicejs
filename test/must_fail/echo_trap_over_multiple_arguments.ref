@@ -1,0 +1,13 @@
+AAA 123 true
+
+error: echo_trap was triggered by 'ABC DEF'
+  [echo_trap_over_multiple_arguments.ngjs:0:0] in <anonymous>()
+    echo("ABC", "DEF");
+    ^
+
+Stack trace (1 frames):
+  [echo_trap_over_multiple_arguments.ngjs:0:0] in <anonymous>()
+    echo("ABC", "DEF");
+    ^
+
+exit(10)

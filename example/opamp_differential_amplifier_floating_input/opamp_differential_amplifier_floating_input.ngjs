@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Show usage of voltmeter for measuring between 2 nodes
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+battery('U2', 0, 5, 9);
+opamp('Q1', 2, 1, 3, 5, 6, 'TL071');
+resistor('R1', 7, 2, '10k');
+resistor('R2', 2, 0, '47k');
+resistor('R3', 8, 1, '10k');
+resistor('R4', 1, 6, '47k');
+capacitor('C1', 9, 7, '10u');
+capacitor('C2', 10, 8, '10u');
+sinewave('U3', 9, 10).v('10m').f(196);
+resistor('R5', 9, 0, '1G');
+//resistor('R6', 10, 0, '1G');
+resistor('R7', 6, 0, '50k');
+voltmeter('V1', 9, 10);
+
+echo('Input voltmeter is floating');
+var t = tran().run().chart('V(V1)');
+
+var g = t.data['V(6)'].range() / t.data['V(V1)'].range();
+echo('Output is ' + g.toFixed(1) + 'x amplified, and against the ground');
+t.chart('V(6)');
+
+echo('Here x=input, y=output:');
+chart_xy().add_series(t.data['V(V1)'], t.data['V(6)']).show();
+
+

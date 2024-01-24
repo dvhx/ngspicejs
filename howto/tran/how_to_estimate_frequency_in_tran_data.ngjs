@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to estimate frequency in tran data
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+sinewave('U2', 1, 2).v(0.1).f(900);
+
+echo('tran f0', tran().run().chart('V(2)').f0('V(2)')); //!
+echo(' fft f0', fft().run('V(2)').f0().frequency);
+
+

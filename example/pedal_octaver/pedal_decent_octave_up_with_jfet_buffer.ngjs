@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Decent octave up pedal with input jfet buffer
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 15, 0, 9);
+
+resistor('R1', 2, 0, '68k');
+resistor('R2', 15, 1, '20k');
+resistor('R3', 5, 1, '470k');
+resistor('R4', 2, 4, '470k');
+resistor('R5', 12, 0, '20k');
+resistor('R6', 13, 0, '10M');
+resistor('R7', 14, 0, '1M');
+
+pot('P1', 0, 11, 3, '50k').percent(100);
+
+capacitor('C1', 4, 14, '4u7');
+capacitor('C2', 2, 3, '4u7');
+capacitor('C3', 7, 13, '100n');
+capacitor('C4', 12, 14, '4u7');
+capacitor('C5', 14, 5, '4u7');
+
+jfet_n('T1', 15, 13, 12, '2N5457');
+npn('T2', 1, 5, 2, 'BC547');
+pnp('T3', 2, 4, 1, 'BC557');
+
+pickup_singlecoil('L1', 7, 0).v('100m').f(196);
+
+tran().run().chart('V(11)');
+

@@ -1,0 +1,17 @@
+error: ReferenceError: x is not defined
+  [./stack_only_one.ngjs:0:0] in ???()
+    x();
+    ^
+
+Stack trace (3 frames, parsed):
+  [stack_only_one.ngjs:10:5] in foo()
+    x();
+    ^
+  [stack_only_one.ngjs:15:5] in bar()
+    foo();
+    ^
+  [stack_only_one.ngjs:19:1] in <anonymous>()
+    bar();
+    ^
+hint: Similar identifiers: ac, am, exit, api, bar, dir, eng, env, fft, foo, gif, npn, pnp, pot, pwl, sub
+exit(12)

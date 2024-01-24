@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Ammeter parallel to the battery
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+ammeter('A2', 1, 0);
+
+tran().run().chart('I(A1)');

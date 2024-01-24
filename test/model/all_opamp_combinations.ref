@@ -1,0 +1,7 @@
+IDEAL_OPAMP min= -0.000 max= 2.998
+JRC4558 min= 2.005 max= 2.998
+LM258 min= 0.037 max= 3.005
+LM741 min= 0.964 max= 3.005
+NE5532 min= 2.047 max= 3.010
+TL071 min= 1.602 max= 3.001
+UA741 min= 2.014 max= 3.000

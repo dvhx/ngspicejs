@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Non existent file
+// linter: ngspicejs-lint
+"use strict";
+
+file_read('asdf');

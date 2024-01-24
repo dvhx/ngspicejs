@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// FFT's run command requires vector so specifying vector in chart is not required
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(100);
+diode('D1', 1, 2, '1N5819');
+capacitor('C1', 2, 0, '1n');
+var f = fft().fstop('1k').run('V(2)');
+
+f.chart_db('V(2)');
+f.chart_db();
+f.chart('V(2)');
+f.chart();

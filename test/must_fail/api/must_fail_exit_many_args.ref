@@ -1,0 +1,23 @@
+error: exit(code) requires exactly 1 arguments but 2 was given
+  [must_fail_exit_many_args.ngjs:0:0] in <anonymous>()
+    exit(1, 2);
+    ^
+hint: function 'exit(code)' was called with 2 arguments
+hint: argument #0 was 1 (number)
+hint: argument #1 was 2 (number)
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_arguments_length.js:0:0, core.js:0:0] in assert_arguments_length()
+    throw new Exception(aFunctionName + " requires exactly " + aMinLength + " arguments but " + al + " was given");
+          ^
+  [exit.js:0:0, core.js:0:0] in exit()
+    assert_arguments_length(arguments, 1, 1, 'exit(code)');
+    ^
+  [must_fail_exit_many_args.ngjs:0:0] in <anonymous>()
+    exit(1, 2);
+    ^
+
+exit(12)

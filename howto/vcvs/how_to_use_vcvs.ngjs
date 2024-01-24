@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// How to use voltage controlled voltage source vcvs
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+vcvs("E1", 2, 0, 1, 0, 1.5); //!
+resistor('R1', 2, 0, 10);
+echo(tran().run().avg('V(2)').toEng());
+
+

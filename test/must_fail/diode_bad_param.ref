@@ -1,0 +1,28 @@
+error: diode D3 device attribute 'banana' is not recognized attribute, attributes with similar names are: <none>
+hint: Allowed diode attributes are: anode, cathode, model, name
+error: diode D3 contains invalid attribute
+  [diode_bad_param.ngjs:0:0] in <anonymous>()
+    diode({name: 'D3', anode: 0, cathode: 1, model: '1N4148', banana: 123});
+    ^
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    throw new Exception((aDevice.type || "device") + " " + (aDevice.attr.name || "<unnamed>") + " contains invalid attribute");
+          ^
+  [device/diode.js:0:0, core.js:0:0] in Diode.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [device/diode.js:0:0, core.js:0:0] in Diode()
+    this.validate();
+         ^
+  [device/diode.js:0:0, core.js:0:0] in diode()
+    return new Diode(aName);
+           ^
+  [diode_bad_param.ngjs:0:0] in <anonymous>()
+    diode({name: 'D3', anode: 0, cathode: 1, model: '1N4148', banana: 123});
+    ^
+
+exit(13)

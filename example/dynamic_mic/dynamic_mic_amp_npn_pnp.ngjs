@@ -1,0 +1,30 @@
+#!/usr/bin/env ngspicejs
+// Another dynamic mic preamp with npn and pnp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 12, 0, 9);
+ammeter('A1', 12, 8);
+
+resistor('R1', 8, 4, '100k');
+resistor('R2', 8, 9, '10k');
+resistor('R3', 3, 6, '10k');
+resistor('R4', 4, 0, '100k');
+resistor('R5', 3, 2, '100');
+resistor('R6', 6, 0, '10k');
+resistor('R7', 7, 0, '5k');
+
+capacitor('C1', 10, 4, '10u');
+capacitor('C2', 6, 7, '10u');
+capacitor('C3', 2, 0, '22u');
+
+npn('T1', 9, 4, 3, 'BC547');
+pnp('T2', 6, 9, 8, 'BC557');
+
+dynamic_mic('U2', 10, 0).v('1m').f(196);
+
+var t = tran().run().chart('V(7)');
+echo('Gain', t.gain(10, 7).toFixed(3));
+echo('Current', t.data['I(A1)'].rms().toEng());
+
+ac().fstop('20k').run().chart('V(7)');

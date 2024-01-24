@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to print ngspice commands
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 0, 470);
+// first tran will show commands
+ngspice_command_verbose(true);  //!
+tran().run().chart('V(1)');
+ngspice_command_verbose(false);
+// second tran will not show commands
+tran().run().chart('V(1)');
+
+

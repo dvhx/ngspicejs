@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test ngspice_quit
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_quit();
+
+

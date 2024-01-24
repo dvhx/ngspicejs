@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Test temperature
+// linter: ngspicejs-lint
+"use strict";
+
+echo('default temperature is', temperature());
+temperature(25);
+echo('temperature changed to', temperature());
+
+sinewave('U1', 1, 0).v(1).f(196);
+diode('D1', 1, 2, '1N5819');
+capacitor('C1', 2, 0, '500p');
+var a1 = ac().run();
+var t1 = tran().run();
+var f1 = fft().fstop('1k').run('V(2)');
+
+temperature(35);
+echo('temperature changed to', temperature());
+
+var a2 = ac().run();
+var t2 = tran().run();
+var f2 = fft().fstop('1k').run('V(2)');
+
+chart_xy()
+    .title('AC analysis')
+    .add_series(a1.data.frequency, a1.data['V(2)'].modulus(), '25°C')
+    .add_series(a2.data.frequency, a2.data['V(2)'].modulus(), temperature() + '°C')
+    .show();
+
+chart_xy()
+    .title('Transient analysis')
+    .add_series(t1.data.time, t1.data['V(2)'], '27°C')
+    .add_series(t2.data.time, t2.data['V(2)'], temperature() + '°C')
+    .show();
+
+chart_xy()
+    .title('FFT analysis')
+    .add_series(f1.data.frequency, f1.data['V(2)'].modulus(), '25°C')
+    .add_series(f2.data.frequency, f2.data['V(2)'].modulus(), temperature() + '°C')
+    .show();
+

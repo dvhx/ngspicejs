@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// available vectors
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 50);
+resistor('R2', 2, 'foo', 50);
+resistor('R3', 'foo', 0, 100);
+voltmeter('V1', 1, 0);
+ammeter('A1', 2, 0);
+inductor('L1', 2, 3, '10m').rs(100);
+echo(Object.keys(tran().run().data).sort().join(', '));
+echo(Object.keys(ac().run().data).sort().join(', '));
+echo(available_vectors().join(', '));
+

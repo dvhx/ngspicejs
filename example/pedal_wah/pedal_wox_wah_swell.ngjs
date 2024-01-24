@@ -1,0 +1,47 @@
+#!/usr/bin/env ngspicejs
+// Pedal wox wah swell and peak frequency by pot position
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 14, 0, 9);
+
+resistor('R1', 5, 6, '100k');
+resistor('R2', 6, 4, '1k5');
+resistor('R3', 14, 7, '22k');
+resistor('R4', 7, 8, '470k');
+resistor('R5', 2, 0, '100k');
+resistor('R6', 2, 7, '470k');
+resistor('R7', 12, 0, '10k');
+resistor('R8', 9, 10, '100k');
+resistor('R9', 10, 0, '100k');
+
+var p1 = pot('P1', 0, 11, 9, '100k').percent(50);
+
+capacitor('C1', 15, 5, '10n');
+capacitor('C2', 4, 12, '15n');
+capacitor('C3', 7, 9, '150n');
+capacitor('C4', 2, 0, '4u7');
+capacitor('C5', 8, 11, '220n');
+
+npn('T1', 7, 6, 0, 'BC547');
+npn('T2', 14, 8, 12, 'BC547');
+
+inductor('L2', 4, 2, '500m').rs(20);
+
+pickup_singlecoil('L1', 15, 0).v('100m').f(196);
+
+ac().fstop('3k').run().chart('V(8)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 100; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(8)'].modulus().extrema();
+    x.push(p);
+    y.push(a.data.frequency[e[0].index]);
+}
+echo('X=pot position, Y=wah filter peak frequency in Hz');
+chart_xy().add_series(x, y).show();
+
+
+

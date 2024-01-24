@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Single opamp as vccs, p-channel mosfet and grounded load
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 8, 0, 9);
+ammeter('A1', 11, 0);
+
+resistor('R1', 12, 7, '47k');
+resistor('R2', 7, 1, '47k');
+resistor('R3', 8, 10, '47k');
+resistor('R4', 10, 0, '47k');
+resistor('RLoad', 2, 11, '20');
+resistor('R6', 8, 1, '100');
+resistor('R7', 3, 6, '100');
+
+capacitor('C1', 7, 3, '10p');
+opamp('Q1', 10, 7, 8, 0, 3, 'TL071');
+pwl('U2', 12, 0).shape([[0, 0], [0.020, 2.5]]);
+mosfet_p('T1', 2, 6, 1, 'IRF5305');
+
+var t = tran().run();
+echo('X=control voltage 0=2.5V, Y=output current 0-25mA');
+chart_xy().add_series(t.data['V(12)'], t.data['I(A1)']).show();
+
+

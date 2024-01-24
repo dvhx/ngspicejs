@@ -1,0 +1,14 @@
+error: clear_screen() require exactly 0 arguments but 1 was given
+  [must_fail_clear_screen.ngjs:0:0] in <anonymous>()
+    clear_screen(123);
+    ^
+
+hint: function 'clear_screen()' was called with 1 arguments
+hint: argument #0 was 123 (number)
+
+Stack trace (1 frames):
+  [must_fail_clear_screen.ngjs:0:0] in <anonymous>()
+    clear_screen(123);
+    ^
+
+exit(7)

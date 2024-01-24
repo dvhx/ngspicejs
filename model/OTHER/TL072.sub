@@ -1,0 +1,8 @@
+* TL072 dual opamp in DIP8 package
+* NETS 8
+* REQUIRE OPAMP TL071
+.subckt TL072 out1 inminus1 inplus1 vminus inplus2 inminus2 out2 vplus
+X1 inplus1 inminus1 vplus vminus out1 TL071
+X2 inplus2 inminus2 vplus vminus out2 TL071
+.ends
+

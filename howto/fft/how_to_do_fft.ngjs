@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// How to do FFT
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+resistor('R1', 1, 2, 1000);
+ammeter('A1', 2, 3);
+diode('D1', 3, 0, '1N4148');
+
+fft().run("V(3)").chart(); //!
+fft().fstop("5k").run("V(3)").chart_db(); //!
+fft({fstop: 5000, window: "blackman", start: "19m", interval: "500m"}).run("I(A1)").chart_db(); //!
+

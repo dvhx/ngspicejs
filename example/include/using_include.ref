@@ -1,0 +1,26 @@
+animals.ngjs exists true
+Wuf wuf
+Miau
+Animals contains:  dog, cat, rabbit, some_exported_variable
+Private function my_dog is not visible
+Private function generic_animal is not visible
+some_private_variable =  undefined undefined undefined
+some_exported_variable =  undefined undefined 456
+Let's throw exception in animal.js by calling Animals.rabbit()
+error: Rabbit is not implemented yet and should throw exception
+  [animals.js:0:0] in my_rabbit()
+    throw new Exception('Rabbit is not implemented yet and should throw exception');
+          ^
+
+Stack trace (3 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [animals.js:0:0] in my_rabbit()
+    throw new Exception('Rabbit is not implemented yet and should throw exception');
+          ^
+  [using_include.ngjs:0:0] in <anonymous>()
+    Animals.rabbit();
+            ^
+
+exit(12)

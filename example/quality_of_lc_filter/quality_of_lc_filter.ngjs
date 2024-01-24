@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// AC analysis of ideal and real LC circuit
+// linter: ngspicejs-lint
+"use strict";
+
+echo('IDEAL');
+square("U1", 1, 0).v(5).offset(0).f(50).duty(50);
+inductor('L1', 1, 2, '1m');
+capacitor('C1', 2, 0, '1u');
+ac().fstop('20k').run().chart('V(2)');
+
+echo('REAL L:rs=10R, C:ls=1u Rs=0.2R');
+netlist_clear();
+square("U1", 1, 0).v(5).offset(0).f(50).duty(50);
+inductor('L1', 1, 2, '1m').rs(10);
+capacitor('C1', 2, 0, '1u').ls('1u').rs(0.2);
+ac().fstop('20k').run().chart('V(2)');
+
+

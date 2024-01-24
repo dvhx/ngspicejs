@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - transformer
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(220).f(50);
+sub('X1', 'TRANSFORMER', [1, 0, 2, 0], {NT1: 1000, NT2: 100});
+resistor('RLOAD', 2, 0, '50k');
+
+var t = tran().run();
+echo('Output: ' + array_max(t.data['V(2)']).toEng());
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(X1.L2)');
+echo(Object.keys(f.data).sort().join('\n'));
+

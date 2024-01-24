@@ -1,0 +1,17 @@
+echo
+error: hint_buffer() require exactly 0 arguments but 1 was given
+  [must_fail_hint_buffer.ngjs:0:0] in <anonymous>()
+    echo(Internal.hint_buffer(123));
+                  ^
+
+hint: one
+hint: two
+hint: function 'hint_buffer()' was called with 1 arguments
+hint: argument #0 was 123 (number)
+
+Stack trace (1 frames):
+  [must_fail_hint_buffer.ngjs:0:0] in <anonymous>()
+    echo(Internal.hint_buffer(123));
+                  ^
+
+exit(7)

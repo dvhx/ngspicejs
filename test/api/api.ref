@@ -1,0 +1,5 @@
+API: function tran (aStep, aInterval, aStart) - Transient analysis
+API: function <anonymous> (aVector, oChartOptions) - Render tran chart of given vector and optional chart options
+API: function echo (...) - Print something to the default output stream, multiple arguments are separated by space
+API: function <anonymous> () - FIXME: missing function comment
+API: function resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Add resistor to netlist

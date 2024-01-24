@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Current is 1000x smaller than voltage but chart should look the same because it will be zoomed in
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 0, 1000);
+
+tran().interval(0.05).run().chart('V(2)', {width: 640, height: 180}).chart('I(A1)', {width: 640, height: 180});
+ChartXy.force_ascii = true;
+tran().interval(0.05).run().chart('V(2)', {width: 640, height: 180}).chart('I(A1)', {width: 640, height: 180});
+

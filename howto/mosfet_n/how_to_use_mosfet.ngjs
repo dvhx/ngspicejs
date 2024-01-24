@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// How to use mosfet
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '1M');
+var t1 = mosfet_n("T1", 1, 2, 0, "BS170"); //!
+echo(t1.attr.model, 'Idss', tran().run().avg('I(U1)').toEng());
+
+t1.model('IRLZ44N'); //!
+echo(t1.attr.model, 'Idss', tran().run().avg('I(U1)').toEng());
+
+

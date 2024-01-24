@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test terminal_size
+// linter: ngspicejs-lint
+"use strict";
+
+echo_json(terminal_size());
+
+

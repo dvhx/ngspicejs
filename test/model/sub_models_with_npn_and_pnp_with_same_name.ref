@@ -1,0 +1,20 @@
+* first line is ignored
+.subckt AAA 1 2 3 PARAMS: 
+.model QTT NPN(bf=100)
+Q_T1 1 2 3 QTT
+.ends
+.subckt BBB 1 2 3 PARAMS: 
+.model QTT PNP(bf=200)
+Q_T1 1 2 3 QTT
+.ends
+V_U1 1 0 DC 1
+V_V1 2 0 DC 9
+V_AMMETER__A1 2 3 DC 0
+x_X1 3 1 0 AAA 
+V_U2 10 0 DC 1
+V_V2 20 0 DC 9
+V_AMMETER__A2 20 30 DC 0
+x_X2 30 10 0 BBB 
+.end
+I1= 6.178
+I2= 4.25e+118

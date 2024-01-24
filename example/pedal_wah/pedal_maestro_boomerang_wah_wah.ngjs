@@ -1,0 +1,45 @@
+#!/usr/bin/env ngspicejs
+// Pedal maestro boomerang wah wah
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 10, 0, 9);
+
+resistor('R1', 17, 1, '47k');
+resistor('R2', 3, 0, '120');
+resistor('R3', 4, 6, '1M5');
+resistor('R4', 6, 7, '47k');
+resistor('R5', 1, 7, '4k7');
+resistor('R6', 10, 8, '1k');
+resistor('R7', 9, 0, '10k');
+resistor('R8', 10, 4, '10k');
+resistor('R9', 8, 15, '620k');
+
+var p1 = pot('P1', 0, 14, 13, '50k').percent(50);
+
+capacitor('C1', 16, 17, '47n');
+capacitor('C2', 6, 0, '6u8');
+capacitor('C3', 7, 9, '47n');
+capacitor('C4', 4, 13, '1u');
+capacitor('C5', 14, 15, '1u');
+
+npn('T1', 4, 1, 3, 'BC547');
+npn('T2', 8, 15, 9, 'BC547');
+
+inductor('L2', 6, 7, '500m').rs(20);
+
+pickup_singlecoil('L1', 16, 0).v('100m').f(196);
+
+ac().fstop('3k').run().chart('V(13)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 100; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(13)'].modulus().extrema();
+    x.push(p);
+    y.push(a.data.frequency[e[0].index]);
+}
+echo('X=pot position, Y=wah filter peak frequency in Hz');
+chart_xy().add_series(x, y).show();
+

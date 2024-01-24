@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Show that string throw has no stack trace
+// linter: ngspicejs-lint --no-linting
+"use strict";
+
+clear_screen();
+
+function foo() {
+    echo('Calling: throw "string", no try catch block, stack trace will be shown but only 1 item:');
+    throw "This is normal string exception";
+    echo('Program does not continues');
+}
+
+function bar() {
+    foo();
+}
+
+bar();
+

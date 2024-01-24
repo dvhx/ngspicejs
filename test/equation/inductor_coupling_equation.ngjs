@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Equations in inductor coupling
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R1', 1, 2, 1);
+inductor('L1', 2, 0, '100m');
+inductor('L2', 3, 0, '100m');
+inductor_coupling('K1', 'L1', 'L2', '{2*0.25}');
+tran().run().chart('V(3)');

@@ -1,0 +1,34 @@
+#!/usr/bin/env ngspicejs
+// human vector names - voltmeters
+// linter: ngspicejs-lint
+"use strict";
+
+battery('V2', 10, 0, 9);
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 100);
+resistor('R2', 2, 0, 100);
+voltmeter('V1', 1, 2);
+resistor('R3', 1, 'v2', 100);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+netlist_clear();
+echo();
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 100);
+resistor('R2', 2, 3, 100);
+resistor('R3', 3, 0, 100);
+// floating voltmeter
+voltmeter('V1', 2, 3);
+// grounded voltmeter
+voltmeter('V2', 2, 0);
+
+t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('V(V1)');
+echo(Object.keys(f.data).sort().join('\n'));
+

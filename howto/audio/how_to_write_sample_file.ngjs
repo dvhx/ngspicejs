@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// How to write .m sample file
+// linter: ngspicejs-lint
+"use strict";
+
+// distort sinewave using diode
+sinewave('U1', 1, 0).f(1000).v(2).offset(0).delay(0);
+resistor('R1', 1, 2, '20k');
+diode('D1', 2, 0, '1N5819');
+
+// run transient to get distorted signal
+var t = tran().interval('1m').step('10u').run().chart('V(1)').chart('V(2)');
+
+// write .m sample file
+file_write_m('distorted.m', t.data.time, t.data['V(2)'], 'distorted sinewave'); //!
+

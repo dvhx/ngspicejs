@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// How to find peak frequency in AC data
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(196);
+inductor('L1', 1, 2, '10m');
+capacitor('C1', 2, 3, '10n');
+resistor('R1', 3, 0, 10);
+var a = ac().points(100).run().chart('V(3)');
+// find extrema in array of complex data
+var ex = a.data['V(3)'].extrema();
+echo('array_extrema:');
+echo_json(ex);
+// use extrema index to find frequency in a.data.frequency[]
+echo('ac peak frequency is', a.data.frequency[ex[0].index].toFixed(0));
+

@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// human vector names - inductor
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 2, 9);
+inductor('L1', 2, 0, 1).rs(10);
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(L1.L0)');
+echo(Object.keys(f.data).sort().join('\n'));
+

@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// using error function
+// linter: ngspicejs-lint
+"use strict";
+
+error('this is not an error, just testing error function');
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 10);
+tran().run().chart('V(1)');

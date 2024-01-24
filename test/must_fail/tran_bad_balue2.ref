@@ -1,0 +1,20 @@
+error: Tran.interval(value) argument should be number (e.g. 4700 or 4k7) but instead is banana
+  [tran_bad_balue2.ngjs:0:0] in <anonymous>()
+    tran().interval('30m').interval('banana')
+                           ^
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [eng.js:0:0, core.js:0:0] in eng()
+    throw new Exception(aCustomMessage || e.toString());
+          ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.interval()
+    this.attr.interval = eng(aInterval, 1, 'Tran.interval(value)');
+                         ^
+  [tran_bad_balue2.ngjs:0:0] in <anonymous>()
+    tran().interval('30m').interval('banana')
+                           ^
+
+exit(12)

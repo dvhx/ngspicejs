@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// How to use current controlled current source
+// linter: ngspicejs-lint
+"use strict";
+
+// battery with resistor
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+// battery current will create 10x larger current to R2 and ammeter A1
+cccs("F1", 2, 0, "U1", 10); //!
+resistor("R2", 2, 3, 100);
+ammeter("A1", 3, 0);
+
+// print currents
+echo('Iu1=', tran().run().avg('I(U1)').toEng());
+echo('Ia1=', tran().run().avg('I(A1)').toEng());
+

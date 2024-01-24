@@ -1,0 +1,7 @@
+ngspice_command: run
+ngspice_command: destroy all
+ngspice_command: set temp = 27
+ngspice_command: unset ngbehavior
+ngspice_command: tran 0.0001 0.02 0
+-9m
+-9m

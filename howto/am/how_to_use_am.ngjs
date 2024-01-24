@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// How to use AM source (amplitude modulation)
+// linter: ngspicejs-lint
+"use strict";
+
+// amplitude modulated source
+am("U1", 1, 0).v(1).f(50).fc(1500); //!
+
+tran().run().chart('V(1)');

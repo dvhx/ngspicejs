@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// Using TL431 to turn on low-battery indicator
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 9], [0.020, 0]]);
+resistor('R1', 1, 10, '20k');
+diode('D1', 10, 11, 'LED_RED');
+ammeter('A1', 11, 0);
+
+// This sets the warning level to ~8V
+pot('P1', 1, 3, 0, '100k', 70);
+resistor('R5', 1, 4, 330);
+resistor('R6', 4, 5, '1k');
+diode('D2', 5, 8, 'LED_BLUE');
+ammeter('A2', 8, 0);
+vref('Q1', 3, 0, 4, 'TL431');
+
+var t = tran().run();
+echo("Dropping battery voltage:");
+t.chart('V(1)');
+echo("Current through RED LED connected across battery:");
+t.chart('I(A1)');
+echo("Current through BLUE LED indicating low voltage:");
+t.chart('I(A2)');
+for (var i = 0; i < t.data['I(A2)'].length; i++) {
+    if (t.data['I(A2)'][i] > 0.002) {
+        echo('Blue LED turns ON when battery voltage drops below ' + t.data['V(1)'][i].toEng() + 'V');
+        break;
+    }
+}
+
+

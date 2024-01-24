@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// Measure battery sensitivity of common emitter amplifier
+// linter: ngspicejs-lint
+"use strict";
+
+// common emitter 24x amplification
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(0.01).f(196);
+resistor('R1', 1, 3, '6800');
+resistor('R2', 3, 0, '470');
+resistor('R3', 1, 4, '20k');
+resistor('R4', 6, 0, '330');
+capacitor('C1', 2, 3, '10u');
+capacitor('C2', 4, 5, '10u');
+resistor('R5', 5, 0, '50k');
+npn('T1', 4, 3, 6, 'BC547');
+
+// Measure battery sensitivity
+battery_sensitivity('U1', 2, 5, 9 / 2, 9 * 2).run().chart();
+// U1    = battery
+// 2     = input net
+// 5     = output net
+// 9 / 2 = minimal voltage 4.5
+// 9 * 2 = maximal voltage 18V
+

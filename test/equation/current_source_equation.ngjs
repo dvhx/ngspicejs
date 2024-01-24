@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Equations in current source
+// linter: ngspicejs-lint
+"use strict";
+
+var i1 = current_source('I1', 0, 1, 2);
+resistor('R1', 1, 2, 1000);
+ammeter('A1', 2, 0);
+tran().run();
+echo_netlist();
+echo(tran().run().avg('I(A1)'));
+i1.i('{2+2}');
+echo_netlist();
+echo(tran().run().avg('I(A1)'));
+

@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Equations in sub
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('R2X', [1, 2], {r: 5});
+s.resistor('R1', 1, 2, '{2*r}');
+s.end();
+
+battery('U1', 1, 0, 10);
+sub('X1', 'R2X', [1, 0], {r: 0.25});
+
+echo(tran().run().avg('I(U1)'));
+

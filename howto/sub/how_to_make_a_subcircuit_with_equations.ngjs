@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// How to make a subcircuit with equations
+// linter: ngspicejs-lint
+"use strict";
+
+// create pot model with equations
+var pot_model = sub_model('MY_POT', ['start', 'wiper', 'end'], {r: '1k', percent: 50});
+pot_model.resistor('R1', 'start', 'wiper').r('{r * percent / 100}');
+pot_model.resistor('R2', 'wiper', 'end').r('{r * (100 - percent) / 100}');
+pot_model.end();
+
+// Use a subcircuit
+battery('U1', 1, 0, 9);
+var x1 = sub('X1', 'MY_POT', [0, 2, 1], {r: '1k', percent: 10});
+echo('Output of pot 10% is', tran().run().avg('V(2)').toEng());
+
+// Set subcircuit params
+x1.params({r: 100, percent: 100});
+echo('Output of pot at 100% is', tran().run().avg('V(2)').toEng());
+
+

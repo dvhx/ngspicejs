@@ -1,0 +1,48 @@
+#!/usr/bin/env ngspicejs
+// Pedal peppermill and sweep of P1 and P2 pot and corresponding THD
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 8, 0, 9);
+
+resistor('R1', 1, 0, '1M');
+resistor('R2', 2, 1, '1M');
+resistor('R3', 8, 2, '4k7');
+resistor('R4', 3, 0, '1k');
+resistor('R5', 7, 0, '100k');
+resistor('R6', 11, 10, '8k2');
+resistor('R7', 13, 0, '1k');
+
+var p1 = pot('P1', 7, 6, 5, '250k').percent(70);
+var p2 = pot('P2', 8, 8, 9, '50k').percent(80);
+pot('P3', 0, 12, 10, '100k').percent(100);
+
+capacitor('C1', 14, 1, '100n');
+capacitor('C2', 2, 5, '10n');
+capacitor('C3', 9, 11, '100n');
+capacitor('C4', 10, 0, '2n2');
+capacitor('C5', 13, 0, '1u');
+
+mosfet_n('T1', 2, 1, 3, '2N7000_2');
+jfet_n('T2', 9, 6, 13, 'J201');
+diode('D1', 3, 1, 'LED_RED');
+
+pickup_singlecoil('L1', 14, 0).v('100m').f(196);
+
+tran().run().chart('V(12)');
+
+var x = [], y = [], color = [], a, b, csv = [['P1', 'P2', 'THD']];
+for (a = 0; a <= 100; a += 10) {
+    for (b = 0; b <= 100; b += 10) {
+        p1.percent(a);
+        p2.percent(b);
+        var thd = fft().run('V(13)').thd(196);
+        echo('P1', a, 'P2', b, 'THD', thd.toFixed(3));
+        csv.push([a, b, thd]);
+        x.push(a);
+        y.push(b);
+        color.push(thd);
+    }
+}
+file_write_csv('p1_p2_thd.csv', csv);
+chart_scatter(x, y, color).show().gif('p1_p2_thd.gif');

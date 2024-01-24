@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Bad interval value
+// linter: ngspicejs-lint
+"use strict";
+
+tran().interval('30m').interval('banana');

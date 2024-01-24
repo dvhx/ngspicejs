@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Warn about milli/mega in equations
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0).v('{2*500M}');
+echo(tran().run().avg('V(1)'));

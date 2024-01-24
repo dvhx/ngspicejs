@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// This will not fail or show error because battery has rs
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9).rs(1);
+ammeter('A1', 1, 0);
+
+tran().run().chart('I(A1)');

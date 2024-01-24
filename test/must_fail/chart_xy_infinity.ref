@@ -1,0 +1,26 @@
+error: ChartXy cannot display infinity (y value)
+  [chart_xy_infinity.ngjs:0:0] in <anonymous>()
+    a.chart_db('I(L1.L0)');
+      ^
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [chart_xy.js:0:0, core.js:0:0] in ChartXy.add_series()
+    throw new Exception('ChartXy cannot display infinity (y value)');
+          ^
+  [analysis/ac.js:0:0, core.js:0:0] in eval()
+    vecs.forEach(v => c.add_series(t.data.frequency, fun(t.data[v]), v + (fun === array_db ? '/dB' : '')));
+                        ^
+  [analysis/ac.js:0:0, core.js:0:0] in Ac.chart()
+    vecs.forEach(v => c.add_series(t.data.frequency, fun(t.data[v]), v + (fun === array_db ? '/dB' : '')));
+         ^
+  [analysis/ac.js:0:0, core.js:0:0] in Ac.chart_db()
+    return this.chart(aVector, o);
+                ^
+  [chart_xy_infinity.ngjs:0:0] in <anonymous>()
+    a.chart_db('I(L1.L0)');
+      ^
+
+exit(12)

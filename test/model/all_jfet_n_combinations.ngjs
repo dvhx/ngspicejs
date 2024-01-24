@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for jfet_n
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+ammeter('A1', 5, 4);
+battery('U2', 3, 0, 2);
+var t1 = jfet_n('T1', 4, 3, 0, 'J201');
+
+var m = ['2N5457', '2SK246', '2SK30A', 'BF245A', 'J201'];
+m.forEach((a) => {
+    t1.model(a);
+    var t = tran().run();
+    echo(t1.attr.model, 'I=', array_avg(t.data['I(A1)']).toEng());
+});

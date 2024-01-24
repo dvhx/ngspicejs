@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Wrong order of chained calls is reported as error
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(196);
+resistor('R1', 1, 0, 100);
+tran().run().interval(0.1).chart('V(1)');

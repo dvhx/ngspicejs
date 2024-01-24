@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// How to make a subcircuit
+// linter: ngspicejs-lint
+"use strict";
+
+// Create a subcircuit model
+var s = sub_model('MY_DIVIDER', [1, 2, 3], {r1: 100, r2: 100}); //!
+s.resistor('R1', 1, 2, '{r1}');                                 //!
+s.resistor('R2', 2, 3, '{r2}');                                 //!
+s.end();                                                        //!
+
+// Use a subcircuit
+battery('U1', 1, 0, 9);
+var x1 = sub('X1', 'MY_DIVIDER', [1, 2, 0], {}); //!
+echo('Output of 100:100 divider is', tran().run().avg('V(2)').toEng());
+
+// Set subcircuit params
+x1.params({r1: 10, r2: 100});
+echo('Output of 10:100 divider is', tran().run().avg('V(2)').toEng());
+
+

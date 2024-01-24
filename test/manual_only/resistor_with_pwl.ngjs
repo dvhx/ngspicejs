@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Test if resistor with pwl freezes
+// linter: ngspicejs-lint
+"use strict";
+
+echo("this may freeze with dist-compiled libngspice on Ubuntu 22.04");
+battery('U1', 3, 0, 9);
+spice('R1 3 4 R = PWL(0 0 20m 100)');
+ammeter('A1', 4, 0);
+tran().run();
+echo('done');
+

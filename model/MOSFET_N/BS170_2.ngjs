@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// BS170 TO-92 N-channel MOSFET
+// linter: ngspicejs-lint
+"use strict";
+var m = sub_model('BS170_2', ['d', 'g', 's'], {temp: temperature()});
+m.mos_model({
+    "name": "MM1",
+    "kind": "NMOS",
+    "vto": 1.819461,
+    "is": 1.052561e-15,
+    "cgso": 2.801761e-11,
+    "cgdo": 3e-12,
+    "cbd": 3.5e-11,
+    "rs": 1.568641,
+    "rd": 1.441743,
+    "pb": 1,
+    "kp": 0.123782
+});
+m.diode_model({name: 'DM1', is: 5.466335e-12, rs: 0.772155});
+m.diode('D1', 's', 'd', 'DM1');
+m.resistor('R1', 'g', 2, 267);
+m.resistor('R2', 'd', 's', '120M');
+m.mosfet_n('T1', 'd', 2, 's', 'MM1').substrate('s').temp('{temp}');
+m.end();
+
+globalThis.exports = {model: m};
+
+

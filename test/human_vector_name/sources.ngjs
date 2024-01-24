@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// human vector names - sources
+// linter: ngspicejs-lint
+"use strict";
+
+am('V1', 1, 0).v(1).f(100).fc(1000);
+beeps('V2', 2, 0).v(1).f(100);
+current_source('I1', 3, 0, 5);
+pulse('V4', 4, 0);
+pwl('V5', 5, 0).shape([[0,0], [1, 1]]);
+sawtooth('V6', 6, 0).v(5).f(50);
+sinewave('V7', 7, 0).v(5).f(50);
+square('V8', 8, 0).v(5).f(50);
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(V2.B1)');
+echo(Object.keys(f.data).sort().join('\n'));
+

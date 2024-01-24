@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - vcvs
+// linter: ngspicejs-lint
+"use strict";
+
+spice('E2 3 0 4 0 0.5');
+vcvs('E1', 1, 0, 2, 0, 0.5);
+resistor('R1', 2, 0, 100);
+resistor('R2', 4, 0, 100);
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(E1)');
+echo(Object.keys(f.data).sort().join('\n'));
+

@@ -1,0 +1,40 @@
+#!/usr/bin/env ngspicejs
+// Dual opamp voltage controlled current source, voltage = 0-2.5V, current=0-25mA
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 9, 8, 9);
+
+resistor('R1', 0, 1, '100k');
+resistor('R2', 1, 2, '100k');
+resistor('R3', 2, 3, '100');
+resistor('R5', 7, 4, '100k');
+resistor('R6', 10, 7, '100k');
+resistor('R7', 9, 0, '10k');
+resistor('R8', 0, 8, '10k');
+
+var r4 = resistor('R4', 3, 5, '10');
+ammeter('A1', 5, 0);
+
+pwl('UCTRL', 10, 0).shape([[0, 0], [0.020, 2.5]]);
+
+opamp('Q1', 7, 1, 9, 8, 2, 'TL071');
+opamp('Q2', 3, 4, 9, 8, 4, 'TL071');
+
+echo('Vctrl/Iout: 10R resistor');
+var t = tran().run();
+chart_xy().add_series(t.data['V(10)'], t.data['I(A1)']).show();
+
+// replace resistor R4 with diode
+echo('Vctrl/Iout: Diode 1N4148');
+r4.remove();
+var d1 = diode('D1', 3, 5, '1N4148');
+t = tran().run();
+chart_xy().add_series(t.data['V(10)'], t.data['I(A1)']).show();
+
+echo('Vctrl/Iout: Diode LED_RED');
+d1.model('LED_RED');
+t = tran().run();
+chart_xy().add_series(t.data['V(10)'], t.data['I(A1)']).show();
+
+

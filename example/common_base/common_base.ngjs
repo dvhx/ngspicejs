@@ -1,0 +1,36 @@
+#!/usr/bin/env ngspicejs
+// Common base 50x amplifier driving 5k load
+// linter: ngspicejs-lint
+"use strict";
+
+// common base amplifier
+battery('U1', 3, 0, 9);
+sinewave('U2', 6, 0).v(0.01).f(196);
+resistor('R1', 4, 1, '10k');
+resistor('R2', 1, 2, '51k');
+var load = resistor('R3', 5, 0, '5k');
+capacitor('C1', 2, 0, '1u');
+capacitor('C2', 1, 5, '10u');
+npn('T1', 1, 2, 6, 'BC547');
+ammeter('A1', 3, 4);
+
+var t1 = tran().interval('20m').run().chart('V(5)');
+
+// Show gain of net 6 (input) vs net 5 (output)
+echo('gain=', t1.gain(6, 5).toFixed(3), '(using 0-20ms)');
+echo('current=', t1.data['I(A1)'].avg().toEng() + 'A');
+
+// Supply sensitivity
+battery_sensitivity('U1', 6, 5, 0.1, 12).run().chart();
+
+// Load sensitivity
+echo("\nLoad sensitivty (x=load resistance, y=gain):");
+var x = [0];
+var y = [0];
+for (var r = 1000; r < 15000; r += 1000) {
+    load.r(r);
+    x.push(r);
+    y.push(tran().run().gain(6, 5));
+}
+chart_xy().add_series(x, y).show();
+

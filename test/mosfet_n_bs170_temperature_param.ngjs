@@ -1,0 +1,30 @@
+#!/usr/bin/env ngspicejs
+// This shows that even subcircuit mosfet can pass some parameter (e.g. temp) to mosfet inside the subcircuit
+// Note: I only implemented this for N parameter "temp", I don't know enough about BS170 model to do more
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U2', 3, 0, 9);
+sinewave('U1', 1, 0).v(0.1).f(196);
+capacitor('C1', 1, 2, '100n');
+resistor('R1', 3, 2, '1M');
+resistor('R2', 0, 2, '1M');
+resistor('R3', 3, 4, '5k1');
+resistor('R4', 5, 0, '2k2');
+var q1 = mosfet_n('Q1', 4, 2, 5, 'BS170');
+capacitor('C2', 4, 6, '1000n');
+resistor('R5', 6, 0, '50k');
+
+//echo_netlist();
+
+// normal simulation
+echo('gain T=' + temperature(), tran().run().gain_ideal(0.1, 'V(6)').toEng(6));
+
+// changing only temperature of mosfet
+q1.temp(120);
+echo('gain T=120 (only mosfet)', tran().run().gain_ideal(0.1, 'V(6)').toEng(6));
+
+// changing temperature of everything
+temperature(120);
+echo('gain T=120 (everything)', tran().run().gain_ideal(0.1, 'V(6)').toEng(6));
+

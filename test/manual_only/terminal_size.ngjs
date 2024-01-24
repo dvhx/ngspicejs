@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test basic functionality of cpp api call
+// linter: ngspicejs-lint
+"use strict";
+
+echo_json(terminal_size());
+
+

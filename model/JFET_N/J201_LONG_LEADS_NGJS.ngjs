@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// J201 with long leads implemented as ngjs model
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('J201_LONG_LEADS_NGJS', ['d', 'g', 's'], {});
+s.inductor('LD', 'd', 1, '0.3n');
+s.inductor('LG', 'g', 2, '0.3n');
+s.inductor('LS', 's', 3, '0.3n');
+s.capacitor('CGD', 'g', 'd', '0.1p');
+s.capacitor('CGS', 'g', 's', '0.1p');
+s.jfet_n('J1', 1, 2, 3, 'J201');
+s.end();
+
+globalThis.exports = {model: s};

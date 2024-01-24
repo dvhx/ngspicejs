@@ -1,0 +1,51 @@
+#!/usr/bin/env ngspicejs
+// Pedal Anderton Wah-Antiwah - filter has two peaks, one is going down, second is going up
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 12, 0, 9);
+
+resistor('R1', 10, 1, '47k');
+resistor('R2', 10, 9, '47k');
+resistor('R3', 5, 4, '470k');
+resistor('R4', 4, 13, '1k');
+resistor('R5', 7, 6, '470k');
+resistor('R6', 7, 13, '1k');
+resistor('R7', 18, 0, '50k');
+resistor('R8', 12, 15, '20k');
+resistor('R9', 15, 0, '20k');
+
+var p1 = pot('P1', 9, 0, 1, '50k').percent(90);
+
+capacitor('C1', 1, 5, '1n');
+capacitor('C2', 1, 4, '1n');
+capacitor('C3', 7, 9, '6n8');
+capacitor('C4', 6, 9, '6n8');
+capacitor('C5', 13, 18, '10u');
+
+opamp('Q1', 15, 5, 12, 0, 4, 'TL071');
+opamp('Q2', 15, 6, 12, 0, 7, 'TL071');
+
+pickup_singlecoil('L1', 10, 0).v('100m').f(196);
+
+ac().fstop('20k').run().chart('V(18)');
+
+var p, a, e, x = [], y = [], y2 = [];
+for (p = 5; p <= 100; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('20k').run();
+    e = a.data['V(18)'].modulus().extrema();
+    if (e.length === 3) {
+        x.push(p);
+        y.push(a.data.frequency[e[0].index]); // first peak is first maximum
+        y2.push(a.data.frequency[e[2].index]); // third peak is last maximum
+    }
+}
+chart_xy()
+    .label_x('Pot/%')
+    .label_y('f/Hz')
+    .title('Wah filter peak frequency in Hz (both peaks)')
+    .add_series(x, y, 'anitiwah')
+    .add_series(x, y2, 'wah')
+    .show();
+

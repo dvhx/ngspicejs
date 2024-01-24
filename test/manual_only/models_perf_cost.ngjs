@@ -1,0 +1,77 @@
+#!/usr/bin/env ngspicejs
+// Perf test to find if multiple models slow down simulation
+// linter: ngspicejs-lint
+"use strict";
+
+var n = 0, in1, in2, in3, out1, out2, out3, d = 0;
+function nn() {
+    n++;
+    return n;
+}
+
+var same = true;
+
+function make_netlist() {
+    netlist_clear();
+
+    n = 0;
+    d = 0;
+    in1 = nn();
+    in2 = nn();
+    in3 = 0; //nn();
+    out1 = nn();
+    out2 = nn();
+    out3 = nn();
+    //echo(in1, in2, in3, out1, out2, out3);
+
+    sinewave('U1', 'vcc', 0).v(5).f(50);
+    resistor('R1', 'vcc', in1, 100);
+
+    diode_model({name: '1N4148', is: 4e-9, n: 2, rs: 2, cjo: 4e-12, vj: 0.6, tt: 6e-9, m: 0.45, bv: 100});
+
+    function m() {
+        d++;
+        if (same) {
+            return '1N4148';
+        }
+        var s = 'DM' + d;
+        diode_model({name: s, is: 4e-9 + 1e-12 * Math.random(), n: 2, rs: 2, cjo: 4e-12, vj: 0.6, tt: 6e-9, m: 0.45, bv: 100});
+        return s;
+    }
+
+    for (var i = 0; i < 100; i++) {
+        diode('D' + nn(), in1, in2, m());
+        diode('D' + nn(), in2, in3, m());
+
+        diode('D' + nn(), in1, out1, m());
+        diode('D' + nn(), in2, out2, m());
+        diode('D' + nn(), out3, in3, m());
+
+        diode('D' + nn(), out1, out2, m());
+        diode('D' + nn(), out2, out3, m());
+
+        in1 = out1;
+        in2 = out2;
+        in3 = out3;
+        out1 = nn();
+        out2 = nn();
+        out3 = nn();
+        //echo(in1, in2, in3, out1, out2, out3);
+    }
+}
+
+var t, t1, t2, total = {'true': 0, 'false': 0};
+
+for (var i = 0; i < 10; i++) {
+    make_netlist();
+    t = tran();
+    t1 = Date.now();
+    t.run();
+    t2 = Date.now();
+    echo(d, 'diodes', t2 - t1, 'ms (run)', t.perf, 'ms (command only)', same ? '1 model' : 'N models');
+    total[same] += t.perf;
+    same = !same;
+}
+t.chart('V(' + in2 + ')');
+echo();
+echo('Conclusion: Adding ' + d + ' models makes the simulation ' + (100 * total.false / total.true - 100).toFixed(0) + '% slower');

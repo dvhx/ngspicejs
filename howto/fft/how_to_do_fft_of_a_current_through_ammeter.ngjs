@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to do FFT of a current running through ammeter
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+resistor('R1', 1, 2, 1000);
+ammeter('A1', 2, 3);
+diode('D1', 3, 0, '1N4148');
+
+fft().fstop(1000).run('I(A1)').chart_db('I(A1)'); //!
+

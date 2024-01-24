@@ -1,0 +1,22 @@
+i1 -9m
+i2 -3m
+i3 -2.949 should be -2.949 (-2.949)
+* first line is ignored
+V_U1 1 0 DC 9
+R_R1 1 0 1000
+V_U2 2 0 DC 9
+R_R2 2 0 3000
+F_F3 3 0 POLY(2) V_U1 V_U2 3 4 5 6
+R_R3 3 4 123
+V_U3 4 0 DC 0
+.end
+i3eq -2.949 should be -2.949 (-2.949)
+* first line is ignored
+V_U1 1 0 DC 9
+R_R1 1 0 1000
+V_U2 2 0 DC 9
+R_R2 2 0 3000
+F_F3 3 0 POLY(2) V_U1 V_U2 {2*1.5} {2+2} {2+3} {3+3}
+R_R3 3 4 123
+V_U3 4 0 DC 0
+.end

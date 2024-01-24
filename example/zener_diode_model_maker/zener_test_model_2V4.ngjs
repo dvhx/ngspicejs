@@ -1,0 +1,45 @@
+#!/usr/bin/env ngspicejs
+// Draw V-A curve using ZENER_C2V4ST model from the model/DIODE/ZENER_C2V4ST.sub
+// linter: ngspicejs-lint
+"use strict";
+
+// Simulate circuit
+pwl('U1', 1, 0).shape([[0, 0.8], [0.020, 9]]);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 3, 330);
+var d1 = diode('D1', 0, 3, 'ZENER_C2V4ST');
+var t = tran().run();
+
+// Load table of measured reverse voltages and currents (for comparison)
+var csv = file_read_csv('ZENER_C2V4ST_REVERSE.csv');
+var volts = csv.column(0, 1).map(parseFloat);
+var amps = csv.column(1, 1).map(parseFloat);
+
+// show chart
+chart_xy()
+    .min_x(0.1)
+    .max_x(4)
+    .min_y(1e-6)
+    .max_y(0.025)
+    .label_x('Vr/V')
+    .label_y('Ir/A')
+    .log_x(true)
+    .log_y(true)
+    .title(d1.attr.model + ' - Reverse V-A characteristic (logarithmic)')
+    .add_series(t.data['V(3)'], t.data['I(A1)'].clamp(1e-7, 999), 'simulated')
+    .add_series(volts, amps, 'measured')
+    .show();
+// chart linear
+chart_xy()
+    .min_x(0.1)
+    .max_x(4)
+    .min_y(1e-6)
+    .max_y(0.025)
+    .label_x('Vr/V')
+    .label_y('Ir/A')
+    .title(d1.attr.model + ' - Reverse V-A characteristic')
+    .add_series(t.data['V(3)'], t.data['I(A1)'].clamp(1e-7, 999), 'simulated')
+    .add_series(volts, amps, 'measured')
+    .show();
+
+

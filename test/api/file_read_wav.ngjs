@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Test file_read_wav
+// linter: ngspicejs-lint
+"use strict";
+
+var w = file_read_wav('../../wav/1ms_sinewave_1khz_16bit_signed_pcm.wav');
+chart_xy().add_series(w.time, w.data).show();
+
+
+

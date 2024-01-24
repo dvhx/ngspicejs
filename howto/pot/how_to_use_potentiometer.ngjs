@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// How to use potentiometer
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+var p1 = pot('P1', 0, 2, 1).r('100k').percent(50);
+for (var i = 0; i <= 100; i += 10) {
+    p1.percent(i);
+    echo('pot', i, '% V(2)=', tran().run().avg('V(2)').toFixed(1));
+}
+
+

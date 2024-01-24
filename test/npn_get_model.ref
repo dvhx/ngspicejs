@@ -1,0 +1,16 @@
+Ic 10.8m
+Ib 41.5u
+BC547: measured hFE=260.9 model hFE= 327
+
+Ic 5.3m
+Ib 40.8u
+2N3904: measured hFE=129.9 model hFE= 205
+
+Ic 4.4m
+Ib 46.8u
+BD139_130: measured hFE=94.1 model hFE= Undefined because it's not JSON model
+
+Ic 1.2m
+Ib 182.3n
+BC547_DARLINGTON: measured hFE=6.8k model hFE= Undefined because it's not JSON model
+

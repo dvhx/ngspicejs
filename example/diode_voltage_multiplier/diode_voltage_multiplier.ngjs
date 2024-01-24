@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// 4-stage diode based voltage multiplier
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = sinewave('U1', 5, 0).f(1000).v(1.5);
+capacitor('C1', 5, 1, '100n');
+diode('D1', 0, 1, '1N4148');
+
+capacitor('C2', 0, 3, '100n');
+diode('D2', 1, 3, '1N4148');
+
+capacitor('C3', 1, 2, '100n');
+diode('D3', 3, 2, '1N4148');
+
+capacitor('C4', 3, 4, '100n');
+diode('D4', 2, 4, '1N4148');
+
+var t1 = tran().run().chart('V(4)');
+
+var v1 = u1.attr.v;
+var v2 = t1.data['V(4)'].max();
+echo(v1 + 'V was raised to ' + v2.toEng() + 'V (' + (v2 / v1).toFixed(1) + 'x)');

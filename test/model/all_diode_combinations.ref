@@ -1,0 +1,3 @@
+Imax: 0.075 (should be 0.075 for 1N4148.json)
+Imax: 0.385 (should be 0.385 for ZENER_C2V4ST.ngjs)
+Imax: 0.183 (should be 0.183 for ZENER_C9V1ST.sub)

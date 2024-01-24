@@ -1,0 +1,9 @@
+Calling 100x "throw new Exception(string)" in try/catch block:
+Program continues (but the stack trace was generated in the background, it took 0.3s)
+
+To suppress it, you must set Exception.fast = true;
+Program continues (and the stack trace was NOT generated, it took 10ms)
+
+Or you use throw "string":
+Program continues (string exceptions do not generate stack trace, it took 11ms)
+

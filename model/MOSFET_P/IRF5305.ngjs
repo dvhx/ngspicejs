@@ -1,0 +1,74 @@
+#!/usr/bin/env ngspicejs
+// IRF5305 P-channel mosfet
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('IRF5305', ['d', 'g', 's'], {});
+s.mos_model({
+    "name": "MODM1",
+    "kind": "PMOS",
+    "level": 1,
+    "is": 1.051352e-32,
+    "vto": -3.466734,
+    "lambda": 0.003174358,
+    "kp": 10.07828242,
+    "cgso": 0.0000158643,
+    "cgdo": 1.8543522e-11,
+    "l": 100e-6,
+    "w": 100e-6
+});
+s.diode_model({
+    "name": "MODD1",
+    "is": 8.9189635e-9,
+    "rs": 0.009224682,
+    "n": 1.497352,
+    "bv": 60,
+    "ibv": 0.0002497835,
+    "eg": 1.2108138,
+    "xti": 3.15,
+    "tt": 0.000118348,
+    "cjo": 1.31438435e-9,
+    "vj": 0.65987345,
+    "m": 0.41882435,
+    "fc": 0.5
+});
+s.diode_model({
+    "name": "MODD2",
+    "is": 1.1e-32,
+    "n": 45,
+    "cjo": 1.648352e-9,
+    "vj": 0.7888243,
+    "m": 0.54983245,
+    "fc": 1.107665e-8
+});
+s.diode_model({
+    "name": "MODD3",
+    "is": 1.1182183e-10,
+    "n": 0.411513542,
+    "rs": 0.00000327352
+});
+s.diode_model({
+    "name": "MODD4",
+    "is": 1.1182183e-10,
+    "n": 0.411513542
+});
+s.mosfet_p('M1', 17, 23, 16, 'MODM1').substrate(16).l(100e-6).w(100e-6);
+s.resistor('RS', 16, 's', 0.02597521);
+s.resistor('RDS', 's', 'd', 2.2101115e+6);
+s.resistor('RD', 17, 'd', 0.000111824);
+s.resistor('RG', 'g', 23, 11.1128243);
+s.resistor('RL', 13, 19, 1);
+s.resistor('RC1', 14, 19, 1);
+s.capacitor('C1', 11, 19, 1.89882435e-9);
+s.cccs('F1', 23, 17, 'VBAT2', -1);
+s.battery('VBAT2', 18, 0, 0);
+s.vcvs('E1', 19, 0, 17, 23, 1);
+s.cccs('F2', 23, 17, 'VBAT1', -1);
+s.battery('VBAT1', 11, 14, 0);
+s.diode('D1', 'd', 's', 'MODD1');
+s.diode('D2', 13, 18, 'MODD2');
+s.diode('D3', 13, 0, 'MODD3');
+s.diode('D4', 14, 0, 'MODD4');
+s.end();
+
+globalThis.exports = {model: s};

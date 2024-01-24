@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Modified netlist but no analysis was ran
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('A', [1, 2], {});
+s.resistor('R1', 1, 2, 100);
+s.end();
+
+sub('X1', 'A', [1, 0]);
+var u1 = battery('U1', 1, 0, 9);
+var r3 = resistor('R3', 3, 0, 10);
+opamp('Q1', 1,2,3,4,5, 'LM741');
+
+tran().run();
+
+u1.v(7);
+resistor('R2', 2, 0, 123);
+r3.remove();

@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Joule thief powering white LED from single 1.5V AAA battery
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 1.5).rs(2);
+resistor('R1', 4, 6, '1k');
+inductor('L1', 5, 6, '2m').rs(1);
+inductor('L2', 4, 2, '2m').rs(1);
+inductor_coupling('K1', 'L1', 'L2', 0.95);
+npn('T1', 2, 5, 0, 'BC547');
+ammeter('A1', 2, 8);
+resistor('R2', 8, 7, 10);
+diode('D1', 7, 0, 'LED_WHITE');
+
+var t = tran().interval('5m').run().chart('I(A1)');
+echo('Max LED current is', t.data['I(A1)'].max().toEng() + 'A');
+
+
+

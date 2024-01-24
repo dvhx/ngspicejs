@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Testing that it does not complain about non-connected wiper pin by using nc('wiper')
+// linter: ngspicejs-lint
+"use strict";
+
+var p = sub_model('POT2B', ['start', 'wiper', 'end'], {r: '1k', percent: 50});
+p.resistor('R1', 'start', 'out').r('{r * percent / 100}');
+p.resistor('R2', 'out', 'end').r('{r * (100 - percent) / 100}');
+p.nc('wiper');
+p.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'POT2B', [1, 2, 0]);
+
+echo('Current', tran().run().avg('I(U1)').toEng());

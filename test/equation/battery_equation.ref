@@ -1,0 +1,12 @@
+-10
+-5
+* first line is ignored
+V_U1 1 0 DC {2*5}
+R_R1 1 0 1
+.subckt sub_battery_U2 a b
+ Rs a 1 {0.5+0.5}
+ V0 1 b DC {2*5}
+.ends sub_battery_U2
+x_U2 2 0 sub_battery_U2
+R_R2 2 0 1
+.end

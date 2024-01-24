@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Passive envelope follower (AM signal)
+// linter: ngspicejs-lint
+"use strict";
+
+am('U2', 3, 0).v(1).f(10).fc(400);
+diode('D1', 3, 5, '1N5819');
+capacitor('C1', 5, 0, '10u');
+resistor('R1', 5, 0, '2k2');
+capacitor('C2', 5, 6, '4u7');
+resistor('R2', 6, 0, '51k');
+
+tran().interval('180m').run().chart(['V(3)', 'V(6)']);

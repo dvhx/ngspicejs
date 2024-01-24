@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Showing that get_model will not always return model with hfe and other parameters
+// linter: ngspicejs-lint
+"use strict";
+
+var t1, rb, t, ic, ib, hfe;
+
+t1 = npn('T1', 1, 2, 0, 'BC547');
+rb = resistor('RB', 2, 22, '10k');
+battery('UB', 22, 0, 1.1);
+resistor('RC', 1, 11, '330');
+battery('UC', 11, 0, 9);
+
+['BC547', '2N3904', 'BD139_130', 'BC547_DARLINGTON'].forEach((m) => {
+    t1.model(m);
+    t = tran().run();
+    ic = -t.avg('I(UC)');
+    ib = -t.avg('I(UB)');
+    echo('Ic', ic.toEng());
+    echo('Ib', ib.toEng());
+    hfe = ic/ib;
+    echo(m + ': measured hFE=' + hfe.toEng(), 'model hFE=', t1.get_model().attr.bf || 'Undefined because it\'s not JSON model');
+    echo();
+});

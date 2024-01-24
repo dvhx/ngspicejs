@@ -1,0 +1,8 @@
+With R1=500k current through diode will be 9.15uA:
+R1=500k D1=1N4148 I(A1)=9.2u
+Let's lower the R1 to 100k and current will be 45.7uA:
+R1=100k D1=1N4148 I(A1)=45.7u
+Let's change the diode from 1N4148 to 1N5819, current is almost the same 45.8uA:
+R1=100k D1=1N5819 I(A1)=45.9u
+Let's increase R1 back to 500k, current will be 9.19uA, almost the same as 9.15uA despite widely different diode
+R1=500k D1=1N5819 I(A1)=9.2u

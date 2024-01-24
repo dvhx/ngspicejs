@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// single arg wanted
+// linter: ngspicejs-lint
+"use strict";
+
+hint('asdf', '123');
+

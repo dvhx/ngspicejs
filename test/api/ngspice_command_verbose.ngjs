@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Test verbose commands
+// linter: ngspicejs-lint
+"use strict";
+
+ngspice_command_verbose(true);
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+echo(tran().run().avg('I(U1)').toEng());
+
+netlist_clear();
+ngspice_command_verbose(false);
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+echo(tran().run().avg('I(U1)').toEng());
+

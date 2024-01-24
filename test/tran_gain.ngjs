@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Measure gain in tran
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(300);
+resistor('R1', 1, 2, 1000);
+resistor('R2', 2, 0, 1000);
+voltmeter('V1', 1, 0);
+voltmeter('V2', 2, 0);
+var t = tran().run();
+echo('gain(1,2)', t.gain(1, 2).toEng());
+echo('gain("V(1)","V(2)")', t.gain('V(1)','V(2)').toEng());
+echo('gain("V(1)",2)', t.gain('V(1)',2).toEng());

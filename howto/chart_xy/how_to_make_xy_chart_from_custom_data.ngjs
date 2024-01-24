@@ -1,0 +1,52 @@
+#!/usr/bin/env ngspicejs
+// How to make XY chart from custom data
+// linter: ngspicejs-lint
+"use strict";
+
+// data for x and y axis
+var x = [0, 0.005, 0.010, 0.011, 0.015, 0.020, 0.023],
+    y = [0, -0.0891235412354,     0,     0,    0.08112341234,     0,     0];
+
+// drawing a XY chart using shortest possible version
+chart_xy().add_series(x, y).show(); //!
+
+// drawing a XY chart using shortest possible version with custom size
+chart_xy(640, 240).add_series(x, y).show(); //!
+
+// drawing a XY chart using simple arguments, few chained setters and show()
+chart_xy(320, 240).add_series(x, y).min_y(-1).max_y(1).show(); //!
+
+// drawing a XY chart using only object arguments
+chart_xy({
+    width: 320,
+    height: 240,
+    min_y: -0.2,
+    max_y: 0.2,
+    title: "Some signal",
+    label_x: "time/s",
+    label_y: "output/V",
+    series: [
+        {
+            data_x: x,
+            data_y: y,
+            label: 'Signal1'
+        }
+    ]
+}).show();
+
+// drawing a XY chart using only chained setters
+chart_xy()
+    .add_series(x, y, 'Series1')
+    .width(320)
+    .height(240)
+    .min_y(-0.2)
+    .max_y(0.2)
+    .title("Some signal")
+    .label_x("time/s")
+    .label_y("output/V")
+    .show();
+
+// Drawing chart to canvas, adding extra label and showing that canvas (you can use multiple canvases to make animated gif)
+var c = chart_xy().add_series(x, y).render();
+c.canvas.label('Hello', 100, 100, c.canvas.black); //!
+c.canvas.show();

@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Test IRF540N
+// linter: ngspicejs-lint
+"use strict";
+
+battery('V1', 1, 0, 9);
+sinewave('V2', 7, 0).v(0.1).f(196);
+capacitor('C1', 7, 6, '1u');
+capacitor('C2', 2, 5, '1u');
+resistor('R1', 1, 6, '10M');
+resistor('R2', 6, 0, '10M');
+resistor('R3', 1, 2, '5k1');
+resistor('R4', 3, 0, '3k3');
+resistor('R5', 5, 0, '50k');
+mosfet_n('T1', 2, 6, 3, 'IRF540N');
+
+var t = tran().run().chart('V(5)');
+echo('Output swing', array_range(t.data['V(5)']).toEng());

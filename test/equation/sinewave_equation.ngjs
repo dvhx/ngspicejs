@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Equations in sinewave
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v('{2+3}').f('{2*50}').offset('{0.5+0.5}');
+
+echo_netlist();
+
+tran().run().chart('V(1)');
+

@@ -1,0 +1,36 @@
+error: Using m/M engineering suffix 500M in formula {2*500M} is not supported as the spice uses M/MEG not m/M
+  [equation_milli_mega.ngjs:0:0] in <anonymous>()
+    echo(tran().run().avg('V(1)'))
+                ^
+hint: Use exponent notation, e.g. 1.5e-3 for milli or 4.7e6 for mega
+
+Stack trace (9 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [equation/equation.js:0:0, core.js:0:0] in Equation()
+    throw new Exception('Using m/M engineering suffix ' + m[0] + ' in formula ' + aFormula + ' is not supported as the spice uses M/MEG not m/M');
+          ^
+  [equation/equation.js:0:0, core.js:0:0] in equation()
+    return new Equation(aFormula);
+           ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    aAttr[key] = equation(aAttr[key]);
+                 ^
+  [device/battery.js:0:0, core.js:0:0] in Battery.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [netlist/netlist_render.js:0:0, core.js:0:0] in netlist_render()
+    aNetlistDevices[i].validate();
+                       ^
+  [netlist/netlist_done.js:0:0, core.js:0:0] in netlist_done()
+    r.netlist = netlist_render(netlist_devices, netlist_line_markers, true, false);
+                ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    this.ret = netlist_done();
+               ^
+  [equation_milli_mega.ngjs:0:0] in <anonymous>()
+    echo(tran().run().avg('V(1)'))
+                ^
+
+exit(12)

@@ -1,0 +1,32 @@
+#!/usr/bin/env ngspicejs
+// Testing DC coupled gain using opamp, symmetrical supply
+// linter: ngspicejs-lint
+"use strict";
+
+var q1 = opamp('Q1', 1, 2, 3, 4, 5, 'LM258');
+resistor('R1', 2, 0, '10k');
+resistor('R2', 2, 5, '20k');
+resistor('R3', 5, 0, '50k');
+battery('U1', 3, 0, 9);
+battery('U3', 0, 4, 9);
+sinewave('U2', 1, 0).offset(0.5).v(0.5).f(196);
+
+echo('Opamp LM258 - to the ground');
+var t1 = tran().run().chart('V(5)');
+
+echo('Opamp LM741 - to the ground');
+q1.model('LM741');
+var t2 = tran().run().chart('V(5)');
+
+echo('Opamp UA741 - to the ground');
+q1.model('UA741');
+var t3 = tran().run().chart('V(5)');
+
+chart_xy()
+    .min_y(0)
+    .max_y(5)
+    .add_series(t1.data.time, t1.data['V(5)'], 'LM258')
+    .add_series(t2.data.time, t2.data['V(5)'], 'LM741')
+    .add_series(t3.data.time, t3.data['V(5)'], 'UA741')
+    .show();
+

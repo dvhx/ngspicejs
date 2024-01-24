@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Equations in vcvs poly
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+vcvs('E1', 2, 0, 1, 0, 2);
+echo(tran().run().avg('V(2)'));
+
+netlist_clear();
+
+battery('U1', 1, 0, 9);
+battery('U2', 2, 0, 7);
+
+vcvs('E1', 3, 0).poly([1, 0, 2, 0], ['{1+1}', '{1+2}', '{2*2}', '{2+3}']);
+
+echo_netlist();
+
+echo(tran().run().avg('V(3)'), 'should be', 2 + 3 * 9 + 4 * 7 + 5 * 9 * 9);
+

@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Resistor with ls
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+var r1 = resistor('R1', 1, 2, 100).ls('10m');
+capacitor('C1', 2, 0, '100n');
+ac().run().chart('V(2)');
+r1.cp('100n');
+ac().run().chart('V(2)');
+

@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// FFT of various non-trivial vectors (real inductors, ammeters, floating voltmeters)
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(220).f(100);
+capacitor('C1', 1, 2, '100n');
+inductor('L1', 2, 3, '10m');
+ammeter('A1', 3, 4);
+resistor('R1', 4, 0, 100);
+voltmeter('V1', 4, 0);
+voltmeter('V2', 2, 3);
+voltmeter('V3', 0, 4);
+
+// fft of net
+fft().run('V(4)').chart('V(4)', {width: 640, height: 102});
+// fft of ammeter current
+fft().run('I(A1)').chart('I(A1)', {width: 640, height: 102});
+// fft of inductor current
+fft().run('I(L1)').chart('I(L1)', {width: 640, height: 102});
+// fft of grounded voltmeter (cathode is zero)
+fft().run('V(V1)').chart('V(V1)', {width: 640, height: 102});
+// fft of floating voltmeter
+fft().run('V(V2)').chart('V(V2)', {width: 640, height: 102});
+// fft of reverse grounded voltmeter (anode is zero)
+fft().run('V(V3)').chart('V(V3)', {width: 640, height: 102});
+// fft of source current
+fft().run('I(U1)').chart('I(U1)', {width: 640, height: 102});

@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// How to use wav audio source
+// linter: ngspicejs-lint
+"use strict";
+
+// use wav audio as voltage source of amplitude 0.1V
+audio('U1', 1, 0).v(0.1).filename('../../wav/chord.wav');
+
+// run transient analysis
+tran().interval(3).run().chart('V(1)');
+

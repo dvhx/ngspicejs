@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// Check if all source files uses internal linter and everything else external
+// linter: ngspicejs-lint
+"use strict";
+
+var err = 0;
+dir_recursive('../js').filter((fn) => file_ext(fn) === '.js').forEach((fn) => {
+    if (fn.startsWith('../js/polyfill/')) {
+        return;
+    }
+    if (fn.startsWith('../js/depend/')) {
+        return;
+    }
+    if (['lint.js', 'header.js', 'footer.js', 'mersenne_twister.js'].includes(file_name(fn))) {
+        return;
+    }
+    var l = file_read(fn).split('\n').find((s) => s.startsWith('// linter'));
+    if (l !== '// linter: ngspicejs-lint --internal') {
+        warn('unusual linter directive in ' + fn);
+        err++;
+    }
+});
+
+// ngjs files should not use internal linter
+dir_recursive('../').filter((fn) => file_ext(fn) === '.ngjs').forEach((fn) => {
+    if (['bad_linter_in_js.ngjs'].includes(file_name(fn))) {
+        return;
+    }
+    var l = file_read(fn).split('\n').find((s) => s.match('ngspice-lint --internal'));
+    if (l) {
+        warn('ngjs files should not use --internal linter in ' + fn);
+        err++;
+    }
+});
+
+echo(err + ' errors');
+

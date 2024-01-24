@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test singular_matrix
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+capacitor('C1', 1, 2, '10u');
+capacitor('C2', 2, 0, '10u');
+echo(singular_matrix());
+
+netlist_clear();
+sinewave('U1', 1, 0).v(1).f(200);
+resistor('R1', 1, 2, '10k');
+capacitor('C2', 2, 0, '10u');
+echo(singular_matrix());
+

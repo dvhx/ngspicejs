@@ -1,0 +1,7 @@
+error: SyntaxError: Unexpected token '*'
+  [./unexpected_asterisk.ngjs:0:0] in ???()
+    var a = *diode();
+            ^
+
+warn: not compiled!
+exit(2)

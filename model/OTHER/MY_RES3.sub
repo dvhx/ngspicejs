@@ -1,0 +1,7 @@
+* custom resistor made of 3 resistors, internal net names are mix of short strings and numbers
+* NETS 2
+.subckt MY_RES3 a b
+R1 a 1 100
+R2 1 x 100
+R3 x b 100
+.ends

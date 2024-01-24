@@ -1,0 +1,16 @@
+error: TypeError: Converting circular structure to JSON
+    --> starting at object with constructor 'Array'
+    |     index 0 -> object with constructor 'Battery'
+    --- property 'netlist_devices' closes the circle
+  [./stack_with_arrows.ngjs:0:0] in ???()
+    echo(JSON.stringify(netlist_devices));
+              ^
+
+Stack trace (5 frames, parsed):
+  [<native code>:0:0] in ???()
+      at JSON.stringify (<anonymous>)
+      ^
+  [stack_with_arrows.ngjs:10:11] in <anonymous>()
+    echo(JSON.stringify(netlist_devices));
+              ^
+exit(12)

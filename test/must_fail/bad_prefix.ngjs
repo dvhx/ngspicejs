@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Bad cap prefix
+// linter: ngspicejs-lint
+"use strict";
+
+capacitor('ABC', 1, 0, 100);

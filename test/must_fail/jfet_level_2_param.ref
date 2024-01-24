@@ -1,0 +1,31 @@
+error: Level 1 jfet_model MY_JFET uses parameter mvst but this parameter is from level 2, either explicitly change the level to 2 or don't use this parameter!
+  [jfet_level_2_param.ngjs:0:0] in <anonymous>()
+    tran().run().chart('I(U1)');
+           ^
+hint: Example: {kind: "JFET_N", vto: -0.3} - ok
+hint: Example: {kind: "JFET_N", vto: -0.3, level: 1} - ok
+hint: Example: {kind: "JFET_N", vto: -0.3, level: 1, n: 1.2} - NOT OK (n is from level 2)
+hint: Example: {kind: "JFET_N", vto: -0.3, level: 2, n: 1.2} - ok
+hint: Example: {kind: "JFET_N", vto: -0.3, n: 1.2} - NOT OK (default level is 1 but n is from level 2)
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [model/jfet_model.js:0:0, core.js:0:0] in JfetModel.validate()
+    throw new Exception('Level 1 jfet_model ' + this.attr.name + ' uses parameter ' + l2[i] + ' but this parameter is from level 2, either explicitly change the level to 2 or don\'t use this parameter!');
+          ^
+  [netlist/netlist_render.js:0:0, core.js:0:0] in netlist_render()
+    aNetlistDevices[i].validate();
+                       ^
+  [netlist/netlist_done.js:0:0, core.js:0:0] in netlist_done()
+    r.netlist = netlist_render(netlist_devices, netlist_line_markers, true, false);
+                ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    this.ret = netlist_done();
+               ^
+  [jfet_level_2_param.ngjs:0:0] in <anonymous>()
+    tran().run().chart('I(U1)');
+           ^
+
+exit(12)

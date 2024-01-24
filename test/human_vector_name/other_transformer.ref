@@ -1,0 +1,12 @@
+Output: 20.6
+I(U1)
+I(X1.L1)
+I(X1.L2)
+V(1)
+V(2)
+V(X1.A)
+V(X1.B)
+time
+FFT:
+I(X1.L2)
+frequency

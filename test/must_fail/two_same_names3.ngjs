@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Two different models with same name
+// linter: ngspicejs-lint
+"use strict";
+
+diode('L1', 1, 0, '1N4148');
+pickup_singlecoil('L1', 1, 0).v(0.3).f(110);
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// beeps branch
+// linter: ngspicejs-lint
+"use strict";
+
+beeps('U1', 1, 0).v(3).f(1000).pulse_width('5m').period('10m');
+resistor('R1', 1, 0, 10);
+tran().run().chart('I(U1)');

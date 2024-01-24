@@ -1,0 +1,21 @@
+Calling: throw new Exception(string); no try block, stack will be deep
+error: This is an Exception
+  [3_uncaught_new_exception.ngjs:0:0] in foo()
+    throw new Exception("This is an Exception");
+          ^
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [3_uncaught_new_exception.ngjs:0:0] in foo()
+    throw new Exception("This is an Exception");
+          ^
+  [3_uncaught_new_exception.ngjs:0:0] in bar()
+    foo();
+    ^
+  [3_uncaught_new_exception.ngjs:0:0] in <anonymous>()
+    bar();
+    ^
+
+exit(12)

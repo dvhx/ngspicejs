@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// "time" is not allowed as net name
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 'time', 0).v(9).f(100);
+resistor('R1', 'time', 2, 100);
+capacitor('C2', 2, 0, '100n');
+var t = tran().run().chart('V(time)');
+echo(t.avg('V(time)'), available_vectors());
+ac().run().chart('V(2)');

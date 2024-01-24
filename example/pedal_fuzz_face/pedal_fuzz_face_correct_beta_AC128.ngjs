@@ -1,0 +1,38 @@
+#!/usr/bin/env ngspicejs
+// FFT with beta-correct AC128s and comparison with two identical 2N3906
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 0, 4, 9);
+
+resistor('R1', 4, 5, '33k');
+resistor('R2', 7, 6, '8k2');
+resistor('R3', 4, 7, '470');
+resistor('R4', 1, 10, '100k');
+
+capacitor('C1', 2, 1, '2u2');
+capacitor('C2', 7, 8, '10n');
+capacitor('C3', 9, 0, '20u');
+
+var t1 = pnp('T1', 5, 1, 0, 'AC128_87');
+var t2 = pnp('T2', 6, 5, 10, 'AC128_125');
+
+pot('P1', 8, 11, 0, '500k').percent(50);
+pot('P2', 10, 9, 0, '1k').percent(50);
+
+pickup_singlecoil('L1', 2, 0).f(196);
+
+var t = tran().run().chart('V(11)');
+echo('gain', t.gain(2, 11));
+var f = fft().fstop('2k').run('V(11)').chart_db('V(11)');
+echo('THD', f.thd(196));
+
+// change transistors to 2n3906
+t1.model('2N3906');
+t2.model('2N3906');
+t = tran().run().chart('V(11)');
+echo('gain', t.gain(2, 11));
+f = fft().fstop('2k').run('V(11)').chart_db('V(11)');
+echo('THD', f.thd(196));
+
+

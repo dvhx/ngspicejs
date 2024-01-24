@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// Emitter follower chart of gain by input offset for different loads
+// linter: ngspicejs-lint
+"use strict";
+
+// symmetrical 24v supply
+battery('U1', 1, 0, 24);
+battery('U2', 0, 4, 24);
+// emitter follower
+npn('T1', 1, 2, 3, 'MPSA06');
+resistor('RE', 3, 4, '2k7');
+resistor('RB', 2, 0, '27k');
+//capacitor('C1', 6, 2, '100u'); - not used so that offset can be changed
+capacitor('C2', 3, 5, '100u');
+var load = resistor('LOAD', 5, 0, '1000k');
+var sig = sinewave('U3', 2, 0).f(196).v(1).offset(0);
+
+var c = chart_xy();
+['2k2', '3k3', '4k7', '6k8', '10k', '1M'].forEach((l) => {
+    echo('load', l);
+    load.r(l);
+    var x = [], y = [];
+    // input is 1V offset changes from -20 to +20V
+    for (var v = -20; v <= 20; v += 1) {
+        sig.offset(v);
+        x.push(v);
+        y.push(tran().run().gain(2, 5));
+    }
+    c.add_series(x, y, 'Load=' + load.attr.r);
+});
+c.show();
+c.gif('input_offset_and_gain.gif');
+

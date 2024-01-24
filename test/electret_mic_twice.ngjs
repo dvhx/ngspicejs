@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Make sure electret mic works after clearing netlist
+// linter: ngspicejs-lint
+"use strict";
+
+electret_mic('U1', 1, 0).v(0.1).f(50);
+tran().run().chart('V(1)');
+
+netlist_clear();
+
+electret_mic('U1', 1, 0).v(0.1).f(50);
+tran().run().chart('V(1)');

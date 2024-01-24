@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// ac multiple charts
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 100);
+inductor('L1', 2, 3, '22m');
+capacitor('C1', 3, 0, '22n');
+ac().run().chart(['V(1)', 'V(2)', 'V(3)']);
+

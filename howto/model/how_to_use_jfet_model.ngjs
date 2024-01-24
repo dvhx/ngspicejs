@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to use jfet model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new jfet model
+jfet_model({"name": "MYJFET", "kind": "JFET_N", "beta": 0.0007, "vto": -0.9, "is": 1.7e-15, "rd": 10, "rs": 12}); //!
+battery('U1', 1, 0, 9);
+// use new jfet model
+jfet_n('T1', 1, 0, 0, 'MYJFET'); //!
+echo('Idss', tran().run().avg('I(U1)').toEng());
+

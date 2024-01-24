@@ -1,0 +1,32 @@
+#!/usr/bin/env ngspicejs
+// Sallen-key filter monte carlo parameter optimization
+// linter: ngspicejs-lint
+"use strict";
+
+var best_score = 9999999;
+var best = {};
+var n = 0;
+series_e12(1, '10M').forEach((r1) => {
+series_e12(1, '10M').forEach((r2) => {
+series_e12('470p', '470n').forEach((c1) => {
+series_e12('470p', '470n').forEach((c2) => {
+    n++;
+    var R1 = r1;
+    var R2 = r2;
+    var C1 = c1;
+    var C2 = c2;
+    var f0 = 1 / (2 * Math.PI * Math.sqrt(R1*R2*C1*C2));
+    var zeta = ((R1 + R2) / 2) * Math.sqrt(C2 / (R1*R2*C1));
+    var score = Math.sqrt((f0 - 20000) * (f0 - 20000)) / 20000 + Math.sqrt((zeta - 0.24) * (zeta - 0.24)) / 0.24;
+    if (score < best_score) {
+        best = {R1, R2, C1: C1.toEng(), C2: C2.toEng(), f0, zeta};
+        best_score = score;
+    }
+});
+});
+});
+});
+echo('error', best_score.toFixed(6));
+echo_json(best, true);
+
+

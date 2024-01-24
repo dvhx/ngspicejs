@@ -1,0 +1,30 @@
+#!/usr/bin/env ngspicejs
+// Testing DC coupled gain using opamp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+opamp('Q1', 1, 2, 3, 0, 2, 'TL071');
+var r1 = resistor('R1', 3, 1, '20k');
+var r2 = resistor('R2', 1, 0, '20k');
+capacitor('C1', 6, 1, '10u');
+capacitor('C2', 2, 7, '10u');
+resistor('R3', 7, 0, '50k');
+pickup_piezo('U2', 6, 0);
+
+var t = tran().run().chart('V(2)');
+echo('Gain ' + t.gain(1, 2).toEng());
+
+// very poor base response with 20k virtual ground divider
+var a = ac().fstop('2k').run();
+echo('AC base response using 20k:20k virtual ground:');
+a.chart('V(7)');
+
+// change VG resistors to 1M
+r1.r('1M');
+r2.r('1M');
+a = ac().fstop('2k').run();
+echo('AC base response using 1M:1M virtual ground:');
+a.chart('V(7)');
+
+

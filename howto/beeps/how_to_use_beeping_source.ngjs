@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use beeping source
+// linter: ngspicejs-lint
+"use strict";
+
+// beeping supply
+beeps('U1', 1, 0).v(5).f(1000).pulse_width('5m').period('10m'); //!
+
+// diode and RC filter
+diode('D1', 1, 2, '1N4148');
+resistor('R1', 2, 3, 100);
+capacitor('C1', 3, 0, '100n');
+resistor('LOAD', 3, 0, '20k');
+
+tran().run().chart(['V(1)', 'V(2)']);

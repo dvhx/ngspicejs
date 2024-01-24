@@ -1,0 +1,10 @@
+error: error 1
+hint: hint 1
+hint: hint 2
+error: error 2
+hint: hint 3
+hint: hint 4
+not an error but we will print hint buffer
+hint: hint 5
+hint: hint 6
+exit(13)

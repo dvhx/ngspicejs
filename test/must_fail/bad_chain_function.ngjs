@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Bad method of ac
+// linter: ngspicejs-lint
+"use strict";
+
+ac().fstart(16).fstop(20001).banana(20);

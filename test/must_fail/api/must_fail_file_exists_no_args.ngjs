@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// single string arg needed
+// linter: ngspicejs-lint
+"use strict";
+
+file_exists();
+

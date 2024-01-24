@@ -1,0 +1,1 @@
+You can run all tests (including examples and howto) and compare the output with reference output by running release/run_fast_tests.sh and release/run_slow_tests.sh

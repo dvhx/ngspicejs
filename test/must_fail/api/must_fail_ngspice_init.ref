@@ -1,0 +1,14 @@
+error: ngspice_init() require exactly 0 arguments but 1 was given
+  [must_fail_ngspice_init.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_init('asdf');
+             ^
+
+hint: function 'ngspice_init()' was called with 1 arguments
+hint: argument #0 was asdf (string)
+
+Stack trace (1 frames):
+  [must_fail_ngspice_init.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_init('asdf');
+             ^
+
+exit(7)

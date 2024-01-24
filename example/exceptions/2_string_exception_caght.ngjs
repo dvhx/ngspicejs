@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Show that exception can be caught and program continues
+// linter: ngspicejs-lint
+"use strict";
+clear_screen();
+
+echo('Calling: throw "string" in try catch block, no stack trace, program continues:');
+try {
+    throw "This is normal string exception";
+} catch(e) {
+    echo('Caught: ' + e);
+}
+echo('Program continues, no stack trace is print');

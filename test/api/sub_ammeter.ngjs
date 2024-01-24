@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Test ammeter in subcircuit
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('MYDIODE', [1, 2], {});
+s.diode('D1', 1, 'b', '1N4148');
+s.diode('D2', 1, 'c', '1N5819');
+s.ammeter('A1', 'b', 2);
+s.ammeter('A2', 'c', 2);
+s.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MYDIODE', [1, 2]);
+resistor('R1', 2, 0, 10);
+
+available_vectors().echo();
+echo(tran().run().avg('I(U1)').toEng());
+echo(tran().run().avg('I(X1.A1)').toEng());
+echo(tran().run().avg('I(X1.A2)').toEng());

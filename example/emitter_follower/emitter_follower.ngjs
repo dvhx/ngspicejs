@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// This file will be included by other examples
+// linter: ngspicejs-lint
+"use strict";
+
+// emitter follower
+var u1 = sinewave('U1', 1, 0).f(196).v(0.1);
+var r0 = resistor('R0', 1, 2, 1000);
+var c1 = capacitor('C1', 2, 3, '100u');
+var u2 = battery('U2', 4, 0, 9);
+var r1 = resistor('R1', 4, 3, '500k');
+var r2 = resistor('R2', 3, 0, '500k');
+var t1 = npn('T1', 4, 3, 5, 'BC547B');
+var r3 = resistor('R3', 5, 0, '5k1');
+var c2 = capacitor('C2', 5, 6, '100u');
+var r4 = resistor('R4', 6, 0, 1700);
+
+globalThis.exports = {r0, r1, r2, r3, r4, u1, u2, t1, c1, c2};
+

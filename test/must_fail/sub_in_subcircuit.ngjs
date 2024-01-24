@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// sub in subcircuit
+// linter: ngspicejs-lint
+"use strict";
+
+var s1 = sub_model('LS1', [1, 2]);
+s1.resistor('R1', 1, 'b', '1k');
+s1.inductor('L1', 'b', 2, '1m');
+s1.end();
+
+var s2 = sub_model('LS2', [1, 2]);
+s2.resistor('R1', 1, 'b', '1k');
+s2.sub('X1', 'LS1', ['b', 2]);
+s2.end();
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R1', 1, 2, 100);
+resistor('R2', 1, 5, 1000);
+sub('X1', 'LS1', [2, 3, 0]);
+sub('X2', 'LS2', [5, 4, 0]);
+
+ac().run().chart('V(3)');
+

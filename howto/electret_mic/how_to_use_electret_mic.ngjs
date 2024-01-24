@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// How to use electret mic
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 5000); // gain depends on resistor
+electret_mic('MIC1', 2, 0).v(0.1).f(440).phase(180).halve('10m'); //!
+capacitor('C1', 2, 3, '10u');
+resistor('R2', 3, 0, '50k');
+tran().run().chart('V(3)');

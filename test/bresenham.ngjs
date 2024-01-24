@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// Bresenham line algorithm test
+// linter: ngspicejs-lint
+"use strict";
+
+var c = Array(50).fill(1).map(()=>Array(100).fill('-'));
+
+function pixel(x, y) {
+    if (x >= 0 && y >= 0 && x < 100 && y < 50) {
+        c[y][x] = '*';
+    }
+}
+
+for (var i = 0; i < 90; i += 5) {
+    var x1 = 0,
+        y1 = 0,
+        x2 = Math.abs(Math.floor(Math.sin(i * 180 / Math.PI) * c[0].length)),
+        y2 = Math.abs(Math.floor(Math.cos(i * 180 / Math.PI) * c.length));
+    Internal.bresenham(x1, y1, x2, y2, pixel);
+}
+
+echo(c.map(a=>a.join('')).join('\n'));
+

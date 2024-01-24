@@ -1,0 +1,11 @@
+I(MIC1.LP)
+I(MIC1.LS)
+I(MIC1.V1)
+V(1)
+V(MIC1.1)
+V(MIC1.2)
+V(MIC1.3)
+time
+FFT:
+I(MIC1.LS)
+frequency

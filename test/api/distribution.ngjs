@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Test array_distribution
+// linter: ngspicejs-lint
+"use strict";
+
+var data = [0, 1,2,3,4,5,6,7,8,9, 0, 1,2,3,4,5,6,7,8,9, 4, 5, 123];
+echo_json(array_distribution(data, 5, 0, 10), true);
+
+echo_json([0,1,2,3,4,5,6,7,8,9,123].distribution(5, 0, 9), true);
+

@@ -1,0 +1,105 @@
+#!/usr/bin/env ngspicejs
+// Find model attributes for the zener diode C9V1ST from the measured reverse voltage and current values
+// linter: ngspicejs-lint
+"use strict";
+
+// make unit tests repeatable
+mersenne_twister(123).replace_math_random();
+
+// Load table of measured reverse voltages and currents
+var csv = file_read_csv('ZENER_C9V1ST_REVERSE.csv');
+var volts = csv.column(0, 1).map(parseFloat);
+var amps = csv.column(1, 1).map(parseFloat);
+var i_min = amps.min();
+
+var best = {error: 999};
+
+// Run several times
+for (var attempt = 0; attempt < 2000; attempt++) {
+    echo_progress();
+
+    // clear netlist before next simulation
+    netlist_clear();
+
+    // Simulate circuit
+    pwl('U1', 1, 0).shape([[0, 0.5], [0.020, 16]]);
+    ammeter('A1', 1, 2);
+    resistor('R1', 2, 3, 330);
+    var dm = diode_model({
+        name: 'ZENER_C9V1ST',
+        is: random_float(0.1e-6, 50e-6), // set reasonable intervals here
+        n: random_float(0.1, 25), // set reasonable intervals here
+        rs: random_float(1, 25), // set reasonable intervals here
+    });
+    diode('DR', 3, 4, 'ZENER_C9V1ST');
+    var vz = battery('VZ', 4, 5, random_float(7, 10)); // set reasonable intervals here
+    diode('DI', 5, 0, 'IDEAL');
+
+    // run transient analysis
+    var t = tran().run();
+
+    // Create lerp Vreverse => Ireverse
+    var va = lerp(t.data['V(3)'], t.data['I(A1)']);
+
+    // calculate error against measured values
+    var i, ce, e = 0, re;
+    for (i = 0; i < volts.length; i++) {
+        // physically measured voltages and amps
+        var vr = volts[i];
+        var ir = amps[i];
+        //echo(vr, ir.toEng());
+        if (vr >= 1.1 && vr <= 2.7) {
+            continue;
+        }
+        // get simulated current for given voltage
+        var isim = va.get(vr);
+        // square error
+        ce = (isim - ir) * (isim - ir);
+        // relative error to the ir
+        re = ce / ir;
+        // sum relative errors
+        e += re;
+        //echo('#', i, 'vr', vr, 'ir', ir.toEng(3), 'isim', isim.toEng(3), 'ce^2', ce.toEng(3));
+    }
+    e = Math.sqrt(e);
+    if (e < best.error) {
+        best.error = e;
+        best.is = dm.attr.is;
+        best.n = dm.attr.n;
+        best.rs = dm.attr.rs;
+        best.vz = vz.attr.v;
+        clear_screen();
+        echo('score', e, 'is', dm.attr.is.toEng(), 'n', dm.attr.n, 'rs', dm.attr.rs, 'vz', vz.attr.v);
+
+        // show chart
+        chart_xy()
+            .min_x(4.0)
+            .min_y('0.1u')
+            .max_x(10)
+            .max_y(0.025)
+            .label_x('Vr/V')
+            .label_y('Ir/A')
+            .log_x(true)
+            .log_y(true)
+            .title('Reverse V-A characteristic (logarithmic)')
+            .add_series(t.data['V(3)'], t.data['I(A1)'].clamp(0.1 * i_min, 999), 'simulated')
+            .add_series(volts, amps, 'measured')
+            .show();
+        // chart linear
+        chart_xy()
+            .min_x(4.0)
+            .min_y('0.1u')
+            .max_x(10)
+            .max_y(0.025)
+            .label_x('Vr/V')
+            .label_y('Ir/A')
+            .title('Reverse V-A characteristic')
+            .add_series(t.data['V(3)'], t.data['I(A1)'].clamp(0.1 * i_min, 999), 'simulated')
+            .add_series(volts, amps, 'measured')
+            .show();
+         delay_ms(500);
+    }
+}
+echo('best:');
+echo_json(best);
+

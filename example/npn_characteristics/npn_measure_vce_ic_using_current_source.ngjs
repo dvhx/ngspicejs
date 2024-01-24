@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// Measure Vce:Ic characteristic of NPN transistor using current source
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = battery('U1', 1, 0, 1);
+ammeter('A1', 1, 2);
+npn('T1', 2, 4, 0, 'BC547');
+resistor('R1', 5, 4, '1k');
+ammeter('A2', 6, 5);
+var i1 = current_source('I1', 0, 6, '10u');
+
+var col = 1, csv = [['Index']]; // columns will be Vce,Ic @ given Ib
+
+// change Ib from 10u to 100u
+for (var i = 10e-6; i <= 100e-6; i += 10e-6) {
+    echo('Ib=', i.toEng());
+    i1.i(i);
+    csv[0].push('VCE@Ib=' + i.toEng());
+    csv[0].push('IC@Ib=' + i.toEng());
+    // change Vce from 0 to 9V
+    var v, vce = [], ic = [], ib = [], t;
+    for (var v = 0; v < 9; v += v < 0.5 ? 0.01 : 0.1) {
+        u1.v(v);
+        t = tran().run();
+        vce.push(t.avg('V(2)'));
+        ic.push(t.avg('I(A1)'));
+        ib.push(t.avg('I(A2)'));
+    }
+    csv_insert(csv, col, 1, vce);
+    csv_insert(csv, col+1, 1, ic);
+    col += 2;
+}
+file_write_tsv('npn_measure_vce_ic_using_current_source.tsv', csv);
+echo('Saved npn_measure_vce_ic_using_current_source.tsv');
+
+

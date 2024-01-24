@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Using single pulse source
+// linter: ngspicejs-lint
+"use strict";
+
+// pulse voltage supply, and lc filter
+pulse("U1", 1, 0).v(5).offset(0).pulse_width('50m').delay('10m'); // single pulse
+resistor('R1', 1, 0, 4700);
+
+// transient analysis
+tran().interval('300m').run().chart('V(1)');
+
+

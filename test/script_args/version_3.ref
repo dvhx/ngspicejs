@@ -1,0 +1,8 @@
+This is version_1.ngjs
+script_shell(): ngspicejs
+script_self(): version_1.ngjs
+script_args():["apple","banana pie","123"]
+Array (3 items): (Object #1.1)
+    [0]: string[5] = apple
+    [1]: string[10] = banana pie
+    [2]: string[3] = 123

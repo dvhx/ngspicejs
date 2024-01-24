@@ -1,0 +1,13 @@
+* first line is ignored
+.subckt sub_capacitor_C1 a b
+ C0 a 1 1.0000000000000001e-7
+ L0 1 2 0.01 NT=1
+ Rs 2 b 2
+ Rp a b 10000000
+.ends sub_capacitor_C1
+x_C1 1 0 sub_capacitor_C1
+.end
+
+* first line is ignored
+C_C1 1 0 1.0000000000000001e-7
+.end

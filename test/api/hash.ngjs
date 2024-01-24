@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// DJB2 string hash
+// linter: ngspicejs-lint
+"use strict";
+
+echo(hash('Hello'));
+echo(hash('Hello world!'));
+
+// collision
+echo(hash('foo4885394'));
+echo(hash('foo5505820'));
+
+

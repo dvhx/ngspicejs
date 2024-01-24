@@ -1,0 +1,13 @@
+-723.5m
+* first line is ignored
+.subckt MYDIODE 1 2
+D1 1 2 D1N4148
+
+D2 1 2 D1N60P
+.ends
+.model D1N4148 D(is=4.7582e-9 n=1.95969 rs=2.14024 cjo=4e-12 vj=0.6 tt=6e-9 m=0.45 bv=100)
+V_U1 1 0 DC 9
+x_X1 1 2 MYDIODE 
+R_R1 2 0 10
+.model D1N60P D(is=1.47521e-8 n=0.96776 rs=4.0615 cjo=6e-12 bv=45 tt=1e-9 ibv=5e-7)
+.end

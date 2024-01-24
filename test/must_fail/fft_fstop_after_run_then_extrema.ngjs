@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// fft run wrong order
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(196);
+resistor('R1', 1, 0, 100);
+fft().run('V(1)').fstop(2000).extrema(); //chart_db('V(1)');

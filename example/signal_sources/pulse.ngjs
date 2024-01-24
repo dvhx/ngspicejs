@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Single pulse supply
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v(2).pulse_width(0.005).offset(1);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)', {min_y: 0});
+
+

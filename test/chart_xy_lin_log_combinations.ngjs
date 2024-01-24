@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// All log and lin combinations in chart_xy
+// linter: ngspicejs-lint
+"use strict";
+
+var x = series_e3('10', '50k');
+var y = [];
+for (var i = 0; i < x.length; i++) {
+    y.push((i + 1) * 10);
+}
+
+var csv = [['x', 'y']];
+csv_insert(csv, 0, 1, x);
+csv_insert(csv, 1, 1, y);
+file_write_csv('1.csv', csv);
+
+chart_xy().height(162).add_series(x, y, 'x lin, y lin').log_x(false).log_y(false).show();
+chart_xy().height(162).add_series(x, y, 'x log, y lin').log_x(true).log_y(false).show();
+chart_xy().height(162).add_series(x, y, 'x lin, y log').log_x(false).log_y(true).show();
+chart_xy().height(162).add_series(x, y, 'x log, y log').log_x(true).log_y(true).show();

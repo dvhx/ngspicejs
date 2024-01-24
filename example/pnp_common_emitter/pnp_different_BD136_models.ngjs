@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Switching between different PNP and observing gain
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 9);
+resistor('R1', 2, 1, '5k1');
+resistor('R2', 1, 0, '47k');
+resistor('R3', 2, 5, '1k');
+resistor('R4', 6, 0, '10k');
+resistor('R5', 7, 0, '50k');
+capacitor('C1', 8, 1, '4u7');
+capacitor('C2', 6, 7, '4u7');
+capacitor('C3', 2, 5, '100n');
+var t1 = pnp('T1', 6, 1, 5, 'BD136_180');
+pickup_singlecoil('L1', 8, 0).v('100m').f(196);
+
+// show tran and gain
+tran().run().chart('V(7)');
+echo(t1.attr.model, 'gain', tran().run().gain(8, 7).toFixed(3), '(json model)');
+t1.model('BD136_340');
+echo(t1.attr.model, 'gain', tran().run().gain(8, 7).toFixed(3), '(json model)');
+t1.model('BD136');
+echo(t1.attr.model, 'gain', tran().run().gain(8, 7).toFixed(3), '(sub model)');
+t1.model('BD136_120');
+echo(t1.attr.model, 'gain', tran().run().gain(8, 7).toFixed(3), '(ngjs model)');
+
+

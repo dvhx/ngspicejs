@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Test dual opamp each stage is 10x
+// linter: ngspicejs-lint --internal
+"use strict";
+
+sub('X1', 'TL072', [1,2,3,0,3,6,7,8]);
+battery('U1', 8, 0, 9);
+resistor('R1', 8, 3, '10k');
+resistor('R2', 0, 3, '10k');
+
+resistor('R3', 9, 2, '1k');
+resistor('R4', 2, 1, '10k');
+
+resistor('R5', 1, 6, '1k');
+resistor('R6', 6, 7, '10k');
+
+sinewave('U2', 9, 0).v(0.1).f(50).offset(4.5);
+
+resistor('LOAD1', 7, 0, '50k');
+resistor('LOAD2', 1, 0, '50k');
+
+tran().run().chart(['V(9)', 'V(1)', 'V(7)']);
+
+echo(available_vectors().join('\n'));

@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to use mos model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new mos model
+mos_model({"name": "MYMOS", "kind": "NMOS", "vto": 1.8, "rs": 1.5, "rd": 1.4, "is": 1e-15}); //!
+battery('U1', 1, 0, 9);
+// use new mosfet model
+mosfet_n('T1', 1, 1, 0, 'MYMOS'); //!
+echo('Idss', tran().run().avg('I(U1)').toEng());
+

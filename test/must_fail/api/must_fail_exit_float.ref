@@ -1,0 +1,20 @@
+error: code in function exit(code) should be integer but is 3.14 (number)
+  [must_fail_exit_float.ngjs:0:0] in <anonymous>()
+    exit(3.14);
+    ^
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_integer.js:0:0, core.js:0:0] in assert_integer()
+    throw new Exception(aVariableName + ' in function ' + aFunctionName + ' should be integer but is ' + aValue + ' (' + typeof aValue + ')');
+          ^
+  [exit.js:0:0, core.js:0:0] in exit()
+    assert_integer(aCode, 'code', 'exit(code)');
+    ^
+  [must_fail_exit_float.ngjs:0:0] in <anonymous>()
+    exit(3.14);
+    ^
+
+exit(12)

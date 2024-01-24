@@ -1,0 +1,27 @@
+error: Net "net" in function battery.anode(net) contains two underscores, this may cause issues, don't use two underscores in net names!
+  [net_name_two_underscores.ngjs:0:0] in <anonymous>()
+    battery('U1', 'vc__c', 0, 9);
+    ^
+hint: Use at most one consecutive underscore in net "vc__c"
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_net.js:0:0, core.js:0:0] in assert_net()
+    throw new Exception('Net "' + aVariableName + '" in function ' + aFunctionName + ' contains two underscores, this may cause issues, don\'t use two underscores in net names!');
+          ^
+  [device/battery.js:0:0, core.js:0:0] in Battery.anode()
+    assert_net(aNet, 'net', 'battery.anode(net)');
+    ^
+  [device/battery.js:0:0, core.js:0:0] in Battery()
+    this.anode(aAnode);
+         ^
+  [device/battery.js:0:0, core.js:0:0] in battery()
+    return new Battery(aName, aAnode, aCathode, aV, aRs);
+           ^
+  [net_name_two_underscores.ngjs:0:0] in <anonymous>()
+    battery('U1', 'vc__c', 0, 9);
+    ^
+
+exit(12)

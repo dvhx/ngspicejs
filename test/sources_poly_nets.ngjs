@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Test if poly sources return poly nets in get_nets()
+// linter: ngspicejs-lint
+"use strict";
+
+var a = vcvs('E1', 99, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.5, 0.5]);
+echo_json(a.get_nets());
+netlist_clear();
+var b = vccs('G1', 99, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.5, 0.5]);
+echo_json(b.get_nets());
+netlist_clear();
+var c = ccvs('H1', 99, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.5, 0.5]);
+echo_json(c.get_nets());
+netlist_clear();
+var d = cccs('F1', 99, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.5, 0.5]);
+echo_json(d.get_nets());
+netlist_clear();
+
+

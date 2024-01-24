@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// How to use npn
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '100k');
+var t1 = npn("T1", 1, 2, 0, "BC547"); //!
+echo(t1.attr.model, 'Ic', tran().run().avg('I(U1)').toEng());
+
+// change the NPN model
+t1.model('BC549'); //!
+echo(t1.attr.model, 'Ic', tran().run().avg('I(U1)').toEng());
+
+// change some extra parameters of NPN transistor
+t1.ns(5).area(1.1).areac(1.5).areab(1.8).m(2)
+    .ic_vbe(0.75).ic_vce(2.5).temp(25).dtemp(-3);
+echo(t1.attr.model, 'Ic', tran().run().avg('I(U1)').toEng());
+

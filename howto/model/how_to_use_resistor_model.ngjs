@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use resistor model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new resistor model
+resistor_model('MYRES').tc1(1e-3).tc2(1e-5); //!
+battery('U1', 1, 0, 9);
+var r1 = resistor('R1', 1, 0, 100);
+temperature(65);
+echo('I', tran().run().avg('I(U1)').toEng());
+// use new resistor model
+r1.model('MYRES'); //!
+echo('I', tran().run().avg('I(U1)').toEng());
+

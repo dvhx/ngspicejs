@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Cought exception should clear buffered stack trace
+// linter: ngspicejs-lint --no-linting
+"use strict";
+
+try {
+    echo("a");
+    throw new Exception("This should be caught and no error should be printed");
+    echo("b");
+} catch (e) {
+    echo("caught", e.message.length);
+}
+
+throw "This should be visible";
+

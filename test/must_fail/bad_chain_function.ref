@@ -1,0 +1,10 @@
+error: TypeError: ac(...).fstart(...).fstop(...).banana is not a function
+  [./bad_chain_function.ngjs:0:0] in ???()
+    ac().fstart(16).fstop(20001).banana(20);
+                                 ^
+
+Stack trace (1 frames, parsed):
+  [bad_chain_function.ngjs:6:30] in <anonymous>()
+    ac().fstart(16).fstop(20001).banana(20);
+                                 ^
+exit(12)

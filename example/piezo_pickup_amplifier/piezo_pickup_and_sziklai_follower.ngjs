@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Piezo pickup and sziklai follower
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 8, 0, 9);
+ammeter('A1', 8, 7);
+resistor('R1', 2, 0, '3k3');
+resistor('R2', 7, 5, '100k');
+resistor('R3', 5, 0, '120k');
+resistor('R4', 5, 6, '150k');
+resistor('R5', 3, 0, '50k');
+capacitor('C1', 9, 6, '100n');
+capacitor('C2', 2, 3, '33u');
+capacitor('C3', 5, 2, '10u');
+npn('T1', 1, 6, 2, 'BC547');
+pnp('T2', 2, 1, 7, 'BC557');
+pickup_piezo('U2', 9, 0).v('10m').f(196).damping(0);
+
+var t = tran().run().chart('V(3)');
+echo('Gain', t.gain(9, 3).toFixed(3));
+echo('Current', t.data['I(A1)'].max().toEng());
+
+ac().run().chart('V(3)');
+
+

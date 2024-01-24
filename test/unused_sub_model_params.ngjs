@@ -1,0 +1,32 @@
+#!/usr/bin/env ngspicejs
+// Should warn about unused param "r" in second model
+// linter: ngspicejs-lint
+"use strict";
+
+// normal divider
+var s = sub_model('MY_DIV', ['in', 'out', 'gnd'], {r: 100});
+s.resistor('R1', 'in', 'out', '{r}');
+s.resistor('R2', 'out', 'gnd', '{r}');
+s.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MY_DIV', [1, 2, 0], {r: 1000});
+
+var t = tran().run();
+echo('V(2)', t.avg('V(2)').toEng());
+echo('I(U1)', t.avg('I(U1)').toEng());
+
+netlist_clear();
+
+// normal divider but don't use "r" param, it should warn about unused parameter?
+var s2 = sub_model('MY_DIV2', ['in', 'out', 'gnd'], {r: 100});
+s2.resistor('R1', 'in', 'out', 100);
+s2.resistor('R2', 'out', 'gnd', 100);
+s2.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MY_DIV2', [1, 2, 0], {r: 1000});
+
+var t2 = tran().run();
+echo('V(2)', t2.avg('V(2)').toEng());
+echo('I(U1)', t2.avg('I(U1)').toEng());

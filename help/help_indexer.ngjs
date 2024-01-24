@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Reindex examples and howto to use in help function
+// linter: ngspicejs-lint
+"use strict";
+
+var documents = [];
+
+function add_dir(aPath) {
+    var files = dir_recursive(aPath).filter((a) => file_ext(a) === '.ngjs');
+    files.forEach((fn) => {
+        if (file_name(fn) === 'help_indexer.ngjs') {
+            return;
+        }
+        var content = file_read(fn);
+        var comments = content.split('\n').filter((line) => line.trim().startsWith('//') && !line.match('linter:'));
+        comments = comments.map((b) => b.replace('// ', ''));
+        //echo_json(fn);
+        //echo_json(comments);
+        comments.forEach((c) => {
+            documents.push({q: c, a: fn.replace('../', '')});
+        });
+    });
+}
+
+add_dir('../howto/');
+add_dir('../example/');
+
+// make first search to build index
+//echo_json(documents);
+var s = search(documents, 'how to use voltmeter to measure minimal voltage');
+//echo_json(s.candidates.slice(0, 3));
+
+// save data and index
+file_write_json('help_documents.json', documents, 1);
+file_write_json('help_index.json', s.index, 1);
+
+echo(documents.length + ' documents indexed, index size ', JSON.stringify(s.index, undefined, 1).length);
+
+
+
+

@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// How to do transient analysis
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(2).f(100);
+resistor('R1', 1, 2, 1000);
+resistor('R2', 2, 0, 1000);
+
+// tran chart voltage
+tran().step("20u").run().chart("V(1)");
+
+// tran chart current
+tran().run().chart("I(U1)");
+
+// tran calculate gain
+echo("gain", tran().run().gain(1, 2).toEng());
+
+// tran min and max current
+var t = tran().step('10u').run();
+echo("Imin", t.data["I(U1)"].min().toEng());
+echo("Imax", t.data["I(U1)"].max().toEng());
+echo("Irange", t.data["I(U1)"].range().toEng());
+echo("Iamplitude", t.data["I(U1)"].amplitude().toEng());
+echo("Irms", t.data["I(U1)"].rms().toEng());
+
+// save tran data to csv
+file_write_csv('2.csv', t.csv());
+

@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// This is oscillator used in metal detectors by Charles D. Rakes
+// Fig. 7 in https://www.geotech1.com/pages/metdet/projects/rakes/rakes2_150.pdf
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 22, 0, 9).rs(10);
+ammeter('A1', 22, 23);
+capacitor('C0', 23, 0, '10u');
+inductor('L1', 23, 1, '614u').rs(4);
+resistor('R2', 1, 6, '220k');
+capacitor('C3', 6, 3, '68n');
+resistor('R3', 3, 0, 470);
+resistor('R4', 5, 0, '1k');
+capacitor('C4', 1, 5, '68n');
+capacitor('C5', 5, 0, '68n');
+npn('T1', 1, 6, 5, 'BC547');
+
+var t = tran().start('19m').step('20u').run().chart(['I(A1)', 'I(L1.L0)'], {min_x: '19m'});
+
+var battery_current = t.data['I(A1)'].rms();
+var coil_current = t.data['I(L1.L0)'].rms();
+echo('Battery current', battery_current.toEng());
+echo('Coil current', coil_current.toEng());
+echo('Gain', (coil_current / battery_current).toEng());
+echo('f0', fft().start(t.attr.start).interval(0.05).fstop('100k').run('I(L1.L0)').chart('I(L1.L0)').f0().frequency.toEng());
+
+

@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// Using motor driver L272M
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 5);
+
+resistor('R1', 5, 6, '100k');
+resistor('R2', 6, 0, '100k');
+
+// DIP8 L272M = out1 vcc out2 gnd in2- in2+ in1+ in1-
+sub('Q1', 'L272M', [1, 5, 3, 0, 6, 12, 11, 6]);
+
+ammeter('A1', 1, 3);
+
+pwl('U3', 10, 0).shape([[0, 0], [0.020, 3.3]]);
+resistor('R3', 10, 11, '5k');
+pwl('U4', 8, 0).shape([[0, 3.3], [0.020, 0]]);
+resistor('R4', 8, 12, '5k');
+
+var t = tran().run().chart(['V(10)', 'V(8)'], {title: 'Control voltages', label_x: 'time', label_y: 'Vin1+,Vin2+'});
+chart_xy().add_series(t.data.time, t.data['I(A1)'], 'I(A1)').title('Output current').label_x('time').label_y('I(A1)').show();
+

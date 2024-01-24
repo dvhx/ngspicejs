@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// How to use spice model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new resistor model //!
+spice_model("MY_DIVIDER", "OTHER", `.subckt MY_DIVIDER 1 2 3
+R1 1 2 100
+R2 2 3 100
+.ends`);
+
+battery('U1', 1, 0, 9);
+// Use spice model
+sub('X1', 'MY_DIVIDER', [1, 2, 0]);
+echo(tran().run().avg('V(2)').toEng());
+

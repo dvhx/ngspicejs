@@ -1,0 +1,17 @@
+error: FFT .start(19.8) must be lower than .interval(0.1)
+  [fft_start_bigger_than_interval.ngjs:0:0] in <anonymous>()
+    fft().start('19.8').interval(0.1).run('I(A1)').chart('I(A1)');
+                                      ^
+
+Stack trace (3 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [analysis/fft.js:0:0, core.js:0:0] in Fft.run()
+    throw new Exception("FFT .start(" + this.attr.start + ") must be lower than .interval(" + this.attr.interval + ")");
+          ^
+  [fft_start_bigger_than_interval.ngjs:0:0] in <anonymous>()
+    fft().start('19.8').interval(0.1).run('I(A1)').chart('I(A1)');
+                                      ^
+
+exit(12)

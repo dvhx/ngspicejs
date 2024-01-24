@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for mosfet_n
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+ammeter('A1', 5, 4);
+battery('U2', 3, 0, 2);
+var t1 = mosfet_n('T1', 4, 3, 0, 'BS170');
+
+var m = all_models('MOSFET_N').sort();
+m.forEach((a) => {
+    t1.model(a);
+    var t = tran().run();
+    echo(t1.attr.model, 'I=', array_avg(t.data['I(A1)']).toEng());
+});

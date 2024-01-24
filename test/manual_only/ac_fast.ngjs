@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// Fast ac vs normal ac
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+capacitor('C1', 1, 2, '100n');
+resistor('R1', 2, 0, 100);
+var t1 = script_ms();
+var a = ac().run();
+var t2 = script_ms();
+echo('ac', t2 - t1, 'ms');
+
+var t3 = script_ms();
+var a2 = ac_fast(16, 20000, 2, [5000, 10000, 15000], true);
+var t4 = script_ms();
+echo('ac_fast', t4 - t3, 'ms');
+echo(a2.map((a) => a.toFixed(3)));
+
+a.chart('V(2)', {show: false}).last_chart.add_series([5000, 10000, 15000], a2).show();
+

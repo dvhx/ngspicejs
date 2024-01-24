@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// Test how fast is image with 18 large frames saved (~1.4s on my pc)
+// linter: ngspicejs-lint
+"use strict";
+
+var t1 = Date.now();
+
+var a = sixel_canvas(640, 480);
+a.black = a.color(0, 0, 0);
+a.white = a.color(100, 100, 100);
+a.clear(a.white);
+a.label('one', 100, 100, a.black);
+
+var t2 = Date.now();
+var b = sixel_canvas(640, 480);
+b.black = b.color(0, 0, 0);
+b.white = b.color(100, 100, 100);
+b.clear(b.white);
+b.label('two', 100, 100, b.black);
+
+var t3 = Date.now();
+
+gif('gif_performance.gif', [a, b, a, b, a, b, a, b, a, b, a, b, a, b, a, b, a, b], 10);
+
+var t4 = Date.now();
+
+echo('canvases', Math.ceil((t2 - t1) / 1000) + 's');
+echo('gif', Math.ceil((t4 - t3) / 1000) + 's');
+

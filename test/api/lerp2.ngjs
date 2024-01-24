@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Lerp tests
+// linter: ngspicejs-lint
+"use strict";
+
+var a = lerp([1,2,3], [4,5,6]);
+var b = lerp(a);
+var c = lerp([[1,4], [2, 5], [3, 6]]);
+var d = a.dup();
+var e = b.dup();
+var f = c.dup();
+var g = lerp('1=4 2=5 3=6');
+echo(a.get(2.5));
+echo(b.get(2.5));
+echo(c.get(2.5));
+echo(d.get(2.5));
+echo(e.get(2.5));
+echo(f.get(2.5));
+echo(g.get(2.5));

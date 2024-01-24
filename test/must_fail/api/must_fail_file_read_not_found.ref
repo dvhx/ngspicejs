@@ -1,0 +1,11 @@
+error: file not found 'asdf' (in function file_read)
+  [must_fail_file_read_not_found.ngjs:0:0] in <anonymous>()
+    file_read('asdf');
+    ^
+
+Stack trace (1 frames):
+  [must_fail_file_read_not_found.ngjs:0:0] in <anonymous>()
+    file_read('asdf');
+    ^
+
+exit(6)

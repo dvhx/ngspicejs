@@ -1,0 +1,17 @@
+1N5819.rs 0.208896
+ZENER_C2V4ST.rs undefined
+ZENER_C9V1ST.rs undefined
+BC547.bf 327
+BC547_DARLINGTON.bf undefined
+BD139_130.bf undefined
+J201.vto -0.870875
+J201_LONG_LEADS.vto undefined
+2N7000.vto 1.583346
+2N7000_2.vto 2.42
+BS170.vto 1.824543
+IRF5305.vto undefined
+IDEAL_OPAMP attr {"params":{"gm":0.0002,"r1":1000000000,"c1":3e-11},"name":"IDEAL_OPAMP","nets":["inplus","inminus","vplus","vminus","out"]}
+JRC4558 attr {"name":"JRC4558","kind":"OPAMP","spice":"* JRC4558 opamp\n* NETS 5\n.subckt JRC4558 inplus inminus vplus vminus out\n.MODEL MODD1 D(IS=801.734352e-18)\n.MODEL MODP1 PNP(IS=801.734352e-18 BF=110.331551)\nF1 3 18 POLY(5) VZ VK VG VS VT 0 16.576435e6 -20.18435e6 20.18435e6 20.18435e6 -20.18435e6\nH1 35 0 VA1 1000.183564\nVA1 3 26 DC 0\nD1 out 11 MODD1\nD2 12 out MODD1\nD3 vminus vplus MODD1\nD4 8 35 MODD1\nD5 35 7 MODD1\nR1 vminus 6 3.3268435e3\nR2 5 4 616.1158682\nR3 2 1 100.118423e3\nR4 vminus 9 3.3268435e3\nR5 3 18 43.716\nR6 10 4 616.1158682\nR7 4 18 10.33134359e6\nR8 vplus vminus 13.14975435e3\nR9 26 out 43.716\nC1 2 3 13.119452e-12\nC2 9 6 4.322746e-12\nQ1 6 inplus 10 MODP1\nQ2 9 inminus 5 MODP1\nVZ 1 0 DC 0\nVK vplus 11 DC 2.618764\nVG 12 vminus DC 2.618764\nVS 7 0 DC 20\nVT 0 8 DC 20\nE1 18 0 POLY(2) (vplus,0) (vminus,0) 0 .5 .5\nG1 2 0 9 6 301.551835e-6\nG2 0 2 4 18 9.6783543e-9\nI1 vplus 4 DC 19.745835e-6\n.ends\n"}
+RMOD1 tc1 1.23
+TWO_RESISTORS foo 123
+TL431 attr {"name":"TL431","kind":"VREF","spice":"* TL431 voltage reference (r=reference a=anode c=cathode)\n* NETS 3\n.subckt TL431 r a c\n.model QMODP1 PNP(RB=266 BF=133 CJE=4.13135e-12 CJC=1.533642e-12 VAF=-145.435282)\n.model QMODN1 NPN(RB=490 BF=245 CJE=5.51732e-12 CJC=0.641382e-12 VAF=-165.813132)\nQ1 c 2 a 0 QMODN1\nQ2 c 4 2 0 QMODN1\nQ3 4 5 3 0 QMODP1\nQ4 a 1 3 0 QMODP1\nI1 c 3 4.979u\nV1 5 a 1.201V\nR1 1 a 602254\nR2 r 1 645479\nR6 4 a 619896\n.ends\n"}

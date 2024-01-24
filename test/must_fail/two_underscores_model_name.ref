@@ -1,0 +1,30 @@
+error: sub_model MY__R attribute 'name' value 'MY__R' cannot contain two consecutive underscores, it may interfere with human readable vector names
+error: sub_model MY__R contains invalid attribute
+  [two_underscores_model_name.ngjs:0:0] in <anonymous>()
+    tran().run().chart('V(vcc)');
+           ^
+
+Stack trace (7 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    throw new Exception((aDevice.type || "device") + " " + (aDevice.attr.name || "<unnamed>") + " contains invalid attribute");
+          ^
+  [model/sub_model.js:0:0, core.js:0:0] in SubModel.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [netlist/netlist_render.js:0:0, core.js:0:0] in netlist_render()
+    aNetlistDevices[i].validate();
+                       ^
+  [netlist/netlist_done.js:0:0, core.js:0:0] in netlist_done()
+    r.netlist = netlist_render(netlist_devices, netlist_line_markers, true, false);
+                ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    this.ret = netlist_done();
+               ^
+  [two_underscores_model_name.ngjs:0:0] in <anonymous>()
+    tran().run().chart('V(vcc)');
+           ^
+
+exit(13)

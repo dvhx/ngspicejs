@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - diode
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 2, 9);
+diode('D1', 2, 3, '1N4148');
+diode('D2', 3, 4, 'ZENER_C2V4ST');
+diode('D3', 4, 0, 'ZENER_C9V1ST');
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(D3.VZ)');
+echo(Object.keys(f.data).sort().join('\n'));
+

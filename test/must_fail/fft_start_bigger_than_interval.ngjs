@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// fft start must be smaller than interval
+// linter: ngspicejs-lint
+"use strict";
+
+resistor('R1', 1, 0, 100);
+fft().start('19.8').interval(0.1).run('I(A1)').chart('I(A1)');

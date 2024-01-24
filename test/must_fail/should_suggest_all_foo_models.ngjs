@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Bad model should suggest all models
+// linter: ngspicejs-lint
+"use strict";
+
+diode_model('FOO').is('1m').n(2).rs(1);
+diode_model('FOO1').is('1u').n(2).rs(1);
+diode_model('FOO2').is('1n').n(2).rs(1);
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R1', 1, 2, 100);
+diode('D1', 2, 0, 'FOO3');
+
+tran().run().chart('V(2)');
+

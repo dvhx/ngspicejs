@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Make sure dynamic mic works after clearing netlist
+// linter: ngspicejs-lint
+"use strict";
+
+dynamic_mic('U1', 1, 0).v(0.1).f(50);
+tran().run().chart('V(1)');
+
+netlist_clear();
+
+dynamic_mic('U1', 1, 0).v(0.1).f(50);
+tran().run().chart('V(1)');

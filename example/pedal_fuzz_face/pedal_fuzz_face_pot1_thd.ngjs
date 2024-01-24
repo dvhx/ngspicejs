@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// Observing THD of fuzz face pedal with changes in pot P1 position
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 9);
+
+resistor('R1', 4, 5, '33k');
+resistor('R2', 7, 6, '8k2');
+resistor('R3', 4, 7, '330');
+resistor('R4', 1, 10, '100k');
+
+capacitor('C1', 2, 1, '2u2');
+capacitor('C2', 7, 8, '10n');
+capacitor('C3', 9, 0, '20u');
+
+npn('T1', 5, 1, 0, '2N3904');
+npn('T2', 6, 5, 10, '2N3904');
+
+pot('P1', 8, 11, 0, '500k').percent(50);
+var p2 = pot('P2', 10, 9, 0, '1k').percent(50);
+
+pickup_singlecoil('L1', 2, 0).f(440);
+
+tran().run().chart('V(11)');
+
+var i, x = [], y = [], thd;
+for (i = 0; i <= 100; i += 5) {
+    echo('Calculating THD for P1 position ', i);
+    p2.percent(i);
+    thd = fft().run('V(11)').thd(440);
+    x.push(i);
+    y.push(thd * 100);
+}
+chart_xy().add_series(x, y).show();
+
+

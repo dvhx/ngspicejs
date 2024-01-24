@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test dir
+// linter: ngspicejs-lint
+"use strict";
+
+echo(dir("../../js/depend/jsep").join('\n'));
+
+

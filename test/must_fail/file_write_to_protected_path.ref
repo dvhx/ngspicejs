@@ -1,0 +1,14 @@
+error: cannot write file '/1.json'
+  [file_write_to_protected_path.ngjs:0:0] in <anonymous>()
+    file_write_json('/1.json', {a:1, b: 2, c: true});
+    ^
+
+Stack trace (2 frames):
+  [file/file_write_json.js:0:0, core.js:0:0] in file_write_json()
+    file_write(filename, JSON.stringify(data));
+    ^
+  [file_write_to_protected_path.ngjs:0:0] in <anonymous>()
+    file_write_json('/1.json', {a:1, b: 2, c: true});
+    ^
+
+exit(6)

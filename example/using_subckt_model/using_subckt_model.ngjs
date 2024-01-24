@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Using existing subckt model
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+battery('U2', 2, 0, 3);
+resistor('RB', 2, 5, '100k');
+resistor('RE', 3, 4, '1k');
+ammeter('A1', 4, 0);
+var t1 = npn('T1', 1, 5, 3, 'BC547_DARLINGTON');
+
+var t = tran().run();
+echo(t1.attr.model, 'Ic=' + t.data['I(A1)'].avg().toEng());
+
+t1.model('2N3904_DARLINGTON');
+
+t = tran().run();
+echo(t1.attr.model, 'Ic=' + t.data['I(A1)'].avg().toEng());
+

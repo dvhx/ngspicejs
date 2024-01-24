@@ -1,0 +1,40 @@
+error: Device #1 pickup L1 has duplicate name with device #0 pickup L1
+  [two_same_names2.ngjs:0:0] in <anonymous>()
+    pickup_singlecoil('L1', 1, 2).v(0.3).f(110);
+    ^
+hint: Current device: pickup L1 (device #1)
+hint: Existing device #0: pickup L1 (device #0)
+hint: Given NetlistDevices(2):
+hint:   #0: pickup L1 (device #0)
+hint:   #1: pickup L1 (device #1)
+
+Stack trace (9 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_name_unique.js:0:0, core.js:0:0] in assert_name_unique()
+    throw new Exception("Device #" + j + " " + aDevice.type + " " + aValue + " has duplicate name with device #" + i + " " + aNetlistDevices[i].type + " " + aNetlistDevices[i].attr.name);
+          ^
+  [device/pickup.js:0:0, core.js:0:0] in Pickup.name()
+    assert_name_unique(aName, this, this.netlist_devices);
+    ^
+  [device_attr_assign.js:0:0, core.js:0:0] in device_attr_assign()
+    aDevice[key](val);
+                ^
+  [device/pickup.js:0:0, core.js:0:0] in Pickup.validate()
+    device_attr_assign(this, this.attr);
+    ^
+  [device/pickup.js:0:0, core.js:0:0] in Pickup()
+    this.validate();
+         ^
+  [device/pickup.js:0:0, core.js:0:0] in pickup()
+    return new Pickup(aName);
+           ^
+  [device/pickup_singlecoil.js:0:0, core.js:0:0] in pickup_singlecoil()
+    p = pickup({
+        ^
+  [two_same_names2.ngjs:0:0] in <anonymous>()
+    pickup_singlecoil('L1', 1, 2).v(0.3).f(110);
+    ^
+
+exit(12)

@@ -1,0 +1,13 @@
+error: file_exists(path) require exactly 1 arguments but 0 was given
+  [must_fail_file_exists_no_args.ngjs:0:0] in <anonymous>()
+    file_exists();
+    ^
+
+hint: function 'file_exists(path)' was called with 0 arguments
+
+Stack trace (1 frames):
+  [must_fail_file_exists_no_args.ngjs:0:0] in <anonymous>()
+    file_exists();
+    ^
+
+exit(7)

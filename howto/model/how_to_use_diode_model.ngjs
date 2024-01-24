@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use diode model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new 1N276 diode model
+diode_model('1N276').is('0.00000293353').n(1.72483).rs(4.17909); //!
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '1k');
+// Use 1N276 diode model
+diode('D1', 2, 0, '1N276'); //!
+var t = tran().run();
+echo('Vf', t.avg('V(2)').toEng());
+echo('If', t.avg('I(U1)').toEng());
+

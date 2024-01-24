@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// Test multiple opamp models quickly
+// linter: ngspicejs-lint
+"use strict";
+
+var q1 = opamp('Q1', 1, 2, 3, 4, 5, 'TL071');
+resistor('R1', 2, 0, '10k');
+resistor('R2', 2, 5, '20k');
+resistor('R3', 5, 0, '50k');
+battery('U1', 3, 4, 9);
+resistor('R4', 3, 0, '10k');
+capacitor('C4', 3, 0, '100u');
+resistor('R5', 0, 4, '10k');
+capacitor('C5', 0, 4, '100u');
+sinewave('U2', 1, 0).v(0.1).f(50);
+
+tran().run().chart('V(5)', {width: 320, height: 120});
+q1.model('LM258');
+tran().run().chart('V(5)', {width: 320, height: 120});
+q1.model('LM741');
+tran().run().chart('V(5)', {width: 320, height: 120});
+q1.model('UA741');
+tran().run().chart('V(5)', {width: 320, height: 120});
+q1.model('NE5532');
+tran().run().chart('V(5)', {width: 320, height: 120});
+q1.model('JRC4558');
+tran().run().chart('V(5)', {width: 320, height: 120});

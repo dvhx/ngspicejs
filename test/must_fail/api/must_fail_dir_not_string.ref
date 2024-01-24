@@ -1,0 +1,14 @@
+error: variable 'path' in function 'dir(path)' should be string
+  [must_fail_dir_not_string.ngjs:0:0] in <anonymous>()
+    dir(123);
+    ^
+
+hint: function 'dir(path)' was called with 1 arguments
+hint: argument #0 was 123 (number)
+
+Stack trace (1 frames):
+  [must_fail_dir_not_string.ngjs:0:0] in <anonymous>()
+    dir(123);
+    ^
+
+exit(7)

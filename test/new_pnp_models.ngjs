@@ -1,0 +1,40 @@
+#!/usr/bin/env ngspicejs
+// Test new NPN models
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 0, 2);
+ammeter('A2', 1, 3);
+var rb = resistor('RB', 2, 4, '100k');
+var t1 = pnp('T1', 5, 4, 3, 'BC557');
+resistor('RE', 5, 0, 220); // limits max current to ~40mA
+
+var c = chart_xy(640, 642)
+    .title('Measuring NPN hFE for different base resistors')
+    .label_x('Rb')
+    .label_y('Measured hFE')
+    .min_y(0);
+
+['BC557', 'BC557_200', 'S9012', '2N3906', '2N3906_170', '2N3906_210'].forEach((m) => {
+    t1.model(m);
+    var x = [], y = [];
+
+    series_e3(10, '1M').forEach((b) => {
+        rb.r(b);
+        var t = tran().run();
+        var ib = t.avg('I(A1)');
+        var ic = t.avg('I(A2)');
+        x.push(b);
+        y.push(Math.abs(ic / ib));
+    });
+
+    c.add_series(x, y, m + ' (max hFE at Rb=' + x[y.concat(0).extremaMax().index].toEng() + ')');
+});
+
+c.show();
+c.gif('npn_measure_hfe_using_2_resistors.gif');
+
+echo('Each transistor has peak hFE at different Rb, which means 2-resistor method is not reliable');
+
+

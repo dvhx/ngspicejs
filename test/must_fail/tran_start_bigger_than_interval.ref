@@ -1,0 +1,17 @@
+error: Tran .start(19.8) must be lower than .interval(0.02)
+  [tran_start_bigger_than_interval.ngjs:0:0] in <anonymous>()
+    tran().start('19.8').step('20u').run().chart('I(A1)');
+                                     ^
+
+Stack trace (3 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    throw new Exception("Tran .start(" + this.attr.start + ") must be lower than .interval(" + this.attr.interval + ")");
+          ^
+  [tran_start_bigger_than_interval.ngjs:0:0] in <anonymous>()
+    tran().start('19.8').step('20u').run().chart('I(A1)');
+                                     ^
+
+exit(12)

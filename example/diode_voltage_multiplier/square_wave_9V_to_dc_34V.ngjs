@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Converting 22kHz 9V square wave (0-9V) to 32V using four voltage doubler subcircuits
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(9).offset(4.5).f(22000);
+sub('X1', 'VOLTAGE_DOUBLER', [1, 0, 2, 3]);
+sub('X2', 'VOLTAGE_DOUBLER', [2, 3, 4, 5]);
+sub('X3', 'VOLTAGE_DOUBLER', [4, 5, 6, 7]);
+sub('X4', 'VOLTAGE_DOUBLER', [6, 7, 8, 9]);
+capacitor('C1', 9, 0, '10n');
+resistor('R1', 9, 0, '10M');
+
+tran().interval('10m').run().chart('V(9)');

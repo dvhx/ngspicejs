@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Show that electret mic is passive and needs some power
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+var r1 = resistor('R1', 3, 2, '10k');
+capacitor('C1', 2, 5, '100n');
+resistor('R2', 5, 0, '50k');
+electret_mic('MIC1', 2, 0).v('10m').f(440);
+echo_netlist();
+
+var t = tran().start('10m').run().chart('V(5)');
+echo('Voltage swing with 10k resistor: ' + t.data['V(5)'].range().toEng());
+
+r1.r('10M');
+t = tran().start('10m').run();
+echo('Voltage swing with 10M resistor: ' + t.data['V(5)'].range().toEng(), '(electret needs external power)');

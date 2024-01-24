@@ -1,0 +1,35 @@
+#!/usr/bin/env ngspicejs
+// Trying to find if hFE can be measured accurately
+// https://www.eevblog.com/forum/beginners/how-to-really-measure-hfe-of-npn-transistor/?action=dlattach;attach=1802648;image
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+var r1 = resistor('R1', 2, 3, 9700);
+ammeter('A2', 3, 4);
+var t1 = npn('T1', 3, 4, 0, 'BC547B');
+
+var t, ic, ib, h, vbe, hmax = 0;
+var csv = [['R', 'Ic', 'Ib', 'hFE', 'Vbe', 'Vce']];
+
+series_e6(1, '10M').forEach((r) => {
+    r1.r(r);
+    t = tran().run();
+    ic = t.avg('I(A1)');
+    ib = t.avg('I(A2)');
+    h = ic / ib;
+    vbe = t.avg('V(4)');
+    if (h > hmax) {
+        hmax = h;
+        echo('ic', ic, 'ib', ib, 'h', h, 'r', r);
+    }
+    csv.push([r, ic, ib, h, vbe, t.avg('V(2)')]);
+});
+
+file_write_csv('npn_measure_hfe_shared_collector_resistor.csv', csv);
+
+var model_hfe = t1.get_model().attr.bf;
+echo('difference', (100 * hmax / model_hfe - 100).toFixed(1) + '% (measured ', hmax.toFixed(0), ' vs model ', model_hfe,')');
+
+

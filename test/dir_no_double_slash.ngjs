@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// dir ending with or without trailing slash
+// linter: ngspicejs-lint
+"use strict";
+
+echo_json(dir('../js/depend/jsep'));
+echo_json(dir('../js/depend/jsep/'));
+echo_json(dir_recursive('../js/depend/jsep'));
+echo_json(dir_recursive('../js/depend/jsep/'));

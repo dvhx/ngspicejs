@@ -1,0 +1,82 @@
+#!/usr/bin/env ngspicejs
+// Find C0 and L0 of a singlecoil pickup from frequency responses measured using different bypass capacitors
+// linter: ngspicejs-lint
+"use strict";
+
+// Connect generator
+sinewave('U1', 1, 0).v(0.1).f(1000);
+// via capacitor C2
+var c2 = capacitor('C2', 1, 2, '50p');
+// to a singlecoil pickup
+resistor('RP', 2, 0, '210k');           // this was measured by different method, it does not affect resonant frequency so it is irellevant in this measurement
+var c0 = capacitor('C0', 2, 0, '50p');  // we don't know this value
+var l0 = inductor('L0', 2, 3, 3.1);     // 3.1H was measured by RLC meter
+resistor('RS', 3, 0, 5400);             // DC resistance is easy to measure
+
+function peak() {
+    // Find peak frequency in AC analysis
+    var vector = 'V(2)',
+        a = ac().fstop('10k').points(120).run();
+    var e = a.data[vector].modulus().extrema();
+    return a.data.frequency[e[0].index];
+}
+
+// prepare chart
+var ch = chart_xy().width(800).height(600);
+
+// these are measured peak frequencies for each C2 value
+var cap = ['50p',      '100p', '234p', '1.07n', '1.15n', '2.10n', '2.45n'];
+var fmeasured = [5666, 4876,    4303,   2523,    2306,    1822,    1606];
+echo('used C2', cap);
+echo('measured F0', fmeasured);
+
+// if you just use these values, you'll quickly find that for each C2
+// you need to change C0 to have same peak f0 - something is wrong. So
+// here we assume that L0 is slightly wrong and try various L0 until
+// we find the state where the error between frequencies is minimal
+
+// In first cycle we are changing L0
+//[3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0].forEach(l => {
+[3.1, 3.6, 3.62, 3.64, 3.66, 3.68, 3.7].forEach((l) => {
+    l0.l(l);
+
+    var x = [], y = [], minerr = 1e9, bestc = 0, bestfs = [];
+
+    // In second cycle we change C0 and find one that causes smallest error (in all measured frequencies)
+    series_e12('70p', '1000p').forEach((a) => {
+        //echo('a', a.toEng());
+        c0.c(a);
+        var fsimulated = [];
+        var err = 0;
+        var i = 0;
+
+        // In third cycle we do this for each C2 we measured
+        cap.forEach((b) => {
+            c2.c(b);
+            var fsim = Math.round(peak());
+            err += Math.abs(fmeasured[i] - fsim);
+            fsimulated.push(fsim);
+            //echo(b, 'fmeas', fmeasured[i], 'fsim', fsim, 'err', err);
+            i++;
+        });
+
+        // Keep the best we found?
+        //echo(fmeasured);
+        //echo(fsimulated);
+        //echo('-- c0', a.toEng(), 'err', err);
+        x.push(a);
+        y.push(err);
+        if (err < minerr) {
+            minerr = err;
+            bestc = a;
+            bestfs = fsimulated.slice();
+        }
+    });
+
+    // show minimal error for this L0 and add it to chart
+    echo('l', l, 'minerr', minerr, 'bestfs', bestfs);
+    ch.add_series(x, y, 'C0=' + bestc + ' vs. error (min error ' + minerr.toFixed(0) + ', L0=' + l0.attr.l.toFixed(2) + ')');
+});
+
+// show final chart
+ch.show();

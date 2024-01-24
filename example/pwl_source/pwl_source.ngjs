@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Piece-wise linear source
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 0], [0.003, 1], [0.006, 2]]).repeat_from(0.003).delay(0);
+resistor('R1', 1, 0, 100);
+tran().run().chart('V(1)');
+
+
+

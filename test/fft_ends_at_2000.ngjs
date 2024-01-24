@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// fft should end at 2000
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(196);
+resistor('R1', 1, 0, 100);
+
+tran().run().chart('V(1)');
+
+var f = fft().fstop(2000).run('V(1)').chart();
+echo_json(f.data.frequency.slice(-3));
+echo_json(f.data['V(1)'].slice(-3));

@@ -1,0 +1,61 @@
+#!/usr/bin/env ngspicejs
+// Remove various models
+// linter: ngspicejs-lint
+"use strict";
+
+var a1 = bjt_model('A1').kind('NPN').bf(123);
+bjt_model('A2').kind('NPN').bf(123);
+npn('T1', 1, 2, 0, 'A2');
+a1.remove();
+
+var d1 = diode_model('MOD3').n(1.9).rs(5);
+diode_model('MOD4').n(1.9).rs(5);
+diode('D1', 1, 2, 'MOD4');
+d1.remove();
+
+var j1 = jfet_model('MOD5').kind('JFET_N').vto(-1.5);
+jfet_model('MOD6').kind('JFET_N').vto(-2.5);
+jfet_n('T2', 1, 2, 0, 'MOD6');
+j1.remove();
+
+var m1 = mos_model('MOD7').kind('NMOS').vto(1.5);
+mos_model('MOD8').kind('NMOS').vto(2.5);
+mosfet_n('T3', 1, 2, 0, 'MOD8');
+m1.remove();
+
+var rm1 = resistor_model('RMOD1').tc1(1.2);
+resistor_model('RMOD2').tc1(1.3);
+resistor('R1', 1, 0, 100).model('RMOD2');
+rm1.remove();
+
+var s1 = spice_model('MOD9', 'DIODE', `** some diode
+.subckt MOD9 a k
+D1 a k D1N4148
+.ends
+`).require_model('DIODE', '1N4148');
+spice_model('MOD10', 'DIODE', `** some diode
+.subckt MOD10 a k
+D1 a k D1N5819
+.ends
+`).require_model('DIODE', '1N5819');
+diode('D3', 1, 0, 'MOD10');
+s1.remove();
+
+var su1 = sub_model('MYDIV', ['a', 'x', 'b'], {});
+su1.resistor('R1', 'a', 'x', 100);
+su1.resistor('R2', 'x', 'b', 100);
+su1.end();
+var su2 = sub_model('MYDIV2', ['a', 'x', 'b'], {});
+su2.resistor('R1', 'a', 'x', 500);
+su2.resistor('R2', 'x', 'b', 500);
+su2.end();
+su1.remove();
+sub('X2', 'MYDIV2', [1, 2, 0], {});
+
+var v1 = mos_model('MOD7V').kind('NMOS').vto(3.3);
+mos_model('MOD8V').kind('NMOS').vto(3.4);
+mosfet_n('T3V', 1, 2, 0, 'MOD8V');
+v1.remove();
+
+tran().run();
+echo_netlist();

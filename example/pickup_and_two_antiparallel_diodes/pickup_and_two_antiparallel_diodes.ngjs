@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// Guitar pickup clamped by two antiparallel diodes to get some distortion
+// linter: ngspicejs-lint
+"use strict";
+
+// pickup clamped by 2 antiparallel diodes
+pickup_singlecoil('L1', 1, 0).v(0.2).f(196);
+diode('D1', 0, 1, '1N4148');
+diode('D2', 1, 0, '1N5819');
+
+// transient analysis
+tran().run().chart('V(1)').last_chart.gif('tran.gif');
+
+// AC analysis
+ac().run().chart('V(1)').last_chart.gif('ac.gif');
+
+// FFT analysis
+var f1 = fft().fstop(750).interval(0.14).run('V(1)').chart('V(1)');
+f1.last_chart.gif('fft.gif');
+echo('fundamental frequency', f1.f0().frequency.toEng());
+echo('total harmonic distortion', (100 * f1.thd(196)).toFixed(3) + '%');
+
+

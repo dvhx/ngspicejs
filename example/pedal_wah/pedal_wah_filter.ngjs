@@ -1,0 +1,49 @@
+#!/usr/bin/env ngspicejs
+// Pedal wah filter
+// linter: ngspicejs-lint
+"use strict";
+
+// coil switching stage
+battery('U1', 13, 14, 9);
+
+resistor('R1', 3, 2, '560k');
+resistor('R2', 5, 6, '4k7');
+resistor('R3', 7, 6, '1M');
+resistor('R4', 1, 0, '2M');
+resistor('R5', 7, 9, '2M');
+resistor('R6', 1, 9, '220k');
+resistor('R7', 11, 12, '220k');
+resistor('R8', 12, 0, '100k');
+resistor('R9', 13, 0, '20k');
+resistor('R10', 0, 14, '20k');
+
+capacitor('C1', 2, 1, '10n');
+capacitor('C2', 4, 5, '1u');
+capacitor('C3', 7, 6, '5p');
+capacitor('C4', 7, 10, '2n2');
+capacitor('C5', 10, 9, '2n2');
+capacitor('C6', 7, 11, '10n');
+capacitor('C7', 12, 0, '680p');
+capacitor('C8', 13, 0, '10u');
+capacitor('C9', 0, 14, '10u');
+
+var p1 = pot('P1', 0, 0, 10, '100k').percent(50);
+
+opamp('Q1', 1, 4, 13, 14, 4, 'TL071');
+opamp('Q2', 0, 6, 13, 14, 7, 'TL071');
+
+pickup_singlecoil('L1', 3, 0).v(0.1).f(196);
+
+ac().fstop('3k').run().chart('V(12)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 95; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(12)'].modulus().extremaMax();
+    x.push(p);
+    y.push(a.data.frequency[e.index]);
+}
+chart_xy().title('WAH filter peak frequency in Hz').label_x('Pot/%').label_y('f/Hz').add_series(x, y).show();
+
+

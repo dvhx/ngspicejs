@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Two underscores not allowed
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U__1', 'vcc', 0, 9);
+resistor('R1', 'vcc', 0, 100);
+voltmeter('V1', 'vcc', 0);
+
+tran().run().chart('V(vcc)');

@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to use spice directly
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+spice('R1 1 0 100'); //!
+echo('I=' + tran().run().avg('I(U1)').toEng());
+
+

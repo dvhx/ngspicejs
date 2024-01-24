@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// no args required
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.last_exception_string(1);

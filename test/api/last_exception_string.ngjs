@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Test last_exception_string
+// linter: ngspicejs-lint
+"use strict";
+
+try {
+    throw "some exception";
+} catch (e) {
+    echo('caught', e);
+}
+
+// should be empty, this is only used in before_exit()
+echo("should be empty here:", Internal.last_exception_string());
+
+

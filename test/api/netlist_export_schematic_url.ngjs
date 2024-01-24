@@ -1,0 +1,68 @@
+#!/usr/bin/env ngspicejs
+// Test export schematic and url
+// linter: ngspicejs-lint
+"use strict";
+
+// sources
+am('U1', 1, 0).v(9).f(50).fc(1000);
+audio('U2', 2, 0).filename('../../wav/1ms_sinewave_1khz_16bit_signed_pcm.wav').v(0.1);
+battery('U3', 3, 0).v(9);
+beeps('U4', 4, 0).v(5).f(220);
+cccs('F5', 5, 0, 'U3', 1);
+ccvs('H6', 6, 0, 'U3', 1);
+current_source('I7', 7, 0, 0.5);
+dynamic_mic('U8', 8, 0).v(0.1).f(440);
+electret_mic('U9', 9, 0).v(0.1).f(440);
+pickup('U10', 10, 0).l(1).v(0.1).f(440);
+pickup_singlecoil('U11', 11, 0);
+pulse('U12', 12, 0);
+pwl('U13', 13, 0).shape([[0, 0], [0.020, 5]]);
+sawtooth('U14', 14, 0).v(5).f(440);
+sinewave('U99', 99, 0).v(5).f(50);
+square('U15', 15, 0).v(5).f(100).duty(25);
+vccs('G16', 16, 0, 1, 2, 12.3);
+vcvs('E17', 17, 0, 1, 2, 12.3);
+
+// devices
+ammeter('A18', 18, 0);
+capacitor('C19', 19, 0, '100n');
+diode('D20', 20, 0, '1N4148');
+inductor('L21', 21, 0, 1);
+inductor('L22', 22, 0, 2);
+inductor_coupling('K23', 'L21', 'L22', 0.5);
+jfet_n('T24', 24, 1, 2, 'J201');
+//jfet_p('T25', 25, 1, 2, 'J201');
+mosfet_n('T26', 26, 1, 2, 'BS170');
+mosfet_p('T27', 27, 1, 2, 'IRF5305');
+npn('T28', 1, 2, 3, 'BC547');
+npn('T29').c(1).b(2).e(3).model('BC547');
+npn('T30').e(3).b(2).c(1).model('BC547');
+opamp('Q31', 31, 1, 2, 3, 4, 'TL071');
+pnp('T32', 32, 1, 2, 'BC557');
+pot('P33', 33, 1, 2, '10k', 50);
+resistor('R1', 1, 0, 1000);
+// sub
+switch_1p2t('S35', 35, 1, 2, 1);
+voltmeter('V36', 36, 0);
+vref('REF37', 37, 1, 2, 'TL431');
+
+var divider = sub_model('FOO', ['a', 'b']);
+divider.resistor('R1', 'a', 'out', 100);
+divider.resistor('R2', 'out', 'b', 100);
+divider.end();
+
+sub('X1', 'FOO', [1, 2]);
+
+diode_model('DM1').is(0.123);
+diode('D1', 1, 0, 'DM1');
+
+var s = netlist_export_schematic_url();
+echo(s);
+var t = netlist_export_schematic();
+echo(JSON.stringify(t, undefined, 1));
+
+netlist_clear();
+battery('U1', 1, 0).v(9);
+diode('D1', 1, 2, '1N4148');
+resistor('R1', 2, 0, 1000);
+echo(netlist_export_schematic_url());

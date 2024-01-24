@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Including non-existent file
+// linter: ngspicejs-lint
+"use strict";
+
+var fx = Internal.include_global;
+fx("non_existent_file.js");
+echo("xyz=", globalThis.exports.xyz);

@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Response of LC filter to square wave signal (the "ringing")
+// linter: ngspicejs-lint
+"use strict";
+
+// square wave voltage supply, and lc filter response
+square('U1', 1, 0).v(5).offset(0).f(5).duty(50);
+inductor('L1', 1, 2, '1m');
+capacitor('C1', 2, 0, '1u');
+resistor('R1', 2, 0, 5100);
+
+// transient analysis
+tran().interval(0.3).run().chart('V(2)');
+
+

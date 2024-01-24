@@ -1,0 +1,6 @@
+Object (5 keys): (Object #1.1)
+    "result": number = -1
+    "columns": number = 0
+    "rows": number = 0
+    "pixel_width": number = 0
+    "pixel_height": number = 0

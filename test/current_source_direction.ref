@@ -1,0 +1,4 @@
+V(2) 0
+I(A1) 90m
+I(U1) -90m - is negative because U1 is backwards (from 1 to 0)
+I(A2) -1 - is negative because I1 is backwards (from 10 to 0)

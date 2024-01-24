@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Exception test
+// linter: ngspicejs-lint
+"use strict";
+
+function aaa() {
+    echo('aaa()');
+    throw new Exception("Some error");
+}
+
+function bbb() {
+    echo('bbb()');
+    return aaa();
+}
+
+bbb();

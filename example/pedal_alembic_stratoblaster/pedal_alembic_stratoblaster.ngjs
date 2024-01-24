@@ -1,0 +1,35 @@
+#!/usr/bin/env ngspicejs
+// Pedal alembic stratoblaster, output, ac, pot sweep (thd and gain)
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 13, 0, 9);
+ammeter('A1', 13, 14);
+
+resistor('RD', 14, 10, '22k');
+resistor('RS', 11, 0, '12k');
+resistor('R3', 16, 15, '68k');
+resistor('R4', 17, 0, '100k');
+var p1 = pot('P1', 11, 20, 20, '50k').percent(50);
+capacitor('C1', 10, 17, '1u5');
+capacitor('C2', 20, 0, '10u');
+jfet_n('T1', 10, 15, 11, '2N5457');
+var l1 = pickup_singlecoil('L1', 16, 0).v(0.1).f(196);
+
+tran().run().chart('V(17)');
+
+ac().run().chart('V(17)');
+
+var percent = [], thd = [], gain = [];
+for (var p = 0; p <= 100; p += 5) {
+    percent.push(p);
+    p1.percent(p);
+    thd.push(fft().run('V(17)').thd(196));
+    gain.push(tran().run().data['V(17)'].range() / (2 * l1.attr.v));
+}
+echo('THD by pot P1 percentages:');
+chart_xy().add_series(percent, thd).show();
+echo('Gain by pot P1 percentages:');
+chart_xy().add_series(percent, gain).show();
+
+

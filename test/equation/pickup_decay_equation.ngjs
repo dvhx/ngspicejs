@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Equations in pickup damping
+// linter: ngspicejs-lint
+"use strict";
+
+var p1 = pickup_singlecoil('U1', 1, 0).v(0.1).f(350).damping('69.3');
+
+tran().run().chart('V(1)');
+
+p1.damping('{-log(0.5)/0.005}');
+
+tran().run().chart('V(1)');

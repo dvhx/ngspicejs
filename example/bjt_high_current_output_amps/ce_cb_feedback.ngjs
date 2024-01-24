@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// Common emitter + Common base with feedback
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 6, 0, 9);
+resistor('R1', 6, 5, '20k');
+resistor('R2', 9, 0, '1k');
+resistor('R3', 6, 7, '1k');
+resistor('R4', 2, 0, '1k');
+resistor('R5', 3, 2, '1M');
+resistor('R6', 4, 3, '10k');
+resistor('R7', 11, 0, 66);
+capacitor('C1', 8, 4, '4u7');
+capacitor('C2', 7, 10, '470u');
+capacitor('C3', 3, 0, '10u');
+pickup_singlecoil('U2', 8, 15).f(196).damping(0);
+npn('T1', 5, 4, 9, 'BC547');
+npn('T2', 7, 5, 2, 'BC547');
+ammeter('A1', 15, 0);
+ammeter('A2', 10, 11);
+
+echo('Input and output current:');
+var t = tran().run().chart(['I(A1)', 'I(A2)']);
+var i1 = t.data['I(A1)'].rms();
+var i2 = t.data['I(A2)'].rms();
+echo('Input current', i1.toEng());
+echo('Output current (through 66R load)', i2.toEng());
+echo('Current gain', (i2 / i1).toFixed(1) + 'x');
+
+var f = fft().interval(1.5).fstop('2k').run('V(11)');
+echo('THD: ', (f.thd(196) * 100).toFixed(1) + '%');
+f.chart_db('V(11)');

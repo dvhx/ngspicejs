@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Sziklay pair driving same 66R load
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+resistor('R1', 3, 2, '15k');
+resistor('R2', 3, 4, '10k');
+resistor('R3', 2, 0, '5k1');
+resistor('R4', 5, 0, '680');
+resistor('R5', 5, 6, '2k2');
+capacitor('C1', 1, 2, '4u7');
+capacitor('C2', 6, 10, '470u');
+ammeter('A1', 1, 20);
+pickup_singlecoil('L1', 20, 0).f(196).damping(0);
+ammeter('A2', 10, 11);
+resistor('R6', 11, 0, 66);
+npn('T1', 4, 2, 5, 'BC547');
+pnp('T2', 3, 4, 6, 'BC557');
+
+echo('Input and output current');
+var t = tran().run().chart(['I(A1)', 'I(A2)']);
+var i1 = t.data['I(A1)'].rms();
+var i2 = t.data['I(A2)'].rms();
+echo('Input current', i1.toEng());
+echo('Output current', i2.toEng());
+echo('Current gain', (i2 / i1).toFixed(1) + 'x');
+
+var f = fft().fstop('2k').run('V(11)');
+echo('THD: ', (f.thd(196) * 100).toFixed(3) + '%');
+f.chart_db('V(11)');

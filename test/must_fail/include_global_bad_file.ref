@@ -1,0 +1,11 @@
+error: include_global(filename) file 'non_existent_file.js' does not exists!
+  [include_global_bad_file.ngjs:0:0] in <anonymous>()
+    fx("non_existent_file.js");
+    ^
+
+Stack trace (1 frames):
+  [include_global_bad_file.ngjs:0:0] in <anonymous>()
+    fx("non_existent_file.js");
+    ^
+
+exit(7)

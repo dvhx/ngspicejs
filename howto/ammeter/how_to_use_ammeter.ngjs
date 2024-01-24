@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// How to use ammeter
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(5000);
+resistor('R1', 1, 2, 1000);
+capacitor('C1', 2, 3, '100n');
+ammeter('A1', 3, 0);
+
+// basic tran of ammeter current
+var t = tran().step('10u').interval('1m').run().chart('I(A1)');
+
+// measure ammeter current at time 1ms
+echo('I@1ms', t.value_at('I(A1)', '1m').toEng());
+
+// measure rms current
+echo('Irms', t.data['I(A1)'].rms().toEng());
+
+// show AC of ammeter current
+var a = ac().run().chart('I(A1)');
+
+// use AC to measure current at 5kHz
+echo('Iac@5kHz', a.value_at('I(A1)', '5k').toEng());
+
+// fft of ammeter current
+fft().run('I(A1)').chart();

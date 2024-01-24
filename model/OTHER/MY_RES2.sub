@@ -1,0 +1,8 @@
+* custom resistor
+* REQUIRE OTHER MY_RES1
+* NETS 2
+.subckt MY_RES2 a b
+xR1 a x MY_RES1
+xR2 x Y MY_RES1
+xR3 y b MY_RES1
+.ends

@@ -1,0 +1,17 @@
+error: file not found 'non-existent-file' (in function file_read)
+  [file_read_permission_denied.ngjs:0:0] in foo()
+    echo(file_read(fn).length);
+         ^
+
+Stack trace (3 frames):
+  [file_read_permission_denied.ngjs:0:0] in foo()
+    echo(file_read(fn).length);
+         ^
+  [file_read_permission_denied.ngjs:0:0] in bar()
+    foo();
+    ^
+  [file_read_permission_denied.ngjs:0:0] in <anonymous>()
+    bar();
+    ^
+
+exit(6)

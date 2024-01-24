@@ -1,0 +1,7 @@
+-9m
+* first line is ignored
+V_U1 1 0 DC 9
+R_R1 1 0 1000
+.end
+-9m
+-9m

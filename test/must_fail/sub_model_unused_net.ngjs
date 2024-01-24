@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Sub model warn unused net
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 5);
+
+var s = sub_model('RES_STRING', ['anode', 'cathode'], {});
+s.resistor('R1', 'anode', 1, 100);
+s.resistor('R2', 1, 2, 100);
+s.resistor('R3', 2, 3, 100);
+s.resistor('R4', 3, 'cathode', 100);
+s.resistor('R5', 2, 4, 100); // <-- this net 4 is unused and there should be warning
+s.end();

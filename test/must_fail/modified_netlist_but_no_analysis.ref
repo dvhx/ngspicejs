@@ -1,0 +1,1 @@
+warn: netlist changed (Removed R3, Added R2, Modified U1) but no further analysis was used, this is probably error!

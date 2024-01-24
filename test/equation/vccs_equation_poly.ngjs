@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Equations in vccs poly
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+battery('U2', 2, 0, 7);
+
+vccs('G1', 3, 0).poly([1, 0, 2, 0], ['{1+1}', '{1+2}', '{2*2}', '{2+3}']);
+resistor('R1', 3, 4, 1);
+ammeter('A1', 4, 0);
+
+echo_netlist();
+
+echo(tran().run().avg('I(A1)'), 'should be', -(2 + 3 * 9 + 4 * 7 + 5 * 9 * 9));
+

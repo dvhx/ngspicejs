@@ -1,0 +1,7 @@
+18
+* first line is ignored
+V_U1 1 0 DC 9
+V_U2 2 0 DC 7
+E_E1 3 0 POLY(2) 1 0 2 0 {1+1} {1+2} {2*2} {2+3}
+.end
+462 should be 462

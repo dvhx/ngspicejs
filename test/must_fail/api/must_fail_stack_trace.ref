@@ -1,0 +1,11 @@
+error: ReferenceError: stack_trace is not defined
+  [./must_fail_stack_trace.ngjs:0:0] in ???()
+    stack_trace(1);
+    ^
+
+Stack trace (1 frames, parsed):
+  [must_fail_stack_trace.ngjs:7:1] in <anonymous>()
+    stack_trace(1);
+    ^
+hint: Similar identifiers: 
+exit(12)

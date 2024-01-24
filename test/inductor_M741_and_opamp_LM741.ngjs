@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// It seems that having inductor named LM741 and opamp LM741 is not causing an issue
+// linter: ngspicejs-lint
+"use strict";
+
+opamp('Q1', 2, 3, 1, 0, 3, 'LM741');
+
+var l1 = inductor('L1', 10, 1, '100m');
+l1.expected_prefix.push('M');
+l1.name('M741');
+
+echo_netlist();
+
+tran().run().chart('V(1)');

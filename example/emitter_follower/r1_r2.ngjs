@@ -1,0 +1,47 @@
+#!/usr/bin/env ngspicejs
+// Changing R1 and R2 and measure gain, current and thd
+// linter: ngspicejs-lint
+"use strict";
+
+// emitter follower
+var ef = include('emitter_follower.ngjs');
+
+var x = [], y = [], gain = [], thd = [], current = [];
+series_e3('1k', '10M').forEach((a) => {
+    series_e3('1k', '10M').forEach((b) => {
+        echo('R1', a, 'R2', b);
+        ef.r1.r(a);
+        ef.r2.r(b);
+        x.push(a);
+        y.push(b);
+        var t = tran().run();
+        gain.push(t.gain('V(2)', 'V(6)'));
+        current.push(-t.avg('I(U2)'));
+        thd.push(fft().run('V(6)').thd(ef.u1.attr.f));
+    });
+});
+chart_scatter(x, y, gain)
+    .title('Emitter follower gain by base resistors')
+    .label_x('R1')
+    .label_y('R2')
+    .log_x(true)
+    .log_y(true)
+    .show()
+    .gif('r1_r2_gain.gif');
+chart_scatter(x, y, current)
+    .title('Emitter follower supply current by base resistors')
+    .label_x('R1')
+    .label_y('R2')
+    .log_x(true)
+    .log_y(true)
+    .show()
+    .gif('r1_r2_current.gif');
+chart_scatter(x, y, thd)
+    .title('Emitter follower THD by base resistors')
+    .label_x('R1')
+    .label_y('R2')
+    .log_x(true)
+    .log_y(true)
+    .show()
+    .gif('r1_r2_thd.gif');
+

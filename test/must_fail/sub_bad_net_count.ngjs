@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Sub bad net count
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model("MY_TEST", [1, 2], {});
+s.resistor('R1', 1, 2, 100);
+s.capacitor('C1', 1, 2, '10n');
+s.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MY_TEST', [1, 2, 3]);
+
+tran().run().chart('v(1)');

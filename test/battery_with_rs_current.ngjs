@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// battery with rs and measure current
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9).rs(1);
+resistor('R1', 1, 0, 1);
+echo(tran().run().avg('I(U1)').toEng());
+

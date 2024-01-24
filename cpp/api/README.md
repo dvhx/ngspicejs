@@ -1,0 +1,1 @@
+C++ implementation of all native functions accesible from JS runtime

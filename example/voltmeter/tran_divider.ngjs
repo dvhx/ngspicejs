@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Using voltmeter in transient analysis
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 1000);
+resistor('R2', 2, 3, 100);
+resistor('R3', 3, 0, 1000);
+voltmeter('V1', 2, 3);
+
+var t1 = tran().run().chart('V(V1)');
+echo('Voltmeter V1 measured ' + t1.value_at('V(V1)', '19m').toEng() + 'V at 19ms');
+
+

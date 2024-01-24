@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Equations in vccs
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+vccs('G1', 2, 0, 1, 0, '{2*5}');
+resistor('R1', 2, 3, 1);
+ammeter('A1', 3, 0);
+echo(tran().run().avg('I(A1)'));
+

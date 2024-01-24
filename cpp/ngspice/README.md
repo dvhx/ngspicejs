@@ -1,0 +1,1 @@
+simple_ngspice is library of wrapper functions to simplify using ngspice

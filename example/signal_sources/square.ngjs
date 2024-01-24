@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Square wave supply
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(100).offset(1).duty(50);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)', {min_y: 0});
+
+

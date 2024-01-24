@@ -1,0 +1,32 @@
+error: resistor R1 uses "res" in equation "{res * percent / 100}" but parent sub_model POT2B does not have this param only: percent, r
+  [sub_equation_with_undeclared_identifier.ngjs:0:0] in <anonymous>()
+    p.end();
+      ^
+
+Stack trace (8 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [equation/equation.js:0:0, core.js:0:0] in eval()
+    throw new Exception(aDevice.type + ' ' + (aDevice.attr.name || 'device') + ' uses "' + id + '" in equation "' + this + '" but parent sub_model ' + aDevice.sub_model.attr.name + ' does not have this param only: ' + Object.keys(aDevice.sub_model.attr.params).sort().join(', '));
+          ^
+  [equation/equation.js:0:0, core.js:0:0] in Equation.check_params()
+    this.equation.identifiers.forEach((id) => {
+                              ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    eq.check_params(aDevice);
+       ^
+  [device/resistor.js:0:0, core.js:0:0] in Resistor.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [model/sub_model.js:0:0, core.js:0:0] in eval()
+    this.sub_devices.forEach((a) => a.validate());
+                                      ^
+  [model/sub_model.js:0:0, core.js:0:0] in SubModel.end()
+    this.sub_devices.forEach((a) => a.validate());
+                     ^
+  [sub_equation_with_undeclared_identifier.ngjs:0:0] in <anonymous>()
+    p.end();
+      ^
+
+exit(12)

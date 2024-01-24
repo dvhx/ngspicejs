@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test ignore function
+// linter: ngspicejs-lint
+"use strict";
+
+ignore();
+ignore(1);
+ignore(1, true, 3.14, [], {}, ignore);

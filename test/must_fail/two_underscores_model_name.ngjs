@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Two underscores are not allowed
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('MY__R', [1, 2]);
+s.resistor('R1', 1, 2, 100);
+s.end();
+
+battery('U1', 'vcc', 0, 9);
+resistor('R1', 'vcc', 0, 100);
+voltmeter('V1', 'vcc', 0);
+sub('X1', 'MY__R', [9, 0]);
+
+tran().run().chart('V(vcc)');

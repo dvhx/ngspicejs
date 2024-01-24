@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// deprecated function
+// linter: ngspicejs-lint
+"use strict";
+
+// jshint -W117
+stack_trace(1);
+

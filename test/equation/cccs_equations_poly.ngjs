@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Equations in cccs poly
+// linter: ngspicejs-lint
+"use strict";
+
+// 9V battery + 1k resistor = 9mA current
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+// 9V battery + 3k resistor = 3mA current
+battery('U2', 2, 0, 9);
+resistor('R2', 2, 0, 3000);
+// CCCS with poly
+var f2 = cccs('F3', 3, 0).poly(['U1', 'U2'], [3, 4, 5, 6]);
+resistor('R3', 3, 4, 123);
+battery('U3', 4, 0, 0);
+
+var t = tran().run();
+var i1 = t.avg('I(U1)');
+var i2 = t.avg('I(U2)');
+var i3 = t.avg('I(U3)');
+echo('i1', i1.toEng(3));
+echo('i2', i2.toEng(3));
+echo('i3', i3.toEng(3), 'should be', -(3 + 4 * i1 + 5 * i2 + 6 * i1 * i2).toEng(3), '(-2.949)');
+echo_netlist();
+f2.poly(['U1', 'U2'], ['{2*1.5}', '{2+2}', '{2+3}', '{3+3}']);
+t = tran().run();
+i3 = t.avg('I(U3)');
+echo('i3eq', i3.toEng(3), 'should be', -(3 + 4 * i1 + 5 * i2 + 6 * i1 * i2).toEng(3), '(-2.949)');
+echo_netlist();
+//available_vectors().echo();
+//available_vectors(true).echo();

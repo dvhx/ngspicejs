@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Equations in battery
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, '{2*5}');
+resistor('R1', 1, 0, 1);
+battery('U2', 2, 0, '{2*5}').rs('{0.5+0.5}');
+resistor('R2', 2, 0, 1);
+echo(tran().run().avg('I(U1)').toEng());
+echo(tran().run().avg('I(U2)').toEng());
+echo_netlist();
+

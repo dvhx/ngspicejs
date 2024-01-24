@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// How to use pnp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 0, 2, '10k');
+var t1 = pnp("T1", 1, 2, 0, "BC557"); //!
+echo(t1.attr.model, 'Ic', tran().run().avg('I(U1)').toEng());
+
+t1.model('2N3906'); //!
+echo(t1.attr.model, 'Ic', tran().run().avg('I(U1)').toEng());
+
+

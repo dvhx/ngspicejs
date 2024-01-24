@@ -1,0 +1,18 @@
+* first line is ignored
+.subckt AAA 1 2 PARAMS: 
+.model DDD D(rs=1)
+D_D1 1 2 DDD
+.ends
+.subckt BBB 1 2 PARAMS: 
+.model DDD D(rs=10)
+D_D1 1 2 DDD
+.ends
+V_U1 1 0 DC 9
+V_AMMETER__A1 1 2 DC 0
+x_X1 2 0 AAA 
+V_U2 5 0 DC 9
+V_AMMETER__A2 5 6 DC 0
+x_X2 6 0 BBB 
+.end
+I1= 8.112
+I2= 0.817

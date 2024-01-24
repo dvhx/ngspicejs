@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Test if multiple spice() are ok after netlist_clear()
+// linter: ngspicejs-lint
+"use strict";
+
+spice('VU1 1 0 9');
+spice('RR1 1 2 1000');
+resistor('R2', 2, 0, 1000);
+
+echo(tran().run().avg('V(2)').toEng());
+
+netlist_clear();
+
+spice('VU1 1 0 9');
+spice('RR1 1 2 1000');
+resistor('R2', 2, 0, 1000);
+
+echo(tran().run().avg('V(2)').toEng());

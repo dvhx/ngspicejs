@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// asdf dir does not exists
+// linter: ngspicejs-lint
+"use strict";
+
+dir("asdf");

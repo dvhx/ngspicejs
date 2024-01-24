@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Equations in voltmeter resistance
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+capacitor('C1', 1, 2, '100n');
+voltmeter('V1', 2, 0).r('{0+1G}');
+echo(tran().run().avg('V(2)').toFixed(6));

@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Test if numbers on axis are distinct
+// linter: ngspicejs-lint
+"use strict";
+
+var x = [], y = [], i;
+for (i = 1199; i < 1201; i+= 0.01) {
+    x.push(i);
+    y.push(i);
+}
+chart_xy().add_series(x, y).show();
+chart_xy().add_series(x, y).min_x(array_min(x)).max_x(array_max(x)).show();
+echo('grid values must be distinct');

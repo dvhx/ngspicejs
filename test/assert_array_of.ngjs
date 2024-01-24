@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// assert array of numbers and complex
+// linter: ngspicejs-lint
+"use strict";
+
+var a = [1,2,'3k'];
+var b = [[1,2], ['3k','4k']];
+Internal.assert_array_of_numbers(a, 'a', '<anonymous>', true);
+Internal.assert_array_of_complex(b, 'b', '<anonymous>', true);
+echo_json(a);
+echo_json(b);

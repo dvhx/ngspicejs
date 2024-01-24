@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Equations in mosfet_n
+// linter: ngspicejs-lint
+"use strict";
+
+// mosfet 20x amplifier
+battery('U1', 1, 0, 9);
+resistor('R1', 3, 1, '10M');
+resistor('R2', 3, 0, '10M');
+resistor('R3', 1, 2, '10k');
+resistor('R4', 4, 0, '10k');
+capacitor('C4', 4, 0, '2u2');
+var t1 = mosfet_n('T1', 2, 3, 4, 'IRLZ44N');
+sinewave('U2', 5, 0).v(0.1).f(196);
+capacitor('C1', 5, 3, '100n');
+capacitor('C2', 2, 6, '100n');
+resistor('R5', 6, 0, '50k');
+
+tran().run().chart('V(6)');
+echo(tran().run().gain(5, 6).toFixed(3));
+
+t1.temp('{2*75}');
+
+echo(tran().run().gain(5, 6).toFixed(3));
+
+echo_netlist();

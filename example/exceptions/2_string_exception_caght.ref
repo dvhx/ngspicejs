@@ -1,0 +1,3 @@
+Calling: throw "string" in try catch block, no stack trace, program continues:
+Caught: This is normal string exception
+Program continues, no stack trace is print

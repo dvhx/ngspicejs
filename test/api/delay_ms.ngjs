@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test delay_ms
+// linter: ngspicejs-lint
+"use strict";
+
+var t1 = Date.now();
+delay_ms(1000);
+var t2 = Date.now();
+if ((t2 - t1 >= 1000) && (t2 - t1 < 1100)) {
+    echo('OK');
+} else {
+    echo('error', t2 - t1);
+}
+
+
+

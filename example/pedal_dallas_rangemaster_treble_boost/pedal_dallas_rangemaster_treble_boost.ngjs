@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// Pedal dallas rangemaster treble boost
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 5, '68k');
+resistor('R2', 5, 0, '470k');
+resistor('R3', 1, 2, '3k9');
+resistor('R5', 9, 0, '50k');
+pickup_singlecoil('U2', 8, 0);
+capacitor('C1', 8, 5, '5n');
+capacitor('C2', 7, 9, '10n');
+capacitor('C3', 1, 2, '47u');
+capacitor('C4', 1, 0, '47u');
+pnp('T1', 3, 5, 2, 'OC44');
+var p1 = pot('P1', 3, 7, 0, '10k').percent(10);
+
+tran().run().chart('V(9)');
+
+// sweep pot from 0 to 100% and plot max gain
+var x = [], y = [], a, p;
+for (p = 0; p <= 100; p += 10) {
+    p1.percent(p);
+    a = ac().fstop('20k').run();
+    if (p === 50) {
+        echo('AC when pot is at 50%:');
+        a.chart('V(9)', {width: 640, height: 240});
+    }
+    x.push(p);
+    y.push(a.data['V(9)'].modulus().max());
+}
+
+
+echo('Pot position and max gain:');
+chart_xy().add_series(x, y).show();
+

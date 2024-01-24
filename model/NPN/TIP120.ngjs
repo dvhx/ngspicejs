@@ -1,0 +1,51 @@
+#!/usr/bin/env ngspicejs
+// TIP120 npn darlington
+// linter: ngspicejs-lint
+"use strict";
+var m = sub_model('TIP120', ['c', 'b', 'e'], {});
+m.bjt_model({
+    "name": "QMOD1",
+    "kind": "NPN",
+    "bf": 120,
+    "br": 4,
+    "cje": 6.777243e-10,
+    "cjc": 9.724855e-11,
+    "ikr": 4.798654,
+    "ikf": 3.201685,
+    "is": 6.113542e-12,
+    "ise": 3.766456e-10,
+    "mje": 0.457453,
+    "mjc": 0.244541,
+    "rc": 0.1329217,
+    "rb": 1.3279831,
+    "re": 0.3391321,
+    "tf": 8.538432e-8,
+    "tr": 0.000003611780,
+    "ne": 2,
+    "nf": 1,
+    "nr": 1,
+    "vaf": 145,
+    "var": 21,
+    "vje": 0.734984,
+    "vjc": 1.118542,
+    "xtb": 1.545321
+});
+m.npn('T1', 'c', 'b', 'mid', 'QMOD1').area(0.1);
+m.npn('T2', 'c', 'mid', 'e', 'QMOD1');
+m.resistor('RBM', 'b', 'mid', '10k');
+m.resistor('RME', 'mid', 'e', 151.216);
+m.diode_model({
+    "name": "DSUB",
+    "rs": 0.3333,
+    "n": 1,
+    "is": 6.13542e-12,
+    "cjo": 9.55645e-11,
+    "ibv": 0.00112,
+    "bv": 60,
+    "tt": 0.00000371242
+});
+m.diode('D1', 'e', 'c', 'DSUB');
+m.end();
+//echo(netlist_render2(m.netlist_devices, [], false, true));
+
+globalThis.exports = {model: m};

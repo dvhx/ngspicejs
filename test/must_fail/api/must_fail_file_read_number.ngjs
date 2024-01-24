@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// file read wants string
+// linter: ngspicejs-lint
+"use strict";
+
+file_read(1);

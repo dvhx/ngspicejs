@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// How to print all available models
+// linter: ngspicejs-lint
+"use strict";
+
+var a = all_models(); //!
+echo(a.join('\n'));
+
+all_models().echo(', ');

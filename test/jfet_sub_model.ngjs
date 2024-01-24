@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// jfet using submodel 2N4416
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 9);
+resistor('R1', 1, 0, '10M');
+resistor('R2', 4, 3, '10k');
+resistor('R3', 2, 0, '1k');
+jfet_n('T1', 3, 1, 2, 'J201_LONG_LEADS');
+capacitor('C1', 3, 6, '100n');
+resistor('R4', 6, 0, '50k');
+resistor('RX', 3, 0, '1G');
+pickup_singlecoil('L1', 1, 0).v(0.1).f(196);
+var t = tran().run();
+echo('GAIN', t.gain(1, 6).toFixed(2));

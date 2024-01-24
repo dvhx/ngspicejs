@@ -1,0 +1,42 @@
+#!/usr/bin/env ngspicejs
+// Pedal AMZ mosfet booster
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+
+resistor('R1', 1, 7, '2k7');
+resistor('R2', 2, 4, '10M');
+resistor('R3', 6, 0, '2k7');
+resistor('R4', 2, 1, '62k');
+resistor('R5', 0, 2, '100k');
+resistor('R6', 8, 0, '50k');
+
+capacitor('C1', 5, 4, '1n');
+capacitor('C2', 4, 0, '47p');
+capacitor('C3', 7, 8, '100n');
+capacitor('C4', 6, 9, '100u');
+capacitor('C5', 2, 0, '10u');
+
+mosfet_n('T1', 7, 4, 6, 'BS170');
+
+pickup_singlecoil('U2', 5, 0).v('100m').f(196);
+
+var p1 = pot('P1', 9, 0, 0, '5k').percent(0);
+
+tran().run().chart('V(8)');
+var i, x = [], y = [], g, yy = [], f;
+for (i = 0; i <= 100; i += 5) {
+    p1.percent(i);
+    f = fft().run('V(8)').thd(196);
+    g = tran().run().gain(5, 8);
+    x.push(i);
+    y.push(f);
+    yy.push(g);
+}
+echo('X=pot percent, y=THD:');
+chart_xy().add_series(x, y).show();
+echo('X=pot percent, y=GAIN:');
+chart_xy().add_series(x, yy).show();
+
+

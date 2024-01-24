@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// White noise generator using unconnected collector on NPN transistor
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = battery('U1', 6, 0, 9);
+resistor('R2', 6, 3, '4k7');
+resistor('R3', 2, 3, '2M2');
+resistor('R4', 6, 7, '1M');
+resistor('R1', 5, 0, '50k');
+capacitor('C1', 2, 3, '10p');
+capacitor('C2', 7, 2, '100n');
+capacitor('C3', 3, 5, '10n');
+npn('T1', 3, 2, 4, 'BC547');
+npn('T2', 9, 4, 7, 'BC547');
+
+var t = tran().step('1u').start('19.8m').run().chart('V(5)', {min_x: '19.8m'});
+
+echo('Noise amplitude:', t.data['V(5)'].range().toEng() + 'V');
+
+// change battery voltage to 5V (in real circuit noise drops to zero so the simulation is not realistic)
+u1.v(5);
+t = tran().step('1u').start('19.8m').run().chart('V(5)');
+echo('Noise amplitude:', t.data['V(5)'].range().toEng() + 'V');
+
+

@@ -1,0 +1,23 @@
+error: Unsupported engineering format '12x', allowed suffixes are: m,u,n,p,f,a,k,M,G,T
+  [stack_deeper.ngjs:0:0] in foo()
+    return '12x'.fromEng();
+                 ^
+
+Stack trace (5 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [string_from_eng.js:0:0, core.js:0:0] in String.fromEng()
+    throw new Exception(aCustomErrorMessage || "Unsupported engineering format '" + s + "'" + allowed);
+          ^
+  [stack_deeper.ngjs:0:0] in foo()
+    return '12x'.fromEng();
+                 ^
+  [stack_deeper.ngjs:0:0] in bar()
+    foo();
+    ^
+  [stack_deeper.ngjs:0:0] in <anonymous>()
+    bar();
+    ^
+
+exit(12)

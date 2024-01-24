@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// 3.7V undervoltage protection using PNP transistor and TL431 voltage reference
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 4, 0).shape([[0, 5], [10, 0]]);
+ammeter('A1', 4, 3);
+resistor('R1', 3, 1, 510);
+resistor('R2', 1, 0, 1000);
+sub('Q1', 'TL431', [1, 0, 5]);
+resistor('R3', 3, 5, 10000);
+resistor('R4', 6, 0, 100);
+pnp('T1', 6, 5, 3, 'BC557');
+
+var t1 = tran().interval(10).step(0.1).run();
+
+echo('Battery voltage:');
+t1.chart('V(4)');
+echo('Output voltage:');
+t1.chart('V(6)');
+echo('Current:');
+t1.chart('I(A1)');
+echo('Current at 1ms: ', t1.value_at('I(A1)', '1m'.fromEng()).toEng() + 'A');
+echo('Current at 5s: ', t1.value_at('I(A1)', 5).toEng() + 'A');
+echo('Current at 9s: ', t1.value_at('I(A1)', 9).toEng() + 'A'); //t1.data['I(A1)'].at(-1));
+
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Hint and hint buffer
+// linter: ngspicejs-lint
+"use strict";
+
+hint('one');
+hint('two');
+echo(Internal.hint_buffer());

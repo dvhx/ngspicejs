@@ -1,0 +1,46 @@
+undefined
+undefined
+null
+: number = NaN
+: number = Infinity
+: number = 0
+: number = 123
+: number = 3.141592653589793
+: string[11] = hello world
+: boolean = true
+Array (4 items): (Object #11.1)
+    [0]: number = 10
+    [1]: number = 20
+    "[2]": undefined
+    [3]: number = 30
+Object (3 keys): (Object #12.1)
+    "a": number = 10
+    "b": number = 20
+    "c": number = 30
+Object (4 keys): (Object #13.1)
+    "a": number = 10
+    "b": number = 20
+    "c": number = 30
+    "d": Seen object #13.0
+Array (4 items): (Object #14.1)
+    [0]: number = 10
+    [1]: number = 20
+    [2]: number = 30
+    [3]: Seen object #14.0
+: function = function echo() { [native code] }
+: function = function array_max(a) {
+    // Return maximal value in array
+    assert_arguments_length(arguments, 1, 1, 'array_max(array)');
+    assert_array(a, 'a', 'array_max(a)');
+    if (Array.isArray(a[0]) && a[0].length === 2) {
+        a = a.modulus();
+    }
+    var i, l = a.length, m = -Number.MAX_VALUE;
+    for (i = 0; i < l; i++) {
+        if (a[i] > m) {
+            m = a[i];
+        }
+    }
+    return m;
+    // return Math.max(...a); not enough stack
+}

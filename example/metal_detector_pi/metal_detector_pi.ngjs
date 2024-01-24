@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Pulse-induction metal detector, after decay the output V(19) is in the middle of 3.3V range
+// linter: ngspicejs-lint
+"use strict";
+
+// coil switching stage
+battery('U1', 12, 0, 5).rs(10);
+ammeter('A1', 12, 1);
+resistor('R1', 2, 3, '20k');
+resistor('R2', 6, 5, '47');
+resistor('R3', 1, 6, '1k');
+resistor('R4', 9, 8, '10k');
+diode('D1', 2, 4, '1N5819');
+diode('D2', 3, 1, '1N5819');
+diode('D3', 0, 3, '1N5819');
+inductor('L1', 1, 2, '614u').rs(4);
+capacitor('C1', 1, 2, '33n').rs(0.3);
+npn('T1', 6, 8, 0, 'BC547');
+mosfet_n('T2', 4, 5, 0, 'IRLZ44N');
+// control voltage
+pwl('U2', 9, 0).shape([[0, 0], [0.0002, 0], [0.00021, 3.3], [0.0025, 3.3], [0.00251, 0]]);
+var t = tran().interval('2.7m').step('1u').run();
+echo('Control voltage');
+t.chart('V(9)');
+echo('Ringing');
+t.chart('V(3)');
+
+// opamp amplifier
+capacitor('C2', 3, 17, '1n');
+capacitor('C3', 17, 0, '5p');
+resistor('R8', 17, 16, '10k');
+resistor('R7', 16, 15, '20k');
+pot('P1', 0, 19, 15, '50k').percent(37); // set for output to be 3.3V/2 = 1.64V after decay
+battery('U3', 14, 0, 9);
+resistor('R9', 14, 18, '20k');
+resistor('R10', 18, 0, '20k');
+opamp('Q1', 18, 16, 14, 0, 15, 'TL071');
+t = tran().interval('2.7m').step('1u').run();
+t.chart('V(19)');
+
+

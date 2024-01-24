@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Switching between 2 different resistors using 1P2T switch changes the current
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+var s1 = switch_1p2t('S1', 3, 1, 2).state(1);
+resistor('R1', 1, 4, 100);
+resistor('R2', 2, 4, 10);
+ammeter('A1', 4, 0);
+
+var t1 = tran().run();
+echo('Current when switch is in state 1 is', t1.value_at('I(A1)', '10m').toEng());
+
+s1.state(2);
+t1 = tran().run();
+echo('Current when switch is in state 2 is', t1.value_at('I(A1)', '10m').toEng());
+
+

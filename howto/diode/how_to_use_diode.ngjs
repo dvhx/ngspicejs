@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to use diode
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+diode('D1', 1, 2, '1N4148'); //!
+resistor('R1', 2, 0, 100);
+
+tran().run().chart('V(2)');

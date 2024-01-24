@@ -1,0 +1,46 @@
+#!/usr/bin/env ngspicejs
+// Pedal metal simplex, sweep pot 1 and pot 2 and show THD in 2D colored chart
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+
+resistor('R1', 8, 7, '10k');
+resistor('R2', 5, 4, '10k');
+resistor('R3', 3, 2, '100k');
+resistor('R4', 5, 2, '10k');
+
+capacitor('C1', 9, 8, '100n');
+capacitor('C2', 9, 0, '680p');
+capacitor('C3', 4, 3, '1u');
+capacitor('C4', 2, 11, '10u');
+capacitor('C5', 10, 0, '10n');
+
+var p1 = pot('P1', 4, 8, 8, '100k').percent(0);
+var p2 = pot('P2', 11, 12, 10, '50k').percent(0);
+pot('P3', 12, 13, 0, '100k').percent(100);
+
+npn('T1', 4, 7, 0, '2N3904');
+npn('T2', 2, 3, 0, '2N3904');
+diode('D1', 2, 3, 'LED_RED');
+
+pickup_singlecoil('L1', 9, 0).v('100m').f(196);
+
+tran().run().chart('V(13)');
+
+var x = [], y = [], z = [], a, b, csv = [['P1', 'P2', 'THD']];
+for (a = 0; a <= 100; a += 10) {
+    for (b = 0; b <= 100; b += 10) {
+        p1.percent(a);
+        p2.percent(b);
+        var thd = fft().run('V(13)').thd(196);
+        echo('P1', a, 'P2', b, 'THD', thd);
+        csv.push([a, b, thd]);
+        x.push(a);
+        y.push(b);
+        z.push(thd);
+    }
+}
+file_write_csv('p1_p2_thd.csv', csv);
+chart_scatter(x, y, z).show();
+

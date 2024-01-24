@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// adding parallel resistance to capacitor should make it decay faster
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v(1).pulse_width('10m');
+resistor('R1', 1, 2, 100);
+var c1 = capacitor('C1', 2, 0, '10u');
+tran().run().chart('V(2)', {width: 640, height: 240});
+c1.rp(100);
+echo_netlist();
+tran().run().chart('V(2)', {width: 640, height: 240});

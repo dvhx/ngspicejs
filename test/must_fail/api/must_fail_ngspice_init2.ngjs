@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// ngspice init is already called in core, don't call it twice
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_init();

@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Guitar pedal "Electra distortion" with original 1N4148+1N34A vs 1N4148+1N4148
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 10, 0, 9);
+ammeter('A1', 11, 10);
+resistor('R1', 11, 3, '47k');
+resistor('R2', 2, 3, '2M');
+resistor('R3', 5, 0, 680);
+npn('T1', 3, 2, 5, '2N3904');
+pickup_singlecoil('L1', 9, 0).f(196);
+capacitor('C1', 9, 2, '100n');
+capacitor('C2', 3, 6, '100n');
+diode('D1', 0, 6, '1N4148');
+var d2 = diode('D2', 6, 0, '1N34A');
+pot('P1', 6, 7, 0, '100k');
+
+tran().run().chart('V(7)');
+
+var f = fft().fstop('2k').run('V(7)').chart_db('V(7)');
+echo('Diodes 1N4148+1N34A  - THD=' + (f.thd(196) * 100).toFixed(2) + '%');
+
+d2.model('1N4148');
+f = fft().fstop('2k').run('V(7)');
+echo('Diodes 1N4148+1N4148 - THD=' + (f.thd(196) * 100).toFixed(2) + '%');
+
+

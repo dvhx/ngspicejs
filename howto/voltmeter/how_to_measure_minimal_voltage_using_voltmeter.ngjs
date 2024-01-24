@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to measure minimal voltage using voltmeter
+// How to use voltmeter in ngspicejs
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(0.5).offset(9).f(50);
+voltmeter('V1', 1, 0); //!
+var t1 = tran().run().chart('V(V1)');
+echo('Voltmeter V1 minimal voltage is', t1.data['V(V1)'].min()); //!
+
+

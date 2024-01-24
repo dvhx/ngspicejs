@@ -1,0 +1,5 @@
+true .
+true file_exists.ngjs
+false file_exists.ngjs123
+false foo/bar
+true ../../js

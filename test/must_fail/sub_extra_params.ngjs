@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Sub call with extra param zebra
+// linter: ngspicejs-lint
+"use strict";
+
+var p = sub_model('POT2B', ['start', 'wiper', 'end'], {r: '1k', percent: 50});
+p.resistor('R1', 'start', 'wiper').r('{r * percent / 100}');
+p.resistor('R2', 'wiper', 'end').r('{r * (100 - percent) / 100}');
+p.end();
+
+battery('U1', 1, 0, 9);
+sub('x1', 'POT2B', [0, 2, 1], {r: 200, percent: 5, zebra: 123});
+var t1 = tran().run().chart('V(2)');
+echo('current', t1.avg('I(U1)').toEng(), 'should be 9/200=', (9/200).toEng());

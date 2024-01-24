@@ -1,0 +1,8 @@
+a
+caught 52
+error: This should be visible
+  [./exception_caught.ngjs:0:0] in ???()
+    throw "This should be visible";
+    ^
+
+exit(12)

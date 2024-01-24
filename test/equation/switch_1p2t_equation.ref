@@ -1,0 +1,11 @@
+* first line is ignored
+V_U1 1 0 DC 9
+.subckt sub_switch_1p2t_S1 in1 out1 out2
+ R1 in1 out1 R = pwl(time, 0,{10},1,{10})
+ R2 in1 out2 R = pwl(time, 0,{100G},1,{100G})
+.ends sub_switch_1p2t_S1
+x_S1 1 2 3 sub_switch_1p2t_S1
+R_R2 2 0 10
+R_R3 3 0 10
+.end
+von 4.5 voff 900p

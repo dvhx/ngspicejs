@@ -1,0 +1,32 @@
+error: Use only lowercase for net names, variable "nets" value "IN" contains uppercase letters in function sub_model.nets(nets)
+  [upper_case_net_in_sub_model.ngjs:0:0] in <anonymous>()
+    var s = sub_model('MY_DIVIDER', ['IN', 'OUT', 'GND'], {});
+            ^
+
+Stack trace (8 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_net_case.js:0:0, core.js:0:0] in assert_net_case()
+    throw new Exception('Use only lowercase for net names, variable "' + aVariableName + '" value "' + aValue + '" contains uppercase letters in function ' + aFunctionName);
+          ^
+  [assert/assert_net.js:0:0, core.js:0:0] in assert_net()
+    assert_net_case(aValue, aVariableName, aFunctionName);
+    ^
+  [assert/assert_array_of_nets.js:0:0, core.js:0:0] in assert_array_of_nets()
+    assert_net(aValue[i], aVariableName, aFunctionName);
+    ^
+  [model/sub_model.js:0:0, core.js:0:0] in SubModel.nets()
+    assert_array_of_nets(aNets, 'nets', 'sub_model.nets(nets)');
+    ^
+  [model/sub_model.js:0:0, core.js:0:0] in SubModel()
+    this.nets(aNets);
+         ^
+  [model/sub_model.js:0:0, core.js:0:0] in sub_model()
+    return new SubModel(aName, aNets, aParams);
+           ^
+  [upper_case_net_in_sub_model.ngjs:0:0] in <anonymous>()
+    var s = sub_model('MY_DIVIDER', ['IN', 'OUT', 'GND'], {});
+            ^
+
+exit(12)

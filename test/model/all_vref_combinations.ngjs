@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for vref
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 0], [0.020, 5]]);
+resistor('R1', 1, 2, 330);
+var r = vref('Q1', 2, 0, 2, 'TL431');
+
+['TL431', 'TL431_2'].forEach((m) => {
+    r.model(m);
+    echo(r.attr.model, array_max(tran().run().data['V(2)']).toEng());
+});

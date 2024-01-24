@@ -1,0 +1,15 @@
+error: read(optional_prompt) require at most 1 arguments but 2 was given
+  [must_fail_read2.ngjs:0:0] in <anonymous>()
+    read('a', 'b');
+    ^
+
+hint: function 'read(optional_prompt)' was called with 2 arguments
+hint: argument #0 was a (string)
+hint: argument #1 was b (string)
+
+Stack trace (1 frames):
+  [must_fail_read2.ngjs:0:0] in <anonymous>()
+    read('a', 'b');
+    ^
+
+exit(7)

@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// File write needs 2 arguments
+// linter: ngspicejs-lint
+"use strict";
+
+file_write('/1.json', 'asdf', 'asdf');

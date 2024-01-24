@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// ngspice_command wants single arg
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_command('help', 'asdf');

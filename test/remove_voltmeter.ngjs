@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Remove voltmeter
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 0, 10);
+var v1 = voltmeter('V1', 1, 0);
+voltmeter('V2', 1, 0);
+v1.remove();
+var t = tran().run().chart('V(V2)');
+echo(Object.keys(t.data).sort());

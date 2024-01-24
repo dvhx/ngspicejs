@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Measure PNP's hFE
+// https://i0.wp.com/www.biophysicslab.com/wp-content/uploads/2021/04/Simple_Breadboard_hFEa.jpg
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 9);
+var t1 = pnp('T1', 3, 4, 2, '2N3906');
+var r1 = resistor('R1', 4, 6, '1M');
+var r2 = resistor('R2', 3, 5, '1k');
+ammeter('A1', 6, 0);
+ammeter('A2', 5, 0);
+
+var x1 = [], x2 = [], x3 = [], h, maxh = 0, best_r1 = 0, best_r2 = 0;
+series_e3(1, '10M').forEach((a) =>{
+    series_e3(1, '10M').forEach((b) =>{
+        r1.r(a);
+        r2.r(b);
+        var t = tran().run();
+        x1.push(a);
+        x2.push(b);
+        h = t.avg('I(A2)') / t.avg('I(A1)');
+        x3.push(t.avg('I(A2)') / t.avg('I(A1)'));
+        if (h > maxh) {
+            maxh = h;
+            best_r1 = a;
+            best_r2 = b;
+        }
+    });
+});
+
+var csv = [['R1', 'R2', 'hFE']];
+csv_insert(csv, 0, 1, x1);
+csv_insert(csv, 1, 1, x2);
+csv_insert(csv, 2, 1, x3);
+file_write_csv('pnp_measure_hfe.csv', csv);
+chart_scatter(x1, x2, x3).log_x(true).log_y(true).label_x('R1').label_y('R2').title('hFE vs. R1 and R2').show();
+
+var model_hfe = t1.get_model().attr.bf;
+echo('best r1', best_r1, 'r2', best_r2, 'maxh', maxh, 'model hfe', model_hfe, 'error', (100 * (maxh - model_hfe) / model_hfe).toFixed(1) + '%');
+

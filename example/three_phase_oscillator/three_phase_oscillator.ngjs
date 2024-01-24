@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// Three phase astable multivibrator
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('OSCILLATOR_BLOCK', ['vcc', 'gnd', 'in', 'next', 'out'], {});
+s.resistor('R1', 'vcc', 'c', '2k2');
+s.resistor('R2', 'c', 'next', '10k');
+s.resistor('R3', 'out', 'gnd', '50k');
+s.capacitor('C1', 'c', 'out', '100n');
+s.capacitor('C2', 'in', 'gnd', '2u2');
+s.npn('T1', 'c', 'in', 'gnd', 'BC547');
+s.end();
+
+battery('U1', 1, 0, 9);
+sub('BLOCK1', 'OSCILLATOR_BLOCK', [1, 0, 'a', 'b', 'o1']);
+sub('BLOCK2', 'OSCILLATOR_BLOCK', [1, 0, 'b', 'c', 'o2']);
+sub('BLOCK3', 'OSCILLATOR_BLOCK', [1, 0, 'c', 'a', 'o3']);
+
+// you can show multiple charts at once
+tran().start('5m').interval('10m').run().chart(['V(o1)', 'V(o2)', 'V(o3)']);
+

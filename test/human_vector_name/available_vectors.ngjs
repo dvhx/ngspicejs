@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - voltmeter and source current
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 'a', 100);
+resistor('R2', 'a', 'vcc', 100);
+resistor('R3', 'vcc', 0, 100);
+inductor('L1', 1, 0, '10m').rs(10);
+// V(V1) should be in available vectors
+voltmeter('V1', 'a', 'vcc');
+// I(U2) should be in available vectors
+beeps('U2', 3, 0).v(5).f(100);
+var a = available_vectors();
+echo(a.join('\n'));
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// FFT of an ammeter current
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+diode('D1', 1, 2, '1N4148');
+ammeter('A1', 2, 3);
+resistor('R1', 3, 0, 1); // shunt to compare ammeter current vs. shunt current
+
+var f;
+
+echo("FFT of ammeter A1:");
+f = fft().interval(0.5).fstop(200).run('I(A1)');
+f.chart_db('I(A1)');
+
+echo("FFT of voltage on current shunt R1:");
+f = fft().interval(0.5).fstop(200).run('V(3)');
+f.chart_db('V(3)');
+

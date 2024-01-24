@@ -1,0 +1,14 @@
+error: terminal_colors() require exactly 0 arguments but 1 was given
+  [must_fail_terminal_colors.ngjs:0:0] in <anonymous>()
+    terminal_colors(1);
+    ^
+
+hint: function 'terminal_colors()' was called with 1 arguments
+hint: argument #0 was 1 (number)
+
+Stack trace (1 frames):
+  [must_fail_terminal_colors.ngjs:0:0] in <anonymous>()
+    terminal_colors(1);
+    ^
+
+exit(7)

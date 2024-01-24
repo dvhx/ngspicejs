@@ -1,0 +1,39 @@
+#!/usr/bin/env ngspicejs
+// 3-opamp instrumentation amplifier, gain controlled by single resistor R2
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+battery('U2', 0, 2, 9);
+
+resistor('R1', 10, 9, '1k');
+var r2 = resistor('R2', 9, 8, '10k');
+resistor('R3', 8, 7, '1k');
+resistor('R4', 10, 11, '1k');
+resistor('R5', 7, 12, '1k');
+resistor('R6', 12, 0, '1k');
+resistor('R7', 11, 14, '1k');
+resistor('R8', 14, 0, '50k');
+
+opamp('Q1', 4, 9, 1, 2, 10, 'TL071');
+opamp('Q2', 5, 8, 1, 2, 7, 'TL071');
+opamp('Q3', 12, 11, 1, 2, 14, 'TL071');
+
+sinewave('U3', 4, 5).v('100m').f(196);
+voltmeter('V1', 4, 5);
+
+resistor('ResPathToGroundForC1', 4, 0, '10G');
+
+var r, x = [], y = [];
+for (r = 50; r < 2000; r += 100) {
+    r2.r(r);
+    var t = tran().run();
+    var input_swing = t.data['V(V1)'].range();
+    var output_swing = t.data['V(14)'].range();
+    echo('R2=' + r2.attr.r, 'In', input_swing, 'Out', output_swing, 'Gain=', output_swing / input_swing);
+    x.push(r);
+    y.push(output_swing / input_swing);
+}
+chart_xy().add_series(x, y).label_x('R2/Ohm').label_y('Gain').title('Instrumentation amplifier gain by R2').show();
+
+

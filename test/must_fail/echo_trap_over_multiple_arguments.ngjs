@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Echo trap must catch multiple arguments
+// linter: ngspicejs-lint
+"use strict";
+
+echo_trap('ABC DEF');
+
+echo("AAA", 123, true);
+echo("ABC", "DEF");
+echo("BBB");
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Beeping voltage supply
+// linter: ngspicejs-lint
+"use strict";
+
+beeps('U1', 1, 0).offset(0).v(2).f(500).pulse_width(0.005).period(0.010);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)');
+
+

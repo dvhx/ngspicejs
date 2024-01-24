@@ -1,0 +1,54 @@
+#!/usr/bin/env ngspicejs
+// Pedal crybaby wah
+// linter: ngspicejs-lint
+"use strict";
+
+// coil switching stage
+battery('U1', 6, 0, 9);
+
+resistor('R1', 2, 0, '1M');
+resistor('R2', 4, 0, '10k');
+resistor('R3', 2, 5, '1M');
+resistor('R4', 6, 5, '1k');
+resistor('R5', 4, 7, '68k');
+resistor('R6', 8, 10, '1k5');
+resistor('R7', 9, 0, '330');
+resistor('R8', 6, 12, '20k');
+resistor('R9', 12, 11, '470k');
+resistor('R10', 11, 10, '30k');
+resistor('R11', 11, 0, '82k');
+resistor('R12', 12, 14, '470k');
+resistor('R13', 6, 16, '1k');
+resistor('R14', 15, 0, '10k');
+
+capacitor('C1', 3, 2, '10n');
+capacitor('C2', 2, 0, '22p');
+capacitor('C3', 7, 8, '10n');
+capacitor('C4', 11, 0, '4u7');
+capacitor('C5', 12, 13, '200n');
+capacitor('C6', 19, 14, '220n');
+capacitor('C7', 10, 15, '10n');
+
+inductor('L1', 11, 10, '470m').rs(47);
+
+npn('T1', 5, 2, 4, 'MPSA13');
+npn('T2', 12, 8, 9, 'MPSA06');
+npn('T3', 16, 14, 15, 'MPSA06');
+
+var p1 = pot('P1', 0, 19, 13, '100k').percent(50);
+
+pickup_singlecoil('L2', 3, 0).v(0.1).f(196);
+
+ac().fstop('20k').run().chart('V(10)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 95; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(10)'].modulus().extremaMax();
+    x.push(p);
+    y.push(a.data.frequency[e.index]);
+}
+echo('X=pot position, Y=wah filter peak frequency in Hz');
+chart_xy().add_series(x, y).show();
+

@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test ngspice data
+// linter: ngspicejs-lint
+"use strict";
+
+echo_json(Internal.ngspice_data());
+
+

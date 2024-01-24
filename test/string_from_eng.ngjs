@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// String from eng
+// linter: ngspicejs-lint
+"use strict";
+
+var t1 = Date.now();
+var k, o = file_read_json('string_from_eng.json'), ok = 0, bad = 0;
+
+for (k in o) {
+    if (o.hasOwnProperty(k)) {
+        var n = k.fromEng();
+        //echo('k', k, 'n', n);
+        if (o[k] !== n) {
+            error(o[k] + ' !== ' + n + ' (orig ' + k + ')');
+            exit(1); // EXIT_CODE_TEST_FAIL
+            bad++;
+        } else {
+            ok++;
+        }
+    }
+}
+echo(ok, 'ok', bad, 'bad');
+
+var i, a = file_read_json('string_from_eng_bad.json'), c = 0;
+for (i = 0; i < a.length; i++) {
+    try {
+        a[i].fromEng();
+        error(a[i] + ' should have failed but didn\'t');
+    } catch (e) {
+        //echo(e);
+        c++;
+    }
+}
+echo(a.length, 'should throw', c, 'caught');
+var t2 = Date.now();
+echo(Math.ceil((t2 - t1) / 1000), 'seconds');
+

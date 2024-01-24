@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Equations in resistor model
+// linter: ngspicejs-lint
+"use strict";
+
+var m1 = resistor_model('MY_RES').tc1('5u').tc2('5u').tnom(27);
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 100).model('MY_RES');
+
+temperature(27);
+echo(tran().run().avg('I(U1)').toEng());
+temperature(100);
+echo(tran().run().avg('I(U1)').toEng());
+
+m1.tc1('{1u+4u}');
+m1.tc2('{1u+4u}');
+
+temperature(27);
+echo(tran().run().avg('I(U1)').toEng());
+temperature(100);
+echo(tran().run().avg('I(U1)').toEng());
+
+

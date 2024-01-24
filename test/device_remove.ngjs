@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// Test removing device and removing device in subcircuit, should be 8V and 8mA
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9).remove();
+battery('U1', 1, 0, 8);
+
+var s = sub_model('MY_RES', [1, 2], {});
+s.resistor('R1', 1, 2, 100).remove();
+s.resistor('R1', 1, 2, 1000);
+s.end();
+
+sub('X1', 'MY_RES', [1, 0]);
+
+echo(tran().run().avg('V(1)'));
+echo(tran().run().avg('I(U1)').toEng());

@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for pnp
+// linter: ngspicejs-lint
+"use strict";
+
+// all pnp combinations
+var t1;
+battery('U1', 1, 0, 8);
+battery('U2', 2, 0, 9);
+ammeter('A1', 2, 3);
+t1 = pnp('T1', 0, 1, 3, 'BC557');
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.400 for ' + t1.attr.model + ')');
+
+all_models('PNP').forEach((m) => {
+    t1.model(m);
+    echo(m, 'Imax:', tran().run().data['I(A1)'].max().toFixed(3));
+});
+

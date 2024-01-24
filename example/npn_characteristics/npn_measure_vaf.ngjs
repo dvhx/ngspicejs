@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// Measure forward early voltage VAF
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = battery('U1', 1, 0, 1);
+ammeter('A1', 1, 2);
+var t1 = npn('T1', 2, 4, 0, 'BC547');
+resistor('R1', 5, 4, '1k');
+ammeter('A2', 6, 5);
+var i1 = current_source('I1', 0, 6, '10u');
+echo('Model VAF=' + t1.get_model().attr.vaf.toEng());
+
+// change Ib from 10u to 100u
+for (var i = 10e-6; i <= 300e-6; i += 30e-6) {
+    i1.i(i);
+    // change Vce from 0 to 9V
+    var v, vce = [], ic = [], ib = [], t, line;
+    for (var v = 1; v < 9; v += 0.1) {
+        u1.v(v);
+        t = tran().run();
+        vce.push(t.avg('V(2)'));
+        ic.push(t.avg('I(A1)'));
+        ib.push(t.avg('I(A2)'));
+    }
+    line = least_squares(vce, ic);
+    echo('Ib=', i.toEng(), 'VAF=', (line.offset / line.slope).toFixed(1));
+}
+

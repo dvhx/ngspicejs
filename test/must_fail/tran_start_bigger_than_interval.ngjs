@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Tran start must be smaller than interval
+// linter: ngspicejs-lint
+"use strict";
+
+resistor('R1', 1, 0, 100);
+tran().start('19.8').step('20u').run().chart('I(A1)');

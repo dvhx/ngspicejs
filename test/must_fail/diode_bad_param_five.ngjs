@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Extra argument in diode must cause error
+// linter: ngspicejs-lint
+"use strict";
+
+diode_model('1N4148');
+diode('D2', 1, 0, '1N4148', 123);
+

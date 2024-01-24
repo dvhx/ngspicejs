@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - voltage doubler
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(1000);
+sub('X1', 'VOLTAGE_DOUBLER', [1, 0, 2, 3], {});
+resistor('RLOAD', 2, 3, '10M');
+
+var t = tran().run();
+echo('Output: ' + array_max(t.data['V(2)']).toEng());
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(U1)');
+echo(Object.keys(f.data).sort().join('\n'));
+

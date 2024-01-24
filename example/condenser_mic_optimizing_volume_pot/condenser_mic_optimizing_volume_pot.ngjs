@@ -1,0 +1,101 @@
+#!/usr/bin/env ngspicejs
+// Optimizing volume pot linearity and range in a condenser mic preamp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 23, 0, 9);
+// first stage isolation
+resistor('R9', 23, 24, 100);
+resistor('R2', 24, 25, '10M');
+capacitor('C9', 25, 0, '100n');
+// mic power
+resistor('R3', 25, 26, '1G');
+// mic
+capacitor('CMIC', 26, 999, '10p');
+sinewave('UMIC', 999, 0).v('1m').f(1000);
+// first stage (jfet amplifier 8x)
+capacitor('CG', 26, 14, '82p');
+resistor('RG', 14, 0, '1G');
+resistor('RD', 24, 10, '5k1');
+resistor('RS', 11, 0, 510);
+capacitor('CS', 11, 0, '47u');
+jfet_n('T1', 10, 14, 11, '2N5457');
+capacitor('CD', 10, 15, '47u');
+// low pass filter
+resistor('R1', 15, 19, 330);
+capacitor('C1', 19, 0, '5n');
+// second stage (NPN common emitter amplifier 0-200x)
+resistor('R5', 23, 15, '68k');
+resistor('R7', 23, 27, '20k');
+var r11 = resistor('R11', 15, 0, '20k');
+resistor('R8', 30, 0, '6k8');
+var r6 = resistor('R6', 31, 0, '100');
+var p1 = pot('P1', 31, 31, 15, '10k').percent(50);
+npn('T2', 27, 15, 30, 'BC547');
+capacitor('CE', 30, 0, '47u');
+capacitor('C2', 27, 28, '47u');
+resistor('RLOAD', 28, 0, '50k');
+
+// this will show gain 211x 20x 0x, that's not very linear
+p1.percent(0);
+var g0 = tran().run().gain(26, 28);
+p1.percent(50);
+var g50 = tran().run().gain(26, 28);
+p1.percent(100);
+var g100 = tran().run().gain(26, 28);
+
+// original chart
+var x = [], y = [], p;
+for (p = 0; p <= 100; p += 5) {
+    p1.percent(p);
+    x.push(p);
+    y.push(tran().run().gain(26, 28));
+}
+
+echo('r11', r11.attr.r, 'r6', r6.attr.r, 'gain', g0, g50, g100);
+
+function sqr(x) {
+    return x * x;
+}
+
+// change values of R11, R6 to make it more linear
+var values = series_e3(10, '1M');
+var best = 9999999;
+var best_r11, best_r6;
+values.forEach((a) => {
+    values.forEach((b) => {
+        r11.r(a);
+        r6.r(b);
+
+        p1.percent(0);
+        g0 = tran().run().gain(26, 28);
+        p1.percent(50);
+        g50 = tran().run().gain(26, 28);
+        p1.percent(100);
+        g100 = tran().run().gain(26, 28);
+
+        // aim for 0x-100x-200x gain for 0-50%-100% of pot percentage
+        var err = 0.5 * sqr(g0 - 200) + 0.7 * sqr(g50 - 100) + sqr(g100 - 0);
+        if (err < best) {
+            echo('BEST r11', r11.attr.r, 'r6', r6.attr.r, 'gain', g0, g50, g100, 'err', err);
+            best_r11 = r11.attr.r;
+            best_r6 = r6.attr.r;
+            best = err;
+        }
+    });
+});
+
+// optimized chart
+r11.r(best_r11);
+r6.r(best_r6);
+var x2 = [], y2 = [];
+for (p = 0; p <= 100; p += 5) {
+    p1.percent(p);
+    x2.push(p);
+    y2.push(tran().run().gain(26, 28));
+}
+echo('Original pot linearity (x=pot percent, y=gain):');
+chart_xy().add_series(x, y).show();
+echo('Optimized pot linearity (x=pot percent, y=gain, R11=' + best_r11 + ', R6=' + best_r6 + '):');
+chart_xy().add_series(x2, y2).show();
+

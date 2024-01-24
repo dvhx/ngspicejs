@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use bjt model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define MYBJT1 model with Is=1uA
+bjt_model('MYBJT1').kind('NPN').is('1u'); //!
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '100k');
+var t1 = npn('T1', 1, 2, 0, 'BC547');
+echo(tran().run().avg('I(U1)').toEng());
+// Use bjt model
+t1.model('MYBJT1'); //!
+echo(tran().run().avg('I(U1)').toEng());

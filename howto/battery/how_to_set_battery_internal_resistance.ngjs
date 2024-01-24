@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to set battery internal resistance
+// linter: ngspicejs-lint
+"use strict";
+
+var u1 = battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 10);
+
+echo('Current from ideal battery is ' + tran().run().data['I(U1)'].avg().toEng());
+
+u1.rs(2); //!
+echo('Current from real battery is ' + tran().run().data['I(U1)'].avg().toEng());

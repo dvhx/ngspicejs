@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// How to use sawtooth voltage source
+// linter: ngspicejs-lint
+"use strict";
+
+sawtooth("U1", 1, 0).v(0.1).f(140); //!
+sawtooth("U2", 2, 0).offset(0.3).v(0.1).f(440).delay(0.01).inverse(true); //!
+sawtooth("U3", 3, 0).offset(0.15).v(0.1).f(440); //!
+tran().run().chart(['V(1)', 'V(2)', 'V(3)']);
+
+// fall time is always equal tran step
+tran().step('1u').run().chart('V(1)', {max_y: 0.4});
+
+

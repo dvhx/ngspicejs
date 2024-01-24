@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// csv_to_array_of_objects
+// linter: ngspicejs-lint
+"use strict";
+
+var c = [['x', 'y'], [1, 2], [3, 4]];
+
+var a = csv_to_array_of_objects(c);
+
+echo(JSON.stringify(a, undefined, 4));

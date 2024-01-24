@@ -1,0 +1,14 @@
+error: variable 'path' in function 'file_exists(path)' should be string
+  [must_fail_file_exists_int_args.ngjs:0:0] in <anonymous>()
+    file_exists(1);
+    ^
+
+hint: function 'file_exists(path)' was called with 1 arguments
+hint: argument #0 was 1 (number)
+
+Stack trace (1 frames):
+  [must_fail_file_exists_int_args.ngjs:0:0] in <anonymous>()
+    file_exists(1);
+    ^
+
+exit(7)

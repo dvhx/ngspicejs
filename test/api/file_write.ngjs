@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Test file_write
+// linter: ngspicejs-lint
+"use strict";
+
+file_write('file_write_1.txt', 'a');
+file_write('file_write_2.txt', 'b');
+file_write('file_write_3.txt', 'c');
+file_write('file_write_4.txt', 'd');
+
+echo(file_read('file_write_1.txt'));
+echo(file_read('file_write_2.txt'));
+echo(file_read('file_write_3.txt'));
+echo(file_read('file_write_4.txt'));
+
+file_write('file_write_1.txt', 'asdf');
+file_write('file_write_2.txt', 2);
+file_write('file_write_3.txt', true);
+file_write('file_write_4.txt', 3.14);
+
+echo(file_read('file_write_1.txt'));
+echo(file_read('file_write_2.txt'));
+echo(file_read('file_write_3.txt'));
+echo(file_read('file_write_4.txt'));
+
+

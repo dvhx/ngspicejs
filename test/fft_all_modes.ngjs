@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// fft all modes
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v('1m').f(1000);
+resistor('R1', 1, 2, 100);
+ammeter('A1', 2, 0);
+voltmeter('V1', 1, 0);
+voltmeter('V2', 1, 2);
+fft().interval('200m').run('V(1)').chart('V(1)', {width: 640, height: 120});
+fft().interval('200m').run('I(A1)').chart('I(A1)', {width: 640, height: 120});
+fft().interval('200m').run('I(U1)').chart('I(U1)', {width: 640, height: 120});
+fft().interval('200m').run('V(V1)').chart('V(V1)', {width: 640, height: 120});
+fft().interval('200m').run('V(V2)').chart('V(V2)', {width: 640, height: 120});

@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Amplitude modulated voltage source
+// linter: ngspicejs-lint
+"use strict";
+
+am('U1', 1, 0).v(2).f(50).fc(1000);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)');
+
+

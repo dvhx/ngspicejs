@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Test echo
+// linter: ngspicejs-lint
+"use strict";
+
+echo(1, '2', 3.14, true, {a:1}, [2,3], echo, 2 / 0, -2 / 0, echo / 5, undefined, null);
+

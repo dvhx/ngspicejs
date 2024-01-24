@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Writing to root dir should fail
+// linter: ngspicejs-lint
+"use strict";
+
+file_write_json('/1.json', {a:1, b: 2, c: true});
+

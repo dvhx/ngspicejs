@@ -1,0 +1,58 @@
+#!/usr/bin/env ngspicejs
+// Test all possible POLY combinations
+// linter: ngspicejs-lint
+"use strict";
+
+var tests = 0;
+
+function code() {
+    tests++;
+    return netlist_devices[0].render().split('\n').filter((a) => !a.trim().startsWith('*'))[0];
+}
+
+// VCVS
+
+// opamp TL071 - net name, 0, net name, 0, koefs...
+vcvs('EFOO', 56, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.75, 0.75]);
+Internal.assert_equal(code(), 'E_EFOO 56 0 POLY(2) vplus 0 vminus 0 0 0.75 0.75', 'vcvs1');
+netlist_clear();
+
+// opamp LM258 - 2 numbered nets + 2 koefs
+vcvs("E12", 3, "inplus").poly([55, 66], [2E-3, 1]);
+Internal.assert_equal(code(), 'E_E12 3 inplus POLY(1) 55 66 0.002 1', 'vcvs2');
+netlist_clear();
+
+// vcvs without poly, only single gain
+vcvs("E23", "vplus", 98, "vplus", 45, 1);
+Internal.assert_equal(code(), 'E_E23 vplus 98 vplus 45 1', 'vcvs3');
+netlist_clear();
+
+// vref TL431_2
+vcvs("E34", 5, 2).poly([4, 2, 1, 2], [0, 680, -680]);
+Internal.assert_equal(code(), 'E_E34 5 2 POLY(2) 4 2 1 2 0 680 -680', 'vcvs4');
+netlist_clear();
+
+// VCCS
+
+// opamp LM258
+vccs('G1', 45, 9).poly([5, 6], [0, 9.1234E-4, 0, 0.456]);
+Internal.assert_equal(code(), 'G_G1 45 9 POLY(1) 5 6 0 0.00091234 0 0.456', 'vccs1');
+netlist_clear();
+
+// CCCS
+
+cccs('F12', 77, 45).poly(
+    ['V1', 'V2', 'V3', 'V4', 'V5'],
+    [0, 123, -5E6, 5E6, 5E6, -5E6]
+);
+Internal.assert_equal(code(), 'F_F12 77 45 POLY(5) V_V1 V_V2 V_V3 V_V4 V_V5 0 123 -5000000 5000000 5000000 -5000000', 'cccs1');
+netlist_clear();
+
+// CCVS
+
+ccvs('HDDD', 90, 0, 'VBU', '1k');
+battery('VBU', 1, 0, 0);
+Internal.assert_equal(code(), 'H_HDDD 90 0 V_VBU 1000', 'ccvs1');
+netlist_clear();
+
+echo('Done ' + tests + ' tests');

@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Active envelope follower (beeping signal)
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+resistor('R1', 5, 4, '47k');
+resistor('R2', 5, 6, '4k7');
+resistor('R3', 6, 0, '50k');
+capacitor('C1', 3, 2, '10u');
+capacitor('C2', 6, 0, '22u');
+diode('D1', 4, 2, '1N4148');
+diode('D2', 6, 4, '1N4148');
+npn('T1', 4, 2, 0, 'BC547');
+beeps('U2', 3, 0).f(200).v(0.1).offset(0).pulse_width('50m').period('100m');
+
+tran().interval('120m').run().chart(['V(3)','V(6)']);
+

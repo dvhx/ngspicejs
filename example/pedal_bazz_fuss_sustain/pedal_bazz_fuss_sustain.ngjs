@@ -1,0 +1,42 @@
+#!/usr/bin/env ngspicejs
+// Show how resistor value affects sustain with NPN and darlington
+// linter: ngspicejs-lint
+"use strict";
+
+// bazz fuss pedal (10k + NPN_DARLINGTON = ok)
+battery('U1', 2, 0, 9);
+pickup_singlecoil('L1', 1, 0).halve('20m');
+var r1 = resistor('R1', 2, 3, '10k');
+capacitor('C1', 1, 8, '100n');
+capacitor('C2', 3, 7, '4u7');
+resistor('R2', 7, 0, '50k');
+diode('D1', 3, 8, '1N4148');
+var t1 = npn('T1', 3, 8, 0, 'BC547_DARLINGTON');
+
+var t = tran().interval('120m').run();
+echo('Input:');
+t.chart('V(1)');
+echo('10k+darlington = ok:');
+t.chart('V(7)');
+
+// bazz fuss pedal (10k + NPN = not enough sustain)
+t1.model('BC547');
+t = tran().interval('120m').run();
+echo('10k+NPN = not enough sustain:');
+t.chart('V(7)');
+
+// bazz fuss pedal (100k + NPN = ok)
+r1.r('100k');
+t = tran().interval('120m').run();
+echo('100k+NPN = ok:');
+t.chart('V(7)');
+
+// bazz fuss pedal (100k + NPN with higher beta = ok)
+t1.model('BC549');
+echo('100k+high gain NPN = better:');
+t = tran().interval('120m').run();
+t.chart('V(7)');
+
+
+
+

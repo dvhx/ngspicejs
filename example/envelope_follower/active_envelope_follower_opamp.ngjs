@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Active envelope follower using opamp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 7, 9, 9);
+ammeter('A1', 7, 5);
+
+resistor('R1', 5, 12, '20k');
+resistor('R2', 12, 9, '20k');
+resistor('R3', 14, 0, '10k');
+resistor('R4', 16, 0, '10k');
+resistor('R5', 14, 15, '100k');
+
+capacitor('C1', 16, 0, '1u');
+
+diode('D1', 14, 15, '1N60P');
+diode('D2', 15, 16, '1N60P');
+
+opamp('Q1', 10, 14, 5, 9, 15, 'TL071');
+
+beeps('U2', 10, 0).offset(0).v(0.1).f(200).period('100m').pulse_width('50m');
+
+tran().interval('120m').step('100u').run().chart(['V(10)', 'V(16)']);

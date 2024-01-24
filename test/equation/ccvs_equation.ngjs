@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Equations in ccvs
+// linter: ngspicejs-lint
+"use strict";
+
+// 9V battery + 1k resistor = 9mA current
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+echo(tran().run().avg('I(U1)').toEng());
+
+var h2 = ccvs('H2', 2, 0, 'U1', 2);
+echo(tran().run().avg('V(2)').toEng());
+
+h2.gain('{1+1}');
+echo(tran().run().avg('V(2)').toEng());

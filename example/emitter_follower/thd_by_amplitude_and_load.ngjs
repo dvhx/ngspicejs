@@ -1,0 +1,36 @@
+#!/usr/bin/env ngspicejs
+// Emitter follower chart THD by input amplitude for different loads
+// linter: ngspicejs-lint
+"use strict";
+
+// symmetrical 24v supply
+battery('U1', 1, 0, 24);
+battery('U2', 0, 4, 24);
+// emitter follower
+npn('T1', 1, 2, 3, 'MPSA06');
+resistor('RE', 3, 4, '2k7');
+resistor('RB', 2, 0, '27k');
+capacitor('C1', 6, 2, '100u');
+capacitor('C2', 3, 5, '100u');
+var load = resistor('LOAD', 5, 0, '1000k');
+var sig = sinewave('U3', 6, 0).f(196).v(1);
+
+// input amplitude from 1V to 10V
+var c = chart_xy().log_y(true);
+['2k2', '3k3', '4k7', '6k8', '10k', '1M'].forEach((l) => {
+    echo('load', l);
+    load.r(l);
+    var x = [], y = [];
+    for (var v = 1; v < 10; v += 0.2) {
+        sig.v(v);
+        x.push(v);
+        // have to increase interval from 0.1 to 0.3 otherwise there would be
+        // weird raise at low input amplitudes for 1M load
+        var f = fft().interval(0.3).fstop('10k').run('V(5)');
+        y.push(f.thd(196, 10));
+    }
+    c.add_series(x, y, 'Load=' + load.attr.r);
+});
+c.show();
+c.gif('thd_by_amplitude_and_load.gif');
+

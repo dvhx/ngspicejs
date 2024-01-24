@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Stack lines with ascii arrows showing circular json structure must be skipped
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 10);
+tran().run();
+
+echo(JSON.stringify(netlist_devices));

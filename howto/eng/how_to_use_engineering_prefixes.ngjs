@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// How to use engineering prefixes
+// linter: ngspicejs-lint
+"use strict";
+
+resistor('R1', 1, 0, 100);      // 100
+resistor('R2', 1, 0, '1k');     // 1000    kilo
+resistor('R3', 1, 0, '1.5k');   // 1500    kilo
+resistor('R4', 1, 0, '4k7');    // 4700    kilo
+resistor('R5', 1, 0, '2M2');    // 2200000 Mega
+resistor('R6', 1, 0, '1G');     // 1e9     Giga
+resistor('R7', 1, 0, '1T');     // 1e12    Tera
+capacitor('C1', 1, 0, '1m');    // 0.001   milli
+capacitor('C2', 1, 0, '10u');   // 10e-6   micro
+capacitor('C3', 1, 0, '2n2');   // 2.2e-9  nano
+capacitor('C4', 1, 0, '220p');  // 220e-12 pico
+capacitor('C5', 1, 0, '1f');    // 1e-15   femto
+capacitor('C6', 1, 0, '1a');    // 1e-18   atto
+echo_netlist();
+
+// Exa prefix is not supported because of the conflict with exponential notation, e.g. 1E3 is 1000
+netlist_clear();
+resistor('R1', 1, 0, '1E3'); // this will be 1000
+echo_netlist();
+
+// How to assign string in engineering to a variable
+var a = '10k'.fromEng();
+var b = (20000).fromEng(); // will not fail even when it is already number
+echo('a', a, 'b', b);
+
+// How to convert number to engineering format
+echo('a', a.toEng());
+echo('b', '20000'.toEng()); // will not fail even when it is already string

@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// How to change diode model
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 1.5);
+var d1 = diode('D1', 1, 0, '1N4148'); //!
+echo(d1.attr.model + ' current at 1.5V is ' + Math.abs(tran().run().avg('I(U1)')).toEng(3) + 'A');
+
+// changing D1 model to LED_RED
+d1.model('LED_RED'); //!
+echo(d1.attr.model + ' current at 1.5V is ' + Math.abs(tran().run().avg('I(U1)')).toEng(3) + 'A');
+
+

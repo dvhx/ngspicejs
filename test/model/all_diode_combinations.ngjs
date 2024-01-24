@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for diode
+// linter: ngspicejs-lint
+"use strict";
+
+// all diode combinations
+var d1;
+battery('U1', 1, 0, 1);
+ammeter('A1', 1, 2);
+d1 = diode('D1', 2, 0, '1N4148');
+//echo_netlist();
+echo('Imax:', tran().run().data['I(A1)'].max().toFixed(3), '(should be 0.075 for ' + d1.attr.model + '.json)');
+d1.model('ZENER_C2V4ST');
+echo('Imax:', tran().run().data['I(A1)'].max().toFixed(3), '(should be 0.385 for ' + d1.attr.model + '.ngjs)');
+d1.model('ZENER_C9V1ST');
+echo('Imax:', tran().run().data['I(A1)'].max().toFixed(3), '(should be 0.183 for ' + d1.attr.model + '.sub)');

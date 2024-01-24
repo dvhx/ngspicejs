@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// calling spice directly
+// linter: ngspicejs-lint
+"use strict";
+Internal.ngspice_netlist(`* first line is ignored
+V1 1 0 9
+R1 1 2 100
+
+R2 2 0 100
+.tran 100u 20m 0
+.print tran v(2)
+.end`);
+Internal.ngspice_command('run');
+var d = Internal.ngspice_data();
+echo('divider voltage: ' + d.tran1['V(2)'].slice(-1)[0]);

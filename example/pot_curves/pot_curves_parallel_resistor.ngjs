@@ -1,0 +1,71 @@
+#!/usr/bin/env ngspicejs
+// How linear pot curve changes when parallel resistor is placed across pot
+// linter: ngspicejs-lint
+"use strict";
+
+// 10k:100k pot divider
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '10k');
+var r2 = resistor('R2', 2, 0, '100k');
+
+// single resistor only
+var i = [], v = [], r = [], percent = [], i1, v2, value, t;
+for (value = 0; value <= 100000; value += 10000) {
+    r2.r(value || 1);
+    t = tran().run();
+    i1 = -t.avg('I(U1)');
+    v2 = t.avg('V(2)');
+    percent.push(100 * value / 100000);
+    i.push(i1);
+    v.push(v2);
+    r.push(v2 / i1);
+}
+
+// resistor with parallel 100k
+var r3 = resistor('R3', 2, 0, '100k');
+var ip = [], vp = [], rp = [], percentp = [];
+for (value = 0; value <= 100000; value += 10000) {
+    r2.r(value || 1);
+    t = tran().run();
+    i1 = -t.avg('I(U1)');
+    v2 = t.avg('V(2)');
+    percentp.push(100 * value / 100000);
+    ip.push(i1);
+    vp.push(v2);
+    rp.push(v2 / i1);
+}
+
+// resistor with parallel 20k
+r3.r('20k');
+var i20 = [], v20 = [], r20 = [], percent20 = [];
+for (value = 0; value <= 100000; value += 10000) {
+    r2.r(value || 1);
+    t = tran().run();
+    i1 = -t.avg('I(U1)');
+    v2 = t.avg('V(2)');
+    percent20.push(100 * value / 100000);
+    i20.push(i1);
+    v20.push(v2);
+    r20.push(v2 / i1);
+}
+
+chart_xy()
+    .width(800)
+    .height(600)
+    .title('Resistance of 100k pot vs pot with parallel resistor')
+    .label_y('Resistance')
+    .label_x('Pot position in %')
+    .add_series(percent, r, '100k pot')
+    .add_series(percentp, rp, '100k pot||100k resistor')
+    .add_series(percent20, r20, '100k pot||20k resistor')
+    .show();
+
+chart_xy()
+    .width(800)
+    .height(600)
+    .title('Resistance of 100k with parallel 20k resistor')
+    .label_y('Resistance')
+    .label_x('Pot position in %')
+    .add_series(percent20, r20, '100k pot||20k resistor')
+    .show();
+

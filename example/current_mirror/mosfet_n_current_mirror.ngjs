@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Mosfet_n current mirror
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+
+resistor('R1', 1, 8, '220');
+resistor('R2', 1, 6, '15');
+
+mosfet_n('T1', 3, 3, 0, 'BS170');
+mosfet_n('T2', 5, 3, 0, 'BS170');
+
+ammeter('A1', 8, 3);
+ammeter('A2', 6, 5);
+
+var t = tran().run();
+echo('I1 = ' + t.data['I(A1)'].avg().toEng());
+echo('I2 = ' + t.data['I(A2)'].avg().toEng());
+

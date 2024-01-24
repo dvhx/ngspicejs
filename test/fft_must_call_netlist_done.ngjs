@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// FFT no longer needs to call netlist_done() between changes
+// linter: ngspicejs-lint
+"use strict";
+
+// common emitter 24x amplification
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(0.01).f(196);
+resistor('R1', 1, 3, '6800');
+resistor('R2', 3, 0, '470');
+resistor('R3', 1, 4, '20k');
+var r4 = resistor('R4', 6, 0, '330');
+capacitor('C1', 2, 3, '10u');
+capacitor('C2', 4, 5, '10u');
+resistor('R5', 5, 0, '50k');
+npn('T1', 4, 3, 6, 'BC547');
+
+tran().run();
+echo(fft().run('V(5)').thd(196).toFixed(6));
+r4.r(1);
+echo(fft().run('V(5)').thd(196).toFixed(6));

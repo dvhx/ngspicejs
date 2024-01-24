@@ -1,0 +1,166 @@
+#!/usr/bin/env ngspicejs
+// Generate api.md with list of all global functions and variables
+// linter: ngspicejs-lint
+"use strict";
+
+(function () {
+
+var f = Object.keys(globalThis).filter((a) => typeof globalThis[a] === 'function').sort();
+var nf = Object.keys(globalThis).filter((a) => typeof globalThis[a] !== 'function').sort();
+
+var models = [
+    'bjt_model', 'diode_model', 'jfet_model', 'mos_model', 'resistor_model',
+    'spice_model', 'sub_model', 'vdmos_model'];
+var devices = [
+    'resistor', 'capacitor',
+    "audio",
+    'am', 'ammeter', 'battery', 'beeps', 'capacitor',
+    'cccs', 'ccvs', 'current_source', 'diode', 'dynamic_mic', 'electret_mic',
+    'inductor_coupling', 'inductor', 'jfet_n', 'jfet_p', 'mosfet_n', 'mosfet_p',
+    'npn', 'opamp', 'pickup_humbucker', 'pickup', 'pickup_piezo', 'pickup_singlecoil', 'pnp',
+    'pot',  'pulse', 'pwl', 'resistor', 'sawtooth', 'sinewave',  'spice', 'square', 'sub', 'switch_1p2t',
+    'vccs', 'vcvs', 'voltmeter', 'vref'];
+
+var analyses = ['tran', 'ac', 'ac_fast', 'fft', 'battery_sensitivity'];
+var array_functions = [];
+var file_functions = ['gif'];
+var csv_functions = [];
+var echo_functions = ['clear_screen', 'error', 'help', 'warn', 'read', 'terminal_colors',
+    'terminal_size'];
+var undecided = [];
+var public_functions = [
+    'all_models', 'api', 'chart_xy', 'chart_scatter', 'exit',
+    'ignore', 'v8_version', 'script_args',
+    'script_self', 'script_shell', 'script_shell_full', 'series_e12', 'series_e3',
+    'series_e6', 'lerp', 'config_path', 'delay_ms', 'env',
+    'netlist_clear', 'netlist_nets', 'ascii_canvas', 'sixel_canvas',
+    'least_squares',
+    'levenshtein', 'random_float',
+    'similar_strings',
+    'search',
+    'temperature',
+    'round_up',
+    'round_down',
+    'round_to',
+    "random_int",
+    "mersenne_twister",
+    "script_ms",
+    "hash",
+    "hint",
+    "complex",
+    "eng",
+    "series_e24",
+    "series_e48",
+    "available_vectors",
+    "beep",
+    "linearize",
+    "netlist_export",
+    "netlist_export_schematic",
+    "netlist_export_schematic_url",
+    "netlist_to_script",
+    "ngspice_command_verbose",
+    "ngspice_version",
+    "include",
+    "singular_matrix",
+    "tally",
+    "ugly_vector_name",
+    "series_e96"
+    ];
+var global_objects = [
+    "Internal",
+    "distinct_colors",
+    "font_neo_sans",
+    "netlist_devices"
+    ];
+var others = [
+    "ChartXy",
+    "Exception"
+];
+
+f.forEach((fn) => {
+    if (others.includes(fn) || devices.includes(fn) || analyses.includes(fn) || models.includes(fn) || echo_functions.includes(fn) || file_functions.includes(fn) || global_objects.includes(fn)) {
+        return;
+    }
+    if (public_functions.includes(fn)) {
+        return;
+    }
+    if (fn.startsWith('array_')) {
+        array_functions.push(fn);
+        return;
+    }
+    if (fn.startsWith('file_') || fn.startsWith('dir_') || fn === 'dir') {
+        file_functions.push(fn);
+        return;
+    }
+    if (fn.startsWith('csv_')) {
+        csv_functions.push(fn);
+        return;
+    }
+    if (fn.startsWith('echo')) {
+        echo_functions.push(fn);
+        return;
+    }
+    undecided.push(fn);
+});
+
+if (undecided.length > 0) {
+    error('FIX undecided');
+    echo_json(undecided, true);
+    exit(75);
+}
+
+var out = ['### API of ngspicejs', ''];
+
+function section(aTitle, aNames) {
+    out.push('#### ' + aTitle);
+    out.push('');
+    //echo(aTitle + aNames);
+    aNames.forEach((a) => {
+        if (!globalThis[a]) {
+            error('Not found: globalThis.' + a);
+            exit(1);
+        }
+        var d = api(globalThis[a], a, true);
+        //echo_json(d);
+        if (!d || !d.name) {
+            error('no name: ' + a);
+        }
+        out.push('- **' + d.name + '**' + (d.args ? ' (' + d.args + ')' : '') + ' - ' + d.summary);
+    });
+    out.push('');
+}
+
+
+section('Devices', devices.sort());
+section('Models', models.sort());
+section('Analyses', analyses.sort());
+section('Array functions', array_functions.sort());
+section('Echo functions', echo_functions.sort());
+section('File functions', file_functions.sort());
+section('CSV functions', csv_functions.sort());
+section('Other functions', public_functions.sort());
+section('Constructors', others.sort());
+//section('Internal functions', Object.keys(Internal).sort());
+//section('Undecided', undecided.sort());
+//echo_json(nf);
+section('Objects', nf.sort());
+
+echo(out.join('\n'));
+file_write('api.md', out.join('\n'));
+
+/*
+echo('\nDevices            : ' + devices.sort().join(', '));
+echo('\nModels             : ' + models.sort().join(', '));
+echo('\nAnalyses           : ' + analyses.sort().join(', '));
+echo('\nArray functions    : ' + array_functions.sort().join(', '));
+echo('\nFile functions     : ' + file_functions.sort().join(', '));
+echo('\nCsv functions      : ' + csv_functions.sort().join(', '));
+echo('\nEcho functions     : ' + echo_functions.sort().join(', '));
+echo('\nPublic functions   : ' + public_functions.sort().join(', '));
+echo('\nInternal functions : ' + Object.keys(Internal).sort().join(', '));
+echo('\nUndecided          : \n   ' + undecided.sort().join('\n   '));
+*/
+//.echo('\nNon-functions        : \n  ', nf.join('\n   '));
+
+}());
+

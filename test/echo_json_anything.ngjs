@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// echo_json claims to be able to print anything
+// linter: ngspicejs-lint
+"use strict";
+
+echo_json();
+echo_json(undefined);
+echo_json(null);
+echo_json(NaN);
+echo_json(1/0);
+echo_json(0);
+echo_json(123);
+echo_json(Math.PI);
+echo_json("hello world");
+echo_json(true);
+echo_json([10, 20, undefined, 30]);
+echo_json({a: 10, b: 20, c: 30});
+var o = {a: 10, b: 20, c: 30};
+o.d = o;
+echo_json(o);
+var a = [10, 20, 30];
+a.push(a);
+echo_json(a);
+echo_json(echo);
+echo_json(array_max);
+

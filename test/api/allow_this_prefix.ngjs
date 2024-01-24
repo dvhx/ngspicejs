@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test name with unusual prefix
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, '1k').name('C1', true);
+echo(tran().run().avg('I(U1)').toEng());

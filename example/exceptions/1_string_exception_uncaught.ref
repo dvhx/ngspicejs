@@ -1,0 +1,7 @@
+Calling: throw "string", no try catch block, stack trace will be shown but only 1 item:
+error: This is normal string exception
+  [./1_string_exception_uncaught.ngjs:0:0] in ???()
+    throw "This is normal string exception";
+    ^
+
+exit(12)

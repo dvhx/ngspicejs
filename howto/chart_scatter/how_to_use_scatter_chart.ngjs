@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// How to make scatter chart
+// linter: ngspicejs-lint
+"use strict";
+
+// data for x and y axis and z
+var x = [], y = [], z = [];
+
+for (var i = 0; i < 20; i++) {
+    for (var j = 0; j < 20; j++) {
+        x.push(i);
+        y.push(j);
+        z.push(1 + Math.sin(i / 5) * Math.cos(j / 5));
+    }
+}
+
+// drawing a XY chart using shortest possible version
+chart_scatter().data_x(x).data_y(y).values(z).title('Sample').label_x('foo').label_y('bar').show();

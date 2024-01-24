@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// upper case net in sub model
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('MY_DIVIDER', ['IN', 'OUT', 'GND'], {});
+s.resistor('R1', 'IN', 'OUT', 100);
+s.resistor('R2', 'OUT', 'GND', 100);
+s.end();
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MY_DIVIDER', [1, 2, 0]);
+
+echo(tran().run().avg('V(2)'));

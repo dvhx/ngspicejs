@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Empty lines in netlist should not cause problems
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_netlist(`*first line is ignored
+V1 1 0 9
+R1 1 2 100
+
+R2 2 0 100
+.tran 100u 20m 0
+.print tran v(2)
+.end
+`);
+Internal.ngspice_command('run');
+
+var log = Internal.ngspice_log();
+echo_json(log.filter((a) => a.match(/err|warn|fail/)));

@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// Echo raw will not trigger trap
+// linter: ngspicejs-lint
+"use strict";
+
+echo_trap('ABCDEF');
+
+echo_raw("AAA");
+// trap will not be triggered here
+echo_raw("ABC");
+echo_raw("DEF");
+echo_raw("BBB");
+echo("CCC");
+echo("DDD");
+
+echo_trap('BBB');
+echo_raw("AAA");
+echo_raw("BBB"); // trap will be triggered here
+echo_raw("CCC");
+echo("DDD");
+

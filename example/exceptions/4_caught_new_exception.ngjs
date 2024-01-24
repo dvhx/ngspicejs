@@ -1,0 +1,56 @@
+#!/usr/bin/env ngspicejs
+// Show how object Exceptions affect the speed compared to faster string exceptions
+// linter: ngspicejs-lint
+"use strict";
+
+clear_screen();
+
+function foo() {
+    echo('Calling 100x "throw new Exception(string)" in try/catch block:');
+    var t1 = Date.now(), t2;
+    var i;
+    for (i = 0; i < 1000; i++) {
+        try {
+            throw new Exception("This is an Exception");
+        } catch(e) {
+            ignore(e);
+        }
+    }
+    t2 = Date.now();
+    echo('Program continues (but the stack trace was generated in the background, it took ' + round_to((t2 - t1)/1000, 1) + 's)');
+    echo('');
+
+    echo('To suppress it, you must set Exception.fast = true;');
+    Exception.fast = true;
+    t1 = Date.now();
+    for (i = 0; i < 1000; i++) {
+        try {
+            throw new Exception("This is an Exception");
+        } catch(e2) {
+            ignore(e2);
+        }
+    }
+    t2 = Date.now();
+    echo('Program continues (and the stack trace was NOT generated, it took ' + (t2 - t1) + 'ms)');
+    echo('');
+
+    Exception.false = false;
+    echo('Or you use throw "string":');
+    t1 = Date.now();
+    for (i = 0; i < 1000; i++) {
+        try {
+            throw new Exception("This is an Exception");
+        } catch(e3) {
+            ignore(e3);
+        }
+    }
+    t2 = Date.now();
+    echo('Program continues (string exceptions do not generate stack trace, it took ' + (t2 - t1) + 'ms)');
+    echo('');
+}
+
+function bar() {
+    foo();
+}
+
+bar();

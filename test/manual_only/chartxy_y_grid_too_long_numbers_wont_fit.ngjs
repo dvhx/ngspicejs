@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// y-axis numbers should be visible (may be same)
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 100);
+resistor('R2', 2, 0, 100);
+tran().run().chart('V(2)');
+

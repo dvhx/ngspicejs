@@ -1,0 +1,37 @@
+error: Model FOO3 of kind DIODE not found!
+  [should_suggest_all_foo_models.ngjs:0:0] in <anonymous>()
+    diode('D1', 2, 0, 'FOO3');
+    ^
+hint: Unlike spice, models needs to be defined before they are used!
+hint: Attempted files:
+  ~/ngspicejs-github/model/DIODE/FOO3.json
+  ~/ngspicejs-github/model/DIODE/FOO3.sub
+  ~/ngspicejs-github/model/DIODE/FOO3.ngjs
+
+hint: Similar DIODE models: FOO,FOO1,FOO2,1N34A,BAT43,FR107,FR207
+hint: All DIODE models: 1N34A,1N4007,1N4148,1N5399,1N5819,1N60P,BAT43,FOO,FOO1,FOO2,FR107,FR207,IDEAL,LED_BLUE,LED_GREEN,LED_RED,LED_WHITE,LED_YELLOW,ZENER_C2V4ST,ZENER_C9V1ST
+
+Stack trace (7 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [find_model.js:0:0, core.js:0:0] in find_model()
+    throw new Exception('Model ' + aModel + (aKind ? ' of kind ' + aKind : '') + ' not found!');
+          ^
+  [assert/assert_model_exists.js:0:0, core.js:0:0] in assert_model_exists()
+    find_model(aDevice, aKind, aModel, true);
+    ^
+  [device/diode.js:0:0, core.js:0:0] in Diode.model()
+    assert_model_exists(this, this.type.toUpperCase(), aModel);
+    ^
+  [device/diode.js:0:0, core.js:0:0] in Diode()
+    this.model(aModel);
+         ^
+  [device/diode.js:0:0, core.js:0:0] in diode()
+    return new Diode(aName, aAnode, aCathode, aModel);
+           ^
+  [should_suggest_all_foo_models.ngjs:0:0] in <anonymous>()
+    diode('D1', 2, 0, 'FOO3');
+    ^
+
+exit(12)

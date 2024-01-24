@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Equations in pickup amplitude
+// linter: ngspicejs-lint
+"use strict";
+
+var p1 = pickup_singlecoil('U1', 1, 0).v(0.1).f(50);
+
+tran().run().chart('V(1)');
+
+p1.v('{0.2/2}').ac_mag(0.1);
+tran().run().chart('V(1)');

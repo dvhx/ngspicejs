@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Equations in diode model
+// linter: ngspicejs-lint
+"use strict";
+
+diode_model('MY_DIODE').is('15n').n(0.9).rs(4);
+battery('U1', 1, 0, 1);
+diode('D1', 1, 0, 'MY_DIODE');
+echo(tran().run().avg('I(U1)').toEng());
+
+netlist_clear();
+
+diode_model('MY_DIODE').is('{15n}').n('{0+0.9}').rs('{0+4}');
+battery('U1', 1, 0, 1);
+diode('D1', 1, 0, 'MY_DIODE');
+echo(tran().run().avg('I(U1)').toEng());

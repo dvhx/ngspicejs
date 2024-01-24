@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// human vector names - switch
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+switch_1p2t('S1', 1, 2, 3).state(1).state_at(2, '5m').state_at(2, '10m');
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+

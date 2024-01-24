@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// human readable vectors in vcvs poly
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 13, 0, 9);
+battery('U2', 14, 0, 9);
+vcvs('E1', 4, 0, 5, 0, 1.34);
+resistor('R1', 5, 0, 100);
+vcvs('E2', 2, 0).poly([13, 0], [61, 71]);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+/*
+BUG: https://sourceforge.net/p/ngspice/bugs/654/
+echo('FFT:');
+var f = fft().run('I(E2)');
+echo(Object.keys(f.data).sort().join('\n'));
+*/
+

@@ -1,0 +1,22 @@
+File size 304
+error: file_exists(path) require exactly 1 arguments but 2 was given
+  [file_exists_argument_count.ngjs:0:0] in foo()
+    if (file_exists(fn, 'asdf')) {
+        ^
+
+hint: function 'file_exists(path)' was called with 2 arguments
+hint: argument #0 was ./file_exists_argument_count.ngjs (string)
+hint: argument #1 was asdf (string)
+
+Stack trace (3 frames):
+  [file_exists_argument_count.ngjs:0:0] in foo()
+    if (file_exists(fn, 'asdf')) {
+        ^
+  [file_exists_argument_count.ngjs:0:0] in bar()
+    foo();
+    ^
+  [file_exists_argument_count.ngjs:0:0] in <anonymous>()
+    bar();
+    ^
+
+exit(7)

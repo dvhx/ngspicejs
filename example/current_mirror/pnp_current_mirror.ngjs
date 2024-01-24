@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Using current mirror as a resistor-controlled constant current source
+// linter: ngspicejs-lint
+"use strict";
+
+// PNP current mirror
+battery('U1', 1, 0, 5).rs(10);
+pnp('Q1', 3, 3, 1, 'BC557');
+pnp('Q2', 5, 3, 1, 'BC557');
+var r1 = resistor('R1', 3, 0, '500k');
+ammeter('A1', 5, 4);
+var d1 = diode('D1', 4, 0, '1N4148');
+
+echo('With R1=500k current through diode will be 9.15uA:');
+var t1 = tran().interval(0.01).run();
+echo('R1=' + r1.attr.r.toEng() + ' D1=' + d1.attr.model + ' I(A1)=' + t1.data['I(A1)'].avg().toEng());
+
+echo('Let\'s lower the R1 to 100k and current will be 45.7uA:');
+r1.r('100k');
+t1 = tran().interval(0.01).run();
+echo('R1=' + r1.attr.r.toEng() + ' D1=' + d1.attr.model + ' I(A1)=' + t1.data['I(A1)'].avg().toEng());
+
+echo("Let's change the diode from 1N4148 to 1N5819, current is almost the same 45.8uA:");
+d1.model('1N5819');
+t1 = tran().interval(0.01).run();
+echo('R1=' + r1.attr.r.toEng() + ' D1=' + d1.attr.model + ' I(A1)=' + t1.data['I(A1)'].avg().toEng());
+
+echo("Let's increase R1 back to 500k, current will be 9.19uA, almost the same as 9.15uA despite widely different diode");
+r1.r('500k');
+t1 = tran().interval(0.01).run();
+echo('R1=' + r1.attr.r.toEng() + ' D1=' + d1.attr.model + ' I(A1)=' + t1.data['I(A1)'].avg().toEng());

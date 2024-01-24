@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Bad eng suffix
+// linter: ngspicejs-lint
+"use strict";
+
+function aaa(s) {
+    echo('aaa(s)');
+    return s.fromEng();
+}
+
+function bbb(s) {
+    echo('bbb(s)');
+    return aaa(s);
+}
+
+bbb('12x');

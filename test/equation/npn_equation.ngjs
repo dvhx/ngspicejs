@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// Equations in npn
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 3, 1, '100k');
+resistor('R2', 3, 0, '100k');
+resistor('R4', 4, 0, '10k');
+var t1 = npn('T1', 1, 3, 4, 'BC547');
+sinewave('U2', 5, 0).v(0.1).f(196);
+capacitor('C1', 5, 3, '100n');
+capacitor('C2', 4, 6, '100n');
+resistor('R5', 6, 0, '50k');
+
+var t = tran().start('10m').run().chart('V(5)').chart('V(6)');
+echo(t.gain(5, 6).toFixed(3));
+
+t1.temp(120);
+echo(tran().start('10m').run().gain(5, 6).toFixed(3));
+t1.temp('{2*60}');
+echo(tran().start('10m').run().gain(5, 6).toFixed(3));

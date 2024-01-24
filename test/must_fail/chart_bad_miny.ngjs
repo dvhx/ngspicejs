@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Bad min_y value is the same as max_y would be
+// linter: ngspicejs-lint
+"use strict";
+
+var x = [1,2,3,4,5];
+var y = [-1,-2,-3,-4,-5];
+chart_xy().min_y(-1).add_series(x, y).show();
+

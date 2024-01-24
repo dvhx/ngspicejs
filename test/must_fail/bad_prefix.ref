@@ -1,0 +1,29 @@
+error: Device capacitor ABC - name should start with C... but starts with ABC. You can suppress this error with: (some device).name("ABC", true);
+  [bad_prefix.ngjs:0:0] in <anonymous>()
+    capacitor('ABC', 1, 0, 100);
+    ^
+hint: To allow non-typical names use: capacitor().name("ABC", true)...
+hint: To allow non-typical names use: capacitor("C1", ...).name("ABC", true)...
+hint: The purpose of this error is to prevent stupid errors like: resistor('C1', 1, 2, '100n');
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_expected_prefix.js:0:0, core.js:0:0] in assert_expected_prefix()
+    throw new Exception('Device ' + aDevice.type + ' ' + aName + ' - name should start with ' + aDevice.expected_prefix.sort().join('... or ') + '... but starts with ' + pr + '. You can suppress this error with: (some device).name("' + aName + '", true);');
+          ^
+  [device/capacitor.js:0:0, core.js:0:0] in Capacitor.name()
+    assert_expected_prefix(aName, this);
+    ^
+  [device/capacitor.js:0:0, core.js:0:0] in Capacitor()
+    this.name(aName);
+         ^
+  [device/capacitor.js:0:0, core.js:0:0] in capacitor()
+    return new Capacitor(aName, aAnode, aCathode, aC, aRs, aRp, aLs);
+           ^
+  [bad_prefix.ngjs:0:0] in <anonymous>()
+    capacitor('ABC', 1, 0, 100);
+    ^
+
+exit(12)

@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// test LM258
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 9);
+resistor('R1', 6, 0, '10k');
+resistor('R2', 6, 3, '20k');
+resistor('R3', 3, 0, '50k');
+sinewave('U2', 4, 0).v(1).f(196).offset(1);
+opamp('Q1', 4, 6, 2, 0, 3, 'LM258');
+
+var t = tran().run().chart('V(3)');
+var v = t.data['V(3)'];
+echo('swing', array_range(v).toEng(), 'min', array_min(v).toEng(), 'max', array_max(v).toEng());
+
+

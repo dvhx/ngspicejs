@@ -1,0 +1,42 @@
+#!/usr/bin/env ngspicejs
+// TL071 opamp
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('TL071', ['inplus', 'inminus', 'vplus', 'vminus', 'out'], {});
+s.diode_model({"name": "MODD1", "is": 800.113824e-18});
+s.diode('D1', 1, 10, 'MODD1');
+s.diode('D2', 15, 5, 'MODD1');
+s.diode('D3', 'out', 8, 'MODD1');
+s.diode('D4', 9, 'out', 'MODD1');
+s.diode('D5', 'vminus', 'vplus', 'MODD1');
+s.capacitor('C1', 7, 2, 15.118354e-12);
+s.capacitor('C2', 13, 14, 3.551384e-12);
+s.vcvs('E1', 3, 0).poly(['vplus', 0, 'vminus', 0], [0, 0.5, 0.5]);
+s.cccs('F1', 2, 3).poly(
+    ['V1', 'V2', 'V3', 'V4', 'V5'],
+    [0, 4.618e6, -5.118242e6, 5.118242e6, 5.118242e6, -5.118242e6]
+);
+s.vccs('G1', 7, 0, 13, 14, 283.115357e-6);
+s.vccs('G2', 0, 7, 12, 3, 8.97772824e-9);
+s.current_source('I1', 'vplus', 12, 195.116834e-6);
+s.ccvs('H1', 15, 0, 'VA1', 1001.18);
+s.jfet_model({name: 'MODJ1', kind: "JFET_P", is: 15.316482e-12, beta: 271.1184265e-6, vto: -1});
+s.jfet_p('J1', 14, 'inplus', 12, 'MODJ1');
+s.jfet_p('J2', 13, 'inminus', 12, 'MODJ1');
+s.resistor('R1', 'vminus', 13, 3.5184532e3);
+s.resistor('R2', 'vminus', 14, 3.5184532e3);
+s.resistor('R3', 7,  10, 99.981853e3);
+s.resistor('R4', 12, 3, 1.0277781385e6);
+s.resistor('R5', 'vplus', 'vminus', 2.1468543e3);
+s.resistor('R6', 11, 'out', 151.879);
+s.resistor('R7', 2, 3, 151.879);
+s.battery('VA1', 2, 11, 0);
+s.battery('V1', 10, 0, 0);
+s.battery('V2', 'vplus', 8, 2.207335);
+s.battery('V3', 9, 'vminus', 2.207335);
+s.battery('V4', 5, 0, 25);
+s.battery('V5', 0, 1, 25);
+s.end();
+
+globalThis.exports = {model: s};

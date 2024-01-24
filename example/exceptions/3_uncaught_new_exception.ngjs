@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// By using new Exception() the stack will be deep
+// linter: ngspicejs-lint --no-linting
+"use strict";
+
+clear_screen();
+
+function foo() {
+    echo('Calling: throw new Exception(string); no try block, stack will be deep');
+    throw new Exception("This is an Exception");
+    echo('Program should NOT continues');
+}
+
+function bar() {
+    foo();
+}
+
+bar();

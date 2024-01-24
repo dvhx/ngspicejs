@@ -1,0 +1,51 @@
+#!/usr/bin/env ngspicejs
+// Tests for array prototype
+// linter: ngspicejs-lint
+"use strict";
+
+[1,2,3].add([10,20,30]).echo();
+[[10,20], [30, 40]].add([[1, 2], [3, 4]]).echo();
+[[1,0], [0,1], [-1, 0], [0,-1]].argument().echo().deg().echo();
+echo([10,20,30,40].avg());
+[15,20,25,30,35].clamp(20, 30).echo();
+[[1,2,3],
+ [4,5,6],
+ [7,8,9]].column(1).echo();
+[['a','b','c']].column(1).echo();
+[1,2,3,4].complement([3,4,5,6]).echo();
+[3,4,5,6].complement([1,2,3,4]).echo();
+[10,20,30].db().echo();
+[10,20,25,20,15,25,40,35].extrema().echo();
+echo_json([10,20,25,20,15,25,40,35].extremaMax(), true);
+echo_json([10,20,25,20,15,25,40,35].extremaMin(), true);
+[[10,20], [30, 40]].imag().echo();
+echo([10,20,30,40].min());
+echo([10,20,30,40].max());
+[[10,20], [30, 40]].modulus().echo();
+[10,20,30,40].normalize().echo();
+[10,20,30,40].normalize(20, 30).echo();
+[0,1,2,3,4,5,6,7,8,9].quantize(4).echo();
+var mt = mersenne_twister(123);
+mt.replace_math_random();
+Math.random = function () { return mt.random(); };
+echo([0,1,2,3,4,5,6,7,8,9].randomItem());
+echo([10,20,30,40].range());
+[[10,20], [30, 40]].real().echo();
+var a = [];
+for (var i = 0; i < 100000; i++) {
+    a.push(Math.sin(i / 10));
+}
+echo(a.rms().toFixed(3));
+echo(a.std().toFixed(3));
+echo_json(a.stats(), true);
+[1,0,0,0,0,1,0,0,0,0,5,5,5,5,5].runningAvg(5).echo();
+echo([1,2,3].same([1,2,3]));
+echo([1,2,3].same([3,2,1]));
+[1,2,3].scale(10).echo();
+[[10,20], [30, 40]].scale(2).echo();
+[0,1,2,3,4,5,6,7,8,9].shuffle().echo();
+[10,20,30].sub([1,2,3]).echo();
+echo([0,1,2,3,4,5].sum());
+[1,2,3].union([2,3,4]).echo();
+[1,2,2,3,4,4,4].unique().echo();
+[1,-2,3,-4].abs().echo();

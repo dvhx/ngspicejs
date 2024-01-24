@@ -1,0 +1,12 @@
+* first line is ignored
+I_I1 0 1 DC 2
+R_R1 1 2 1000
+V_AMMETER__A1 2 0 DC 0
+.end
+2
+* first line is ignored
+I_I1 0 1 DC {2+2}
+R_R1 1 2 1000
+V_AMMETER__A1 2 0 DC 0
+.end
+4

@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Equations in resistor value
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 10);
+resistor('R1', 1, 0, '{1/2}');
+
+echo(tran().run().avg('I(U1)'));
+

@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Equations in vdmos model
+// linter: ngspicejs-lint
+"use strict";
+
+var m1 = vdmos_model('MY_VDMO').kind('VDMOS').vto(2.13).rs(0.02).kp(600).rg(21).vds(55).is(9e-13);
+
+// mosfet 20x amplifier
+battery('U1', 1, 0, 9);
+resistor('R1', 3, 1, '10M');
+resistor('R2', 3, 0, '10M');
+resistor('R3', 1, 2, '10k');
+resistor('R4', 4, 0, '10k');
+capacitor('C4', 4, 0, '2u2');
+mosfet_n('T1', 2, 3, 4, 'MY_VDMO');
+sinewave('U2', 5, 0).v(0.1).f(196);
+capacitor('C1', 5, 3, '100n');
+capacitor('C2', 2, 6, '100n');
+resistor('R5', 6, 0, '50k');
+
+tran().run().chart('V(6)');
+echo(tran().run().gain(5, 6).toFixed(3));
+
+m1.rs('{1*0.02}').kp('{1*600}').rg('{1*21}').is('{1*9e-13}');
+
+echo(tran().run().gain(5, 6).toFixed(3));

@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Test zener diode models 2.4V and 9.1V
+// linter: ngspicejs-lint --internal
+"use strict";
+
+sinewave('U1', 1, 0).v(20).f(50);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 3, 330);
+var d1 = diode('D1', 0, 3, 'ZENER_C2V4ST');
+tran().run().chart('V(3)');
+d1.model('ZENER_C9V1ST');
+tran().run().chart('V(3)');
+
+

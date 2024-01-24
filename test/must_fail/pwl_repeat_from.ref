@@ -1,0 +1,18 @@
+error: In pwl().repeat_from() can only use existing time (x-axis value) used in shape: [[0,0],["1m",1],["2m",0.5]]
+  [pwl_repeat_from.ngjs:0:0] in <anonymous>()
+    pwl('U1', 1, 0).shape([[0, 0], ['1m', 1], ['2m', 0.5]]).repeat_from('0.05m');
+                                                            ^
+hint: Available times are: 0, 1m, 2m
+
+Stack trace (3 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device/pwl.js:0:0, core.js:0:0] in PWL.repeat_from()
+    throw new Exception('In pwl().repeat_from() can only use existing time (x-axis value) used in shape: ' + JSON.stringify(this.attr.shape));
+          ^
+  [pwl_repeat_from.ngjs:0:0] in <anonymous>()
+    pwl('U1', 1, 0).shape([[0, 0], ['1m', 1], ['2m', 0.5]]).repeat_from('0.05m');
+                                                            ^
+
+exit(12)

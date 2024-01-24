@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// ReferenceError unfortunately only produce shallow stack
+// linter: ngspicejs-lint
+"use strict";
+
+function foo() {
+    diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});
+    diode({name: "D2", anode: 4, cathode: 3, model: '1N4148'});
+    /* jshint -W117 */
+    x();
+    /* jshint +W117 */
+}
+
+function bar() {
+    foo();
+}
+
+tran();
+bar();

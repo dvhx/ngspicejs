@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Using voltmeter to measure voltage of capacitor and inductor in RLC circuit
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(200);
+resistor('R1', 1, 2, 500);
+capacitor('C1', 2, 3, '100n');
+voltmeter('VC', 2, 3);
+inductor('L1', 3, 0, '100m');
+voltmeter('VL', 3, 0);
+
+ac().fstop('4k').run().chart(['V(VC)', 'V(VL)']);
+
+

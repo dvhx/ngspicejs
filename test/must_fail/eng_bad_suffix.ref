@@ -1,0 +1,25 @@
+bbb(s)
+aaa(s)
+error: Unsupported engineering format '12x', allowed suffixes are: m,u,n,p,f,a,k,M,G,T
+  [eng_bad_suffix.ngjs:0:0] in aaa()
+    return s.fromEng();
+             ^
+
+Stack trace (5 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [string_from_eng.js:0:0, core.js:0:0] in String.fromEng()
+    throw new Exception(aCustomErrorMessage || "Unsupported engineering format '" + s + "'" + allowed);
+          ^
+  [eng_bad_suffix.ngjs:0:0] in aaa()
+    return s.fromEng();
+             ^
+  [eng_bad_suffix.ngjs:0:0] in bbb()
+    return aaa(s);
+           ^
+  [eng_bad_suffix.ngjs:0:0] in <anonymous>()
+    bbb('12x');
+    ^
+
+exit(12)

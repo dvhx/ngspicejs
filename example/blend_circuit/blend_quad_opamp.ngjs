@@ -1,0 +1,56 @@
+#!/usr/bin/env ngspicejs
+// Quad opamp blend circuit with 50k blending pot and 50k load, measure volume sag
+// linter: ngspicejs-lint
+"use strict";
+
+capacitor('C1', 8, 10, '100n');
+capacitor('C2', 11, 9, '100n');
+capacitor('C3', 2, 13, '100u');
+resistor('R1', 5, 10, '500k');
+resistor('R2', 10, 0, '500k');
+resistor('R3', 5, 9, '500k');
+resistor('R4', 9, 0, '500k');
+var u1 = sinewave('U1', 8, 0).f(196).v(1);
+var u2 = sinewave('U2', 11, 0).f(333).v(1);
+battery('U3', 5, 0, 9);
+var pblend = pot('P1', 12, 3, 6, '50k', 50);
+var r5 = resistor('R5', 13, 0, '50k');
+          // +  - vcc gnd out
+opamp('Q1', 10, 12, 5, 0, 12, 'TL071');
+opamp('Q2', 9, 6, 5, 0, 6, 'TL071');
+opamp('Q3', 1, 2, 5, 0, 2, 'TL071');
+opamp('Q4', 3, 1, 5, 0, 1, 'TL071');
+
+var canvases = [], x = [], y = [], sag;
+
+var ampl = [Math.abs(u1.attr.v), Math.abs(u2.attr.v)].max();
+
+for (var p = 0; p <= 100; p += 5) {
+    pblend.percent(p);
+    var t = tran().run();
+    var c = chart_xy()
+        .min_y(-ampl)
+        .max_y(ampl)
+        .title('Blend pot ' + p + '%')
+        .add_series(t.data.time, t.data['V(13)'])
+        .render();
+    canvases.push(c.canvas);
+    // calculate sag
+    sag = t.data['V(13)'].range() / t.data['V(11)'].range();
+    x.push(p);
+    y.push(sag);
+    echo('percent', p, 'sag', sag.toFixed(3));
+}
+
+gif('blend_quad_opamp.gif', canvases, 10);
+
+chart_xy()
+    .min_x(0)
+    .max_x(100)
+    .min_y(0)
+    .max_y(1.1)
+    .title('Sag (x=blending pot percentage, y=max output amplitude, blend pot ' + pblend.attr.r.toEng() + ', load ' + r5.attr.r.toEng() + ')')
+    .add_series(x, y, 'Sag')
+    .show()
+    .gif('blend_quad_opamp_sag.gif');
+

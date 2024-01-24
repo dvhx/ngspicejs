@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for opamp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+sinewave('U2', 6, 0).v(0.5).offset(0.5).f(196);
+resistor('R1', 2, 0, '10k');
+resistor('R2', 2, 3, '20k');
+resistor('R3', 3, 0, '50k');
+var q1 = opamp('Q1', 6, 2, 5, 0, 3, 'LM258');
+
+var t;
+all_models('OPAMP').forEach((a) => {
+    q1.model(a);
+    t = tran().run();
+    echo(q1.attr.model, 'min=', array_min(t.data['V(3)']).toFixed(3), 'max=', array_max(t.data['V(3)']).toFixed(3));
+});

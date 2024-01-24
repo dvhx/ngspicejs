@@ -1,0 +1,14 @@
+error: variable 'milliseconds' in function 'delay_ms(milliseconds)' should be number
+  [must_fail_delay_ms.ngjs:0:0] in <anonymous>()
+    delay_ms('asdf');
+    ^
+
+hint: function 'delay_ms(milliseconds)' was called with 1 arguments
+hint: argument #0 was asdf (string)
+
+Stack trace (1 frames):
+  [must_fail_delay_ms.ngjs:0:0] in <anonymous>()
+    delay_ms('asdf');
+    ^
+
+exit(7)

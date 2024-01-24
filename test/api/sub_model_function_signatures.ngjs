@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// Check if sub_model methods have same arguments as global methods
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('FOO', [1, 2], {});
+s.resistor('R1', 1, 2, 100);
+s.end();
+
+var i = 0;
+for (var k in s) {
+    if (globalThis.hasOwnProperty(k) && typeof globalThis[k] === 'function') {
+        var gf = globalThis[k].toString().split('\n')[0].replace('function ', '');
+        var sf = k + s[k].toString().split('\n')[0].replace('function ', '');
+        if (gf !== sf) {
+            error('Global and SubModel function signatures differ:');
+            echo(gf);
+            echo(sf);
+            exit(1);
+        }
+        i++;
+    }
+}
+
+echo(i + ' sub_model methods OK');

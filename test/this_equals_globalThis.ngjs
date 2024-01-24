@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// this and globalThis should be the same object
+// linter: ngspicejs-lint
+"use strict";
+
+/* jshint -W040 */
+echo(this === globalThis);
+/* jshint +W040 */

@@ -1,0 +1,26 @@
+error: Subcircuit X1 uses 9 nets but spice model MY_CLAMP uses 2 nets
+  [spice_model_nets_count.ngjs:0:0] in <anonymous>()
+    tran().run();
+           ^
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device/sub.js:0:0, core.js:0:0] in Sub.render()
+    throw new Exception('Subcircuit ' + this.attr.name + ' uses ' + this.attr.nets.length + ' nets but spice model ' + this.attr.model + ' uses ' + m.declared_nets + ' nets');
+          ^
+  [netlist/netlist_render.js:0:0, core.js:0:0] in netlist_render()
+    spice = spice.concat(aNetlistDevices[i].render().split('\n'));
+                                            ^
+  [netlist/netlist_done.js:0:0, core.js:0:0] in netlist_done()
+    r.netlist = netlist_render(netlist_devices, netlist_line_markers, true, false);
+                ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    this.ret = netlist_done();
+               ^
+  [spice_model_nets_count.ngjs:0:0] in <anonymous>()
+    tran().run();
+           ^
+
+exit(12)

@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// N-channel mosfet 10x amplifier with high inductance source, 50k load and reasonably flat AC
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 7, '10M');
+resistor('R2', 7, 0, '10M');
+capacitor('C1', 5, 7, '100n');
+pickup_singlecoil('L1', 5, 0).v(0.1).f(196);
+resistor('RD', 1, 2, '6k8');
+resistor('RS', 3, 0, '3k3');
+capacitor('C3', 3, 9, '47u');
+resistor('R3', 9, 0, '510');
+capacitor('C2', 2, 6, '4u7');
+resistor('R4', 6, 0, '50k');
+mosfet_n('T1', 2, 7, 3, 'BS170');
+capacitor('C8', 7, 10, '100p');
+resistor('R8', 10, 0, '300k');
+
+ac().run().chart('V(6)');
+
+var t1 = tran().run();
+echo('gain:', t1.gain(5, 6).toEng());
+
+

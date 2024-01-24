@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for npn
+// linter: ngspicejs-lint
+"use strict";
+
+// all npn combinations
+var t1;
+var u1 = battery('U1', 1, 0, 1);
+battery('U2', 2, 0, 9);
+ammeter('A1', 2, 3);
+t1 = npn('T1', 3, 1, 0, 'BC547');
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.246 for ' + t1.attr.model + ')');
+
+t1.model('BD139_130');
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.991 for ' + t1.attr.model + ')');
+
+t1.model('TIP120');
+u1.v(1.5);
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.569 for ' + t1.attr.model + ')');

@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// human vector names - pnp
+// linter: ngspicejs-lint
+"use strict";
+
+pnp('Q1', 1, 2, 0, '2N3906');
+pnp('Q2', 3, 4, 0, 'BC557');
+pnp('Q3', 5, 6, 0, 'BD136');
+pnp('Q4', 7, 8, 0, 'BD136_120');
+resistor('R1', 1, 0, 100);
+resistor('R2', 2, 0, 100);
+resistor('R3', 3, 0, 100);
+resistor('R4', 4, 0, 100);
+resistor('R5', 5, 0, 100);
+resistor('R6', 6, 0, 100);
+resistor('R7', 7, 0, 100);
+resistor('R8', 8, 0, 100);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(Q4.Q1.IC)');
+echo(Object.keys(f.data).sort().join('\n'));
+

@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Net name two underscores
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 'vc__c', 0, 9);
+resistor('R1', 'vc__c', 0, 100);
+
+tran().run().chart('V(vc__c)');
+

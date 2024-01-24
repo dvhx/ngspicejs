@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Test if help search works
+// linter: ngspicejs-lint
+"use strict";
+
+help('how to use fft');
+

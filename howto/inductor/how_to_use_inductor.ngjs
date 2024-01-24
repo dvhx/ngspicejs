@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to use inductor
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(220).f(50);
+inductor('L1', 1, 2, '500m').rs(1); //!
+resistor('R2', 2, 0, '1k');
+tran().run().chart('I(U1)');
+

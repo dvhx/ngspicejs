@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Equations in switch_1p2t
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+switch_1p2t('S1', 1, 2, 3).ron('{10}').roff('{100G}').state(1);
+resistor('R2', 2, 0, 10);
+resistor('R3', 3, 0, 10);
+
+echo_netlist();
+
+var t = tran().run();
+echo('von', t.avg('V(2)'), 'voff', t.avg('V(3)').toEng());

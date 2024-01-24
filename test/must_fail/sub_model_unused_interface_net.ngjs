@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Sub model with unused interface net
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 5);
+
+var p = sub_model('POT2B', ['start', 'wiper', 'end'], {r: '1k', percent: 50});
+p.resistor('R1', 'start', 'out').r('{r * percent / 100}');
+p.resistor('R2', 'out', 'end').r('{r * (100 - percent) / 100}');
+p.end();

@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// human vector names - pickup
+// linter: ngspicejs-lint
+"use strict";
+
+pickup_humbucker('U1', 1, 0);
+pickup_singlecoil('U2', 2, 0);
+pickup_piezo('U3', 2, 0);
+resistor('R1', 1, 0, 50000);
+resistor('R2', 2, 0, 50000);
+resistor('R3', 3, 0, 50000);
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(U3.V1)');
+echo(Object.keys(f.data).sort().join('\n'));
+

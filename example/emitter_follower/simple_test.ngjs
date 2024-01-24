@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Simple emitter follower test
+// linter: ngspicejs-lint
+"use strict";
+
+// emitter follower
+include('emitter_follower.ngjs');
+tran().run().chart(['V(1)', 'V(6)']);
+
+

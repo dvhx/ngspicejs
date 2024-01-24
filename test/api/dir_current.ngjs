@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Test dir_current
+// linter: ngspicejs-lint
+"use strict";
+
+echo(dir_current().split('/').slice(3));
+
+

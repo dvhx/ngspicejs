@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Diodes with the same name must cause error
+// linter: ngspicejs-lint
+"use strict";
+
+diode('D1', 1, 0, '1N4148');
+diode('D1', 0, 1, '1N5819');
+

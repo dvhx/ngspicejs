@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Test v8_version
+// linter: ngspicejs-lint
+"use strict";
+
+echo(v8_version());
+

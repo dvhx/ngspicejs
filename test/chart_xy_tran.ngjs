@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// tran chart
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 1000);
+capacitor('C1', 2, 0, '100n');
+tran().run().chart('V(2)');
+

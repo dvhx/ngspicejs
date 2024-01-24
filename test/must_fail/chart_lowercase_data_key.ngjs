@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Chart lowercase vector name
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 1000);
+capacitor('C1', 2, 0, '100n');
+ac().run().chart('v(2)', {width: 100, height: 20});
+tran().run().chart('v(2)', {width: 100, height: 20});
+fft().run(2).chart('v(2)', {width: 100, height: 20});

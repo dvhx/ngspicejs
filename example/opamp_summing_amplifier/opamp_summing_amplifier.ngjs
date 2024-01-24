@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Summing 100Hz and 700Hz sinewave using opamp
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 7, 6, 9);
+resistor('R1', 7, 0, '20k');
+resistor('R2', 0, 6, '20k');
+
+resistor('R3', 9, 2, '100k');
+resistor('R4', 10, 2, '100k');
+resistor('R5', 2, 8, '100k');
+resistor('R6', 8, 0, '50k');
+
+sinewave('U2', 9, 0).v('100m').f(100);
+sinewave('U3', 10, 0).v('100m').f(700);
+
+opamp('Q1', 0, 2, 7, 6, 8, 'TL071');
+
+tran().run().chart('V(8)');
+
+fft().fstop('2k').run('V(8)').chart_db('V(8)', {width: 640, height: 240});
+
+

@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Testing different jfets in jfet matcher jig
+// http://tagboardeffects.blogspot.com/2012/07/greatly-improved-jfet-matcher.html
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 9);
+capacitor('C1', 4, 0, '100n');
+var jfet = jfet_n('T1', 4, 3, 6, '2N5457');
+resistor('R1', 6, 3, '1M');
+resistor('R2', 3, 0, 100);
+switch_1p2t('S1', 3, 6, 2).state(1).state_at(2, '10m');
+voltmeter('V1', 6, 0);
+
+var m = ['2N5457', '2SK30A', '2SK246', 'BF245A', 'J201', 'J201_LONG_LEADS', 'J201_LONG_LEADS_NGJS'];
+var i;
+for (i = 0; i < m.length; i++) {
+    jfet.model(m[i]);
+
+    var t1 = tran().run();
+
+    echo((m[i] + '                     ').substr(0, 20) +
+        ' Vt=-' + t1.value_at('V(V1)', '15m').toFixed(3) + 'V ' +
+        ' Idss=' + (t1.value_at('V(V1)', '5m') * 10).toFixed(3) + 'mA'
+    );
+}
+
+

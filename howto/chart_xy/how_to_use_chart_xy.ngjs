@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// How to use XY chart
+// linter: ngspicejs-lint
+"use strict";
+
+// basic use of chart_xy
+chart_xy().add_series([1,2,3,4], [1,4,9,16]).show();
+
+// all settings of chart_xy
+chart_xy()
+    .add_series([1,2,3,4], [1,4,9,16], "Voltages")
+    .title("Sample chart")
+    .min_x(0).min_y(0).max_x(5).max_y(20)
+    .width(320).height(240)
+    .log_x(false).log_y(false)
+    .label_x('Foo').label_y('Bar')
+    .show();
+
+// object parameters of chart_xy and chart with two series
+chart_xy({
+    label_x: "Foo",
+    label_y: "Bar",
+    series: [
+        {data_x: [1,2,3], data_y: [4,5,6], label: "s1"},
+        {data_x: [1,2,3], data_y: [5,3,4], label: "s2"}
+    ]
+}).show();

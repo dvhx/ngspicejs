@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// How to use piece-wise linear source (pwl)
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 0], ['5m', 4], ['20m', 5]]); //!
+pwl("U2", 2, 0).shape([[0, 0], [0.002, 5], [0.003, 5]]).repeat_from(0).delay(0.010); //!
+tran().run().chart(['V(1)', 'V(2)']);
+

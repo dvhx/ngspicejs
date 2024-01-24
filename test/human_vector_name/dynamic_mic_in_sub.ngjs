@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// human vector names - dynamic mic in sub
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('MY_MIC', ['a', 'b']);
+s.dynamic_mic('MIC1', 'a', 1).v(0.1).f(196);
+s.resistor('R1', 1, 'b', 100);
+s.end();
+
+var s2 = sub_model('MY_MIC2', ['a', 'b']);
+s2.dynamic_mic('MIC1', 'a', 1).v(0.1).f(196);
+s2.resistor('R1', 1, 'b', 100);
+s2.end();
+
+dynamic_mic('U1', 1, 0).v(0.1).f(196);
+sub('X1', 'MY_MIC', [2, 0]);
+sub('X2', 'MY_MIC2', [3, 0]);
+ammeter('A1', 3, 4);
+resistor('R1', 4, 0, 100);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('--- fft');
+
+var f = fft().run('I(X2.MIC1.LS)');
+echo(Object.keys(f.data).sort().join('\n'));
+

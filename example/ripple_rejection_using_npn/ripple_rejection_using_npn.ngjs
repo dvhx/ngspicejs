@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Ripple rejection circuit using NPN as "capacitance multiplier"
+// linter: ngspicejs-lint
+"use strict";
+
+// ripple rejection circuit
+sinewave('U1', 1, 0).offset(9).v(0.3).f(50);
+resistor('R1', 1, 2, '3k3');
+capacitor('C1', 2, 0, '47u');
+resistor('R2', 3, 0, '100');
+npn('T1', 1, 2, 3, 'BC547');
+
+// transient analysis
+var t1 = tran().interval(0.05).run().chart(['V(1)', 'V(3)'], {min_y: 0});
+
+// measure how much it was stabilised
+var a = t1.data['V(1)'];
+var b = t1.data['V(3)'];
+echo(' Input voltage is', a.min().toFixed(2), 'to', a.max().toFixed(2), 'with average of', a.avg().toFixed(2), 'and standard deviation', a.std().toFixed(3));
+echo('Output voltage is', b.min().toFixed(2), 'to', b.max().toFixed(2), 'with average of', b.avg().toFixed(2), 'and standard deviation', b.std().toFixed(3));
+echo('The ripple was reduces from', a.range().toEng() + 'V to', b.range().toEng() + 'V');
+echo('Voltage drop is', (a.avg() - b.avg()).toEng() + 'V');
+
+

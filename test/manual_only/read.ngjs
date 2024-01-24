@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Test basic functionality of cpp api call
+// linter: ngspicejs-lint
+"use strict";
+
+var s;
+while (s != "q") {
+    s = read('Type something, "q" to quit: ');
+    echo_json(s);
+}
+
+

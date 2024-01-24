@@ -1,0 +1,380 @@
+https://dvhx.github.io/stripboard2schematic/schematic.html?share=am,U1,9V 50Hz,1,0|audio,U2,../../wav/1ms_sinewave_1khz_16bit_signed_pcm.m 0.1V,2,0|battery,U3,9V,3,0|beeps,U4,5V 220Hz,4,0|cccs,F5,U3 1,5,0|ccvs,H6,U3 1,6,0|current_source,I7,0.5A,7,0|dynamic_mic,U8,0.1V 440Hz,8,0|electret_mic,U9,0.1V 440Hz,9,0|pickup,U10,generic 0.1V 440Hz L=1H C=0F Rs=5.4kR Cp=30pF Rp=100MR,10,0|pickup,U11,singlecoil 0.1V 196Hz L=2.9H C=0F Rs=5.4kR Cp=258pF Rp=245kR,11,0|pulse,U12,1V 0.01s,12,0|pwl,U13,0 0 0.02 5,13,0|sawtooth,U14,5V 440Hz,14,0|sinewave,U99,5V 50Hz,99,0|square,U15,5V 100Hz 25% duty,15,0|vccs,G16,nets 16 0 1 2 gain 12.3,16,0,1,2|vcvs,E17,nets 17 0 1 2 gain 12.3,17,0,1,2|ammeter,A18,,18,0|capacitor,C19,100n,19,0|diode,D20,1N4148,20,0|inductor,L21,1,21,0|inductor,L22,2,22,0|inductor_coupling,K23,L21 L22 0.5,|jfet_n,T24,J201,24,1,2|mosfet_n,T26,BS170,26,1,2|mosfet_p,T27,IRF5305,27,1,2|transistor_npn,T28,BC547,1,2,3|transistor_npn,T29,BC547,1,2,3|transistor_npn,T30,BC547,1,2,3|opamp,Q31,TL071,31,1,2,3,4|transistor_pnp,T32,BC557,32,1,2|pot,P33,10000R 50%,33,1,2|resistor,R1,1k,1,0|switch_1p2t,S35,1,35,1,2|voltmeter,V36,,36,0|vref,REF37,TL431,37,1,2|sub_model,FOO,FOO 2nets,a,b|sub,X1,FOO,1,2|diode,D1,DM1,1,0
+[
+ {
+  "type": "am",
+  "name": "U1",
+  "value": "9V 50Hz",
+  "nets": [
+   1,
+   0
+  ]
+ },
+ {
+  "type": "audio",
+  "name": "U2",
+  "value": "../../wav/1ms_sinewave_1khz_16bit_signed_pcm.m 0.1V",
+  "nets": [
+   2,
+   0
+  ]
+ },
+ {
+  "type": "battery",
+  "name": "U3",
+  "value": "9V",
+  "nets": [
+   3,
+   0
+  ]
+ },
+ {
+  "type": "beeps",
+  "name": "U4",
+  "value": "5V 220Hz",
+  "nets": [
+   4,
+   0
+  ]
+ },
+ {
+  "type": "cccs",
+  "name": "F5",
+  "value": "U3 1",
+  "nets": [
+   5,
+   0
+  ]
+ },
+ {
+  "type": "ccvs",
+  "name": "H6",
+  "value": "U3 1",
+  "nets": [
+   6,
+   0
+  ]
+ },
+ {
+  "type": "current_source",
+  "name": "I7",
+  "value": "0.5A",
+  "nets": [
+   7,
+   0
+  ]
+ },
+ {
+  "type": "dynamic_mic",
+  "name": "U8",
+  "value": "0.1V 440Hz",
+  "nets": [
+   8,
+   0
+  ]
+ },
+ {
+  "type": "electret_mic",
+  "name": "U9",
+  "value": "0.1V 440Hz",
+  "nets": [
+   9,
+   0
+  ]
+ },
+ {
+  "type": "pickup",
+  "name": "U10",
+  "value": "generic 0.1V 440Hz L=1H C=0F Rs=5.4kR Cp=30pF Rp=100MR",
+  "nets": [
+   10,
+   0
+  ]
+ },
+ {
+  "type": "pickup",
+  "name": "U11",
+  "value": "singlecoil 0.1V 196Hz L=2.9H C=0F Rs=5.4kR Cp=258pF Rp=245kR",
+  "nets": [
+   11,
+   0
+  ]
+ },
+ {
+  "type": "pulse",
+  "name": "U12",
+  "value": "1V 0.01s",
+  "nets": [
+   12,
+   0
+  ]
+ },
+ {
+  "type": "pwl",
+  "name": "U13",
+  "value": "0 0 0.02 5",
+  "nets": [
+   13,
+   0
+  ]
+ },
+ {
+  "type": "sawtooth",
+  "name": "U14",
+  "value": "5V 440Hz",
+  "nets": [
+   14,
+   0
+  ]
+ },
+ {
+  "type": "sinewave",
+  "name": "U99",
+  "value": "5V 50Hz",
+  "nets": [
+   99,
+   0
+  ]
+ },
+ {
+  "type": "square",
+  "name": "U15",
+  "value": "5V 100Hz 25% duty",
+  "nets": [
+   15,
+   0
+  ]
+ },
+ {
+  "type": "vccs",
+  "name": "G16",
+  "value": "nets 16 0 1 2 gain 12.3",
+  "nets": [
+   16,
+   0,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "vcvs",
+  "name": "E17",
+  "value": "nets 17 0 1 2 gain 12.3",
+  "nets": [
+   17,
+   0,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "ammeter",
+  "name": "A18",
+  "value": "",
+  "nets": [
+   18,
+   0
+  ]
+ },
+ {
+  "type": "capacitor",
+  "name": "C19",
+  "value": "100n",
+  "nets": [
+   19,
+   0
+  ]
+ },
+ {
+  "type": "diode",
+  "name": "D20",
+  "value": "1N4148",
+  "nets": [
+   20,
+   0
+  ]
+ },
+ {
+  "type": "inductor",
+  "name": "L21",
+  "value": "1",
+  "nets": [
+   21,
+   0
+  ]
+ },
+ {
+  "type": "inductor",
+  "name": "L22",
+  "value": "2",
+  "nets": [
+   22,
+   0
+  ]
+ },
+ {
+  "type": "jfet_n",
+  "name": "T24",
+  "value": "J201",
+  "nets": [
+   24,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "mosfet_n",
+  "name": "T26",
+  "value": "BS170",
+  "nets": [
+   26,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "mosfet_p",
+  "name": "T27",
+  "value": "IRF5305",
+  "nets": [
+   27,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "npn",
+  "name": "T28",
+  "value": "BC547",
+  "nets": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "type": "npn",
+  "name": "T29",
+  "value": "BC547",
+  "nets": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "type": "npn",
+  "name": "T30",
+  "value": "BC547",
+  "nets": [
+   1,
+   2,
+   3
+  ]
+ },
+ {
+  "type": "opamp",
+  "name": "Q31",
+  "value": "TL071",
+  "nets": [
+   31,
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ {
+  "type": "pnp",
+  "name": "T32",
+  "value": "BC557",
+  "nets": [
+   32,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "pot",
+  "name": "P33",
+  "value": "10000R 50%",
+  "nets": [
+   33,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "resistor",
+  "name": "R1",
+  "value": "1k",
+  "nets": [
+   1,
+   0
+  ]
+ },
+ {
+  "type": "switch_1p2t",
+  "name": "S35",
+  "value": 1,
+  "nets": [
+   35,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "voltmeter",
+  "name": "V36",
+  "value": "",
+  "nets": [
+   36,
+   0
+  ]
+ },
+ {
+  "type": "vref",
+  "name": "REF37",
+  "value": "TL431",
+  "nets": [
+   37,
+   1,
+   2
+  ]
+ },
+ {
+  "type": "sub_model",
+  "name": "FOO",
+  "value": "FOO 2nets",
+  "nets": [
+   "a",
+   "b"
+  ]
+ },
+ {
+  "type": "sub",
+  "name": "X1",
+  "value": "FOO",
+  "nets": [
+   1,
+   2
+  ]
+ },
+ {
+  "type": "diode",
+  "name": "D1",
+  "value": "DM1",
+  "nets": [
+   1,
+   0
+  ]
+ },
+ {
+  "type": "ground",
+  "name": "Ground",
+  "value": "",
+  "nets": [
+   0
+  ]
+ }
+]
+https://dvhx.github.io/stripboard2schematic/schematic.html?share=battery,U1,9V,1,0|diode,D1,1N4148,1,2|resistor,R1,1k,2,0

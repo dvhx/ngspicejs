@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// caught exception should not print stack
+// linter: ngspicejs-lint
+"use strict";
+
+try {
+    throw new Exception("You should only see 1 line of text, no stack.");
+} catch (e) {
+    echo(e);
+}

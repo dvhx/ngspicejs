@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Print shell, script and arguments
+// linter: ngspicejs-lint
+"use strict";
+
+echo("This is version_1.ngjs");
+echo("script_shell():", script_shell());
+echo("script_self():", script_self());
+echo("script_args():" + JSON.stringify(script_args()));
+echo_json(script_args());
+

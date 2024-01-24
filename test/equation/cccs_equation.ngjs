@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// Equations in cccs
+// linter: ngspicejs-lint
+"use strict";
+
+// 9V battery + 1k resistor = 9mA current
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 0, 1000);
+echo(tran().run().avg('I(U1)').toEng());
+
+var f2 = cccs('F2', 2, 0, 'U1', 2);
+resistor('R2', 2, 3, 123);
+ammeter('A2', 3, 0);
+echo(tran().run().avg('I(A2)').toEng());
+
+f2.gain('{1+1}');
+echo(tran().run().avg('I(A2)').toEng());

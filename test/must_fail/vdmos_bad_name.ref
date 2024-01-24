@@ -1,0 +1,27 @@
+error: Due to bug #642 in ngspice model name cannot contain string 'VDMOS' so change name 'MY_VDMOS' to something else
+  [vdmos_bad_name.ngjs:0:0] in <anonymous>()
+    vdmos_model('MY_VDMOS').kind('VDMOS').vto(2)
+    ^
+hint: For more information see https://sourceforge.net/p/ngspice/bugs/642/
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_name.js:0:0, core.js:0:0] in assert_name()
+    throw new Exception("Due to bug #642 in ngspice model name cannot contain string 'VDMOS' so change name '" + aValue + "' to something else");
+          ^
+  [model/vdmos_model.js:0:0, core.js:0:0] in VdmosModel.name()
+    assert_name(aName, '');
+    ^
+  [model/vdmos_model.js:0:0, core.js:0:0] in VdmosModel()
+    this.name(aNameOrObj);
+         ^
+  [model/vdmos_model.js:0:0, core.js:0:0] in vdmos_model()
+    return new VdmosModel(aNameOrObj);
+           ^
+  [vdmos_bad_name.ngjs:0:0] in <anonymous>()
+    vdmos_model('MY_VDMOS').kind('VDMOS').vto(2)
+    ^
+
+exit(12)

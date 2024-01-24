@@ -1,0 +1,43 @@
+#!/usr/bin/env ngspicejs
+// Use 3.3V to switch 150R load using BJT, optimize values of R1,R2,R3 to have maximal on current and minimal off current
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+resistor('RLOAD', 2, 5, 150);
+var r1 = resistor('R1', 6, 7, '6k8');
+var r2 = resistor('R2', 1, 7, '100k');
+var r3 = resistor('R3', 7, 0, '100k');
+square('U2', 6, 0).v(3.3).f(50);
+npn('T1', 5, 7, 0, 'BC547');
+
+var t = tran().run().chart('V(6)');
+var ion = t.value_at('I(A1)', '5m');
+var ioff = t.value_at('I(A1)', '15m');
+echo('ion', ion.toEng(), 'ioff', ioff.toEng());
+
+var csv = [['R1','R2','R3','Ion','Ioff']], score, best = 0;
+series_e3(100, '10M').forEach((a) => {
+    series_e3(1000, '10M').forEach((b) => {
+        series_e3(1000, '10M').forEach((c) => {
+            r1.r(a);
+            r2.r(b);
+            r3.r(c);
+            t = tran().run();
+            ion = t.value_at('I(A1)', '5m');
+            ioff = t.value_at('I(A1)', '15m');
+            score = 0.9 * ion + 0.001 / ioff;
+            if (ion < 0.030) {
+                score = 0;
+            }
+            if (score > best) {
+                echo('r1', a, 'r2', b, 'r3', c, 'ion', ion.toEng(), 'ioff', ioff.toEng(), 'score', score);
+                best = score;
+            }
+            csv.push([a, b, c, ion, ioff, score]);
+        });
+    });
+});
+//file_write_csv('1.csv', csv);
+echo('DONE');

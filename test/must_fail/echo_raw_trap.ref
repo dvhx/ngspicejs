@@ -1,0 +1,14 @@
+AAAABCDEFBBBCCC
+DDD
+AAABBB
+error: echo_trap was triggered by 'BBB'
+  [echo_raw_trap.ngjs:0:0] in <anonymous>()
+    echo_raw("BBB"); // trap will be triggered here
+    ^
+
+Stack trace (1 frames):
+  [echo_raw_trap.ngjs:0:0] in <anonymous>()
+    echo_raw("BBB"); // trap will be triggered here
+    ^
+
+exit(10)

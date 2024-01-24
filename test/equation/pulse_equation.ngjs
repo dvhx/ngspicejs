@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Equations in pulse
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v('{5}').offset(1).raise('{1e-3}').fall('{1e-3}').delay('{7e-3}').pulse_width('{10e-3}');
+
+tran().run().chart('V(1)');
+
+echo_netlist();

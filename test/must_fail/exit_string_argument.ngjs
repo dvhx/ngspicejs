@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Exit requires number not string
+// linter: ngspicejs-lint
+"use strict";
+
+function foo() {
+    Math.random();
+    exit("asdf");
+}
+
+function bar() {
+    foo();
+}
+
+bar();

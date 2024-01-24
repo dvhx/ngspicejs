@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Chart must not change chart properties object passed as 2nd argument
+// linter: ngspicejs-lint
+"use strict";
+
+// RC filter
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 100);
+capacitor('C1', 2, 0, '100n');
+
+var o = {width: 640, height: 204, show: false};
+function check(aPlace) {
+    if (Object.keys(o).join(',') !== 'width,height,show') {
+        error(aPlace + ' object keys changed after chart: ' + Object.keys(o));
+    }
+}
+check('1');
+ac().run().chart('V(2)', o);
+check('ac1');
+ac().run().chart_db('V(2)', o);
+check('ac2');
+tran().run().chart('V(2)', o);
+check('tran');
+fft().run('V(2)').chart('V(2)', o);
+check('fft1');
+fft().run('V(2)').chart_db('V(2)', o);
+check('fft2');
+
+o = {width: 640, height: 204, show: true};
+check('2');
+ac().run().chart('V(2)', o);
+check('2ac1');
+ac().run().chart_db('V(2)', o);
+check('2ac2');
+tran().run().chart('V(2)', o);
+check('2tran');
+fft().run('V(2)').chart('V(2)', o);
+check('2fft1');
+fft().run('V(2)').chart_db('V(2)', o);
+check('2fft2');
+

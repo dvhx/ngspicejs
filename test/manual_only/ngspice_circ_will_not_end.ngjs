@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// test bug https://sourceforge.net/p/ngspice/bugs/638/
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_netlist(`* first line is ignored
+.subckt CE vcc gnd in out PARAMS: r1=68k r2=4k7 r3=20k r4=150 c1=4u7 c2=4u7
+RR1 vcc b {r1}
+RR2 b gnd {r2}
+RR3 vcc c {r3}
+RR4 e gnd {r4}
+CC1 in b {c1}
+CC2 c out {c2}
+QQ1 c b e QBC547 area=1
+.ends
+VU1 1 0 DC 9
+V_AMMETER_A1 1 2 DC 0
+xX1 2 0 in out CE
+* r1=100 r2=200 r3=300 r4=400 c1=10u c2=100n
+VU2 in 0 DC 0 AC 1 0  SIN (0 0.0005 196 0 0 0)
+RRLOAD out 0  50000
+.model QBC547 NPN(is=5.070000000000001e-14 nf=1 bf=325 vaf=155 ikf=0.3 ise=1.56e-11 ne=2 br=4.
++ nr=1 var=24 ikr=0.45 re=0.907 rb=3.63 rc=0.363 xtb=1.5 cje=2.0800000000000002e-11 cjc=8.33e-12 tf=6.11e-10 tr=1.3800000000000002e-7)
+.end`);
+Internal.ngspice_command(`.tran 100u 20m 0`);
+

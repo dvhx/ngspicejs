@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// High-gain (5000x) 2-stage common emitter
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 10, 0, 9);
+ammeter('A1', 10, 9);
+
+resistor('R1', 6, 4, '150k');
+resistor('R2', 9, 4, '6k8');
+resistor('R3', 3, 2, '150k');
+resistor('R4', 9, 2, '6k8');
+resistor('R5', 8, 0, '50k');
+
+capacitor('C1', 7, 6, '4u7');
+capacitor('C2', 4, 3, '4u7');
+capacitor('C3', 2, 8, '4u7');
+
+npn('T1', 4, 6, 0, 'BC547');
+npn('T2', 2, 3, 0, 'BC547');
+
+sinewave('U2', 7, 0).v('100u').f(196);
+
+var t = tran().run().chart('V(8)');
+echo('Gain', t.gain(7, 8));
+
+

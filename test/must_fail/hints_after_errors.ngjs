@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Hints should show after errors not before
+// linter: ngspicejs-lint
+"use strict";
+
+hint('First hint');
+hint('Second hint');
+error('Some error');
+hint('Third hint');
+hint('Fourth hint');
+error('Another error');
+

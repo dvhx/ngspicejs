@@ -1,0 +1,29 @@
+error: chart_xy() min_y and max_y cannot have the same value: -1 (this would make the area infinitely small)
+  [chart_bad_miny.ngjs:0:0] in <anonymous>()
+    chart_xy().min_y(-1).add_series(x, y).show();
+                                          ^
+hint: you manually set min_y is -1
+hint: calculated bounding box is {"min_x":1,"min_y":-1,"max_x":5,"max_y":-1,"span_x":4,"span_y":0}
+hint:    updated bounding box is {"min_x":1,"min_y":-5,"max_x":5,"max_y":-1,"span_x":4,"span_y":4}
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [chart_xy.js:0:0, core.js:0:0] in ChartXy.validate_bbox()
+    throw new Exception('chart_xy() min_y and max_y cannot have the same value: ' + aBbox.min_y + ' (this would make the area infinitely small)');
+          ^
+  [chart_xy.js:0:0, core.js:0:0] in ChartXy.render_ascii()
+    this.validate_bbox(bbox, orig_bbox);
+         ^
+  [chart_xy.js:0:0, core.js:0:0] in ChartXy.render()
+    this.render_ascii();
+         ^
+  [chart_xy.js:0:0, core.js:0:0] in ChartXy.show()
+    this.render();
+         ^
+  [chart_bad_miny.ngjs:0:0] in <anonymous>()
+    chart_xy().min_y(-1).add_series(x, y).show();
+                                          ^
+
+exit(12)

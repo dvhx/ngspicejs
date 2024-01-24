@@ -1,0 +1,94 @@
+#!/usr/bin/env ngspicejs
+// Running 300+ tests is quite slow, here we test 80% of all features in one quick test
+// linter: ngspicejs-lint
+"use strict";
+
+
+function foo(a,b,c) {
+    echo(a,b,c);
+    Internal.hint_args('foo(a,b,c)', arguments);
+}
+foo(1, true, 3.14);
+
+echo(all_models());
+echo(all_models('NPN'));
+//echo(config_path());
+echo('1k2'.fromEng());
+echo((1200).toEng());
+
+echo('asdf', 123);
+clear_screen();
+echo(script_shell_full().replace(env('HOME'), '~') + ' <-- make sure you are running tests using ngspicejs binary from correct dir');
+delay_ms(10);
+echo(dir('../js/depend'));
+//echo(dir_current());
+echo(env('TERM'));
+echo(file_exists('../Makefile'), file_exists('../banana'));
+echo(file_size('../Makefile'));
+echo(file_read('../Makefile').length);
+var a = sixel_canvas(12, 12);
+a.white = a.color(100, 100, 100);
+a.red = a.color(100, 0, 0);
+a.green = a.color(0, 100, 0);
+a.blue = a.color(0, 0, 100);
+a.line(0, 0, 12, 12, a.red);
+a.label('Hi!', 0, 10, a.green);
+a.fill_rect(10, 0, 2, 2, a.blue);
+a.show();
+file_write('1.gif', 'bug');
+gif('1.gif', [a], 100);
+echo(file_size('1.gif'));
+warn('Following error messages are not real errors:');
+hint('some hint');
+error('this is not an error, just a test, followed by 1 hint:');
+error('second error, no hints after:');
+error.happened = false;
+var ig = 123;
+ignore(ig);
+try {
+    throw "banana";
+} catch (e) {
+    echo('caught: ' + e);
+}
+echo('last_ex', Internal.last_exception_string());
+try {
+    //throw new Exception("carrot");
+} catch (e2) {
+    echo('caught: ' + e2);
+}
+echo('last_ex', Internal.last_exception_string());
+Internal.ngspice_command('version');
+echo(Internal.ngspice_log().join('\n'));
+
+echo('script_args', script_args());
+echo('script_self', script_self());
+echo('script_shell', script_shell());
+echo('terminal_colors', terminal_colors());
+echo_json(terminal_size());
+echo('terminal_size', JSON.stringify(terminal_size()));
+echo('v8_version', v8_version());
+echo('ngspice_version', ngspice_version());
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 2, 1000);
+resistor('R2', 2, 3, 1000);
+npn('T1', 2, 3, 0, 'BC547');
+pnp('T2', 3, 4, 0, 'BC557');
+jfet_n('T3', 3, 4, 0, 'J201');
+opamp('Q1', 3, 4, 3, 4, 0, 'LM741');
+tran().run().chart('V(2)');
+ac().run().chart('V(2)');
+fft().fstop('200').run('V(2)').chart('V(2)');
+echo_netlist();
+chart_scatter([1,2,3], [1,2,3], [10,20,30])
+    .width(204)
+    .height(204)
+    .log_x(!true)
+    .log_y(!true)
+    .size(10)
+    .title('Scatter chart')
+    .label_x('R1')
+    .label_y('R2')
+    .show();
+
+exit(123);

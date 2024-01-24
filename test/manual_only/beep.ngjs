@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Test beeps
+// linter: ngspicejs-lint
+"use strict";
+
+beep(440, 1000); delay_ms(1000);
+beep(440, 100); delay_ms(1000);
+beep(880, 1000); delay_ms(1000);
+beep(880, 100); delay_ms(1000);
+
+// default beep is 440 300
+beep();
+

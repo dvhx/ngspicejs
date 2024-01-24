@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// current of coil with rs
+// linter: ngspicejs-lint
+"use strict";
+
+// common emitter 24x amplification
+sinewave('U1', 1, 0).v(5).f(196);
+capacitor('C1', 1, 2, '10n');
+inductor('L1', 2, 3, '100m');
+inductor('L2', 3, 4, '100m').rs(6000);
+resistor('R1', 4, 0, 10);
+
+// Ideal coil L1 should have no problems
+var a = ac().run().chart('I(L1)', {width: 640, height: 180});
+tran().run().chart('I(L1)', {width: 640, height: 180});
+fft().run('I(L1)').chart('I(L1)', {width: 640, height: 180});
+echo(Object.keys(a.data).sort());
+
+// Real coil L2 needs some #branch trickery to use sane vector names
+a = ac().run().chart('I(L2.L0)', {width: 640, height: 120});
+tran().run().chart('I(L2.L0)', {width: 640, height: 120});
+fft().run('I(L2.L0)').chart('I(L2.L0)', {width: 640, height: 120});
+echo(Object.keys(a.data).sort());

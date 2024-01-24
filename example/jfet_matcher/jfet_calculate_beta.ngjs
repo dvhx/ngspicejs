@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// Calculate BETA from Idss and Vto
+// linter: ngspicejs-lint
+"use strict";
+
+['J201', '2N5457', '2SK246', 'BF245A', '2SK30A'].forEach((m) => {
+var csv = csv_to_array_of_objects(file_read_csv('measured_jfets_' + m + '.csv'));
+    var avg = {idss: 0, vto: 0, beta: 0};
+    csv.forEach((o) => {
+        // VTO = VGSoff
+        // BETA = IDSS / (VGSoff^2)
+        var idss = o.idss.fromEng();
+        var vto = o.vto.fromEng();
+        o.beta = idss / (vto * vto);
+        avg.idss += idss;
+        avg.vto += vto;
+        avg.beta += o.beta;
+    });
+    avg.idss /= csv.length;
+    avg.vto /= csv.length;
+    avg.beta /= csv.length;
+
+    // print model attributes
+    echo(m);
+    echo(JSON.stringify(avg, undefined, 4));
+});
+

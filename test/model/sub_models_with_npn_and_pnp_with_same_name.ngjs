@@ -1,0 +1,30 @@
+#!/usr/bin/env ngspicejs
+// Test if there is problem if sub model have bjt model with same name in different subcircuits
+// linter: ngspicejs-lint
+"use strict";
+
+var a = sub_model('AAA', [1, 2, 3], {});
+a.bjt_model({name: 'TT', kind: 'NPN', bf: 100});
+a.npn('T1', 1, 2, 3, 'TT');
+a.end();
+
+var b = sub_model('BBB', [1, 2, 3], {});
+b.bjt_model({name: 'TT', kind: 'PNP', bf: 200});
+b.pnp('T1', 1, 2, 3, 'TT');
+b.end();
+
+battery('U1', 1, 0, 1);
+battery('V1', 2, 0, 9);
+ammeter('A1', 2, 3);
+sub('X1', 'AAA', [3, 1, 0]);
+
+battery('U2', 10, 0, 1);
+battery('V2', 20, 0, 9);
+ammeter('A2', 20, 30);
+sub('X2', 'BBB', [30, 10, 0]);
+
+echo_netlist();
+
+var t = tran().run();
+echo('I1=', array_max(t.data['I(A1)']).toFixed(3));
+echo('I2=', array_max(t.data['I(A2)']).toPrecision(3));

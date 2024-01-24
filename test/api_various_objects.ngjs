@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// print api of various objects
+// linter: ngspicejs-lint
+"use strict";
+
+api(file_write);
+api('file_write');
+api(file_write_json);
+api('file_write_json');
+//api(globalThis);
+//api('globalThis');
+api(echo);
+api('echo');
+api(resistor);
+api('resistor');
+api(resistor('R1'));
+api(Internal.Resistor);
+api('Resistor');

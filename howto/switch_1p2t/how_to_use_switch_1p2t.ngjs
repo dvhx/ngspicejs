@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// How to control 1P2T switch using timeline, how to set on and off resistance
+// linter: ngspicejs-lint
+"use strict";
+
+// control switch using timeline [[time1,state1], ...]
+battery('U1', 1, 0, 9);
+var s1 = switch_1p2t("S1", 1, 2, 3).state(2).ron(0.1).roff("1G").timeline([[0, 1], [0.01, 2], [0.015, 1]]); //!
+resistor('R1', 2, 0, 100);
+resistor('R2', 3, 0, 1000);
+tran().run().chart('I(U1)');
+
+// control switch using state_at(state,time)
+s1.attr.timeline = []; //!
+s1.state_at(2, 0).state_at(1, 0).state_at(2, "10m").state_at(1, "15m"); //!
+tran().run().chart('I(U1)');
+
+

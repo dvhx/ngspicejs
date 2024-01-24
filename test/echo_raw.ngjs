@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// echo raw
+// linter: ngspicejs-lint
+"use strict";
+
+echo_raw("AAA");
+echo_raw("BBB");
+echo("CCC");
+echo("DDD");

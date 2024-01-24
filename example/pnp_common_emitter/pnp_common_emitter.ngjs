@@ -1,0 +1,37 @@
+#!/usr/bin/env ngspicejs
+// Convert NPN common emitter to PNP common emitter with these 2 simple tricks
+// linter: ngspicejs-lint
+"use strict";
+
+// First NPN common emitter
+var u1 = battery('U1', 8, 0, 9);
+resistor('R1', 8, 2, '68k');
+resistor('R2', 2, 0, '4k7');
+resistor('R3', 8, 7, '20k');
+resistor('R4', 15, 0, '1k');
+resistor('R5', 11, 0, '50k');
+capacitor('C1', 13, 2, '4u7');
+capacitor('C2', 7, 11, '4u7');
+capacitor('C3', 15, 0, '10u');
+var t1 = npn('T1', 7, 2, 15, '2N3904');
+pickup_singlecoil('L1', 13, 0).v('10m');
+
+// show tran and gain
+var t = tran().run().chart('V(11)');
+echo('NPN gain', t.gain(13, 11).toFixed(3));
+
+// PNP common emitter
+
+// delete NPN t1
+t1.remove();
+
+// insert new PNP
+t1 = pnp('T1', 7, 2, 15, '2N3906');
+// flip battery polarity
+u1.anode(0).cathode(8);
+
+// show tran and gain
+t = tran().run().chart('V(11)');
+echo('PNP gain', t.gain(13, 11).toFixed(3));
+
+

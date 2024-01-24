@@ -1,0 +1,14 @@
+error: path 'asdf' not found, cannot list directory
+  [must_fail_dir_bad_path.ngjs:0:0] in <anonymous>()
+    dir("asdf");
+    ^
+
+hint: function 'dir(path)' was called with 1 arguments
+hint: argument #0 was asdf (string)
+
+Stack trace (1 frames):
+  [must_fail_dir_bad_path.ngjs:0:0] in <anonymous>()
+    dir("asdf");
+    ^
+
+exit(6)

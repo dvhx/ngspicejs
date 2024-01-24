@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to make a sinusoidal signal generator?
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50); //!
+sinewave("U2", 2, 0).offset(2.5).v(5).f(440).delay(0.001).damping(69).phase(180); //!
+tran().run().chart(['V(1)', 'V(2)']);
+
+

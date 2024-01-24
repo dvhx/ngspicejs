@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// file_exists bad argument counts
+// linter: ngspicejs-lint
+"use strict";
+
+var fn = script_self();
+
+echo("File size " + file_read(fn).length);
+
+function foo() {
+    if (file_exists(fn, 'asdf')) {
+        echo("A");
+    }
+    echo("B");
+}
+
+function bar() {
+    foo();
+}
+
+bar();
+

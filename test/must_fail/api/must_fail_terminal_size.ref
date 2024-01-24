@@ -1,0 +1,14 @@
+error: terminal_size() require exactly 0 arguments but 1 was given
+  [must_fail_terminal_size.ngjs:0:0] in <anonymous>()
+    terminal_size(1);
+    ^
+
+hint: function 'terminal_size()' was called with 1 arguments
+hint: argument #0 was 1 (number)
+
+Stack trace (1 frames):
+  [must_fail_terminal_size.ngjs:0:0] in <anonymous>()
+    terminal_size(1);
+    ^
+
+exit(7)

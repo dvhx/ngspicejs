@@ -1,0 +1,1 @@
+warn: Device sub_model RES_STRING has loose net "4", use .nc("4") to suppress this warning

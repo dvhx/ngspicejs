@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// Test spice_model and 2 ways of require_model and empty line
+// linter: ngspicejs-lint
+"use strict";
+
+spice_model('MYDIODE', 'DIODE', `* here goes my diode model
+* REQUIRE DIODE 1N60P
+.subckt MYDIODE 1 2
+D1 1 2 D1N4148
+
+D2 1 2 D1N60P
+.ends`).require_model('DIODE', '1N4148');
+
+battery('U1', 1, 0, 9);
+sub('X1', 'MYDIODE', [1, 2]);
+resistor('R1', 2, 0, 10);
+
+echo(tran().run().avg('I(U1)').toEng());
+echo_netlist();
+

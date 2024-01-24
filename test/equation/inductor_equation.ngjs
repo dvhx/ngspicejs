@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Equations in inductor
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v(5).pulse_width('5m').delay('5m');
+resistor('R1', 1, 2, 1000);
+inductor('L1', 2, 0, 0.1).rs('{2*25}').cp('{1*500n}');
+tran().run().chart('V(2)');
+

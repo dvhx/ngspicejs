@@ -1,0 +1,36 @@
+#!/usr/bin/env ngspicejs
+// Differential opamp is less susceptible to common mode noise
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 1, 9);
+resistor('R1', 3, 0, '20k');
+resistor('R2', 0, 1, '20k');
+
+resistor('R3', 9, 8, '10k');
+resistor('R4', 8, 5, '10k');
+resistor('R5', 10, 7, '10k');
+resistor('R6', 7, 6, '10k');
+resistor('R7', 5, 4, '10k');
+resistor('R8', 6, 0, '10k');
+
+resistor('R9', 4, 0, '50k');
+
+// signal
+sinewave('U2', 9, 10).v('100m').f(50);
+voltmeter('V1', 9, 10);
+
+// noise
+capacitor('C1', 7, 11, '100n');
+capacitor('C2', 8, 11, '100n');
+sinewave('U3', 11, 0).v('10m').f(500);
+
+opamp('Q1', 6, 5, 3, 1, 4, 'TL071');
+
+var t = tran().run();
+echo('Input with common mode noise:');
+t.chart('V(9)');
+echo('Output without common mode noise:');
+t.chart('V(4)');
+
+

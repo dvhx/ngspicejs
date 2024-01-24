@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Test ngspice_netlist
+// linter: ngspicejs-lint
+"use strict";
+
+var b = Internal.ngspice_netlist(`* first line is ignored
+V1 1 0 DC 9
+R1 1 2 100
+R2 2 0 100
+.tran 100u 10m 0
+.print tran v(2)
+.end
+`);
+
+echo(b);
+//Internal.ngspice_run(100);
+Internal.ngspice_command('run');
+//echo(ngspice_log().join('\n'));
+echo_json(Internal.ngspice_data().tran1['V(2)'][20]);

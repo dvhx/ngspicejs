@@ -1,0 +1,42 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for sub_model
+// linter: ngspicejs-lint
+"use strict";
+
+var n1 = sub_model('MY_NPN1', [1, 2, 3], {});
+n1.bjt_model({name: 'M', kind: 'NPN', is: 5e-12, bf: 100, re: 1, rb: 1, rc: 1});
+n1.npn('T1', 1, 2, 3, 'M');
+n1.end();
+
+n1 = sub_model('MY_PNP1', [1, 2, 3], {});
+n1.bjt_model({name: 'M', kind: 'PNP', is: 5e-12, bf: 100, re: 2, rb: 2, rc: 2});
+n1.npn('T1', 1, 2, 3, 'M');
+n1.end();
+
+n1 = sub_model('MY_NPN2', [1, 2, 3], {});
+n1.bjt_model({name: 'M', kind: 'NPN', is: 5e-12, bf: 100, re: 3, rb: 3, rc: 3});
+n1.npn('T1', 1, 2, 3, 'M');
+n1.end();
+
+n1 = sub_model('MY_PNP2', [1, 2, 3], {});
+n1.bjt_model({name: 'M', kind: 'PNP', is: 5e-12, bf: 100, re: 4, rb: 4, rc: 4});
+n1.npn('T1', 1, 2, 3, 'M');
+n1.end();
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+battery('U2', 3, 0, 1);
+var t1 = npn('T1', 2, 3, 0, 'MY_NPN1');
+
+battery('U11', 11, 0, 9);
+ammeter('A11', 11, 12);
+battery('U12', 13, 0, 8);
+var t2 = pnp('T11', 0, 13, 12, 'MY_PNP1');
+
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.347 for ' + t1.attr.model + ')');
+echo('Imax:', array_max(tran().run().data['I(A11)']).toFixed(3), '(should be 0.184 for ' + t2.attr.model + ')');
+
+t1.model('MY_NPN2');
+t2.model('MY_PNP2');
+echo('Imax:', array_max(tran().run().data['I(A1)']).toFixed(3), '(should be 0.124 for ' + t1.attr.model + ')');
+echo('Imax:', array_max(tran().run().data['I(A11)']).toFixed(3), '(should be 0.096 for ' + t2.attr.model + ')');

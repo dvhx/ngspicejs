@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// ascii canvas
+// linter: ngspicejs-lint
+"use strict";
+
+var a = ascii_canvas(80, 40);
+a.clear('-');
+a.stroke_rect(0, 0, 80 - 1, 40 - 1, 'E');
+a.fill_rect(10, 10, 20, 20, '.');
+a.stroke_rect(10, 10, 20, 20, '*');
+a.line(10, 12, 0, 17, '/');
+a.move_to(0, 17);
+a.line_to(10, 22, '\\');
+a.label('Hello world', 40, 12);
+a.label('FooBar', 77, 20);
+a.line(60, 10, 60, 20, '|');
+a.line(60, 20, 70, 20, '_');
+a.show();
+

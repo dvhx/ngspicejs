@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// low inductance pickup tran and AC
+// linter: ngspicejs-lint
+"use strict";
+
+pickup('U2', 10, 0).v('1m').f(196).l('3m').rs(8);
+tran().run().chart('V(10)');
+ac().run().chart('V(10)');
+

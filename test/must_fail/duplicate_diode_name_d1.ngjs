@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Duplicate diode name
+// linter: ngspicejs-lint
+"use strict";
+
+diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});
+diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});

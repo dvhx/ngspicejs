@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// unexpected asterisk
+// linter: ngspicejs-lint --no-linting
+"use strict";
+
+function foo() {
+    diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});
+    diode({name: "D2", anode: 4, cathode: 3, model: '1N4148'});
+    var a = *diode();
+}
+
+function bar() {
+    foo();
+}
+
+bar();

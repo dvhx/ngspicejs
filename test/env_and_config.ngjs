@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// env and config path
+// linter: ngspicejs-lint
+"use strict";
+
+echo(env('TERM'));
+echo(env('DISPLAY'));
+//echo(config_path());

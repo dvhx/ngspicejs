@@ -1,0 +1,17 @@
+Calling: throw new Error(string); no try block, stack will be deep
+error: Error: This is an Error
+  [./3b_uncaught_new_error.ngjs:0:0] in ???()
+    throw new Error("This is an Error");
+    ^
+
+Stack trace (3 frames, parsed):
+  [3b_uncaught_new_error.ngjs:10:11] in foo()
+    throw new Error("This is an Error");
+          ^
+  [3b_uncaught_new_error.ngjs:15:5] in bar()
+    foo();
+    ^
+  [3b_uncaught_new_error.ngjs:18:1] in <anonymous>()
+    bar();
+    ^
+exit(12)

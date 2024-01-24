@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// chart with two series
+// linter: ngspicejs-lint
+"use strict";
+
+var x = [1,2,3,4];
+var y = [1,4,9,16];
+var yy = [16,9,4,1];
+
+ChartXy.force_ascii = true;
+
+chart_xy().add_series(x, y).add_series(x, yy).show();

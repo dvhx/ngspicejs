@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Undeclared variable x
+// linter: ngspicejs-lint
+"use strict";
+
+diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});
+/* jshint -W117 */
+x = 3;
+/* jshint +W117 */
+diode({name: "D2", anod: 4, cathode: 3, model: '1N4148'});

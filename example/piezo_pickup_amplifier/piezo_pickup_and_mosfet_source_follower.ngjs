@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// Piezo pickup with mosfet source follower as input buffer
+// linter: ngspicejs-lint
+"use strict";
+
+// first we connect resistor directly to 50k load and show AC
+pickup_piezo('U1', 4, 0);
+resistor('R5', 4, 0, '50k');
+var a1 = ac().fstop('5k').run();
+echo('Piezo directly driving 50k resistive load:');
+a1.chart('V(4)');
+
+// then we make mosfet source follower
+netlist_clear();
+pickup_piezo('U1', 1, 0);
+capacitor('C1', 1, 5, '100n');
+capacitor('C2', 5, 0, '10p');
+resistor('R1', 7, 5, '10M');
+resistor('R2', 5, 0, '10M');
+mosfet_n('T1', 7, 5, 3, 'BS170');
+resistor('RS', 3, 0, '20k');
+capacitor('C3', 3, 4, '47u');
+resistor('R5', 4, 0, '50k');
+battery('U2', 7, 0, 9);
+a1 = ac().fstop('5k').run();
+echo('Piezo driving 50k resistive load via mosfet source follower:');
+a1.chart('V(4)');
+
+

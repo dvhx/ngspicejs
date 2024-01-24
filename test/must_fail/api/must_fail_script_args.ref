@@ -1,0 +1,14 @@
+error: script_args() require exactly 0 arguments but 1 was given
+  [must_fail_script_args.ngjs:0:0] in <anonymous>()
+    script_args(1);
+    ^
+
+hint: function 'script_args()' was called with 1 arguments
+hint: argument #0 was 1 (number)
+
+Stack trace (1 frames):
+  [must_fail_script_args.ngjs:0:0] in <anonymous>()
+    script_args(1);
+    ^
+
+exit(7)

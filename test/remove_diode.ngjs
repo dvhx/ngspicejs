@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Remove diode
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 1000);
+var d1 = diode('D1', 2, 0, '1N5819');
+echo(tran().run().avg('I(U1)').toEng());
+d1.remove();
+diode('D1', 2, 0, '1N4148');
+echo(tran().run().avg('I(U1)').toEng());

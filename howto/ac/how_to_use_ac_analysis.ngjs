@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// How to use small singal AC analysis
+// linter: ngspicejs-lint
+"use strict";
+
+// RC filter
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 100);
+capacitor('C1', 2, 0, '100n');
+
+// Run AC from 16Hz to 50kHz and show chart of V(2) in volts and decibels
+var a = ac().fstop("50k").run().chart("V(2)").chart_db("V(2)");
+
+// Find value at specific frequency
+var i10k = a.value_at("I(U1)", 10000);
+echo('I(U1) @ 10kHz =', i10k.toEng());
+
+// Run AC with more datapoints
+ac().points(40).variation("dec").run();
+
+// Save AC data to CSV file
+a = ac().run();
+file_write_csv('1.csv', a.csv());
+
+

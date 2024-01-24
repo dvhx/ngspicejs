@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// human vector names - string nets
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 'a', 100);
+resistor('R2', 'a', 'vcc', 100);
+resistor('R3', 'vcc', 0, 100);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+t.chart('V(1)');
+t.chart('V(a)');
+t.chart('V(vcc)');
+
+

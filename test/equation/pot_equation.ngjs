@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Equations in pot
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+var p1 = pot('P1', 1, 2, 0, '50k', 50);
+echo(tran().run().avg('V(2)'));
+p1.r('{2*50k}');
+p1.percent('{100/2}');
+echo(tran().run().avg('V(2)'));
+
+

@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Using voltmeter in transient analysis to measure average voltage
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(0.5).offset(9).f(50);
+resistor('R1', 1, 2, 1000);
+resistor('R2', 2, 0, 1000);
+// help: how to add voltmeter
+voltmeter('V1', 2, 0);
+
+var t1 = tran().run().chart('V(V1)');
+
+// help: how to measure average voltage using voltmeter
+echo('Voltmeter V1 average voltage is', t1.avg('V(V1)'));
+
+// help: how to measure maximal voltage using voltmeter
+echo('Voltmeter V1 maximal voltage is', t1.data['V(V1)'].max());
+
+// help: how to measure minimal voltage using voltmeter
+echo('Voltmeter V1 maximal voltage is', t1.data['V(V1)'].min());
+
+// help: how to measure voltage swing using voltmeter
+echo('Voltmeter V1 voltage range is', t1.data['V(V1)'].range());
+
+

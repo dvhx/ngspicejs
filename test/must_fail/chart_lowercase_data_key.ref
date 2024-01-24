@@ -1,0 +1,23 @@
+error: ac data keys are case-sensitive, use V(2) instead of v(2)
+  [chart_lowercase_data_key.ngjs:0:0] in <anonymous>()
+    ac().run().chart('v(2)', {width: 100, height: 20});
+               ^
+
+Stack trace (5 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_data_key.js:0:0, core.js:0:0] in assert_data_key()
+    throw new Exception(aDevice.type + " data keys are case-sensitive, use " + aKey.toUpperCase() + " instead of " + aKey);
+          ^
+  [analysis/ac.js:0:0, core.js:0:0] in eval()
+    vecs.forEach(v => assert_data_key(t, v));
+                      ^
+  [analysis/ac.js:0:0, core.js:0:0] in Ac.chart()
+    vecs.forEach(v => assert_data_key(t, v));
+         ^
+  [chart_lowercase_data_key.ngjs:0:0] in <anonymous>()
+    ac().run().chart('v(2)', {width: 100, height: 20});
+               ^
+
+exit(12)

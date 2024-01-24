@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// Weird french 2 BJT amplifier
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 10, 0, 9);
+
+resistor('R1', 2, 4, '220k');
+resistor('R2', 4, 10, '1k');
+resistor('R3', 5, 6, '470k');
+resistor('R4', 7, 6, '22k');
+resistor('R5', 7, 0, '100');
+resistor('R6', 6, 0, '2k2');
+var r7 = resistor('R7', 11, 0, '50k');
+
+capacitor('C1', 1, 2, '4u7');
+capacitor('C2', 4, 5, '1u');
+capacitor('C3', 6, 11, '4u7');
+
+npn('T1', 4, 2, 7, 'BC547');
+pnp('T2', 6, 5, 10, 'BC557');
+
+sinewave('U2', 1, 0).v('10m').f(196);
+
+var t = tran().run().chart('V(11)');
+echo('Gain for 50k load', t.gain(1, 11).toFixed(3));
+
+r7.r('2k2');
+echo('Gain for 2k2 load', tran().run().gain(1, 11).toFixed(3));
+
+
+
+

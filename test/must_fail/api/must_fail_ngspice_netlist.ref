@@ -1,0 +1,13 @@
+error: ngspice_netlist(code) require exactly 1 arguments but 0 was given
+  [must_fail_ngspice_netlist.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_netlist();
+             ^
+
+hint: function 'ngspice_netlist(code)' was called with 0 arguments
+
+Stack trace (1 frames):
+  [must_fail_ngspice_netlist.ngjs:0:0] in <anonymous>()
+    Internal.ngspice_netlist();
+             ^
+
+exit(7)

@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// jfet level 2 param
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+battery('U2', 2, 0, 1);
+//jfet_model('MYJFET');
+jfet_model("MY_JFET").kind("JFET_N").beta(0.0007).vto(-0.9).is(1.7e-15).rd(10).rs(12).level(2).n(3);
+jfet_n('T1', 1, 2, 3, 'MY_JFET');
+resistor('R1', 3, 0, 100);
+echo('current', tran().run().avg('I(U1)').toEng());
+

@@ -1,0 +1,20 @@
+#!/usr/bin/env ngspicejs
+// human vector names - mosfet_n
+// linter: ngspicejs-lint
+"use strict";
+
+var n = 1;
+all_models('MOSFET_N').forEach((m) => {
+    mosfet_n('Q' + n, n + 1, n + 2, 0, m);
+    resistor('R' + n, n + 1, 0, 100);
+    resistor('R' + (n + 1), n + 2, 0, 100);
+    n += 2;
+});
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(Q1.GATE)');
+echo(Object.keys(f.data).sort().join('\n'));
+

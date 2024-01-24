@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Jfet preamp with strange LC network across source resistor and corresponding weird AC
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 9, 0, 9);
+resistor('R1', 9, 8, '47k');
+resistor('R2', 6, 5, '1M');
+resistor('R3', 5, 0, '100k');
+resistor('R4', 4, 0, '10k');
+resistor('R5', 12, 0, '50k');
+
+capacitor('C1', 7, 6, '47n');
+capacitor('C2', 8, 12, '4u7');
+capacitor('C3', 4, 3, '4u7');
+capacitor('C4', 3, 2, '470n');
+capacitor('C5', 2, 0, '220n');
+
+jfet_n('T1', 8, 5, 4, '2N5457');
+
+pickup_singlecoil('U2', 7, 0).v(0.1).f(196);
+
+inductor('L1', 3, 2, '100m');
+inductor('L2', 2, 0, '66m');
+
+ac().run().chart('V(12)');
+
+

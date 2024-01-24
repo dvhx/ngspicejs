@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// Show hint after tran fails
+// linter: ngspicejs-lint
+"use strict";
+
+hint("You should see this hint");
+
+try {
+    throw "Some error";
+} catch (e) {
+    echo('caght e', e);
+}
+
+function foo() {
+    diode({name: "D1", anode: 4, cathode: 3, model: '1N4148'});
+    diode({name: "D2", anode: 4, cathode: 3, model: '1N4148'});
+    return tran.x();
+}
+
+function bar() {
+    foo();
+}
+
+tran();
+bar();

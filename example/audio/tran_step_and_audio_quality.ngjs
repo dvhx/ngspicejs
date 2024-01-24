@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Show that saving WAV file requires transient step 40u or lower, otherwise distortion is too high
+// linter: ngspicejs-lint
+"use strict";
+
+// generate pure sinewave and save it to wav
+sinewave('U1', 1, 0).v(0.5).f(1000);
+
+// run transient analysis with different steps
+['10u', '20u', '40u', '80u', '120u', '240u'].forEach((s) => {
+    var t1 = Date.now();
+    var t = tran().interval(0.500).step(s).run();
+    var t2 = Date.now();
+    file_write_wav('tran_step_' + ('000000' + s).substr(-6) + '.wav', t.data.time, t.data['V(1)']);
+    echo(t.attr.step.toEng() + 's step ran in ' + ((t2 - t1) / 1000).toFixed(1) + 's, samples=', t.data.time.length);
+});

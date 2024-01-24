@@ -1,0 +1,15 @@
+error: variable 'data' in function 'file_write(path,data)' should be string, number or boolean
+  [must_fail_file_write_data_not_simple.ngjs:0:0] in <anonymous>()
+    file_write('asdf', []);
+    ^
+
+hint: function 'file_write(path,data)' was called with 2 arguments
+hint: argument #0 was asdf (string)
+hint: argument #1 was  (array)
+
+Stack trace (1 frames):
+  [must_fail_file_write_data_not_simple.ngjs:0:0] in <anonymous>()
+    file_write('asdf', []);
+    ^
+
+exit(7)

@@ -1,0 +1,26 @@
+error: diode(name,anode,cathode,model) requires at most 4 arguments but 5 was given
+  [diode_bad_param_five.ngjs:0:0] in <anonymous>()
+    diode('D2', 1, 0, '1N4148', 123);
+    ^
+hint: function 'diode(name,anode,cathode,model)' was called with 5 arguments
+hint: argument #0 was D2 (string)
+hint: argument #1 was 1 (number)
+hint: argument #2 was 0 (number)
+hint: argument #3 was 1N4148 (string)
+hint: argument #4 was 123 (number)
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_arguments_length.js:0:0, core.js:0:0] in assert_arguments_length()
+    throw new Exception(aFunctionName + " requires at most " + aMaxLength + " arguments but " + al + " was given");
+          ^
+  [device/diode.js:0:0, core.js:0:0] in diode()
+    assert_arguments_length(arguments, 0, 4, 'diode(name,anode,cathode,model)');
+    ^
+  [diode_bad_param_five.ngjs:0:0] in <anonymous>()
+    diode('D2', 1, 0, '1N4148', 123);
+    ^
+
+exit(12)

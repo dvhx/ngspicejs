@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// hint wants 1 string arg
+// linter: ngspicejs-lint
+"use strict";
+
+hint();
+

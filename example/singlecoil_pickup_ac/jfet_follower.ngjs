@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// JFET source follower has much flatter AC than BJTs
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 8, 0, 9);
+ammeter('A1', 8, 7);
+resistor('R2', 5, 0, '10M');
+resistor('R3', 5, 18, '470k');
+capacitor('C3', 18, 0, '220p');
+resistor('RS', 3, 0, '20k');
+capacitor('C1', 10, 5, '100n');
+capacitor('C2', 3, 4, '4u7');
+resistor('R5', 4, 0, '50k');
+jfet_n('T1', 7, 5, 3, '2N5457');
+pickup_singlecoil('L1', 10, 0).cp(1.5e-11);
+
+var t = tran().run();
+echo('Current consumption', t.data['I(A1)'].max().toEng());
+
+ac().fstop('20k').run().chart('V(4)');
+
+

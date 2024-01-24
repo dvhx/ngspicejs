@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Ideal opamp
+// linter: ngspicejs-lint
+"use strict";
+var s = sub_model('IDEAL_OPAMP', ['inplus', 'inminus', 'vplus', 'vminus', 'out'], {gm: 0.0002, r1: 1e9, c1: 30e-12});
+s.vccs('G1', 0, 4, 'inplus', 'inminus', '{gm}');
+//echo_json(g1);
+s.resistor('R1', 4, 0, '{r1}');
+s.capacitor('C1', 4, 0, '{c1}');
+s.vcvs('E1', 'out', 0, 4, 0, 1);
+s.resistor('RVPLUS', 'vplus', 0, '10G');
+s.resistor('RVMINUS', 'vminus', 0, '10G');
+s.end();
+
+globalThis.exports = {model: s};

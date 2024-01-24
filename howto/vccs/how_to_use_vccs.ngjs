@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to use voltage controlled current source vccs
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+vccs("G1", 2, 0, 1, 0, 1.5); //!
+resistor('R1', 2, 3, 10);
+ammeter('A1', 3, 0);
+echo(tran().run().avg('I(A1)').toEng());
+
+

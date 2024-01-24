@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// How to use inductor coupling with ugly inductor names
+// linter: ngspicejs-lint
+"use strict";
+
+// First make circuit without coupling
+sinewave('UHUM', 1, 0).v(220).f(50);
+inductor('L1', 1, 0, '100m').rs(1);
+dynamic_mic('MIC1', 2, 0).v(1).f(440);
+resistor('R2', 2, 0, '50k');
+// Run AC or TRAN to see all available vectors
+tran().run().chart('V(2)', {max_y: 5, min_y: -5});
+echo('NICE:', available_vectors());
+echo('UGLY:', available_vectors(true));
+// Figure out which is the inductor you want to couple and add the coupling
+inductor_coupling('K1', 'L1', 'l.x_dynamic_mic__mic1.l_ls', 0.1);
+// Run actual AC or TRAN again
+tran().run().chart('V(2)', {max_y: 5, min_y: -5});
+

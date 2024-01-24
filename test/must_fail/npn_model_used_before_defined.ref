@@ -1,0 +1,36 @@
+error: Model BC_MY_NPN of kind NPN not found!
+  [npn_model_used_before_defined.ngjs:0:0] in <anonymous>()
+    var t1 = npn('T1', 1, 2, 0, 'BC_MY_NPN').temp(27);
+             ^
+hint: Unlike spice, models needs to be defined before they are used!
+hint: Attempted files:
+  ~/ngspicejs-github/model/NPN/BC_MY_NPN.json
+  ~/ngspicejs-github/model/NPN/BC_MY_NPN.sub
+  ~/ngspicejs-github/model/NPN/BC_MY_NPN.ngjs
+
+hint: All NPN models: 2N2222A,2N3565,2N3904,2N3904_DARLINGTON,BC546,BC547,BC547B,BC547_DARLINGTON,BC549,BD139,BD139_130,MPSA06,MPSA13,TIP120
+
+Stack trace (7 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [find_model.js:0:0, core.js:0:0] in find_model()
+    throw new Exception('Model ' + aModel + (aKind ? ' of kind ' + aKind : '') + ' not found!');
+          ^
+  [assert/assert_model_exists.js:0:0, core.js:0:0] in assert_model_exists()
+    find_model(aDevice, aKind, aModel, true);
+    ^
+  [device/npn.js:0:0, core.js:0:0] in NPN.model()
+    assert_model_exists(this, this.type.toUpperCase(), aModel);
+    ^
+  [device/npn.js:0:0, core.js:0:0] in NPN()
+    this.model(aModel);
+         ^
+  [device/npn.js:0:0, core.js:0:0] in npn()
+    return new NPN(aName, aC, aB, aE, aModel);
+           ^
+  [npn_model_used_before_defined.ngjs:0:0] in <anonymous>()
+    var t1 = npn('T1', 1, 2, 0, 'BC_MY_NPN').temp(27);
+             ^
+
+exit(12)

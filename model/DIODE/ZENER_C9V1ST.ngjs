@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// Zener diode C9V1ST
+// Forward diode model attributes were found using https://dvhx.github.io/spice-diode-model-js/
+// Reverse diode model attributes and voltage were find using example/zenner_diode_model_maker.ngjs
+// linter: ngspicejs-lint
+"use strict";
+var m = sub_model('ZENER_C9V1ST', ['a', 'c'], {});
+m.diode_model({
+    "name": "FORWARD",
+    "is": 1.64599e-16,
+    "rs": 0.436649,
+    "n": 1.02690,
+    "cjo": 4e-10,
+    "vj": 0.75,
+    "m": 0.33,
+    "tt": 5e-8
+});
+m.diode_model({
+    "name": "REVERSE",
+    "is": 42.100788e-6,
+    "rs": 16.794083,
+    "n": 1.078680
+});
+m.diode('D1', 'a', 'c', 'FORWARD');
+m.diode('D2', 3, 'a', 'REVERSE');
+m.battery('VZ', 'c', 3, 9.33184);
+m.end();
+
+globalThis.exports = {model: m};

@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// extra attribute in resistor
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+var r1 = resistor('R1', 1, 0, 100);
+r1.attr.banana = 123;
+tran().run().chart('I(U1)');

@@ -1,0 +1,1 @@
+warn: Device sub_model POT2B has interface net "wiper" that isn't used by any subdevice, use .nc("wiper") to suppress this warning

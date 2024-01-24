@@ -1,0 +1,25 @@
+#!/usr/bin/env ngspicejs
+// Shows how to include other files
+// linter: ngspicejs-lint
+"use strict";
+
+echo("animals.ngjs exists", file_exists('animals.js'));
+
+var Animals = include('animals.js');
+
+Animals.dog();
+Animals.cat();
+
+echo("Animals contains: ", Object.keys(Animals).join(', '));
+echo("Private function my_dog is", globalThis.my_dog ? 'visible' : 'not visible');
+echo("Private function generic_animal is", globalThis.generic_animal ? 'visible' : 'not visible');
+/* jshint -W117 */
+echo("some_private_variable = ", globalThis.some_private_variable, globalThis.some_private_variable, Animals.some_private_variable);
+echo("some_exported_variable = ", globalThis.some_exported_variable, globalThis.some_exported_variable, Animals.some_exported_variable);
+/* jshint +W117 */
+
+echo("Let's throw exception in animal.js by calling Animals.rabbit()");
+Animals.rabbit();
+//echo(Object.keys(this).sort().join('\n'))
+
+

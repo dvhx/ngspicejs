@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// Equations in bjt models
+// linter: ngspicejs-lint
+"use strict";
+
+var m1 = bjt_model('MY_NPN').kind('NPN').bf(100);
+battery('U1', 1, 0, 9);
+resistor('R1', 3, 1, '68k');
+resistor('R2', 3, 0, '6k8');
+resistor('R3', 1, 2, '20k');
+resistor('R4', 4, 0, '330');
+npn('T1', 2, 3, 4, 'MY_NPN');
+sinewave('U2', 5, 0).v(0.1).f(196);
+capacitor('C1', 5, 3, '100n');
+capacitor('C2', 2, 6, '100n');
+resistor('R5', 6, 0, '50k');
+
+echo(tran().start('10m').run().gain(5, 6).toFixed(3), 'bf 100');
+
+m1.bf('{1*100}');
+
+echo(tran().start('10m').run().gain(5, 6).toFixed(3), 'bf {1*100}');
+
+m1.bf('{5*100}');
+
+echo(tran().start('10m').run().gain(5, 6).toFixed(3), 'bf {5*100}');

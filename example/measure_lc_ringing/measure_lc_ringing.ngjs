@@ -1,0 +1,26 @@
+#!/usr/bin/env ngspicejs
+// NPN Amplifier to amplify signal to measure LC ringing
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 9, 0, 3.3);
+
+resistor('R1', 3, 2, '33k');
+resistor('R2', 9, 12, '68k');
+resistor('R3', 12, 0, '15k');
+resistor('R4', 9, 7, '20k');
+resistor('R5', 13, 0, '150');
+resistor('R6', 9, 11, '100k');
+resistor('R7', 11, 0, '100k');
+capacitor('C1', 2, 12, '10n');
+capacitor('C2', 7, 11, '100n');
+capacitor('CX', 2, 0, '47n');
+inductor('LX', 2, 0, '10m').rs(17);
+npn('T1', 7, 12, 13, 'BC547');
+diode('D1', 2, 0, '1N5819');
+diode('D2', 0, 2, '1N5819');
+pulse('U2', 3, 0).offset(0).v(3.3).delay('10m').pulse_width('5m');
+
+tran().run().chart(['V(3)', 'V(11)']);
+
+

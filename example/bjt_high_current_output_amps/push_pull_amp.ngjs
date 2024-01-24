@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Push-pull amplifier driving 66R load
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 9);
+resistor('R1', 2, 6, '20k');
+resistor('R2', 6, 4, '10k');
+resistor('R3', 4, 0, '20k');
+resistor('R4', 9, 0, '66');
+capacitor('C1', 5, 6, '10u');
+capacitor('C2', 5, 4, '10u');
+capacitor('C3', 1, 8, '470u');
+npn('T1', 2, 6, 1, 'BC547');
+pnp('T2', 0, 4, 1, 'BC557');
+sinewave('U2', 13, 0).v(0.1).f(196).damping(0);
+ammeter('A1', 12, 13);
+resistor('R5', 12, 5, '1k');
+ammeter('A2', 8, 9);
+
+echo('Input and output current:');
+var t = tran().run().chart(['I(A1)', 'I(A2)']);
+var i1 = t.data['I(A1)'].rms();
+var i2 = t.data['I(A2)'].rms();
+echo('Input current', i1.toEng());
+echo('Output current (through 66R load)', i2.toEng());
+echo('Current gain', (i2 / i1).toFixed(1) + 'x');
+
+var f = fft().interval('1500m').fstop('2k').run('V(9)');
+echo('THD: ', (f.thd(196) * 100).toFixed(3) + '%');
+f.chart_db('V(9)');

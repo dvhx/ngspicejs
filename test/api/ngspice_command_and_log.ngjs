@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Test command and log
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.ngspice_log();
+Internal.ngspice_command('let a = 123');
+Internal.ngspice_command('echo "$&a"');
+echo(Internal.ngspice_log().join('\n'));
+
+

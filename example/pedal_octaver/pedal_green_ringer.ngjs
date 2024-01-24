@@ -1,0 +1,81 @@
+#!/usr/bin/env ngspicejs
+// Dan Armstrong Green Ringer octaver
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 9);
+resistor('R1', 11, 0, '1M');
+resistor('R2', 2, 3, '470k');
+resistor('R3', 3, 0, '100k');
+resistor('R4', 4, 0, '6k8');
+resistor('R5', 2, 5, '20k');
+resistor('R6', 2, 6, '10k');
+resistor('R7', 12, 0, '10k');
+resistor('R8', 7, 15, '68k');
+resistor('R9', 13, 15, '68k');
+resistor('R10', 2, 15, '20k');
+resistor('R11', 15, 0, '20k');
+resistor('R12', 8, 0, '10k');
+resistor('R13', 9, 0, '47k');
+diode('D1', 7, 14, '1N4148');
+diode('D2', 13, 14, '1N4148');
+capacitor('C1', 11, 3, '47n');
+capacitor('C2', 6, 7, '47n');
+capacitor('C3', 12, 13, '47n');
+capacitor('C4', 8, 9, '100n');
+
+var p1 = pot('P1', 11, 17, 9, '500k').percent(100);
+//resistor('RLOAD', 17, 0, '50k');
+
+npn('T1', 5, 3, 4, 'BC547');
+pnp('T2', 12, 5, 6, 'BC557');
+npn('T3', 2, 14, 8, 'BC547');
+
+pickup_singlecoil('L1', 11, 0).v(0.1).f(196);
+
+tran().run().chart('V(17)');
+
+echo('Input frequency: ' + fft().run('V(11)').f0().frequency);
+echo('Output frequency: ' + fft().run('V(17)').f0().frequency);
+
+// make animated gif where blend pot goes from 0 to 100%
+var frames = [];
+for (var i = 0; i < 100; i += 5) {
+    p1.percent(i);
+    var t = tran().run();
+    var c = chart_xy()
+        .add_series(t.data.time, t.data['V(17)'], 'Pot ' + i + '%')
+        .min_y(-0.2)
+        .max_y(0.2)
+        .title('Green ringer transient analysis')
+        .label_x('time/s')
+        .label_y('output/V')
+        .render();
+    c.canvas.label('No load, 500k output blend potentiometer: ' + i + '%', 50, 30, c.canvas.black);
+
+    // pot symbol
+    if (c.canvas.type === 'sixel_canvas') {
+        c.canvas.stroke_rect(170, 50, 10, 30, c.canvas.black);
+        c.canvas.line(170 + 5, 50, 170 + 5, 40, c.canvas.black);
+        c.canvas.line(170 + 5, 50 + 30, 170 + 5, 50 + 30 + 10, c.canvas.black);
+        // arrow
+        var ay = Math.round(30 * i / 100);
+        c.canvas.line(180, 80 - ay, 200, 80 - ay, c.canvas.black);
+        c.canvas.line(180, 80 - ay, 188, 80 - 2 - ay, c.canvas.black);
+        c.canvas.line(180, 80 - ay, 188, 80 + 2 - ay, c.canvas.black);
+    }
+
+    //c.canvas.show();
+    //c.label('P1 pot position ' + i + '% (' + (i * 500000).toEng() + ')', 200, 20, c.black);
+    frames.push(c.canvas);
+    echo('Rendering pot ' + i + '%');
+    //c.render();
+}
+
+// add reversed frames
+frames = frames.concat(frames.slice().reverse());
+
+if (frames[0].type === 'sixel_canvas') {
+    gif('pedal_green_ringer.gif', frames, 10);
+}
+echo(Math.floor(script_ms() / 1000), 'seconds');

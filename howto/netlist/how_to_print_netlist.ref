@@ -1,0 +1,4 @@
+* first line is ignored
+V_U1 1 0 DC 0 AC 1 0  SIN (0 5 50 0 0 0)
+R_R1 1 0 470
+.end

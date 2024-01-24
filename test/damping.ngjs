@@ -1,0 +1,31 @@
+#!/usr/bin/env ngspicejs
+// Damping and halve function
+// linter: ngspicejs-lint
+"use strict";
+
+var o = {height: 102, min_y: -0.1, max_y: 0.1};
+
+dynamic_mic("U1", 1, 0).v(0.1).f(440);
+sinewave("U2", 2, 0).v(0.1).f(440);
+pickup("U3", 3, 0).l(2).v(0.1).f(440).damping(0);
+electret_mic("U4", 4, 0).v(0.1).f(440);
+battery('U4B', 5, 0, 9);
+resistor('R4', 5, 4, '680');
+capacitor('C1', 4, 44, '10u');
+resistor('R5', 44, 0, '100k');
+
+tran().step('10u').run().chart('V(1)', o).chart('V(2)', o).chart('V(3)', o).chart('V(44)', {height: 102});
+
+netlist_clear();
+
+dynamic_mic("U1", 1, 0).v(0.1).f(440).halve('10m');
+sinewave("U2", 2, 0).v(0.1).f(440).halve('10m');
+pickup("U3", 3, 0).l(2).v(0.1).f(440).halve('10m');
+electret_mic("U4", 4, 0).v(0.1).f(440).halve('10m');
+battery('U4B', 5, 0, 9);
+resistor('R4', 5, 4, '680');
+capacitor('C1', 4, 44, '10u');
+resistor('R5', 44, 0, '100k');
+
+tran().step('10u').run().chart('V(1)', o).chart('V(2)', o).chart('V(3)', o).chart('V(44)', {height: 102});
+

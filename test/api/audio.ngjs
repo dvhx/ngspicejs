@@ -1,0 +1,33 @@
+#!/usr/bin/env ngspicejs
+// Audio source
+// linter: ngspicejs-lint
+"use strict";
+
+// generate .m file, first column is time, second column is voltage
+var f = ['* steppy sinewave audio file 1ms long, two full waves'];
+var x = [], y = [], v;
+for (var t = 0; t <= 0.001; t += 0.000001) {
+    v = Math.round(10 * Math.sin(t * 10000)) / 10;
+    x.push(t);
+    y.push(v);
+    f.push(t.toFixed(6) + ' ' + v.toFixed(6));
+}
+file_write('audio.m', f.join('\n'));
+echo('File "audio.m" contains:');
+chart_xy().add_series(x, y).show();
+
+// run it through RC low pass filter
+audio('U1', 1, 0).filename('audio.m').v(2).offset(0).delay(0);
+resistor('R1', 1, 2, '20k');
+capacitor('C1', 2, 0, '1n');
+var t = tran().interval('0.99m').step('1u').run();
+
+// voltage on audio source
+echo('Tran data of V(1) directly on audio source:');
+t.chart('V(1)');
+
+// after filtering
+echo('Tran data of V(2) after filtering:');
+t.chart('V(2)');
+
+

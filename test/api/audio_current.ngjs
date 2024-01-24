@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Audio source human readable current name
+// linter: ngspicejs-lint
+"use strict";
+
+audio('U1', 1, 0).filename('../../wav/1ms_sinewave_1khz_16bit_signed_pcm.wav').v(1);
+resistor('R1', 1, 2, 1000);
+diode('D1', 2, 0, '1N5819');
+var t = tran().interval(0.001).step('20u').run().chart('I(U1)', {max_y: 0, min_y: '-500u'});
+file_write_wav('1.wav', t.data.time, t.data['V(2)']);
+
+echo(Object.keys(t.data));
+

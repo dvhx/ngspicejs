@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// Test hint and error order
+// linter: ngspicejs-lint
+"use strict";
+
+hint('hint 1');
+hint('hint 2');
+error('error 1');
+
+hint('hint 3');
+hint('hint 4');
+error('error 2');
+
+hint('hint 5');
+hint('hint 6');
+echo('not an error but we will print hint buffer');
+echo_hints();

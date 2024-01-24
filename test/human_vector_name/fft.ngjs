@@ -1,0 +1,18 @@
+#!/usr/bin/env ngspicejs
+// human vector names - fft
+// linter: ngspicejs-lint
+"use strict";
+
+sawtooth('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 100);
+inductor('L1', 2, 0, '100m');
+var f = fft().fstop('1k').run('V(1)').chart('V(1)');
+echo(Object.keys(f.data).sort().join('\n'));
+
+f = fft().fstop('1k').run('I(U1)').chart('I(U1)');
+echo(Object.keys(f.data).sort().join('\n'));
+
+f = fft().fstop('1k').run('I(L1)').chart('I(L1)');
+echo(Object.keys(f.data).sort().join('\n'));
+
+

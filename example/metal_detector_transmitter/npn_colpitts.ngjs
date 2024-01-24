@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// Colpitts oscillator with NPN
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 7, 0, 9).rs(10);
+ammeter('A1', 7, 3);
+resistor('R1', 3, 2, '20k');
+resistor('R2', 3, 1, '68k');
+resistor('R3', 1, 0, '4k7');
+resistor('R4', 4, 0, '150');
+resistor('R5', 6, 0, '50k');
+capacitor('C1', 4, 0, '68n');
+capacitor('C2', 1, 8, '68n');
+capacitor('C3', 2, 6, '68n');
+capacitor('C4', 2, 4, '100n');
+capacitor('C5', 4, 8, '68n');
+inductor('L1', 2, 8, '614u').rs(4);
+npn('T1', 2, 1, 4, 'BC547');
+
+var t = tran().start('34m').interval('35m').step('10u').run().chart(['I(U1)', 'I(L1.L0)']);
+
+var battery_current = t.data['I(U1)'].rms();
+var coil_current = t.data['I(L1.L0)'].rms();
+echo('Battery current', battery_current.toEng());
+echo('Coil current', coil_current.toEng());
+echo('Gain', (coil_current / battery_current).toEng());
+echo('f0', fft().start(t.attr.start).interval(0.05).fstop('100k').run('I(L1.L0)').chart('I(L1.L0)').f0().frequency.toEng());
+

@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// at most 1 string arg wanted
+// linter: ngspicejs-lint
+"use strict";
+
+read('a', 'b');

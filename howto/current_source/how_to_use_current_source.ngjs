@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// How to use current source
+// linter: ngspicejs-lint
+"use strict";
+
+current_source('I1', 1, 0, 1); //!
+ammeter('A1', 1, 2);
+resistor('R1', 2, 0, 10);
+
+echo('I(A1) =', tran().run().avg('I(A1)').toEng() + 'A');
+echo('V(2)  =', tran().run().avg('V(2)').toEng() + 'V');
+

@@ -1,0 +1,49 @@
+#!/usr/bin/env ngspicejs
+// Compare different mosfets for switching 5R load powered from 5V supply using only 3V3 control voltage
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 2, 0, 5);
+resistor('RD', 2, 1, 5);
+resistor('RG', 13, 14, '5k1');
+var t1 = mosfet_n('T1', 1, 14, 5, 'BS170');
+ammeter('A1', 5, 0);
+pwl('U2', 13, 0).shape([[0, 0], [0.02, 3.3]]);
+
+var o = {label_x: 'Vg', label_y: 'Id'};
+
+// BS170 - 100mA
+var t = tran().run();
+echo('BS170 x=control voltage, y=drain current, Imax=' + t.data['I(A1)'].max().toEng());
+chart_xy(o).add_series(t.data['V(13)'], t.data['I(A1)'], t1.attr.model).show();
+
+// IRF540N - 1.5uA (3.3V is not enough to open it)
+t1.model('IRF540N');
+t = tran().run();
+echo(t1.attr.model + ' x=control voltage, y=drain current, Imax=' + t.data['I(A1)'].max().toEng());
+chart_xy(o).add_series(t.data['V(13)'], t.data['I(A1)'], t1.attr.model).show();
+
+// IRLZ44N - 0.995A (10x better than BS170)
+t1.model('IRLZ44N');
+t = tran().run();
+echo(t1.attr.model + ' x=control voltage, y=drain current, Imax=' + t.data['I(A1)'].max().toEng());
+chart_xy(o).add_series(t.data['V(13)'], t.data['I(A1)'], t1.attr.model).show();
+
+// Auxiliary PNP to open IRF540N - 0.981A (better than BS170 but needs extra PNP and 1-7mA)
+netlist_clear();
+battery('U1', 2, 0, 5);
+resistor('RD', 2, 1, 5);
+resistor('RG', 18, 14, '5k1');
+resistor('RB', 19, 13, '47k');
+resistor('RC', 2, 18, 330);
+pnp('T2', 20, 19, 18, 'BC557');
+t1 = mosfet_n('T1', 1, 14, 5, 'IRF540N');
+ammeter('A1', 5, 0);
+ammeter('A2', 20, 0);
+pwl('U2', 13, 0).shape([[0, 0], [0.02, 3.3]]);
+t = tran().run();
+echo(t1.attr.model + '+PNP x=control voltage, y=drain current, Imax=' + t.data['I(A1)'].max().toEng());
+echo('at the cost of PNP emitter current of ' + t.data['I(A2)'].max().toEng() + ' to ' + t.data['I(A2)'].max().toEng() + 'A');
+chart_xy(o).add_series(t.data['V(13)'], t.data['I(A1)'], t1.attr.model + '+PNP').show();
+
+

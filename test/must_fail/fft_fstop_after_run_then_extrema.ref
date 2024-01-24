@@ -1,0 +1,21 @@
+error: Device fft was modified, use fft.run(vector) before calling fft.extrema()
+  [fft_fstop_after_run_then_extrema.ngjs:0:0] in <anonymous>()
+    fft().run('V(1)').fstop(2000).extrema(); //chart_db('V(1)');
+                                  ^
+hint: Example: fft().run("V(1)").fstop(2000).extrema() <-- here you have to call fstop() before run()
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_not_modified.js:0:0, core.js:0:0] in assert_not_modified()
+    throw new Exception('Device ' + aDevice.type + ' was modified' + s);
+          ^
+  [analysis/fft.js:0:0, core.js:0:0] in Fft.extrema()
+    assert_not_modified(this, 'fft.extrema()', 'fft.run(vector)', 'Example: fft().run("V(1)").fstop(2000).extrema() <-- here you have to call fstop() before run()');
+    ^
+  [fft_fstop_after_run_then_extrema.ngjs:0:0] in <anonymous>()
+    fft().run('V(1)').fstop(2000).extrema(); //chart_db('V(1)');
+                                  ^
+
+exit(12)

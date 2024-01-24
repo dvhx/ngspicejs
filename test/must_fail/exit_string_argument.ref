@@ -1,0 +1,26 @@
+error: code in function exit(code) should be integer but is asdf (string)
+  [exit_string_argument.ngjs:0:0] in foo()
+    exit("asdf");
+    ^
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_integer.js:0:0, core.js:0:0] in assert_integer()
+    throw new Exception(aVariableName + ' in function ' + aFunctionName + ' should be integer but is ' + aValue + ' (' + typeof aValue + ')');
+          ^
+  [exit.js:0:0, core.js:0:0] in exit()
+    assert_integer(aCode, 'code', 'exit(code)');
+    ^
+  [exit_string_argument.ngjs:0:0] in foo()
+    exit("asdf");
+    ^
+  [exit_string_argument.ngjs:0:0] in bar()
+    foo();
+    ^
+  [exit_string_argument.ngjs:0:0] in <anonymous>()
+    bar();
+    ^
+
+exit(12)

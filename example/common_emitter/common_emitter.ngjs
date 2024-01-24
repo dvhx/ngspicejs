@@ -1,0 +1,36 @@
+#!/usr/bin/env ngspicejs
+// Common emitter with 24x amplification using BC547
+// linter: ngspicejs-lint
+"use strict";
+
+// common emitter 24x amplification
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(0.01).f(196);
+resistor('R1', 1, 3, '6800');
+resistor('R2', 3, 0, '470');
+resistor('R3', 1, 4, '20k');
+resistor('R4', 6, 0, '330');
+capacitor('C1', 2, 3, '10u');
+capacitor('C2', 4, 5, '10u');
+resistor('R5', 5, 0, '50k');
+npn('T1', 4, 3, 6, 'BC547');
+//npn('T1', 4, 3, 6, 'TIP120_TI');
+//npn('T1', 4, 3, 6, 'MPSA13_9000');
+
+var t1 = tran().interval('20m').run();
+echo('Input:');
+t1.chart('V(2)');
+echo('Output:');
+t1.chart('V(5)');
+
+// Show gain of net 2 (input) vs net 5 (output)
+echo('gain=', t1.gain(2, 5).toFixed(3), '(using 0-20ms)');
+
+// Maybe you want to ignore the transient in first half?
+var half = t1.data['V(5)'].length / 2;
+var gain = t1.data['V(5)'].slice(half).range() / t1.data['V(2)'].slice(half).range();
+echo('gain=', gain.toFixed(3), '(using second half of 0-20ms)');
+
+// You can also start tran later
+t1 = tran().start('10m').interval('20m').run();
+echo('gain=', t1.gain(2, 5).toFixed(3), '(by starting tran at 10ms)');

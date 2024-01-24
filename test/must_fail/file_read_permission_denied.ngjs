@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// This file shows that throwing exceptions from different files works and it displays correct line and filename
+// linter: ngspicejs-lint
+"use strict";
+
+var fn = 'non-existent-file';
+
+function foo() {
+    echo(file_read(fn).length);
+}
+
+function bar() {
+    foo();
+}
+
+bar();
+

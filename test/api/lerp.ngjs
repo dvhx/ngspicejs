@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// Lerp tests
+// linter: ngspicejs-lint
+"use strict";
+
+// lerp made of array of [x,y] values
+var a = lerp([[1, 5], [10, 2], [100, 1]]);
+
+// lerp made of two separate x and y arrays
+var b = lerp([1, 10, 100], [5, 2, 1]);
+
+// should produce the same output
+echo(a.get(-3).toFixed(3), b.get(-3).toFixed(3));
+echo(a.get(2).toFixed(3), b.get(2).toFixed(3));
+echo(a.get(22).toFixed(3), b.get(22).toFixed(3));
+echo(a.get(333).toFixed(3), b.get(333).toFixed(3));
+

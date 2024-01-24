@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Show using switch timeline feature where switch states are defined for different times
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 3, 0, 9);
+switch_1p2t('S1', 3, 1, 2).state(1).state_at(2, '5m').state_at(1, '10m').state_at(2, '15m');
+resistor('R1', 1, 4, 100);
+resistor('R2', 2, 4, 1000);
+ammeter('A1', 4, 0);
+
+tran().run().chart('I(A1)');
+
+

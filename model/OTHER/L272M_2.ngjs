@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// L272M motor driver in DIP8 package
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('L272M_2', ['out1', 'vcc', 'out2', 'gnd', 'in2m', 'in2p', 'in1p', 'in1m'], {});
+s.opamp('Q1', 'in1p', 'in1m', 'vcc', 'gnd', 'out1', 'LM258');
+s.opamp('Q2', 'in2p', 'in2m', 'vcc', 'gnd', 'out2', 'LM258');
+s.end();
+
+globalThis.exports = {model: s};

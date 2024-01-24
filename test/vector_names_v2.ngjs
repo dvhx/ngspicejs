@@ -1,0 +1,30 @@
+#!/usr/bin/env ngspicejs
+// more testing of vector names
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R2', 1, 2, 100);
+resistor('R3', 1, 3, 100);
+resistor('R4', 1, 4, 100);
+resistor('R5', 1, 5, 100);
+
+inductor('L2', 2, 0, '10m');
+inductor('L3', 3, 0, '10m').rs(10);
+inductor('L4', 4, 0, '10m').rs(10).cp(10);
+inductor('L5', 5, 0, '10m').cp(10);
+
+//echo_netlist();
+
+var t = tran().run();
+echo(Object.keys(t.data).sort());
+
+var a = ac().run();
+echo(Object.keys(a.data).sort());
+
+// fft
+echo(Object.keys(fft().run('V(1)').data).sort());
+echo(Object.keys(fft().run('I(L2)').data).sort());
+echo(Object.keys(fft().run('I(L3.L0)').data).sort());
+echo(Object.keys(fft().run('I(L4.L0)').data).sort());
+echo(Object.keys(fft().run('I(L5.L0)').data).sort());

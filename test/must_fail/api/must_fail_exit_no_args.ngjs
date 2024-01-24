@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// exit without args
+// linter: ngspicejs-lint
+"use strict";
+
+exit();

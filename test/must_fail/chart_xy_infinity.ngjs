@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// chart cant show infinity
+// linter: ngspicejs-lint
+"use strict";
+
+resistor('R1', 1, 0, 100);
+inductor('L1', 1, 2, 0.1).rs(1);
+var a = ac().points(10).run();
+a.chart_db('I(L1.L0)');
+

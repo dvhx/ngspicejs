@@ -1,0 +1,11 @@
+error: ReferenceError: x is not defined
+  [./undeclared_variable_x.ngjs:0:0] in ???()
+    x = 3;
+      ^
+
+Stack trace (1 frames, parsed):
+  [undeclared_variable_x.ngjs:8:3] in <anonymous>()
+    x = 3;
+      ^
+hint: Similar identifiers: ac, am, exit, api, dir, eng, env, fft, gif, npn, pnp, pot, pwl, sub
+exit(12)

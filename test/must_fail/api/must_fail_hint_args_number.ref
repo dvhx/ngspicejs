@@ -1,0 +1,14 @@
+error: variable 'message' in function 'hint(message)' should be string
+  [must_fail_hint_args_number.ngjs:0:0] in <anonymous>()
+    hint(123);
+    ^
+
+hint: function 'hint(message)' was called with 1 arguments
+hint: argument #0 was 123 (number)
+
+Stack trace (1 frames):
+  [must_fail_hint_args_number.ngjs:0:0] in <anonymous>()
+    hint(123);
+    ^
+
+exit(7)

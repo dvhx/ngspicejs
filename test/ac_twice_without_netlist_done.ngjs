@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// Running AC twice should work
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(192);
+resistor('R1', 1, 2, 100);
+var c1 = capacitor('C1', 2, 0, '100n');
+
+ac().run().chart('V(2)');
+
+c1.c('1u');
+
+ac().run().chart('V(2)');

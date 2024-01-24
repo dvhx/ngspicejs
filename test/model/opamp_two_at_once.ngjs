@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// Test json/ngjs/sub models for two opamps at once
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9);
+sinewave('U2', 6, 0).v(0.5).offset(0.5).f(196);
+resistor('R1', 2, 0, '10k');
+resistor('R2', 2, 3, '20k');
+resistor('R3', 3, 0, '50k');
+opamp('Q1', 6, 2, 5, 0, 3, 'LM258');
+
+battery('U11', 15, 0, 9);
+sinewave('U12', 16, 0).v(0.5).offset(0.5).f(196);
+resistor('R11', 12, 0, '10k');
+resistor('R12', 12, 13, '20k');
+resistor('R13', 13, 0, '50k');
+opamp('Q2', 16, 12, 15, 0, 13, 'LM741');
+
+var t = tran().run();
+echo('Q1 min=', array_min(t.data['V(3)']).toFixed(3), 'max=', array_max(t.data['V(3)']).toFixed(3));
+echo('Q2 min=', array_min(t.data['V(13)']).toFixed(3), 'max=', array_max(t.data['V(13)']).toFixed(3));

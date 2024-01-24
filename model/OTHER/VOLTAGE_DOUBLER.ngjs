@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Simple diode voltage doubler
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('VOLTAGE_DOUBLER', ['inplus', 'inminus', 'outplus', 'outminus'], {});
+s.capacitor('C1', 'inplus', 'outplus', '100n');
+s.diode('D1', 'inminus', 'outplus', '1N60P');
+s.diode('D2', 'outplus', 'outminus', '1N60P');
+s.capacitor('C2', 'inminus', 'outminus', '100n');
+s.end();
+
+globalThis.exports = {model: s};

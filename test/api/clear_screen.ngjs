@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Clear screen
+// linter: ngspicejs-lint
+"use strict";
+
+echo("one");
+clear_screen();
+echo("two");
+
+

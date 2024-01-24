@@ -1,0 +1,39 @@
+#!/usr/bin/env ngspicejs
+// How pickup inductance affect AC characteristic
+// linter: ngspicejs-lint
+"use strict";
+
+// 150x 2-stage common emitter with feedback
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 3, '68k');
+resistor('R2', 2, 4, '100k');
+resistor('R3', 7, 0, '510');
+resistor('R4', 5, 0, '20k');
+resistor('R5', 8, 0, '50k');
+resistor('R6', 10, 6, '6k8');
+resistor('R7', 6, 5, '300k');
+resistor('R8', 9, 0, '50k');
+
+capacitor('C1', 8, 10, '10u');
+capacitor('C2', 4, 9, '10u');
+capacitor('C3', 6, 0, '100n');
+
+npn('T1', 3, 10, 7, 'BC547');
+npn('T2', 4, 3, 5, 'BC547');
+
+// 3H singlecoil
+var u2 = pickup('U2', 8, 0).l(3).v('500u').f(196).damping(0);
+
+echo('Singlecoil (' + u2.attr.l + 'H, ' + u2.attr.rs + 'R):');
+ac().run().chart('V(9)');
+echo('Gain', tran().run().gain(8, 9).toFixed(1));
+echo();
+
+// 1mH
+u2.l('1m').rs(65);
+echo('Low-inductance pickup (' + u2.attr.l + 'H, ' + u2.attr.rs + 'R):');
+ac().run().chart('V(9)');
+echo('Gain', tran().run().gain(8, 9).toFixed(1));
+
+

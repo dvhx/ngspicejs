@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Script shell has no args
+// linter: ngspicejs-lint
+"use strict";
+
+script_shell(1);

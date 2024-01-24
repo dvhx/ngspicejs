@@ -1,0 +1,14 @@
+error: file_write(path,data) require exactly 2 arguments but 1 was given
+  [must_fail_file_write_args.ngjs:0:0] in <anonymous>()
+    file_write('asdf');
+    ^
+
+hint: function 'file_write(path,data)' was called with 1 arguments
+hint: argument #0 was asdf (string)
+
+Stack trace (1 frames):
+  [must_fail_file_write_args.ngjs:0:0] in <anonymous>()
+    file_write('asdf');
+    ^
+
+exit(7)

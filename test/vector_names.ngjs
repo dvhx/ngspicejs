@@ -1,0 +1,29 @@
+#!/usr/bin/env ngspicejs
+// test vector names
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('AAA', ['a', 'b'], {});
+s.inductor('L1', 'a', 'b', '100m');
+s.end();
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R1', 1, 2, 100);
+sub('X1', 'AAA', [2, 0]);
+
+var a = ac().fstop('1k').run(); //.chart('V(2)');
+echo('Object.keys(a.data)   = ', Object.keys(a.data).sort());
+
+netlist_clear();
+
+var s2 = sub_model('AAA', ['a', 'b'], {});
+s2.inductor('L1', 'a', 'b', '100m').rs(10).cp('100p');
+s2.end();
+
+sinewave('U1', 1, 0).v(1).f(50);
+resistor('R1', 1, 2, 100);
+sub('X1', 'AAA', [2, 0]);
+
+a = ac().fstop('1k').run(); //.chart('V(2)');
+echo('Object.keys(a.data)   = ', Object.keys(a.data).sort());
+

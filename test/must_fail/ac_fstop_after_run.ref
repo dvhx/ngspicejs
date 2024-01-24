@@ -1,0 +1,24 @@
+error: Device ac was modified, use ac.run() before calling ac.chart(vector,chart_options)
+  [ac_fstop_after_run.ngjs:0:0] in <anonymous>()
+    ac().run().fstop(2000).chart_db('V(1)');
+                           ^
+hint: Example: ac().run().fstop(22000).chart("V(1)") <-- here you have to call fstop() before run()
+
+Stack trace (5 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_not_modified.js:0:0, core.js:0:0] in assert_not_modified()
+    throw new Exception('Device ' + aDevice.type + ' was modified' + s);
+          ^
+  [analysis/ac.js:0:0, core.js:0:0] in Ac.chart()
+    assert_not_modified(this, 'ac.chart(vector,chart_options)', 'ac.run()', 'Example: ac().run().fstop(22000).chart("V(1)") <-- here you have to call fstop() before run()');
+    ^
+  [analysis/ac.js:0:0, core.js:0:0] in Ac.chart_db()
+    return this.chart(aVector, o);
+                ^
+  [ac_fstop_after_run.ngjs:0:0] in <anonymous>()
+    ac().run().fstop(2000).chart_db('V(1)');
+                           ^
+
+exit(12)

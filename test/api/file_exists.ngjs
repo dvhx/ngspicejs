@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Test file_exists
+// linter: ngspicejs-lint
+"use strict";
+
+var f = ['.', 'file_exists.ngjs', 'file_exists.ngjs123', 'foo/bar', '../../js'];
+f.forEach((a) => echo(file_exists(a), a));
+
+
+

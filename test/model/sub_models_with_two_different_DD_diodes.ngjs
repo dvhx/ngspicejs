@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Test sub_model with different diode model named DD
+// linter: ngspicejs-lint
+"use strict";
+
+var a = sub_model('AAA', [1, 2], {});
+a.diode_model({name: 'DD', rs: 1});
+a.diode('D1', 1, 2, 'DD');
+a.end();
+
+var b = sub_model('BBB', [1, 2], {});
+b.diode_model({name: 'DD', rs: 10});
+b.diode('D1', 1, 2, 'DD');
+b.end();
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+sub('X1', 'AAA', [2, 0]);
+
+battery('U2', 5, 0, 9);
+ammeter('A2', 5, 6);
+sub('X2', 'BBB', [6, 0]);
+
+echo_netlist();
+
+var t = tran().run();
+echo('I1=', array_max(t.data['I(A1)']).toFixed(3));
+echo('I2=', array_max(t.data['I(A2)']).toFixed(3));

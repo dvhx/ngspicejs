@@ -1,0 +1,12 @@
+* 2.4V Zener diode C2V4ST
+* Forward diode model attributes were found using https://dvhx.github.io/spice-diode-model-js/
+* Reverse diode model attributes and voltage were find using example/zenner_diode_model_maker.ngjs
+* NETS 2
+.subckt ZENER_C2V4ST A C
+DF A C FORWARD
+DR 3 A REVERSE
+VZ C 3 DC 0.640126
+.model FORWARD D(IS=2.95786e-10 N=1.83677 RS=0.007743 CJO=4e-10 VJ=0.75 M=0.33 TT=5e-8)
+.model REVERSE D(IS=2.763535e-6 N=9.5377719 RS=11.192815)
+.ends
+

@@ -1,0 +1,21 @@
+error: Device tran was modified, use tran.run() before calling tran.chart(vector,chart_options)
+  [tran_interval_after_run.ngjs:0:0] in <anonymous>()
+    tran().run().interval(0.1).chart('V(1)');
+                               ^
+hint: Example: tran().run().interval(0.02).chart("V(1)") <-- here you have to call interval() before run()
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [assert/assert_not_modified.js:0:0, core.js:0:0] in assert_not_modified()
+    throw new Exception('Device ' + aDevice.type + ' was modified' + s);
+          ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.chart()
+    assert_not_modified(this, 'tran.chart(vector,chart_options)', 'tran.run()', 'Example: tran().run().interval(0.02).chart("V(1)") <-- here you have to call interval() before run()');
+    ^
+  [tran_interval_after_run.ngjs:0:0] in <anonymous>()
+    tran().run().interval(0.1).chart('V(1)');
+                               ^
+
+exit(12)

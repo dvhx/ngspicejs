@@ -1,0 +1,10 @@
+10us step ran in 0.6s, samples= 50008
+20us step ran in 0.3s, samples= 25008
+warn: Sampling rate too low (max step 40us, sample rate 48000 requires step 20.8us) in file_write_wav(tran_step_00040u.wav), lower the transient analysis step!
+40us step ran in 0.2s, samples= 12508
+warn: Sampling rate too low (max step 80us, sample rate 48000 requires step 20.8us) in file_write_wav(tran_step_00080u.wav), lower the transient analysis step!
+80us step ran in 0.1s, samples= 6258
+warn: Sampling rate too low (max step 120us, sample rate 48000 requires step 20.8us) in file_write_wav(tran_step_00120u.wav), lower the transient analysis step!
+120us step ran in 0.1s, samples= 4175
+warn: Sampling rate too low (max step 240us, sample rate 48000 requires step 20.8us) in file_write_wav(tran_step_00240u.wav), lower the transient analysis step!
+240us step ran in 0.0s, samples= 2092

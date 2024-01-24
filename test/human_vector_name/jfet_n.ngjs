@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// human vector names - jfet_n
+// linter: ngspicejs-lint
+"use strict";
+
+jfet_n('Q1', 1, 2, 0, '2N5457');
+jfet_n('Q2', 3, 4, 0, 'J201_LONG_LEADS');
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(Q2.LG)');
+echo(Object.keys(f.data).sort().join('\n'));
+
+echo('FFT:');
+f = fft().run('V(Q2.2)');
+echo(Object.keys(f.data).sort().join('\n'));
+

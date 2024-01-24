@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// How to change diode parameters
+// How to create new diode model
+// linter: ngspicejs-lint
+"use strict";
+
+// Define new diode model
+diode_model({
+    "name": "MY_DIODE",
+    "is": 1.47521e-8,
+    "n": 0.96776,
+    "rs": 4.0615,
+    "cjo": 6e-12,
+    "bv": 45,
+    "tt": 1e-9,
+    "ibv": 5e-7
+});
+
+// Use new diode model
+battery('U1', 1, 0, 1.5);
+var d1 = diode('D1', 1, 0, 'MY_DIODE');
+echo(d1.attr.model + ' current at 1.5V is ' + Math.abs(tran().run().avg('I(U1)')).toEng(3) + 'A');
+
+

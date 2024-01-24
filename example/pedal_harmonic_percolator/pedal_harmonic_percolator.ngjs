@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Pedal harmonic percolator, measuring correct CE voltages
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 12, 0, 9);
+
+resistor('R1', 9, 11, '750k');
+resistor('R2', 4, 5, '220k');
+resistor('R3', 12, 9, '91k');
+resistor('R4', 5, 0, '20k');
+resistor('R5', 15, 14, '4k7');
+
+pot('P1', 0, 6, 3, '100k').percent(50);
+pot('P2', 0, 16, 15, '50k').percent(100);
+
+capacitor('C1', 6, 4, '50n');
+capacitor('C2', 6, 0, '100p');
+capacitor('C3', 11, 5, '100n');
+capacitor('C4', 10, 0, '47u');
+capacitor('C5', 9, 15, '100n');
+
+pnp('T1', 5, 4, 10, 'AC128_87');
+npn('T2', 9, 11, 10, '2N3565');
+
+diode('D1', 0, 15, '1N34A');
+diode('D2', 14, 0, '1N34A');
+
+pickup_singlecoil('L1', 3, 0).v('100m').f(196);
+
+voltmeter('V1', 10, 5);
+voltmeter('V2', 9, 10);
+
+var t = tran().run().chart('V(16)');
+
+echo('T1 Ge PNP Vce=' + t.data['V(V1)'].avg().toFixed(3), '(should be 0.2-0.4V)');
+echo('T2 Si NPN Vce=' + t.data['V(V2)'].avg().toFixed(3), '(should be 0.9-1.5V)');
+
+fft().fstop('2k').run('V(16)').chart_db('V(16)');
+
+

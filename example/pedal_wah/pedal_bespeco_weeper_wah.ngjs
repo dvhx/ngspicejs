@@ -1,0 +1,45 @@
+#!/usr/bin/env ngspicejs
+// Pedal bespeco weeper wah, AC and pot sweep vs peak frequency
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 12, 0, 9);
+
+resistor('R1', 2, 1, '3M3');
+resistor('R2', 4, 3, '200k');
+resistor('R3', 4, 2, '200k');
+resistor('R4', 6, 2, '220k');
+resistor('R5', 9, 0, '1M');
+resistor('R6', 7, 5, '560');
+resistor('R7', 5, 0, '68k');
+resistor('R8', 12, 1, '10k');
+resistor('R9', 10, 11, '100k');
+resistor('R10', 11, 0, '47k');
+
+var p1 = pot('P1', 13, 7, 0, '100k').percent(100);
+
+capacitor('C1', 3, 1, '100n');
+capacitor('C2', 4, 5, '4n7');
+capacitor('C3', 5, 3, '4n7');
+capacitor('C4', 5, 2, '4n7');
+capacitor('C5', 9, 6, '1u');
+capacitor('C6', 1, 10, '1u');
+capacitor('C7', 10, 11, '22n');
+
+npn('T1', 1, 2, 0, 'BC547');
+
+pickup_singlecoil('L1', 9, 0).v('100m').f(196);
+
+ac().fstop('3k').run().chart('V(11)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 100; p += 10) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(11)'].modulus().extremaMax();
+    x.push(p);
+    y.push(a.data.frequency[e.index]);
+}
+echo('X=pot position, Y=wah filter peak frequency in Hz');
+chart_xy().add_series(x, y).show();
+

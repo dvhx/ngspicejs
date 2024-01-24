@@ -1,0 +1,22 @@
+bbb()
+aaa()
+error: Some error
+  [all_user_code_with_one_throw_exception.ngjs:0:0] in aaa()
+    throw new Exception("Some error");
+          ^
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [all_user_code_with_one_throw_exception.ngjs:0:0] in aaa()
+    throw new Exception("Some error");
+          ^
+  [all_user_code_with_one_throw_exception.ngjs:0:0] in bbb()
+    return aaa();
+           ^
+  [all_user_code_with_one_throw_exception.ngjs:0:0] in <anonymous>()
+    bbb();
+    ^
+
+exit(12)

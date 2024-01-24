@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// Making a dumb spice model of dynamic microphone
+// linter: ngspicejs-lint
+"use strict";
+
+spice_model('DYNAMIC_MIC', 'CUSTOM', `
+.subckt DYNAMIC_MIC A B
+V1 1 B DC 0 AC 1 0 SIN(0 0.1 196 0 0 0)
+LS 1 2 2m
+RS 2 3 300
+LP 3 A 600m
+CP 3 A 2u
+RP 3 A 650
+.ends DYNAMIC_MIC
+`);
+
+sub('X1', 'DYNAMIC_MIC', [1, 0]);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 0, '150');
+
+tran().interval('20m').run().chart('V(2)');
+ac().fstop('20k').run().chart('V(2)');

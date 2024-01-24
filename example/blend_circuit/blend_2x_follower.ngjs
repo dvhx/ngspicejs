@@ -1,0 +1,56 @@
+#!/usr/bin/env ngspicejs
+// Two npn followers as blend circuit with 50k blending pot and 50k load, measure volume sag
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('FOLLOWER', ['in', 'out', 'vcc', 'gnd'], {});
+s.capacitor('C1', 'in', 'b', '100u');
+s.resistor('R1', 'vcc', 'b', '100k');
+s.resistor('R2', 'b', 'gnd', '180k');
+s.npn('T1', 'vcc', 'b', 'e', 'BC547');
+s.resistor('R3', 'e', 'gnd', '10k');
+s.capacitor('C2', 'e', 'out', '100u');
+s.end();
+
+sub('X1', 'FOLLOWER', [1, 2, 3, 0], {});
+sub('X2', 'FOLLOWER', [5, 6, 3, 0], {});
+var u1 = sinewave('U1', 1, 0).f(196).v(1);
+var u2 = sinewave('U2', 5, 0).f(333).v(1);
+battery('U3', 3, 0, 9);
+var pblend = pot('P1', 2, 7, 6, '50k', 50);
+capacitor('C5', 7, 8, '100u');
+var r5 = resistor('R5', 8, 0, '50k');
+resistor('RCFIX', 6, 0, '100M');
+
+var canvases = [], x = [], y = [], sag;
+
+var ampl = [Math.abs(u1.attr.v), Math.abs(u2.attr.v)].max();
+
+for (var p = 0; p <= 100; p += 5) {
+    pblend.percent(p);
+    var t = tran().run();
+    var c = chart_xy()
+        .min_y(-ampl)
+        .max_y(ampl)
+        .title('Blend pot ' + p + '%')
+        .add_series(t.data.time, t.data['V(8)'])
+        .render();
+    canvases.push(c.canvas);
+    // calculate sag
+    sag = t.data['V(8)'].range() / t.data['V(1)'].range();
+    x.push(p);
+    y.push(sag);
+    echo('percent', p, 'sag', sag.toFixed(3));
+}
+
+gif('blend_2x_follower.gif', canvases, 10);
+chart_xy()
+    .min_x(0)
+    .max_x(100)
+    .min_y(0)
+    .max_y(1.1)
+    .title('Sag (x=blending pot percentage, y=max output amplitude, blend pot ' + pblend.attr.r.toEng() + ', load ' + r5.attr.r.toEng() + ')')
+    .add_series(x, y, 'Sag')
+    .show()
+    .gif('blend_2x_follower_sag.gif');
+

@@ -1,0 +1,16 @@
+error: include_global(filename) require exactly 1 arguments but 3 was given
+  [include_global_two_arguments.ngjs:0:0] in <anonymous>()
+    Internal.include_global("xyz.js", true, "zzzz");
+             ^
+
+hint: function 'include_global(filename)' was called with 3 arguments
+hint: argument #0 was xyz.js (string)
+hint: argument #1 was true (boolean)
+hint: argument #2 was zzzz (string)
+
+Stack trace (1 frames):
+  [include_global_two_arguments.ngjs:0:0] in <anonymous>()
+    Internal.include_global("xyz.js", true, "zzzz");
+             ^
+
+exit(7)

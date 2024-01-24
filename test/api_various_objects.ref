@@ -1,0 +1,27 @@
+API: function file_write (aFileName, aString) - Write string to a file
+API: function file_write (aFileName, aString) - Write string to a file
+API: function file_write_json (filename, data, aIndent) - Write data to a json file
+API: function file_write_json (filename, data, aIndent) - Write data to a json file
+API: function echo (...) - Print something to the default output stream, multiple arguments are separated by space
+API: function echo (...) - Print something to the default output stream, multiple arguments are separated by space
+API: function resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Add resistor to netlist
+API: function resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Add resistor to netlist
+API: function Resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Constructor
+
+14 methods:
+.name(aName,aAllowThisPrefix) - Set name
+.anode(aNet) - Set anode net
+.cathode(aNet) - Set cathode net
+.r(aValue) - set resistance
+.ls(aValue) - Set series inductance
+.cp(aValue) - Set parallel capacitance
+.model(aModel) - Set model name
+.get_model() - Get model device specified by this device
+.validate() - Validate device attributes
+.remove() - remove this device from netlist
+.get_nets() - Return nets of this device
+.get_value() - Return main "principal" value (used only in informative schematic)
+.alter() - Alter value without uploading netlist, only to be used with ac.fast, don't use this unless you need performance
+.render() - Render spice netlist for this device
+API: function Resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Constructor
+API: function Resistor (aName, aAnode, aCathode, aR, aLs, aCp) - Constructor

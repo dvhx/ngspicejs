@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// fft db chart
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 2, 1000);
+diode('D1', 2, 0, '1N5819');
+fft().fstop('2k').run('V(2)').chart('V(2)').chart_db('V(2)');
+

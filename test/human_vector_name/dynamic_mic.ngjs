@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// human vector names - dynamic mic
+// linter: ngspicejs-lint
+"use strict";
+
+dynamic_mic('MIC1', 1, 0).v(0.1).f(196);
+resistor('R1', 1, 0, 100);
+
+var t = tran().run();
+echo(Object.keys(t.data).sort().join('\n'));
+
+echo('FFT:');
+var f = fft().run('I(MIC1.LS)');
+echo(Object.keys(f.data).sort().join('\n'));
+

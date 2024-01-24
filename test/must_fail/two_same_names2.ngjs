@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Pickups only detect duplicate names after render so only then duplicate name will show error
+// linter: ngspicejs-lint
+"use strict";
+
+pickup_singlecoil('L1', 1, 0).v(0.3).f(110);
+pickup_singlecoil('L1', 1, 2).v(0.3).f(110);
+
+tran().run();

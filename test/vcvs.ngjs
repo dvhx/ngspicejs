@@ -1,0 +1,14 @@
+#!/usr/bin/env ngspicejs
+// vcvs
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('V1', 1, 0).v(0.1).f(196);
+resistor('R1', 1, 0, '1k');
+vcvs('E1', 2, 0, 1, 0, 1.5);
+
+var t = tran().run().chart('V(1)').chart('V(2)');
+var a1 = array_range(t.data['V(1)']);
+var a2 = array_range(t.data['V(2)']);
+var g = a2 / a1;
+echo('in', (a1 / 2).toEng(), 'out', (a2 / 2).toEng(), 'gain', g);

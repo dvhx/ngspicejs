@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Parallel ammeters
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9).rs(1);
+resistor('R1', 1, 2, 100);
+ammeter('A1', 2, 0);
+ammeter('A2', 2, 0);
+
+tran().run().chart('I(A1)');

@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Show Ic/Vce in chart_xy with multiple series in one chart
+// linter: ngspicejs-lint
+"use strict";
+
+var data = file_read_tsv('npn_measure_vce_ic_using_current_source.tsv');
+var c = chart_xy().label_x('Vce/V').label_y('Ic/A').title('NPN transistor characteristic');
+for (var col = 0; col < data[0].length - 1; col += 2) {
+    var vce = data.column(col + 1, 1);
+    var ic = data.column(col + 2, 1);
+    c.add_series(vce, ic, data[0][col + 2].replace('IC@', ''));
+}
+c.show();
+if (c.canvas.type === 'sixel_canvas') {
+    gif('npn_measure_vce_ic_using_current_source_chart.gif', [c.canvas], 100);
+}

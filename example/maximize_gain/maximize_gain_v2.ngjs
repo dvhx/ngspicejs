@@ -1,0 +1,55 @@
+#!/usr/bin/env ngspicejs
+// Maximize gain of common emitter, manually tuned to 209x, then optimized to 224x
+// linter: ngspicejs-lint
+"use strict";
+
+// Common emitter 209x gain
+battery('U1', 14, 0, 9);
+ammeter('A1', 14, 15);
+var r1 = resistor('R1', 15, 6, '10k');
+var r2 = resistor('R2', 16, 6, '100k');
+resistor('R3', 9, 0, '50k');
+capacitor('C1', 11, 16, '4u7');
+capacitor('C2', 6, 9, '4u7');
+npn('T1', 6, 16, 0, 'BC547');
+sinewave('U2', 11, 0).v('1m').f(196);
+
+var t = tran().run().chart('V(9)');
+echo('Gain', t.gain(11, 9).toFixed(3));
+echo('Current', t.data['I(A1)'].avg().toEng());
+
+// Try R1 R2 from 10R to 10M
+var values = series_e6(10, '10M');
+var best = {r1: 0, r2: 0, gain: t.gain(11, 9).toFixed(3)};
+echo('Maximizing gain... ', values.length * values.length, 'attempts');
+var csv = [['R1', 'R2', 'Gain']];
+values.forEach(function (a) {
+    values.forEach(function (b) {
+        r1.r(a);
+        r2.r(b);
+        var g = tran().run().gain(11, 9);
+        if (g > best.gain) {
+            best.r1 = a;
+            best.r2 = b;
+            best.gain = g;
+            echo('R1=' + a.toEng(), 'R2=' + b.toEng(), ' Gain=' + g);
+        }
+        csv.push([a,b,g]);
+    });
+});
+echo_json(best);
+// file_write_csv('scatter.csv', csv);
+
+r1 = csv.column(0, 1);
+r2 = csv.column(1, 1);
+var gain = csv.column(2, 1);
+
+chart_scatter(r1, r2, gain)
+    .log_x(true)
+    .log_y(true)
+    .size(20)
+    .title('Gain of common emitter depending on R1, R2')
+    .label_x('R1')
+    .label_y('R2')
+    .show()
+    .gif('maximize_gain.gif');

@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use pickup
+// linter: ngspicejs-lint
+"use strict";
+
+pickup_singlecoil("U1", 1, 0).v(1).f(196); //!
+pickup_humbucker("U2", 2, 0).v(1).f(196); //!
+pickup_piezo("U3", 3, 0).v(1).f(196); //!
+
+// custom inductive pickup
+pickup("U4", 4, 0).v(1).f(196).l(2.3).rs(5400).rp('100k').cp('100p'); //!
+// custom capacitive pickup
+pickup("U5", 5, 0).v(1).f(196).c('22n').rs(5400).rp('100k').cp('100p'); //!
+
+tran().run().chart('V(1)');

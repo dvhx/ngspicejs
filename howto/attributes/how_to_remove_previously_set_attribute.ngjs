@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to remove previously set device attribute
+// linter: ngspicejs-lint
+"use strict";
+
+// Real capacitor with parasitic values Rs, Rp and Ls
+var c1 = capacitor('C1', 1, 0, '100n').rs(2).rp('10M').ls('10m');
+echo_netlist();
+echo();
+
+// remove attributes
+delete c1.attr.ls; //!
+delete c1.attr.rs;
+delete c1.attr.rp;
+echo_netlist();

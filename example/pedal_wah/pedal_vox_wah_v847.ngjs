@@ -1,0 +1,47 @@
+#!/usr/bin/env ngspicejs
+// Pedal VOX Wah 847
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 7, 0, 9);
+
+resistor('R1', 14, 0, '510');
+resistor('R2', 7, 9, '22k');
+resistor('R3', 11, 10, '1k5');
+resistor('R4', 13, 12, '68k');
+resistor('R5', 5, 10, '33k');
+resistor('R6', 5, 0, '100k');
+resistor('R7', 9, 5, '470k');
+resistor('R8', 9, 3, '470k');
+resistor('R9', 7, 6, '1k');
+resistor('R10', 2, 0, '10k');
+
+var p1 = pot('P1', 0, 4, 8, '100k').percent(50);
+
+capacitor('C1', 12, 11, '10n');
+capacitor('C2', 5, 0, '4u7');
+capacitor('C3', 9, 8, '220n');
+capacitor('C4', 4, 3, '220n');
+capacitor('C5', 2, 10, '10n');
+
+npn('T1', 9, 11, 14, 'BC547');
+npn('T2', 6, 3, 2, 'BC547');
+
+inductor('L2', 5, 10, '500m').rs(20);
+
+pickup_singlecoil('L1', 13, 0).v('100m').f(196);
+
+ac().fstop('3k').run().chart('V(8)');
+
+var p, a, e, x = [], y = [];
+for (p = 0; p <= 100; p += 5) {
+    p1.percent(p);
+    a = ac().fstop('3k').run();
+    e = a.data['V(8)'].modulus().extrema();
+    x.push(p);
+    y.push(a.data.frequency[e[0].index]);
+}
+echo('X=pot position, Y=wah filter peak frequency in Hz');
+chart_xy().add_series(x, y).show();
+
+

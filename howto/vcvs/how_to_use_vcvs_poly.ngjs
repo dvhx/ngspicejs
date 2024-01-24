@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to use voltage controlled voltage source vcvs with poly
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(50);
+vcvs("E1", 2, 0).poly([1, 0], [2, 3, 4, 5]);
+resistor('R1', 2, 0, 10);
+tran().run().chart('V(2)');
+

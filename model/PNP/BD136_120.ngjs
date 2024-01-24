@@ -1,0 +1,39 @@
+#!/usr/bin/env ngspicejs
+// BD136 with beta 120
+// linter: ngspicejs-lint
+"use strict";
+var s = sub_model('BD136_120', ['c', 'b', 'e'], {});
+s.bjt_model({
+    "name": "QMODP1",
+    "kind": "PNP",
+    "bf": 120,
+    "vaf": 119.983,
+    "is": 1.11011e-13,
+    "xtb": 1.50754,
+    "ikr": 0.755909,
+    "tr": 5.13656e-7,
+    "mjc": 0.19922,
+    "nr": 1,
+    "mje": 0.300403,
+    "rc": 0.0623238,
+    "re": 0.153374,
+    "rb": 0.62265,
+    "ikf": 0.498804,
+    "br": 4.02623,
+    "ise": 7.42361e-11,
+    "vjc": 0.219001,
+    "var": 19.9152,
+    "tf": 1.32981e-8,
+    "nf": 1,
+    "vje": 0.604679,
+    "ne": 2,
+    "cjc": 7.32426e-11,
+    "cje": 1.11712e-10
+}
+);
+s.pnp('Q1', 'c', 'b', 'e', 'QMODP1').area('0.618');
+s.pnp('Q2', 'c', 'm', 'e', 'QMODP1').area('0.382');
+s.resistor('R1', 'b', 'm', 47);
+s.end();
+
+globalThis.exports = {model: s};

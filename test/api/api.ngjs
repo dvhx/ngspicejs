@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// Show api of various things
+// linter: ngspicejs-lint
+"use strict";
+
+api(tran);
+
+resistor('R1', 1, 0, 100);
+api(tran().run().chart);
+api(echo);
+api(Math.abs);
+api(resistor);
+
+
+

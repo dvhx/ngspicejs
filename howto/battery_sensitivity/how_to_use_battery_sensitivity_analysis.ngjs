@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// How to use battery sensitivity analysis
+// linter: ngspicejs-lint
+"use strict";
+
+// Simple common emitter amplifier 22x
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(0.01).f(196);
+resistor('R1', 1, 3, '68000');
+resistor('R2', 3, 0, '4700');
+resistor('R3', 1, 4, '20k');
+resistor('R4', 6, 0, '330');
+capacitor('C1', 2, 3, '10u');
+capacitor('C2', 4, 5, '10u');
+resistor('R5', 5, 0, '50k');
+npn('T1', 4, 3, 6, 'BC547');
+// battery sensitivity analysis
+var b = battery_sensitivity('U1').input(2).output(5).vmin(4.5).vmax(12).run().chart();
+echo('Gain at 8V is', b.value_at(8).toEng());
+echo('Gain at 9V is', b.value_at(9).toEng());
+echo('Gain at 11V is', b.value_at(11).toEng());
+// double check with tran
+echo('Tran gain at 9V is', tran().run().gain(2, 5).toEng());
+

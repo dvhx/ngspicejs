@@ -1,0 +1,19 @@
+caght e Some error
+error: TypeError: tran.x is not a function
+  [./undefined_tran_x_but_hint_will_be_printed.ngjs:0:0] in ???()
+    return tran.x();
+                ^
+hint: You should see this hint
+
+
+Stack trace (3 frames, parsed):
+  [undefined_tran_x_but_hint_will_be_printed.ngjs:17:17] in foo()
+    return tran.x();
+                ^
+  [undefined_tran_x_but_hint_will_be_printed.ngjs:21:5] in bar()
+    foo();
+    ^
+  [undefined_tran_x_but_hint_will_be_printed.ngjs:25:1] in <anonymous>()
+    bar();
+    ^
+exit(12)

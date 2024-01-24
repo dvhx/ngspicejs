@@ -1,0 +1,21 @@
+#!/usr/bin/env ngspicejs
+// Equations in square
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v('{2+3}').f('{2*50}').offset('{0.5+0.5}').ac_mag(5);
+
+echo_netlist();
+
+tran().run().chart('V(1)');
+
+netlist_clear();
+
+var s = sub_model('MY_SQUARE', [1, 2], {f: 123});
+s.square('U1', 1, 2).v('{2+3}').f('{2*f}').offset('{0.5+0.5}').ac_mag(5);
+s.end();
+
+sub('X1', 'MY_SQUARE', [1, 0], {f: 50});
+
+tran().run().chart('V(1)');
+

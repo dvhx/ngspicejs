@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// 20kHz colpitts oscillator using n-channel mosfet BS170 and extra resistor from gate to drain
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 9).rs(10);
+resistor('R1', 2, 0, '470k');
+resistor('R2', 3, 0, '3k3');
+capacitor('C1', 4, 3, '68n');
+capacitor('C2', 3, 1, '68n');
+capacitor('C3', 1, 2, '68n');
+inductor('L1', 4, 1, '614u').rs(4);
+mosfet_n('T1', 4, 2, 3, 'BS170');
+resistor('RD', 4, 2, '470k');
+
+var t = tran().start('1.8m').interval('2m').step('10u').run().chart(['I(U1)', 'I(L1.L0)']);
+
+var battery_current = t.data['I(U1)'].rms();
+var coil_current = t.data['I(L1.L0)'].rms();
+echo('Battery current', battery_current.toEng());
+echo('Coil current', coil_current.toEng());
+echo('Gain', (coil_current / battery_current).toEng());
+echo('f0', fft().start(t.attr.start).interval(0.05).fstop('100k').run('I(L1.L0)').chart('I(L1.L0)').f0().frequency.toEng());
+

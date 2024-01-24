@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// PWL can only repeat from timeline points
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 0], ['1m', 1], ['2m', 0.5]]).repeat_from('0.05m');
+tran().run().chart('V(1)');

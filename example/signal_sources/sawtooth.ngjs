@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Sawtooth supply
+// linter: ngspicejs-lint
+"use strict";
+
+sawtooth('U1', 1, 0).v(1).offset(-0.5).f(100);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)');
+
+

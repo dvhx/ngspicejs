@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// JFET colpitts oscillator
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 5, 0, 9).rs(10);
+ammeter('A1', 5, 4);
+jfet_n('T1', 4, 3, 1, '2N5457');
+inductor('L1', 3, 8, '614u').rs(4);
+ammeter('A2', 8, 0);
+capacitor('C1', 3, 0, '1n');
+capacitor('C2', 3, 1, '68n');
+capacitor('C3', 1, 0, '68n');
+resistor('R1', 1, 0, '1k');
+capacitor('C4', 4, 0, '4u7');
+
+var t = tran().start('19.8m').step('20u').run().chart(['I(A1)', 'I(A2)'], {min_x: '19.8m'});
+
+var battery_current = t.data['I(A1)'].rms();
+var coil_current = t.data['I(A2)'].rms();
+echo('Battery current', battery_current.toEng());
+echo('Coil current', coil_current.toEng());
+echo('Gain', (coil_current / battery_current).toEng());
+echo('f0', fft().start(t.attr.start).interval(0.05).fstop('100k').run('I(L1.L0)').chart('I(L1.L0)').f0().frequency.toEng());
+
+
+

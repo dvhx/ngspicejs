@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// Warn about changing ac but not run it
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(1).f(196);
+resistor('R1', 1, 0, 100);
+ac().run().fstop(2000).chart_db('V(1)');

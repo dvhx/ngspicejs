@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// How to use square voltage source
+// linter: ngspicejs-lint
+"use strict";
+
+square('U1', 1, 0).v(5).f(50); //!
+square("U2", 2, 0).offset(2.5).v(5).f(50).delay(0.001).duty(25).raise("1u").fall("1u").ac_mag(5); //!
+tran().run().chart(['V(1)', 'V(2)']);
+
+

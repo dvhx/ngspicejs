@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Remove inductor
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+resistor('R1', 1, 2, 10);
+var l1 = inductor('L1', 2, 3, '1m');
+resistor('R2', 3, 0, 1000);
+inductor('L2', 3, 0, '100m');
+l1.remove();
+var t = tran().run().chart('I(L2)');
+echo(Object.keys(t.data).sort());

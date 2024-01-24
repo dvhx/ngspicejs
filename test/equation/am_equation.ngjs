@@ -1,0 +1,24 @@
+#!/usr/bin/env ngspicejs
+// Test equation - both charts should be the same
+// linter: ngspicejs-lint
+"use strict";
+
+// all parameters as numberical values
+am('U1', 1, 0).v(1).f(50).offset(1.4).fc(1000).dc_value(2).ac_mag(3).ac_phase(4);
+//spice('VU1 1 0 DC 1 AC 3 4 AM (5 0 50 1000 0 0)');
+resistor('R1', 1, 0, 1000);
+tran().run().chart('V(1)');
+echo('AC', array_modulus(ac().run().data['V(1)'])[0].toEng());
+
+netlist_clear();
+
+// all parameters as equations (chart should be the same)
+// note that ngspice-36 does not support equations in dc_value, ac_mag, ac_phase
+am('U1', 1, 0).v('{2*0.5}').f('{100/2}').offset('{2*0.7}').fc('{2*500}').dc_value(2).ac_mag(3).ac_phase(4);
+//spice('VU1 1 0 DC 1 AC 3 4 AM (5 0 50 1000 0 0)');
+resistor('R1', 1, 0, 1000);
+tran().run().chart('V(1)');
+echo('AC', array_modulus(ac().run().data['V(1)'])[0].toEng());
+
+
+

@@ -1,0 +1,13 @@
+error: directory 'bad-dir' not found
+  [file_write_bad_dir.ngjs:0:0] in <anonymous>()
+    file_write('bad-dir/foo', 'asdf');
+    ^
+
+hint: file_write(path, data) attempted to write 4 bytes to file bad-dir/foo
+
+Stack trace (1 frames):
+  [file_write_bad_dir.ngjs:0:0] in <anonymous>()
+    file_write('bad-dir/foo', 'asdf');
+    ^
+
+exit(6)

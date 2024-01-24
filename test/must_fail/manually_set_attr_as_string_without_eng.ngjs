@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// Setting argument as eng directly should work
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+var r1 = resistor('R1', 1, 0, 100);
+r1.attr.r = '1k';
+
+tran().run().chart('I(U1)');
+
+

@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Sinewave supply
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(1).f(100);
+resistor('R1', 1, 0, 1000);
+
+tran().run().chart('V(1)');
+
+

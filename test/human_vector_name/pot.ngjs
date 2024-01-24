@@ -1,0 +1,12 @@
+#!/usr/bin/env ngspicejs
+// human vector names - pot
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+pot('P1', 1, 2, 0, '1k', 50);
+
+var a = ac().run();
+echo(Object.keys(a.data).sort().join('\n'));
+
+

@@ -1,0 +1,29 @@
+error: diode D2 attribute 'anode' is missing
+error: diode D2 device attribute 'anod' is not recognized attribute, attributes with similar names are: anode
+hint: Allowed diode attributes are: anode, cathode, model, name
+error: diode D2 contains invalid attribute
+  [diode_bad_attr_anod.ngjs:0:0] in <anonymous>()
+    diode({name: "D2", anod: 4, cathode: 3, model: '1N4148'});
+    ^
+
+Stack trace (6 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [device_attr_check.js:0:0, core.js:0:0] in device_attr_check()
+    throw new Exception((aDevice.type || "device") + " " + (aDevice.attr.name || "<unnamed>") + " contains invalid attribute");
+          ^
+  [device/diode.js:0:0, core.js:0:0] in Diode.validate()
+    device_attr_check(this, this.attr, {
+    ^
+  [device/diode.js:0:0, core.js:0:0] in Diode()
+    this.validate();
+         ^
+  [device/diode.js:0:0, core.js:0:0] in diode()
+    return new Diode(aName);
+           ^
+  [diode_bad_attr_anod.ngjs:0:0] in <anonymous>()
+    diode({name: "D2", anod: 4, cathode: 3, model: '1N4148'});
+    ^
+
+exit(13)

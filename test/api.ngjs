@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// Print api help
+// linter: ngspicejs-lint
+"use strict";
+
+api();
+

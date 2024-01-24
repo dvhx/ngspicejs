@@ -1,0 +1,28 @@
+#!/usr/bin/env ngspicejs
+// Three stage common emitter using sub_model with parameters
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('CE', ['vcc', 'gnd', 'in', 'out'], {r1: 68000, r2: 4700, r3: 20000, r4: 150, c1: 4.7e-6, c2: 4.7e-6});
+s.resistor('R1', 'vcc', 'b', '{r1}');
+s.resistor('R2', 'b', 'gnd', '{r2}');
+s.resistor('R3', 'vcc', 'c', '{r3}');
+s.resistor('R4', 'e', 'gnd', '{r4}');
+s.capacitor('C1', 'in', 'b', '{c1}');
+s.capacitor('C2', 'c', 'out', '{c2}');
+s.npn('Q1', 'c', 'b', 'e', 'BC547');
+s.end();
+
+battery('U1', 1, 0, 9);
+ammeter('A1', 1, 2);
+sub('X1', 'CE', [2, 0, 'in', 'out'], {r1: 68000, r2: 4700, r3: 20000, r4: 150, c1: 4.7e-6, c2: 4.7e-6});
+sub('X2', 'CE', [2, 0, 'out', 'out2'], {r1: 68000, r2: 4700, r3: 20000, r4: 150, c1: 4.7e-6, c2: 4.7e-6});
+sub('X3', 'CE', [2, 0, 'out2', 'out3'], {r1: 68000, r2: 4700, r3: 20000, r4: 261, c1: 4.7e-6, c2: 4.7e-6});
+sinewave('U2', 'in', 0).v('500u').f(196);
+resistor('RCGND1', 'out', 0, '50k');
+resistor('RCGND2', 'out2', 0, '50k');
+resistor('RLOAD3', 'out3', 0, '50k');
+
+var t = tran().run().chart('V(out3)');
+echo('GAIN', t.gain('in', 'out3').toFixed(3));
+

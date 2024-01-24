@@ -1,0 +1,6 @@
+This is version_1.ngjs
+script_shell(): ngspicejs
+script_self(): ./version_1.ngjs
+script_args():["--no-gif"]
+Array (1 items): (Object #1.1)
+    [0]: string[8] = --no-gif

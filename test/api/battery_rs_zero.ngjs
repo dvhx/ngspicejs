@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// Test seting and then removing battery rs, should noit fail
+// linter: ngspicejs-lint
+"use strict";
+
+// normal battery with Rs=1
+var u1 = battery('U1', 1, 0, 9).rs(1);
+var r1 = resistor('R1', 1, 0, 999);
+echo(tran().run().avg('I(U1)').toEng(3));
+// Rs=0 normally is wrong but battery recognizes it as no Rs and will remove it
+u1.rs(0);
+r1.r(1000);
+echo_netlist();
+echo(tran().run().avg('I(U1)').toEng(3));
+// delete Rs is same as Rs=0
+delete u1.attr.rs;
+echo(tran().run().avg('I(U1)').toEng(3));
+
+

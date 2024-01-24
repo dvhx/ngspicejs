@@ -1,0 +1,55 @@
+#!/usr/bin/env ngspicejs
+// Changing R1 and R2 and R3 measure gain, current and thd and find the best score
+// linter: ngspicejs-lint
+"use strict";
+
+// emitter follower
+var ef = include('emitter_follower.ngjs');
+
+// gain is <1 but we need at least 0.9
+var score_gain = lerp([['0.9m', 0], [1, 1]]);
+// current should be smallest but must be below 1mA
+var score_current = lerp([['0.1m', 1], ['1m', 0]]);
+// thd should be smallest and must be below 0.02
+var score_thd = lerp([[0, 1], [0.02, 0]]);
+
+var all = [], c = 20000;
+//series_e3('1k', '100k').forEach(c => {
+    series_e3('1k', '10M').forEach((a) => {
+        series_e3('1k', '10M').forEach((b) => {
+            ef.r1.r(a);
+            ef.r2.r(b);
+            ef.r3.r(c);
+            var t = tran().run();
+            var gain = t.gain('V(2)', 'V(6)');
+            var current = -t.avg('I(U2)');
+            var thd = fft().run('V(6)').thd(ef.u1.attr.f);
+            var score = 5 * score_gain.get(gain) + 10 * score_current.get(current) + score_thd.get(thd);
+
+            if (gain <= 0.7) {
+                return;
+            }
+            if (thd > 0.005) {
+                return;
+            }
+            if (current > 0.0004) {
+                return;
+            }
+            echo(
+                'R1', a.toEng(),
+                'R2', b.toEng(),
+                'R3', c.toEng(),
+                'Gain', gain.toEng(),
+                'Current', current.toEng(),
+                'THD', thd.toFixed(6),
+                'score', score.toFixed(3)
+            );
+            all.push({r1: a, r2: b, r3: c, gain, current, thd, score});
+        });
+    });
+//});
+echo('Best (R1, R2, R3, gain, current, thd, score):');
+all.sort((a,b) => {
+    return b.current - a.current;
+}).forEach((a) => echo(a.r1, a.r2, a.r3, a.gain.toFixed(6), a.current.toFixed(6), a.thd.toFixed(6), a.score.toFixed(3)));
+

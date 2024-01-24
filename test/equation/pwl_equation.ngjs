@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Equations in pwl
+// linter: ngspicejs-lint
+"use strict";
+
+pwl('U1', 1, 0).shape([[0, 0], ['1m', 1], ['2m', 0.5]]).repeat_from('1m').delay('{5e-3}');
+
+tran().run().chart('V(1)');
+
+echo_netlist();

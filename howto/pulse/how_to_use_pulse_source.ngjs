@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// How to use pulse source
+// linter: ngspicejs-lint
+"use strict";
+
+pulse('U1', 1, 0).v(5).pulse_width('1m').raise('5u').fall('5u').delay('10m'); //!
+tran().run().chart('V(1)');
+
+

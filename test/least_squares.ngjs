@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// least squares
+// linter: ngspicejs-lint
+"use strict";
+
+var x = [1,2,3,4,5,6,7,8,9];
+var y = [31,40,49,62,71,80,89,103,110];
+var l = least_squares();
+l.add(x, y);
+echo('y = ' + l.slope().toFixed(2) + 'x + ' + l.offset().toFixed(4));

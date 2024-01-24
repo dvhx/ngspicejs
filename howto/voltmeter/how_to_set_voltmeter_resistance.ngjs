@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to set voltmeter internal resistance
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, '10M');
+resistor('R2', 2, 0, '10M');
+var v1 = voltmeter('V1', 2, 0);
+echo(tran().run().avg('V(V1)').toEng(3));
+// Lower voltmeter resistance to 1G ohm
+v1.r('1G'); //!
+echo(tran().run().avg('V(V1)').toEng(3));
+
+

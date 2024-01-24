@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// jfet using submodel jfet
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 4, 0, 9);
+resistor('R1', 1, 0, '10M');
+resistor('R2', 4, 3, '10k');
+resistor('R3', 2, 0, '1k');
+var t1 = jfet_n('T1', 3, 1, 2, 'J201');
+capacitor('C1', 3, 6, '100n');
+resistor('R4', 6, 0, '50k');
+resistor('RX', 3, 0, '1G');
+pickup('L1', 1, 0).l('1m').v(0.1).f(196);
+var a1 = ac().fstop('1500k').run();
+t1.model('J201_LONG_LEADS');
+var a2 = ac().fstop('1500k').run();
+
+chart_xy()
+    .add_series(a1.data.frequency, a1.data['V(6)'].modulus(), 'J201')
+    .add_series(a2.data.frequency, a2.data['V(6)'].modulus(), 'J201_LONG_LEADS')
+    .show();
+

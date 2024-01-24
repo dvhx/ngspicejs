@@ -1,0 +1,27 @@
+#!/usr/bin/env ngspicejs
+// Calculate even and odd harmonics ratios using fft
+// linter: ngspicejs-lint
+"use strict";
+
+var f0 = 100;
+
+function one(e, o) {
+    netlist_clear();
+    echo('e', e, 'o', o);
+    sinewave('U1', 0, 1).v(1 * 0.73).f(f0);
+    sinewave('U2', 1, 2).v(e * 0.785).f(2 * f0);
+    sinewave('U3', 2, 3).v(o * 0.875).f(3 * f0);
+    sinewave('U4', 3, 4).v(e * 1.008).f(4 * f0);
+    sinewave('U5', 4, 5).v(o * 1.205).f(5 * f0);
+    sinewave('U6', 5, 6).v(e * 1.477).f(6 * f0);
+    sinewave('U7', 6, 7).v(o * 1.795).f(7 * f0);
+    var f = fft().interval(1.5).fstop(8 * f0).run('V(7)');
+    echo('even', f.even(f0, 7).toFixed(3));
+    echo('odd ', f.odd(f0, 7).toFixed(3));
+    f.chart_db('V(7)', {width: 600, height: 204});
+    echo();
+}
+
+one(1, 0);
+one(0, 1);
+one(1, 1);

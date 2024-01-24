@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// chart axis labels
+// linter: ngspicejs-lint
+"use strict";
+
+var c = chart_xy().label_x('Vce/V').label_y('Ic/A').title('NPN transistor characteristic').height(360);
+c.add_series([0,1,2,3,4], [0, 0.02, 0.026, 0.029, 0.030], 'Ib=10u');
+c.show();
+
+if (c.canvas.type === 'sixel_canvas') {
+    gif('chart_xy_axis_labels_single.gif', [c.canvas], 100);
+}
+
+c.add_series([0,1,2,3,4], [0, 0.01, 0.014, 0.0155, 0.016], 'Ib=5u');
+c.show();
+
+echo(c.canvas.type);
+
+if (c.canvas.type === 'sixel_canvas') {
+    gif('chart_xy_axis_labels_multi.gif', [c.canvas], 100);
+}
+

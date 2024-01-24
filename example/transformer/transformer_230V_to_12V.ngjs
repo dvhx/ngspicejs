@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// Transformer from 230V to 12V
+// linter: ngspicejs-lint
+"use strict";
+
+// 230V @50Hz source
+sinewave('U1', 1, 0).v(230).f(50);
+// transformer with 230 turns on primary and 12 turns on secondary should produce approx. 12V output
+sub('X1', 'TRANSFORMER', [1, 0, 2, 3], {AL: '5u', NT1: 230, R1: 25, NT2: 12, R2: 0.5, K: 0.98});
+voltmeter('V1', 2, 3);
+
+var t = tran().interval('80m').run().chart('V(1)').chart('V(V1)');
+var vin = t.data['V(1)'].amplitude();
+echo('Input', vin);
+var vout = t.data['V(V1)'].amplitude();
+echo('Output', vout);
+echo('Gain', vout/vin);

@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// NPN darlington made from two transistors
+// linter: ngspicejs-lint
+"use strict";
+var m = sub_model('BC547_DARLINGTON', ['c', 'b', 'e'], {});
+m.npn('T1', 'c', 'b', 2).model('BC547');
+m.npn('T2', 'c', 2, 'e').model('BC547');
+m.end();
+
+globalThis.exports = {model: m};

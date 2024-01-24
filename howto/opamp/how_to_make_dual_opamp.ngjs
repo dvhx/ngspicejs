@@ -1,0 +1,17 @@
+#!/usr/bin/env ngspicejs
+// How to make dual opamp DIP8 subcircuit
+// linter: ngspicejs-lint
+"use strict";
+
+var s = sub_model('JRC4558_DUAL', ['out1', 'in1_minus', 'in1_plus', 'gnd', 'in2_plus', 'in2_minus', 'out2', 'vcc']); //!
+s.opamp('Q1', 'in1_plus', 'in1_minus', 'vcc', 'gnd', 'out1', 'JRC4558'); //!
+s.opamp('Q2', 'in2_plus', 'in2_minus', 'vcc', 'gnd', 'out2', 'JRC4558'); //!
+s.end(); //!
+
+battery('U1', 1, 0, 9);
+sinewave('U2', 2, 0).v(4.5).offset(4.5).f(50);
+sub('X1', 'JRC4558_DUAL', [3, 3, 2, 0, 3, 4, 4, 1]); //!
+resistor('R1', 4, 0, '50k');
+
+tran().run().chart(['V(2)', 'V(4)']);
+

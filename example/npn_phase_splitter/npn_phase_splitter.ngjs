@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// NPN phase splitter
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 3, '180k');
+resistor('R2', 3, 0, '100k');
+resistor('R3', 1, 8, '5k6');
+resistor('R4', 15, 0, '5k6');
+resistor('R5', 11, 0, '50k');
+resistor('R6', 18, 0, '50k');
+sinewave('U2', 13, 0).v('5m').f(100);
+capacitor('C1', 13, 3, '10u');
+capacitor('C2', 8, 11, '10u');
+capacitor('C3', 15, 18, '10u');
+npn('T1', 8, 3, 15, 'BC547');
+
+tran().run().chart(['V(11)','V(18)']);
+
+battery_sensitivity('U1', 13, 11, 1, 12).run().chart();
+

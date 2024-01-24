@@ -1,0 +1,35 @@
+#!/usr/bin/env ngspicejs
+// Update example links in README
+// linter: ngspicejs-lint
+"use strict";
+
+var all = [];
+
+var readme = file_read('../README.md').split('\n');
+var p1 = readme.indexOf('# More examples');
+var p2 = readme.indexOf('# Support');
+echo(p1, p2);
+if (p1 <= 0 || p2 <= 0 || p1 >= p2) {
+    error('Cannot find more examples section in readme');
+    exit(1);
+}
+
+// delete old examples
+readme.splice(p1 + 1, p2 - p1 - 1);
+
+dir_recursive('../example').concat(dir_recursive('../howto')).filter((fn) => file_ext(fn) === '.ngjs').forEach((fn) => {
+    var s = file_read(fn).split('\n');
+    all.push({
+        fn: fn.substr(2),
+        comment: s[1].substr(3)
+    });
+});
+var n = [''];
+all.sort((a, b) => a.fn.localeCompare(b.fn)).forEach(o => {
+    n.push('- [' + o.comment + '](' + o.fn + ') in ' + file_path(o.fn));
+});
+n.push('');
+readme.splice(p1 + 1, 0, n.join('\n'));
+file_write('../README.md', readme.join('\n'));
+
+echo('Removed ' + (p2 - p1) + ' examples, added ' + n.length + ' examples');

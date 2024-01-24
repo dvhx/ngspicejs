@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// bdmos cannot contain name "VDMOS"
+// linter: ngspicejs-lint
+"use strict";
+
+vdmos_model('MY_VDMOS').kind('VDMOS').vto(2);

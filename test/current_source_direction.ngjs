@@ -1,0 +1,19 @@
+#!/usr/bin/env ngspicejs
+// current direction
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+resistor('R1', 1, 2, 100);
+ammeter('A1', 2, 0);
+
+current_source('I2', 10, 0, 1);
+resistor('R2', 10, 20, 100);
+ammeter('A2', 20, 0);
+
+var t = tran().run();
+echo('V(2)', t.avg('V(2)').toEng());
+echo('I(A1)', t.avg('I(A1)').toEng());
+echo('I(U1)', t.avg('I(U1)').toEng(), '- is negative because U1 is backwards (from 1 to 0)');
+
+echo('I(A2)', t.avg('I(A2)').toEng(), '- is negative because I1 is backwards (from 10 to 0)');

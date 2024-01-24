@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// Using dynamic_mic device
+// linter: ngspicejs-lint
+"use strict";
+
+dynamic_mic('U1', 1, 0).v(0.01).f(196);
+ammeter('A1', 1, 2);
+resistor('R1', 2, 0, '150');
+
+ac().fstop('20k').run().chart('V(2)').chart('I(A1)');
+

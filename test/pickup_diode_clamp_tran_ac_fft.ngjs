@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// pickup and diode clamp
+// linter: ngspicejs-lint
+"use strict";
+
+// pickup clamped by 2 antiparallel diodes
+pickup_singlecoil('L1', 1, 0).v(0.3).f(110);
+diode('D1', 0, 1, '1N4148');
+diode('D2', 1, 0, '1N5819');
+
+tran().interval('10m').step('100u').run().chart('V(1)');
+ac().fstop('20k').run().chart('V(1)');
+fft().fstop('1k').run('V(1)').chart('V(1)');
+fft().fstop('1k').window('flattop').run('V(1)').chart('V(1)');
+

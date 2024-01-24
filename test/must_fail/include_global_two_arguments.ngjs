@@ -1,0 +1,7 @@
+#!/usr/bin/env ngspicejs
+// include_global only has 1-2 args
+// linter: ngspicejs-lint
+"use strict";
+
+Internal.include_global("xyz.js", true, "zzzz");
+echo("xyz=", globalThis.exports.xyz);

@@ -1,0 +1,13 @@
+#!/usr/bin/env ngspicejs
+// Square wave signal
+// linter: ngspicejs-lint
+"use strict";
+
+// pulse voltage supply, and lc filter
+square("U1", 1, 0).v(5).offset(0).f(10);
+resistor('R1', 1, 0, 4700);
+
+// transient analysis
+tran().interval('300m').run().chart('V(1)');
+
+

@@ -1,0 +1,41 @@
+#!/usr/bin/env ngspicejs
+// Pedal opamp fuzz and THD related to R2 value
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 8, 0, 9);
+
+resistor('R1', 10, 6, '10k');
+var r2 = resistor('R2', 6, 7, '100k');
+resistor('R3', 8, 5, '20k');
+resistor('R4', 5, 0, '20k');
+resistor('R5', 3, 0, '50k');
+
+capacitor('C1', 4, 5, '10u');
+capacitor('C2', 7, 3, '10u');
+capacitor('C3', 10, 0, '10u');
+
+diode('D1', 6, 7, '1N4148');
+diode('D2', 7, 6, '1N4148');
+
+opamp('Q1', 5, 6, 8, 0, 7, 'TL071');
+
+pickup_singlecoil('L1', 4, 0).v(0.1).f(196);
+
+var t = tran().run().chart('V(3)');
+var f = fft().fstop(5000).run('V(3)').chart_db('V(3)');
+echo('THD:', f.thd(196));
+
+
+var x = [], y = [];
+for (var i = 10000; i <= 100000; i += 5000) {
+    r2.r(i);
+    t = fft().run('V(3)').thd(196) * 100;
+    x.push(i);
+    y.push(t);
+    echo('R2=', i, ' THD=', t.toFixed(2) + '%');
+}
+echo('X=R2 value, Y=THD/%');
+chart_xy().add_series(x, y).show();
+
+

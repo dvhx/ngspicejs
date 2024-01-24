@@ -1,0 +1,15 @@
+#!/usr/bin/env ngspicejs
+// How to use jfet
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 9);
+var t1 = jfet_n("T1", 1, 0, 0, "2N5457"); //!
+echo(t1.attr.model, 'Idss', tran().run().avg('I(U1)').toEng());
+
+netlist_clear();
+battery('U1', 1, 0, 9);
+t1 = jfet_n("T1").d(1).g(0).s(0).model("J201"); //!
+echo(t1.attr.model, 'Idss', tran().run().avg('I(U1)').toEng());
+
+

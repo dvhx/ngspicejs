@@ -1,0 +1,23 @@
+#!/usr/bin/env ngspicejs
+// npn model used before defined
+// linter: ngspicejs-lint
+"use strict";
+
+// npn transistor
+var t1 = npn('T1', 1, 2, 0, 'BC_MY_NPN').temp(27);
+
+// if transistor's model Rc is 100, change something (temperature) of the transistor
+if (t1.get_model().attr.rc === 100) {
+    t1.temp(130);
+}
+
+// base and collector voltage
+battery('UC', 1, 0, 9);
+battery('UB', 2, 0, 1.1);
+
+// model
+bjt_model('BC_MY_NPN').kind('NPN').rc(101);
+
+var t = tran().run();
+echo('Ic', t.avg('I(UC)').toEng());
+echo('Ib', t.avg('I(UB)').toEng());

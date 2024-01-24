@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// Opamp howland current pump
+// linter: ngspicejs-lint
+"use strict";
+
+// howland current pump
+battery('U1', 2, 0, 9);
+battery('U2', 0, 3, 9);
+opamp('Q1', 6, 5, 2, 3, 4, 'LM258');
+resistor('R1', 7, 6, 100);
+resistor('R2', 6, 4, 100);
+resistor('R3', 0, 5, 100);
+resistor('R4', 5, 4, 100);
+pwl('UCTRL', 7, 0).shape([[0, 0], [0.020, 2.5]]);
+resistor('RLOAD', 6, 8, 10);
+ammeter('A1', 8, 0);
+
+var t = tran().run();
+echo('X=control voltage 0-2.5V, Y=output current 0-25mA');
+chart_xy().add_series(t.data['V(7)'], t.data['I(A1)']).show();
+
+

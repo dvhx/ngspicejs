@@ -1,0 +1,8 @@
+#!/usr/bin/env ngspicejs
+// pickup overtones
+// linter: ngspicejs-lint
+"use strict";
+
+pickup_singlecoil('U1', 1, 0).v(1).f(100).overtones(10);
+resistor('R1', 1, 0, '50k');
+tran().run().chart('V(1)');
