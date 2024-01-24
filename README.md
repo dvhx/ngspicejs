@@ -360,5 +360,5 @@ You can use built-in function help(query) to perform full text searches, for exa
 
 # Support
 
-You can support development on [Patreon](https://www.patreon.com/DusanHalicky)
+You can support development on [Patreon](https://www.patreon.com/DusanHalicky) or you can hire me via [Upwork](https://www.upwork.com/freelancers/~013b4c3d6e772fdb01)
 
