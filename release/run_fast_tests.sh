@@ -39,6 +39,7 @@ function all_tests() {
         | grep -v pedal_opamp_fuzz.ngjs \
         | grep -v npn_measure_vaf.ngjs \
         | grep -v npn_measure_vce_ic_using_current_source.ngjs \
+        | grep -v npn_measure_vce_ic_using_current_source_chart.ngjs \
         | grep -v thd_by_amplitude_and_load.ngjs \
         | grep -v thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs \
         | grep -v r1_r2.ngjs \

@@ -26,6 +26,7 @@ function all_tests() {
     echo ../example/pedal_opamp_fuzz/pedal_opamp_fuzz.ngjs
     echo ../example/npn_characteristics/npn_measure_vaf.ngjs
     echo ../example/npn_characteristics/npn_measure_vce_ic_using_current_source.ngjs
+    echo ../example/npn_characteristics/npn_measure_vce_ic_using_current_source_chart.ngjs
     echo ../example/emitter_follower/thd_by_amplitude_and_load.ngjs
     echo ../example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs
     echo ../example/emitter_follower/r1_r2.ngjs

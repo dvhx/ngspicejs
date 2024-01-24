@@ -39,3 +39,4 @@ wav/1ms_sinewave_1khz_16bit_signed_pcm.m
 wav/20ms_sinewave_1khz_16bit_signed_pcm.m
 wav/500ms_sinewave_1khz_16bit_signed_pcm.m
 wav/chord.m
+example/npn_characteristics/npn_measure_vce_ic_using_current_source_chart.gif
