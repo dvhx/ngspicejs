@@ -40,3 +40,11 @@ wav/20ms_sinewave_1khz_16bit_signed_pcm.m
 wav/500ms_sinewave_1khz_16bit_signed_pcm.m
 wav/chord.m
 example/npn_characteristics/npn_measure_vce_ic_using_current_source_chart.gif
+example/blend_circuit/*.gif
+example/emitter_follower/*.gif
+example/maximize_gain/*.gif
+example/npn_characteristics/*.gif
+example/pedal_octaver/*.gif
+example/pedal_peppermill/*.gif
+example/pickup_and_two_antiparallel_diodes/*.gif
+test/*.gif
