@@ -4,6 +4,14 @@
 
 /* jshint -W079 */
 var native_functions_description = {
+    "ctrl_c_pressed": {
+        "summary": "Sets up Ctrl+C handler and if Ctrl+C was pressed, returns true",
+        "args": []
+    },
+    "ctrl_c_reset": {
+        "summary": "Reset the indicator that ctrl+c was pressed, this allows you to use ctrl+c multiple times or exit on second ctrl+c",
+        "args": []
+    },
     "echo": {
         "summary": "Print something to the default output stream, multiple arguments are separated by space",
         "args": ["..."]
@@ -26,6 +34,10 @@ var native_functions_description = {
     },
     "read": {
         "summary": "Read string from keyboard input using readline library, displays optional prompt",
+        "args": ["oPrompt"]
+    },
+    "read_char": {
+        "summary": "Read single char from keyboard input without waiting for ENTER key, displays optional prompt",
         "args": ["oPrompt"]
     },
     "ignore": {
@@ -130,6 +142,10 @@ var native_functions_description = {
     },
     "ngspice_log": {
         "summary": "Retrieve ngspice stdout and stderr",
+        "args": []
+    },
+    "ngspice_clear_log": {
+        "summary": "Clear ngspice stdout and stderr log to prevent slowdown (done automatically in ngspice_log())",
         "args": []
     },
     "ngspice_netlist": {
