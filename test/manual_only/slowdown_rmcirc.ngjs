@@ -1,0 +1,40 @@
+#!/usr/bin/env ngspicejs
+// Missing rmcirc was causing slowdown, should be ok now
+// linter: ngspicejs-lint
+"use strict";
+
+var iter = 0;
+var iter_old = 0;
+var iter_time = Date.now();
+
+var sum = 0;
+var casy = [];
+for (var iter = 0; iter <= 100000; iter++) {
+    echo_progress();
+
+    netlist_clear();
+    battery('V1', 1, 0, 9);
+    resistor('R1', 1, 3, 100);
+    resistor('R2', 3, 0, 100);
+
+    var t = tran().run();
+    sum += t.avg('V(3)');
+    t.dispose();
+
+    if (iter % 1000 === 999) {
+        echo('iter', iter, 'time', Date.now() - iter_time);
+        casy.push(Date.now() - iter_time);
+        if (casy.length > 20) {
+            break;
+        }
+        iter_old = iter;
+        iter_time = Date.now();
+    }
+}
+
+var l = least_squares(Object.keys(casy).map(parseFloat), casy);
+echo_json(l);
+var rel = (100 * l.slope / l.offset);
+echo('slope is ', rel.toFixed(3) + '% (0% means flat)');
+
+
