@@ -2,11 +2,11 @@
 // linter: ngspicejs-lint --internal
 "use strict";
 
-function ChartScatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize) {
+function ChartScatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize, aLevels) {
     // Constructor
-    assert_arguments_length(arguments, 0, 15, 'chart_scatter(dataX,dataY,aValues,width,height,minX,maxX,minY,maxY,title,labelX,labelY,logx,logy,size)');
+    assert_arguments_length(arguments, 0, 16, 'chart_scatter(dataX,dataY,aValues,width,height,minX,maxX,minY,maxY,title,labelX,labelY,logx,logy,size,levels)');
     this.type = 'chart_scatter';
-    this.attr = {width: 640, height: 480, size: 8};
+    this.attr = {width: 640, height: 480, size: 8, levels: 10};
     // all attr as object in first argument
     if (arguments.length === 1 && typeof aDataX === 'object') {
         for (const [k, v] of Object.entries(aDataX)) {
@@ -61,6 +61,9 @@ function ChartScatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aM
     if (aSize !== undefined) {
         this.size(aSize);
     }
+    if (aLevels !== undefined) {
+        this.levels(aLevels);
+    }
 }
 
 ChartScatter.fixed_width = 0;
@@ -69,13 +72,13 @@ ChartScatter.ascii_scale_width = 0.16;
 ChartScatter.ascii_scale_height = 0.09;
 ChartScatter.force_ascii = false;
 
-function chart_scatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize) {
+function chart_scatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize, aLevels) {
     // Create scatter chart
-    assert_arguments_length(arguments, 0, 15, 'chart_scatter(dataX,dataY,values,width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,size)');
+    assert_arguments_length(arguments, 0, 16, 'chart_scatter(dataX,dataY,values,width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,size,levels)');
     if (arguments.length === 1 && typeof aDataX === 'object') {
         return new ChartScatter(aDataX);
     }
-    return new ChartScatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize);
+    return new ChartScatter(aDataX, aDataY, aValues, aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSize, aLevels);
 }
 
 ChartScatter.prototype.data_x = function (aValue) {
@@ -191,6 +194,13 @@ ChartScatter.prototype.size = function (aSize) {
     return this;
 };
 
+ChartScatter.prototype.levels = function (aLevels) {
+    // Set number of levels
+    assert_arguments_length(arguments, 1, 1, 'chart_scatter.levels(value)');
+    this.attr.levels = aLevels;
+    return this;
+};
+
 ChartScatter.prototype.validate = function () {
     // Validate parameters
     assert_arguments_length(arguments, 0, 0, 'chart_scatter.validate()');
@@ -211,6 +221,7 @@ ChartScatter.prototype.validate = function () {
         "log_x": {type: "boolean"},
         "log_y": {type: "boolean"},
         "size": {type: "number", required: true, eng: true, min: 1, max: 100},
+        "levels": {type: "number", integer: true, required: true, min: 1, max: 100},
     });
     device_attr_assign(this, this.attr, ['series']);
     // reduce complex arrays to real arrays (ac)
@@ -256,7 +267,7 @@ ChartScatter.prototype.render_sixel = function () {
     // IR camera like gradient (that stops on yellow, not white)
     var colors = [];
     var labels = [];
-    var levels = 10;
+    var levels = this.attr.levels || 10;
     var min = array_min(this.attr.values);
     var max = array_max(this.attr.values);
     var q = array_quantize(this.attr.values, levels);
