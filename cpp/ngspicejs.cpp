@@ -72,6 +72,7 @@ int main(int argc, char* argv[]) {
     //delete create_params.array_buffer_allocator;
     //create_params.array_buffer_allocator->Free();
 
+    echo_progress_hide();
     if (exit_code != 0) {
         printf("exit(%d)\n", exit_code);
     }
