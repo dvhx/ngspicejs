@@ -22,7 +22,12 @@ bool simple_ngspice_netlist(SimpleNgspiceContext *ctx, char *s) {
     ars_free(p);
 
     // spice
+    if (ctx->has_circuit) {
+        ngSpice_Command((char*)"remcirc");
+	ctx->has_circuit = false;
+    }
     int e = ngSpice_Circ(a);
+    ctx->has_circuit = true;
     ars_array_free(a, c);
     if (e != 0) {
         // warning: netlist compilation failed with code #, detailed errors will be printed now:
