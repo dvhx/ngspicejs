@@ -45,7 +45,6 @@ values.forEach(function (a) {
 });
 echo_json(best);
 //file_write_csv('scatter.csv', csv);
-//echo('Done in ', Math.ceil((Date.now() - t1) / 1000), 's');
 
 r1 = csv.column(0, 1);
 r2 = csv.column(1, 1);
