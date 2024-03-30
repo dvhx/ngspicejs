@@ -22,6 +22,12 @@ Array.prototype.add = function (aOtherArray) {
     return array_add(this, aOtherArray);
 };
 
+Array.prototype.addScalar = function (s) {
+    // Add scalar to each item of this array and retrn it as new array
+    assert_arguments_length(arguments, 1, 1, 'Array.add_scalar(scalar)');
+    return array_add_scalar(this, s);
+};
+
 Array.prototype.amplitude = function () {
     // Return half of difference between largest and smallest value in array
     assert_arguments_length(arguments, 0, 0, 'Array.amplitude()');
@@ -283,5 +289,11 @@ Array.prototype.unique = function () {
     // Return new array with unique values in this array
     assert_arguments_length(arguments, 0, 0, 'Array.unique()');
     return array_unique(this);
+};
+
+Array.prototype.sortNumerically = function () {
+    // Return new array sorted with numbers ascending
+    assert_arguments_length(arguments, 0, 0, 'Array.sortNumerically()');
+    return array_sort_numerically(this);
 };
 
