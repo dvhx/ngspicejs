@@ -12,9 +12,11 @@ function error(aMessage) {
     echo(prefix_error + aMessage);
     echo_stream(1);
     echo_hints();
+    /*
     if (exit_code() === 0) {
         exit_code(13); // unspecified js error
     }
+    */
 }
 
 globalThis.exports = {error};
