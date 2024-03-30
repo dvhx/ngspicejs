@@ -38,6 +38,10 @@
 #define EXIT_UNREACHABLE 18
 // Netlist related error
 #define EXIT_NETLIST 19
+// Ctrl+C pressed
+#define EXIT_CTRL_C 20
+// Immediate exit from Ctrl+C handler
+#define EXIT_CTRL_C_IMMEDIATE 21
 // Segfault
 #define EXIT_SEGFAULT 139
 
