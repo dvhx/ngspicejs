@@ -23,7 +23,7 @@ Array.prototype.add = function (aOtherArray) {
 };
 
 Array.prototype.addScalar = function (s) {
-    // Add scalar to each item of this array and retrn it as new array
+    // Add scalar to each item of this array and return it as new array
     assert_arguments_length(arguments, 1, 1, 'Array.addScalar(scalar)');
     return array_add_scalar(this, s);
 };
