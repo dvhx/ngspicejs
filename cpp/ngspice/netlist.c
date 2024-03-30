@@ -24,7 +24,7 @@ bool simple_ngspice_netlist(SimpleNgspiceContext *ctx, char *s) {
     // spice
     if (ctx->has_circuit) {
         ngSpice_Command((char*)"remcirc");
-	ctx->has_circuit = false;
+        ctx->has_circuit = false;
     }
     int e = ngSpice_Circ(a);
     ctx->has_circuit = true;
