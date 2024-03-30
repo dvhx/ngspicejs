@@ -5,6 +5,9 @@
 function Tran(aStep, aInterval, aStart) {
     // Constructor
     assert_arguments_length(arguments, 0, 3, 'tran(step,interval,start)');
+    if (Tran.tran.length > 10) {
+        Tran.tran.length = 0;
+    }
     Tran.tran.push(this);
     this.type = 'tran';
     this.modified = false;
