@@ -85,6 +85,8 @@ function lint(aInternal) {
 "array_extrema_max",
 "array_extrema_min",
 "array_imag",
+"array_add_scalar",
+"array_sort_numerically",
 "array_max",
 "array_min",
 "array_modulus",
