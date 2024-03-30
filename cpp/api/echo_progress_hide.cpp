@@ -6,7 +6,7 @@ void echo_progress_hide() {
         return;
     }
     if (js_echo_progress_value > 0) {
-        printf("\b");
+        printf("\b \b");
         js_echo_progress_value = 0;
     }
 };
