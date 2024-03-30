@@ -5,6 +5,9 @@
 function Ac(aFstart, aFstop, aPoints, aVariation) {
     // Constructor
     assert_arguments_length(arguments, 0, 4, 'ac(fstart,fstop,points,variation)');
+    if (Ac.ac.length > 10) {
+        Ac.ac.length = 0;
+    }
     Ac.ac.push(this);
     this.type = 'ac';
     this.modified = false;
