@@ -171,8 +171,9 @@ ChartXy.prototype.log_y = function (aValue) {
     return this;
 };
 
-ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel) {
+ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel, oDotSize) {
     // Add one series (x data, y data and series label)
+    oDotSize = oDotSize || 0;
     if (aDataY.includes(Infinity) || aDataY.includes(-Infinity)) {
         throw new Exception('ChartXy cannot display infinity (y value)');
     }
@@ -180,21 +181,23 @@ ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel) {
     if (arguments.length === 1 && typeof aDataX === 'object' && Array.isArray(aDataX.data_x) && Array.isArray(aDataX.data_y)) {
         x = aDataX.data_x;
         y = aDataX.data_y;
+        oDotSize = aDataX.dot_size;
     } else {
-        assert_arguments_length(arguments, 2, 3, 'chart_xy.series(data_x,data_y,label)');
+        assert_arguments_length(arguments, 2, 4, 'chart_xy.series(data_x,data_y,label,dot_size)');
         x = aDataX;
         y = aDataY;
     }
-    assert_array_of_numbers(x, 'data_x', 'chart_xy.series(data_x,data_y,label)', true);
-    assert_array_of_numbers(y, 'data_y', 'chart_xy.series(data_x,data_y,label)', true);
+    assert_array_of_numbers(x, 'data_x', 'chart_xy.series(data_x,data_y,label,dot_size)', true);
+    assert_array_of_numbers(y, 'data_y', 'chart_xy.series(data_x,data_y,label,dot_size)', true);
     if (aLabel) {
-        assert_string(aLabel, 'label', 'chart_xy.add_series(data_x,data_y,label)');
+        assert_string(aLabel, 'label', 'chart_xy.add_series(data_x,data_y,label,dot_size)');
     }
     this.attr.series = this.attr.series || [];
     this.attr.series.push({
         data_x: x,
         data_y: y,
-        label: aLabel || ''
+        label: aLabel || '',
+        dot_size: oDotSize
     });
     return this;
 };
@@ -465,15 +468,22 @@ ChartXy.prototype.render_sixel = function () {
     var i;
     this.attr.series.forEach((ser, index) => {
         //echo(index, ser.label, ser.data_x.length);
+        s.move_to(0, 0);
         var i, x, y;
         for (i = 0; i < ser.data_x.length; i++) {
             x = tx(ser.data_x[i]);
             y = ty(ser.data_y[i]);
+            if (Number.isNaN(x) || Number.isNaN(y) || x === undefined || y === undefined) {
+                continue;
+            }
             //echo('i', i, 'x', x, 'y', y, ser.data_y[i], 'index', index);
             if (i === 0) {
                 s.move_to(x, y);
             } else {
                 s.line_to(x, y, series_color[index]);
+            }
+            if (ser.dot_size > 0) {
+                s.fill_rect(x - ser.dot_size, y - ser.dot_size, ser.dot_size * 2, ser.dot_size * 2, series_color[index]);
             }
         }
     });
