@@ -62,7 +62,6 @@ function ngspice_process_log(aLog, aNetlist) {
             echo_json(log);
             //error('ngspice_process_log() found ' + errors.length + ' errors');
             throw new Exception('ngspice_process_log() found ' + errors.length + ' errors');
-            exit(2);
         }
     }
     return errors.length === 0 ? null : errors;
