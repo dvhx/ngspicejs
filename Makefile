@@ -12,17 +12,14 @@ rebuild: clean all
 ngspicejs:
 	@rm -f ngspicejs
 	g++ -o ngspicejs cpp/ngspicejs.cpp $(CFLAGS) -lngspice 
-	beep
 
 lint:
 	@rm -f ngspicejs-lint
 	g++ -o ngspicejs-lint cpp/ngspicejs-lint.cpp $(CFLAGS)
-	beep
 
 beautify:
 	@rm -f ngspicejs-beautify
 	g++ -o ngspicejs-beautify cpp/ngspicejs-beautify.cpp $(CFLAGS)
-	beep
 
 clean:
 	@rm -f ngspicejs ngspicejs-lint ngspicejs-beautify
