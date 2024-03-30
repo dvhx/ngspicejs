@@ -78,6 +78,21 @@ function run_one_test() {
     echo "TEST $ABS ($DUR seconds)" >> $LOG
 }
 
+# run just quick test first
+echo $PWD
+R2="../test/a_quick_test.ref"
+run_one_test ../test/a_quick_test.ngjs
+N=$R2".new"
+SR=`cat $R2`
+SN=`cat $N`
+if [ "$SR" != "$SN" ]; then
+    echo "ERROR: output changed for $R2"
+    beep
+    meld "$R2" "$N"
+    exit 1
+fi
+
+
 # check for missing .ref files, create one if missing
 N=0
 for i in `all_tests`; do
