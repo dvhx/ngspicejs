@@ -1,5 +1,5 @@
 // Performant way to check if tran will fail on "timestep too small" error, returns true if it will pass
-// linter: ngspicejs-lint
+// linter: ngspicejs-lint --internal
 "use strict";
 
 function tran_ok(aStep, aInterval, aStart) {
