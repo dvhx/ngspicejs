@@ -5,6 +5,7 @@
 
 void js_read(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // Get string from user
+    echo_progress_hide();
     assert_arguments_length(args, 0, 1, (char*)"read(optional_prompt)");
     if (args.Length() > 0) {
         assert_string(args, args[0], (char*)"optional_prompt", (char*)"read(optional_prompt)");
