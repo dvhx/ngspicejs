@@ -5,6 +5,9 @@
 function Fft(aInterval, aStart, aFstop, aWindow) {
     // Constructor
     assert_arguments_length(arguments, 0, 4, 'fft(interval,start,stop,window)');
+    if (Fft.fft.length > 10) {
+        Fft.fft.length = 0;
+    }
     Fft.fft.push(this);
     this.type = 'fft';
     this.attr = {
