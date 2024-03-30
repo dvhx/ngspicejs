@@ -6,6 +6,7 @@ typedef struct SimpleNgspiceContext {
     //char *error_message;
     char *fx; // Function (where error happened)
     Ars *log;
+    bool has_circuit;
     bool verbose_init;
     bool verbose_getchar;
     bool verbose_getstat;
@@ -79,6 +80,7 @@ SimpleNgspiceContext* simple_ngspice_init() {
     //ctx->error = false;
     ctx->fx = (char*)"simple_ngspice_init";
     ctx->log = ars();
+    ctx->has_circuit = false;
     ctx->verbose_init = false;
     ctx->verbose_getchar = false;
     ctx->verbose_getstat = false;
@@ -97,4 +99,9 @@ SimpleNgspiceContext* simple_ngspice_init() {
         fprintf(stderr, "simple_ngspice_init() i=%d\n", i);
     }
     return ctx;
+}
+
+void simple_ngspice_clear_log(SimpleNgspiceContext *ctx) {
+    // If you don't clear log it will gradually slow down app
+    ars_clear(ctx->log);
 }
