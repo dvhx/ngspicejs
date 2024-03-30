@@ -252,6 +252,7 @@ function lint(aInternal) {
 "terminal_colors",
 "terminal_size",
 "tran",
+"tran_ok",
 "ugly_vector_name",
 "v8_version",
 "vccs",
