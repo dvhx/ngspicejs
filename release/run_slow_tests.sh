@@ -113,5 +113,5 @@ done
 
 T2=`date +%s`
 DUR=$(($T2 - $T1))
-echo "All tests done in $DUR seconds, expected time 220s"
+echo "All tests done in $DUR seconds, expected time 549s"
 beep
