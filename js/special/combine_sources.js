@@ -89,6 +89,7 @@
     one('error_parser/singular_matrix.js');
     one('error_parser/cant_find_init_file.js');
     one('error_parser/coupling_to_non_existant_inductor.js');
+    one('error_parser/tran_timestep_too_small.js');
 
     // file functions
     one('file/file_read_tsv.js');
@@ -127,6 +128,7 @@
     one('array/array_distribution.js');
     one('array/array_real.js');
     one('array/array_scale.js');
+    one('array/array_sort_numerically.js');
     one('array/array_normalize.js');
     one('array/array_extrema.js');
     one('array/array_extrema_max.js');
@@ -140,6 +142,7 @@
     one('array/array_db.js');
     one('array/array_stats.js');
     one('array/array_add.js');
+    one('array/array_add_scalar.js');
     one('array/array_sub.js');
     one('array/array_std.js');
     one('array/array_quantize.js');
