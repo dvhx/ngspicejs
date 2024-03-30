@@ -124,8 +124,16 @@ Tran.prototype.run = function () {
     var t2 = Date.now();
     this.perf = t2 - t1;
 
+    this.data = undefined;
+
     // process log
-    ngspice_process_log(ngspice_log(), this.ret.netlist);
+    var err = ngspice_process_log(ngspice_log(), this.ret.netlist);
+    if (err) {
+        // this can only happen via Internal.ngspice_process_log.hide_errors = true;
+        //warn('no tran data, exception supressed by Internal.ngspice_process_log.hide_errors = true;');
+        this.original_vectors = undefined;
+        return this;
+    }
 
     // get data
     t2 = Date.now();
