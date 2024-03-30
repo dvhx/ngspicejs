@@ -1,5 +1,7 @@
 // Set ngspice netlist
 
+char *last_netlist;
+
 void js_ngspice_netlist(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // Set ngspice netlist
     assert_arguments_length(args, 1, 1, (char*)"ngspice_netlist(code)");
@@ -15,6 +17,12 @@ void js_ngspice_netlist(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // code
     v8::String::Utf8Value str(iso, args[0]);
     const char *cstr = ToCString(str);
+
+    // keep last netlist copy for fatal errors printing
+    if (last_netlist) {
+        free(last_netlist);
+        last_netlist = my_strdup((char*)cstr);
+    }
 
     // upload netlist
     bool b = simple_ngspice_netlist(simple_ngspice_context, (char*)cstr);
