@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Test Ctrl+C handler
+// linter: ngspicejs-lint
+"use strict";
+
+echo("Press Ctrl+C any time to interrupt infinite while loop");
+
+while (true) {
+    echo_progress();
+    if (ctrl_c_pressed()) {
+        break;
+    }
+}
+
+echo('End of while loop after ctrl+c was pressed');
+
