@@ -10,6 +10,7 @@
 #include "hint.cpp"
 #include "exit.cpp"
 #include "read.cpp"
+#include "read_char.cpp"
 #include "dir.cpp"
 #include "dir_current.cpp"
 #include "dir_create.cpp"
@@ -32,6 +33,7 @@
 #include "v8_version.cpp"
 #include "ignore.cpp"
 #include "beep.cpp"
+#include "ctrl_c_pressed.cpp"
 
 #ifdef NGSPICEJS_NGSPICE
 #include "ngspice_version.cpp"
@@ -79,6 +81,7 @@ v8::Local<v8::Context> CreateShellContext(v8::Isolate* isolate) {
     global->Set(isolate, "hint_buffer", v8::FunctionTemplate::New(isolate, js_hint_buffer));
     global->Set(isolate, "exit_code", v8::FunctionTemplate::New(isolate, js_exit_code));
     global->Set(isolate, "read", v8::FunctionTemplate::New(isolate, js_read));
+    global->Set(isolate, "read_char", v8::FunctionTemplate::New(isolate, js_read_char));
     global->Set(isolate, "ignore", v8::FunctionTemplate::New(isolate, js_ignore));
     global->Set(isolate, "clear_screen", v8::FunctionTemplate::New(isolate, js_clear_screen));
     global->Set(isolate, "delay_ms", v8::FunctionTemplate::New(isolate, js_delay_ms));
@@ -88,6 +91,8 @@ v8::Local<v8::Context> CreateShellContext(v8::Isolate* isolate) {
     global->Set(isolate, "assign_core_library", v8::FunctionTemplate::New(isolate, js_assign_core_library));
     global->Set(isolate, "v8_version", v8::FunctionTemplate::New(isolate, js_v8_version));
     global->Set(isolate, "env", v8::FunctionTemplate::New(isolate, js_env));
+    global->Set(isolate, "ctrl_c_pressed", v8::FunctionTemplate::New(isolate, js_ctrl_c_pressed));
+    global->Set(isolate, "ctrl_c_reset", v8::FunctionTemplate::New(isolate, js_ctrl_c_reset));
 
     // script related functions (arguments, etc...)
     global->Set(isolate, "script_args", v8::FunctionTemplate::New(isolate, js_script_args));
@@ -125,6 +130,7 @@ v8::Local<v8::Context> CreateShellContext(v8::Isolate* isolate) {
     global->Set(isolate, "ngspice_vectors", v8::FunctionTemplate::New(isolate, js_ngspice_vectors));
     global->Set(isolate, "ngspice_quit", v8::FunctionTemplate::New(isolate, js_ngspice_quit));
     global->Set(isolate, "ngspice_log", v8::FunctionTemplate::New(isolate, js_ngspice_log));
+    global->Set(isolate, "ngspice_clear_log", v8::FunctionTemplate::New(isolate, js_ngspice_clear_log));
 #endif
 
     // other
