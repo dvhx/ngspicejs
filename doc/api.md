@@ -67,6 +67,7 @@
 
 - **array_abs** (aRealArray) - Return absolute values of array of numbers
 - **array_add** (a,b) - Return sum of 2 arrays as a new array
+- **array_add_scalar** (a,s) - Add scalar to each item of the array, returns new array
 - **array_amplitude** (a) - Return half of the range
 - **array_argument** (aComplexArray) - Convert array of complex values to array of arguments (angle part of polar coords)
 - **array_avg** (a) - Return average value of array of numbers
@@ -91,6 +92,7 @@
 - **array_running_avg** (arr,size) - Return running average of an array
 - **array_scale** (aArray,aConstant) - Return new array multiplied by a constant
 - **array_shuffle** (aArray) - Return randomized shallow copy of array
+- **array_sort_numerically** (aRealArray) - Return array of numbers sorted by numbers ascending
 - **array_stats** (aArray) - Return all available array stats (min, max, avg, range, std)
 - **array_std** (array) - Return standard deviation of an array
 - **array_sub** (a,b) - Subtract 2 arrays, only works for numbers and complex numbers
@@ -164,10 +166,12 @@
 - **ascii_canvas** (aWidth,aHeight) - Create ascii canvas of given size
 - **available_vectors** (aUgly) - Return array of available vectors for tran/ac/fft
 - **beep** (oFrequency,oDuration) - Beep with given frequency (default 440Hz) for given duration in milliseconds (default 300ms)
-- **chart_scatter** (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize) - Create scatter chart
+- **chart_scatter** (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize,aLevels) - Create scatter chart
 - **chart_xy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) - Create XY chart
 - **complex** (aReal,aImaginary) - Return new complex number
 - **config_path** () - Return full path including trailing slash to the user's config directory ~/.config/ngspicejs/
+- **ctrl_c_pressed** () - Sets up Ctrl+C handler and if Ctrl+C was pressed, returns true
+- **ctrl_c_reset** () - Reset the indicator that ctrl+c was pressed, this allows you to use ctrl+c multiple times or exit on second ctrl+c
 - **delay_ms** (aMilliseconds) - Wait given amount of milliseconds
 - **eng** (aNumberOrString,aArgumentIndex,aFunctionName,aCustomMessage,aAttrDef) - Convert "4k7" to 4700 or throw new Exception(...)
 - **env** (aVariableName) - Return content of environment variable, e.g. HOME
@@ -187,10 +191,12 @@
 - **netlist_export_schematic_url** (aOmmitNames) - Format netlist as url that can be opened in stripboard2schematic
 - **netlist_nets** (aNetlistDevices) - Return all nets (preserves numbered nets as numbers)
 - **netlist_to_script** (aComment) - convert current netlist to ngspicejs script
+- **ngspice_clear_log** () - Clear ngspice stdout and stderr log to prevent slowdown (done automatically in ngspice_log())
 - **ngspice_command_verbose** (aVerbose) - If argument is true, every ngspice command will be printed on screen
 - **ngspice_version** () - Return version number of ngspice library
 - **random_float** (aMin,aMax) - Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
 - **random_int** (aMin,aMax) - Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
+- **read_char** (oPrompt) - Read single char from keyboard input without waiting for ENTER key, displays optional prompt
 - **round_down** (aValue,aDigits) - Round down to specified number of digits
 - **round_to** (aValue,aDigits) - Round to specified number of digits
 - **round_up** (aValue,aDigits) - Round up to specified number of digits
@@ -211,6 +217,7 @@
 - **sixel_canvas** (aWidth,aHeight) - Create sixel canvas of given size
 - **tally** (oName) - Create tally
 - **temperature** (aDegreesC) - Set simulation temperature, return current temperature
+- **tran_ok** (aStep,aInterval,aStart) - Performant way to check if tran will fail on "timestep too small" error, returns true if it will pass
 - **ugly_vector_name** (aVector,aHideWarning) - Convert "I(MIC1.LS)" to "l.x_dynamic_mic__mic1.l_ls#branch"
 - **v8_version** () - Return version string of V8 library
 
