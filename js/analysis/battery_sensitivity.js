@@ -7,6 +7,9 @@ function BatterySensitivity(aBatteryName, aInput, aOutput, aVMin, aVMax) {
     assert_arguments_length(arguments, 0, 5, 'battery_sensitivity(battery_name, input, output, vmin, vmax)');
     this.type = 'battery_sensitivity';
     this.attr = {};
+    if (BatterySensitivity.battery_sensitivity.length > 10) {
+        BatterySensitivity.battery_sensitivity.length = 0;
+    }
     BatterySensitivity.battery_sensitivity.push(this);
     // all attr as object in first argument
     if (arguments.length === 1 && typeof aBatteryName === 'object') {
