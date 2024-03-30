@@ -28,10 +28,16 @@ function file_read_json(aFilename) {
                     n += lines[i].length + 1;
                 }
                 hint('File "' + aFilename + '", line ' + row + ', char ' + col);
-                hint(lines[row-1]);
-                hint(lines[row]);
+                if (lines[row-1]) {
+                    hint(lines[row-1]);
+                }
+                if (lines[row]) {
+                    hint(lines[row]);
+                }
                 hint((new Array(col)).fill(' ').join('') + '\x1b[93m\x1b[1m^\x1b[0m');
-                hint(lines[row + 1]);
+                if (lines[row + 1]) {
+                    hint(lines[row + 1]);
+                }
             }
         }
         throw new Exception("file_read_json('" + aFilename + "') - Cannot parse JSON: " + e);
