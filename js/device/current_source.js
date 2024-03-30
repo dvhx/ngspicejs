@@ -93,7 +93,7 @@ CurrentSource.prototype.validate = function () {
         name: {type: "string", required: true, min: 1, max: 100, alphanumeric: true, startalpha: true},
         anode: {type: "net", required: true},
         cathode: {type: "net", required: true},
-        i: {type: "number", min: 0, max: 1e12, eng: true, equation: true, required: true},
+        i: {type: "number", min: -1e12, max: 1e12, eng: true, equation: true, required: true},
         rs: {type: "number", min: 0, max: 1e12, eng: true, equation: true}
     });
     device_attr_assign(this, this.attr);
