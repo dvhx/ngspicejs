@@ -27,4 +27,4 @@ Stack trace (7 frames):
     tran().run().chart('V(vcc)');
            ^
 
-exit(13)
+exit(12)

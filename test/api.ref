@@ -1,5 +1,5 @@
-API: object globalThis (194 properties) - Global object
-FUNCTIONS (190):
+API: object globalThis (201 properties) - Global object
+FUNCTIONS (197):
                        ChartXy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) Constructor
                      Exception (aMessage)                           Use throw new Exception(message) for deeper and better stack trace
                             ac (aFstart,aFstop,aPoints,aVariation)  AC analysis
@@ -10,6 +10,7 @@ FUNCTIONS (190):
                            api (aSomething,aName,aQuiet)            Print list of available functions or descibe object's API
                      array_abs (aRealArray)                         Return absolute values of array of numbers
                      array_add (a,b)                                Return sum of 2 arrays as a new array
+              array_add_scalar (a,s)                                Add scalar to each item of the array, returns new array
                array_amplitude (a)                                  Return half of the range
                 array_argument (aComplexArray)                      Convert array of complex values to array of arguments (angle part of polar coords)
                      array_avg (a)                                  Return average value of array of numbers
@@ -34,6 +35,7 @@ FUNCTIONS (190):
              array_running_avg (arr,size)                           Return running average of an array
                    array_scale (aArray,aConstant)                   Return new array multiplied by a constant
                  array_shuffle (aArray)                             Return randomized shallow copy of array
+        array_sort_numerically (aRealArray)                         Return array of numbers sorted by numbers ascending
                    array_stats (aArray)                             Return all available array stats (min, max, avg, range, std)
                      array_std (array)                              Return standard deviation of an array
                      array_sub (a,b)                                Subtract 2 arrays, only works for numbers and complex numbers
@@ -51,7 +53,7 @@ FUNCTIONS (190):
                      capacitor (aName,aAnode,aCathode,aC,aRs,aRp,aLs) Add capacitor to netlist
                           cccs (aName,aAnode,aCathode,aVname,aGain) Add cccs to netlist
                           ccvs (aName,aAnode,aCathode,aVname,aGain) Add ccvs to netlist
-                 chart_scatter (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize) Create scatter chart
+                 chart_scatter (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize,aLevels) Create scatter chart
                       chart_xy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) Create XY chart
                   clear_screen ()                                   Clear screen of the terminal
                        complex (aReal,aImaginary)                   Return new complex number
@@ -60,6 +62,8 @@ FUNCTIONS (190):
                     csv_encode (arr,separator)                      Encode 2D array into csv file format
                     csv_insert (aCsv,aCol,aRow,aData)               Insert data to csv data (from given col/row down)
        csv_to_array_of_objects (aCsvTable)                          Convert CSV table to array of objects using header as property name
+                ctrl_c_pressed ()                                   Sets up Ctrl+C handler and if Ctrl+C was pressed, returns true
+                  ctrl_c_reset ()                                   Reset the indicator that ctrl+c was pressed, this allows you to use ctrl+c multiple times or exit on second ctrl+c
                 current_source (aName,aAnode,aCathode,aI,aRs)       Add current source to netlist
                       delay_ms (aMilliseconds)                      Wait given amount of milliseconds
                          diode (aName,aAnode,aCathode,aModel)       Add diode to netlist
@@ -134,6 +138,7 @@ FUNCTIONS (190):
   netlist_export_schematic_url (aOmmitNames)                        Format netlist as url that can be opened in stripboard2schematic
                   netlist_nets (aNetlistDevices)                    Return all nets (preserves numbered nets as numbers)
              netlist_to_script (aComment)                           convert current netlist to ngspicejs script
+             ngspice_clear_log ()                                   Clear ngspice stdout and stderr log to prevent slowdown (done automatically in ngspice_log())
        ngspice_command_verbose (aVerbose)                           If argument is true, every ngspice command will be printed on screen
                ngspice_version ()                                   Return version number of ngspice library
                            npn (aName,aC,aB,aE,aModel)              Add npn to netlist
@@ -149,6 +154,7 @@ FUNCTIONS (190):
                   random_float (aMin,aMax)                          Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
                     random_int (aMin,aMax)                          Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
                           read (oPrompt)                            Read string from keyboard input using readline library, displays optional prompt
+                     read_char (oPrompt)                            Read single char from keyboard input without waiting for ENTER key, displays optional prompt
                       resistor (aName,aAnode,aCathode,aR,aLs,aCp)   Add resistor to netlist
                 resistor_model (aNameOrObj)                         Add resistor model to netlist
                     round_down (aValue,aDigits)                     Round down to specified number of digits
@@ -182,6 +188,7 @@ FUNCTIONS (190):
                terminal_colors ()                                   Return true if terminal support colors, false if not or if script output is redirected to file
                  terminal_size ()                                   Return object with dimensions of the terminal, e.g. {columns: 80, rows: 25, pixel_width: 640, pixel_height: 480}
                           tran (aStep,aInterval,aStart)             Transient analysis
+                       tran_ok (aStep,aInterval,aStart)             Performant way to check if tran will fail on "timestep too small" error, returns true if it will pass
               ugly_vector_name (aVector,aHideWarning)               Convert "I(MIC1.LS)" to "l.x_dynamic_mic__mic1.l_ls#branch"
                     v8_version ()                                   Return version string of V8 library
                           vccs (aName,aOutAnode,aOutCathode,aInAnode,aInCathode,aGain) Add vccs to netlist

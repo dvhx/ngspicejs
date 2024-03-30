@@ -7,4 +7,3 @@ hint: hint 4
 not an error but we will print hint buffer
 hint: hint 5
 hint: hint 6
-exit(13)

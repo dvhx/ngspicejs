@@ -28,4 +28,4 @@ Stack trace (7 frames):
     tran().run().chart('I(U1)');
            ^
 
-exit(13)
+exit(12)

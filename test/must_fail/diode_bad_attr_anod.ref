@@ -26,4 +26,4 @@ Stack trace (6 frames):
     diode({name: "D2", anod: 4, cathode: 3, model: '1N4148'});
     ^
 
-exit(13)
+exit(12)

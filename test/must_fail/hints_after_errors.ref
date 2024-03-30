@@ -4,4 +4,3 @@ hint: Second hint
 error: Another error
 hint: Third hint
 hint: Fourth hint
-exit(13)

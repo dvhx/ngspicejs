@@ -3,14 +3,14 @@ error: Problem with nets v_u1#branch,v_u1#branch (check if capacitors have path 
 hint: Net v_u1#branch contains: 
 hint: If 2 capacitors are in series, their common pin must have path to ground, use e.g. 10G resistor to ground
 hint: Unconnected pins of capacitors must be connected to ground, use e.g. 10G resistor to ground
+error: Transient analysis timestep too small
+hint: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
 error: Unhandled error in the output of ngspice: stderr Warning: Last gmin step failed
 error: Unhandled error in the output of ngspice: stderr Warning: Last gmin step failed
 error: Unhandled error in the output of ngspice: stderr Supplies reduced to   0.0000% Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
 error: Unhandled error in the output of ngspice: stderr Warning: gmin step failed
 error: Unhandled error in the output of ngspice: stderr Warning: source stepping failed
 error: Unhandled error in the output of ngspice: stdout Transient solution failed -
-error: Unhandled error in the output of ngspice: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
-error: Unhandled error in the output of ngspice: stderr tran simulation(s) aborted
 netlist : string[113] = ** netlist_render BEGIN
 * battery U1
 V_U1 1 0 DC 9
@@ -88,5 +88,23 @@ log Array (69 items): (Object #2.1)
     [66]: string[27] = stdout No. of Data Rows : 0
     [67]: string[82] = stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
     [68]: string[33] = stderr tran simulation(s) aborted
-error: ngspice_process_log() found 9 errors
-exit(2)
+error: ngspice_process_log() found 8 errors
+  [parallel_ammeter_to_battery.ngjs:0:0] in <anonymous>()
+    tran().run().chart('I(A1)');
+           ^
+
+Stack trace (4 frames):
+  [Exception.js:0:0, core.js:0:0] in Exception()
+    Internal.buffered_stack_trace(aMessage || "Error");
+             ^
+  [ngspice_process_log.js:0:0, core.js:0:0] in ngspice_process_log()
+    throw new Exception('ngspice_process_log() found ' + errors.length + ' errors');
+          ^
+  [analysis/tran.js:0:0, core.js:0:0] in Tran.run()
+    var err = ngspice_process_log(ngspice_log(), this.ret.netlist);
+              ^
+  [parallel_ammeter_to_battery.ngjs:0:0] in <anonymous>()
+    tran().run().chart('I(A1)');
+           ^
+
+exit(12)
