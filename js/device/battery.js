@@ -96,7 +96,7 @@ Battery.prototype.validate = function () {
         name: {type: "string", min: 1, max: 100, required: true, alphanumeric: true, startalpha: true},
         anode: {type: "net", required: true},
         cathode: {type: "net", required: true},
-        v: {type: "number", min: 0, max: 1e12, eng: true, equation: true, required: true},
+        v: {type: "number", min: -1e12, max: 1e12, eng: true, equation: true, required: true},
         rs: {type: "number", min: 0.01, max: 1e12, eng: true, equation: true, zero: true}
     });
     device_attr_assign(this, this.attr);
