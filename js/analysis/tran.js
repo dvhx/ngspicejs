@@ -300,6 +300,15 @@ Tran.prototype.f0 = function (aDataKey) {
     return 1 / (sum / n);
 };
 
+Tran.prototype.dispose = function () {
+    // Manually remove this tran from Tran.tran, use in loops to prevent OOM
+    // Tran.tran is only used to find "Tran changed but was not run" user error but it makes JS not drop the reference
+    var i = Tran.tran.indexOf(this);
+    if (i >= 0) {
+        Tran.tran.splice(i, 1);
+    }
+};
+
 globalThis.tran = tran;
 Internal.Tran = Tran;
 globalThis.exports = {Tran, tran};
