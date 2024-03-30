@@ -353,7 +353,7 @@ JfetModel.prototype.validate = function () {
         nlev: {type: "number", min: 0, max: 100, eng: true, equation: true},
         gdsnoi: {type: "number", min: 0, max: 100, eng: true, equation: true},
         fc: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        tnom: {type: "number", min: 0, max: 150, eng: true, equation: true},
+        tnom: {type: "number", min: 0, max: 1000, eng: true, equation: true},
         tcv: {type: "number", min: 0, max: 1, eng: true, equation: true},
         vtotc: {type: "number", min: -1, max: 1, eng: true, equation: true},
         bex: {type: "number", min: 0, max: 10, eng: true, equation: true},
@@ -361,7 +361,7 @@ JfetModel.prototype.validate = function () {
         xti: {type: "number", min: 0, max: 10, eng: true, equation: true},
         eg: {type: "number", min: 0, max: 10, eng: true, equation: true},
         // level 2
-        id: {type: "string", min: 0, max: 100},
+        //id: {type: "string", min: 0, max: 100}, // using this crashes ngspice
         acgam: {type: "number", min: 0, max: 10, eng: true, equation: true},
         delta: {type: "number", min: 0, max: 10, eng: true, equation: true},
         hfeta: {type: "number", min: 0, max: 10, eng: true, equation: true},
@@ -375,7 +375,7 @@ JfetModel.prototype.validate = function () {
         lfg1: {type: "number", min: 0, max: 10, eng: true, equation: true},
         lfg2: {type: "number", min: 0, max: 10, eng: true, equation: true},
         mvst: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        n: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        n: {type: "number", min: 0, max: 100, eng: true, equation: true},
         p: {type: "number", min: 0, max: 10, eng: true, equation: true},
         q: {type: "number", min: 0, max: 10, eng: true, equation: true},
         taud: {type: "number", min: 0, max: 10, eng: true, equation: true},
@@ -386,13 +386,14 @@ JfetModel.prototype.validate = function () {
         xc: {type: "number", min: 0, max: 10, eng: true, equation: true},
         xi: {type: "number", min: 0, max: 100000, eng: true, equation: true},
         z: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        rg: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        lg: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        ls: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        ld: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        cdss: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        afac: {type: "number", min: 0, max: 10, eng: true, equation: true},
-        nfing: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        // These are not really implemented in ngspice
+        //rg: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //lg: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //ls: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //ld: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //cdss: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //afac: {type: "number", min: 0, max: 10, eng: true, equation: true},
+        //nfing: {type: "number", min: 0, max: 10, eng: true, equation: true},
         temp: {type: "number", min: 0, max: 450, eng: true, equation: true}
     });
     var l2 = 'id,acgam,delta,hfeta,hfe1,hfe2,hfgam,hfg1,hfg2,ibd,lfgam,lfg1,lfg2,mvst,n,p,q,taud,taug,vbd,vbi,vst,xc,xi,z,rg,lg,ls,ld,cdss,afac,nfing,temp'.split(',');
