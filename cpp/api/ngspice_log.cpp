@@ -24,3 +24,12 @@ void js_ngspice_log(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // return
     args.GetReturnValue().Set(a);
 }
+
+void js_ngspice_clear_log(const v8::FunctionCallbackInfo < v8::Value > &args) {
+    // Clear log (sometime it is not needed and it would slow down)
+    if (!simple_ngspice_context) {
+        fatal_msg_stack(globalIsolate, EXIT_WRONG_ORDER, "ngspice_log() was called before ngspice_init()");
+        exit(EXIT_UNREACHABLE);
+    }
+    ars_clear(simple_ngspice_context->log);
+}
