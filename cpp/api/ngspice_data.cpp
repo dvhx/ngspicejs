@@ -110,6 +110,9 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
                 v++;
             }
         } else {
+            printf("*** begin of last netlist ***\n");
+            printf("%s\n", last_netlist);
+            printf("*** end of last netlist ***\n");
             fatal_msg_stack(globalIsolate, EXIT_NGSPICE, "Simulation did not produce any vector data");
             exit(EXIT_UNREACHABLE);
         }
