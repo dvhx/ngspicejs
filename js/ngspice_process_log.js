@@ -45,22 +45,25 @@ function ngspice_process_log(aLog, aNetlist) {
     //echo_json(errors);
 
     // show errors
-    var prefix = terminal_colors() ? "\x1b[94mhint:\x1b[0m " : "hint: ";
-    for (i = 0; i < errors.length; i++) {
-        error(errors[i].error);
-        for (h = 0; h < errors[i].hints.length; h++) {
-            echo(prefix + errors[i].hints[h]);
+    if (!ngspice_process_log.hide_errors) {
+        var prefix = terminal_colors() ? "\x1b[94mhint:\x1b[0m " : "hint: ";
+        for (i = 0; i < errors.length; i++) {
+            error(errors[i].error);
+            for (h = 0; h < errors[i].hints.length; h++) {
+                echo(prefix + errors[i].hints[h]);
+            }
         }
-    }
 
-    // show netlist and log
-    if (errors.length > 0) {
-        echo_raw('netlist ');
-        echo_json(aNetlist);
-        echo_raw('log ');
-        echo_json(log);
-        error('ngspice_process_log() found ' + errors.length + ' errors');
-        exit(2);
+        // show netlist and log
+        if (errors.length > 0) {
+            echo_raw('netlist ');
+            echo_json(aNetlist);
+            echo_raw('log ');
+            echo_json(log);
+            //error('ngspice_process_log() found ' + errors.length + ' errors');
+            throw new Exception('ngspice_process_log() found ' + errors.length + ' errors');
+            exit(2);
+        }
     }
     return errors.length === 0 ? null : errors;
 }
