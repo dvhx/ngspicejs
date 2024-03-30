@@ -124,6 +124,8 @@ function lint(aInternal) {
 "csv_encode",
 "csv_insert",
 "csv_to_array_of_objects",
+"ctrl_c_pressed",
+"ctrl_c_reset",
 "current_source",
 "delay_ms",
 "diode",
@@ -216,6 +218,7 @@ function lint(aInternal) {
 "random_float",
 "random_int",
 "read",
+"read_char",
 "resistor",
 "resistor_model",
 "round_down",
@@ -454,21 +457,22 @@ function lint(aInternal) {
         var o = JSLINT(src, {}, glob), rest = [];
         o.warnings.forEach((w) => {
             if (w.code === 'unused_a' || w.code === 'wrap_parameter') {
-                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message);
+                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message + ' (jslint)');
                 return;
             }
             if (w.code === 'expected_a_before_b') {
                 if (w.a === 'new' && w.b === 'Exception') {
-                    echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message);
+                    echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message + ' (jslint)');
                     return;
                 }
             }
             if (w.code === 'redefinition_a_b') {
-                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message);
+                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message + ' (jslint)');
+                echo(JSON.stringify(w, undefined, 4));
                 return;
             }
             if (w.code === 'unexpected_trailing_space') {
-                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message);
+                echo(aFileName + ':' + (w.line + 1) + ':' + (w.column + 1) + ': error - ' + w.message + ' (jslint)');
                 return;
             }
             if (w.code === 'use_double' || w.code === 'expected_a_b') {
