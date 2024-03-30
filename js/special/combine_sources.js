@@ -232,6 +232,7 @@
     one('analysis/ac.js');
     one('analysis/ac_fast.js');
     one('analysis/tran.js');
+    one('analysis/tran_ok.js');
     one('analysis/fft.js');
     one('analysis/battery_sensitivity.js');
     one('analysis/singular_matrix.js');
