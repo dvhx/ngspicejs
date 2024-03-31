@@ -23,7 +23,6 @@ echo('Current', t.data['I(A1)'].avg().toEng());
 
 var values = series_e6(10, '10M');
 var best = {r1: 0, r2: 0, gain: 0};
-var t1 = Date.now();
 echo('Maximizing gain... ', values.length * values.length, 'attempts');
 var csv = [['R1', 'R2', 'Gain']];
 values.forEach(function (a) {
