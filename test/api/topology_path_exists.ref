@@ -1,0 +1,19 @@
+Object (6 keys): (Object #1.1)
+    "0": Object (1 keys): (Object #1.2)
+        "bat": boolean = true
+    "bat": Object (2 keys): (Object #1.3)
+        "0": boolean = true
+        "a": boolean = true
+    "a": Object (3 keys): (Object #1.4)
+        "in": boolean = true
+        "bat": boolean = true
+        "b": boolean = true
+    "in": Object (1 keys): (Object #1.5)
+        "a": boolean = true
+    "b": Object (2 keys): (Object #1.6)
+        "a": boolean = true
+        "out": boolean = true
+    "out": Object (1 keys): (Object #1.7)
+        "b": boolean = true
+in to out true
+in to ground false

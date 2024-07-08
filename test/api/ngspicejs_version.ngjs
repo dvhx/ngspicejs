@@ -1,0 +1,6 @@
+#!/usr/bin/env ngspicejs
+// Print ngspicejs version
+// linter: ngspicejs-lint
+"use strict";
+
+echo(ngspicejs_version(), typeof ngspicejs_version());

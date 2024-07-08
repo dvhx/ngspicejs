@@ -1,0 +1,16 @@
+#!/usr/bin/env ngspicejs
+// Show api of various things
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 'bat', 0, 9).rs(1);
+resistor('R1', 'a', 'in', 100);
+resistor('R2', 'a', 'bat', 100);
+resistor('R3', 'a', 'b', 100);
+resistor('R4', 'b', 'out', 100);
+
+var edges = topology_edges(netlist_devices);
+echo_json(edges);
+echo('in to out', topology_path_exists(edges, 'in', 'out', ['bat', 'in', 'out']));
+echo('in to ground', topology_path_exists(edges, 'in', 0, ['bat', 'in', 'out']));
+
