@@ -35,6 +35,8 @@ pickup_singlecoil('L1', 11, 0).v(0.1).f(196);
 
 tran().run().chart('V(17)');
 
+battery_sensitivity('U1', 11, 17, 0, 15).run().chart().last_chart.gif('bat_sens_green_ringer_octaver.gif');
+
 echo('Input frequency: ' + fft().run('V(11)').f0().frequency);
 echo('Output frequency: ' + fft().run('V(17)').f0().frequency);
 

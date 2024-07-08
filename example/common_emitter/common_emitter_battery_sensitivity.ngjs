@@ -16,7 +16,7 @@ resistor('R5', 5, 0, '50k');
 npn('T1', 4, 3, 6, 'BC547');
 
 // Measure battery sensitivity
-battery_sensitivity('U1', 2, 5, 9 / 2, 9 * 2).run().chart();
+battery_sensitivity('U1', 2, 5, 9 / 2, 9 * 2).run().chart({min_x: 0, max_x: 15});
 // U1    = battery
 // 2     = input net
 // 5     = output net

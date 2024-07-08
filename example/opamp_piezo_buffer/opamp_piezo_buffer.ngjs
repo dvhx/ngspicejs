@@ -27,4 +27,4 @@ a = ac().fstop('2k').run();
 echo('AC base response using 1M:1M virtual ground:');
 a.chart('V(7)');
 
-
+battery_sensitivity('U1', 6, 7, 3, 15).run().chart({min_x: 0}).last_chart.gif('bat_sens_opamp_piezo_buffer.gif');

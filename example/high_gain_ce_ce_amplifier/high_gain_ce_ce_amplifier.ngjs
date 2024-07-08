@@ -24,4 +24,4 @@ sinewave('U2', 7, 0).v('100u').f(196);
 var t = tran().run().chart('V(8)');
 echo('Gain', t.gain(7, 8));
 
-
+battery_sensitivity('U1', 7, 8, 0, 15).run().chart().last_chart.gif('bat_sens_high_gain_ce_ce.gif');

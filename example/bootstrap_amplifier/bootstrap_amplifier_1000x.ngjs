@@ -22,4 +22,6 @@ echo('Current consumption', t.data['I(A1)'].avg().toEng());
 echo('Gain', t.gain(6, 11).toFixed(1));
 echo('Gain ideal', t.gain_ideal('200u', 11).toFixed(1));
 
+battery_sensitivity('U1', 6, 11, 1, 15).run().chart({min_x: 0}).last_chart.gif('bat_sens_bootstrap.gif');
+
 ac().run().chart('V(11)');

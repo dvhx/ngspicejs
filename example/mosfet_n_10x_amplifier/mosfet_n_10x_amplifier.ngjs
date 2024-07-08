@@ -23,4 +23,4 @@ ac().run().chart('V(6)');
 var t1 = tran().run();
 echo('gain:', t1.gain(5, 6).toEng());
 
-
+battery_sensitivity('U1', 5, 6, 0, 15).run().chart().last_chart.gif('bat_sens_mosfet_10x_amp.gif');

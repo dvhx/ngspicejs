@@ -28,6 +28,5 @@ echo('Gain for 50k load', t.gain(1, 11).toFixed(3));
 r7.r('2k2');
 echo('Gain for 2k2 load', tran().run().gain(1, 11).toFixed(3));
 
-
-
-
+r7.r('50k');
+battery_sensitivity('U1', 1, 11, 0, 15).run().chart().last_chart.gif('bat_sens_french_amp.gif');
