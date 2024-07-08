@@ -58,8 +58,15 @@ function ngspice_process_log(aLog, aNetlist) {
         if (errors.length > 0) {
             echo_raw('netlist ');
             echo_json(aNetlist);
-            echo_raw('log ');
-            echo_json(log);
+            echo_raw('log\n');
+            // do not print consecutive repeating log lines
+            var old = '';
+            for (i = 0; i < log.length; i++) {
+                if (old !== log[i]) {
+                    echo('  [' + i + ']: ' + log[i]);
+                    old = log[i];
+                }
+            }
             //error('ngspice_process_log() found ' + errors.length + ' errors');
             throw new Exception('ngspice_process_log() found ' + errors.length + ' errors');
         }
