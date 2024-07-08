@@ -5,8 +5,9 @@
 function is_compiled_equation(o) {
     // Return true if argument is compiled equation
     if (typeof o === 'object' && !(o instanceof Equation)) {
-        echo_json(o);
-        throw new Exception('Tested equation is object but not Equation');
+        //echo_json(o);
+        //throw new Exception('Tested equation is object but not Equation');
+        return false;
     }
     if (typeof o === 'object' && typeof o.equation === 'string' && typeof o.ast === 'object') {
         return true;
