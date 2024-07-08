@@ -74,6 +74,9 @@ function run_one_test() {
     )
     TT2=`date +%s`
     DUR=$(($TT2 - $TT1));
+    # group them them to simplify merges
+    [ "$DUR" = "0" ] && DUR=1
+    [ "$DUR" = "2" ] && DUR=3
     echo " ($DUR seconds)"
     echo "TEST $ABS ($DUR seconds)" >> $LOG
 }
