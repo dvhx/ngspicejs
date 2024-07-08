@@ -25,79 +25,72 @@ V_AMMETER__A1 2 0 DC 0
 V_AMMETER__A2 2 0 DC 0
 ** netlist_render END
 .end
-log Array (72 items): (Object #2.1)
-    [0]: string[62] = stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
-    [1]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [2]: string[43] = stderr Note: Starting dynamic gmin stepping
-    [3]: string[118] = stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [4]: string[38] = stderr Warning: Further gmin increment
-    [5]: string[118] = stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [6]: string[38] = stderr Warning: Further gmin increment
-    [7]: string[118] = stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [8]: string[38] = stderr Warning: Further gmin increment
-    [9]: string[118] = stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [10]: string[38] = stderr Warning: Further gmin increment
-    [11]: string[118] = stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [12]: string[38] = stderr Warning: Further gmin increment
-    [13]: string[118] = stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [14]: string[38] = stderr Warning: Further gmin increment
-    [15]: string[118] = stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [16]: string[38] = stderr Warning: Further gmin increment
-    [17]: string[118] = stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [18]: string[38] = stderr Warning: Further gmin increment
-    [19]: string[118] = stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [20]: string[37] = stderr Warning: Last gmin step failed
-    [21]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [22]: string[44] = stderr Warning: Dynamic gmin stepping failed
-    [23]: string[40] = stderr Note: Starting true gmin stepping
-    [24]: string[118] = stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [25]: string[38] = stderr Warning: Further gmin increment
-    [26]: string[118] = stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [27]: string[38] = stderr Warning: Further gmin increment
-    [28]: string[118] = stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [29]: string[38] = stderr Warning: Further gmin increment
-    [30]: string[118] = stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [31]: string[38] = stderr Warning: Further gmin increment
-    [32]: string[118] = stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [33]: string[38] = stderr Warning: Further gmin increment
-    [34]: string[118] = stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [35]: string[38] = stderr Warning: Further gmin increment
-    [36]: string[118] = stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [37]: string[38] = stderr Warning: Further gmin increment
-    [38]: string[118] = stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [39]: string[38] = stderr Warning: Further gmin increment
-    [40]: string[118] = stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [41]: string[37] = stderr Warning: Last gmin step failed
-    [42]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [43]: string[41] = stderr Warning: True gmin stepping failed
-    [44]: string[37] = stderr Note: Starting source stepping
-    [45]: string[121] = stderr Supplies reduced to   0.0000% Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [46]: string[118] = stderr Trying gmin =   1.0000E-02 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [47]: string[32] = stderr Warning: gmin step failed
-    [48]: string[38] = stderr Warning: source stepping failed
-    [49]: string[33] = stderr Note: Transient op started
-    [50]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [51]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [52]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [53]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [54]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [55]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [56]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [57]: string[91] = stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
-    [58]: string[34] = stdout Transient solution failed -
-    [59]: string[25] = stdout Last Node Voltages
-    [60]: string[25] = stdout ------------------
-    [61]: string[79] = stdout Node                                   Last Voltage        Previous Iter
-    [62]: string[79] = stdout ----                                   ------------        -------------
-    [63]: string[79] = stdout 1                                                 0                    0
-    [64]: string[79] = stdout x_u1.1                                            0                    0
-    [65]: string[79] = stdout 2                                                 0                    0
-    [66]: string[79] = stdout v_ammeter__a2#branch                              0                    0
-    [67]: string[79] = stdout v_ammeter__a1#branch                              0                    0
-    [68]: string[81] = stdout v.x_u1.v0#branch                                  0                    9 *
-    [69]: string[27] = stdout No. of Data Rows : 0
-    [70]: string[82] = stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
-    [71]: string[33] = stderr tran simulation(s) aborted
+log
+  [0]: stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+  [1]: stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [2]: stderr Note: Starting dynamic gmin stepping
+  [3]: stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [4]: stderr Warning: Further gmin increment
+  [5]: stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [6]: stderr Warning: Further gmin increment
+  [7]: stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [8]: stderr Warning: Further gmin increment
+  [9]: stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [10]: stderr Warning: Further gmin increment
+  [11]: stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [12]: stderr Warning: Further gmin increment
+  [13]: stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [14]: stderr Warning: Further gmin increment
+  [15]: stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [16]: stderr Warning: Further gmin increment
+  [17]: stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [18]: stderr Warning: Further gmin increment
+  [19]: stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [20]: stderr Warning: Last gmin step failed
+  [21]: stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [22]: stderr Warning: Dynamic gmin stepping failed
+  [23]: stderr Note: Starting true gmin stepping
+  [24]: stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [25]: stderr Warning: Further gmin increment
+  [26]: stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [27]: stderr Warning: Further gmin increment
+  [28]: stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [29]: stderr Warning: Further gmin increment
+  [30]: stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [31]: stderr Warning: Further gmin increment
+  [32]: stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [33]: stderr Warning: Further gmin increment
+  [34]: stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [35]: stderr Warning: Further gmin increment
+  [36]: stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [37]: stderr Warning: Further gmin increment
+  [38]: stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [39]: stderr Warning: Further gmin increment
+  [40]: stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [41]: stderr Warning: Last gmin step failed
+  [42]: stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [43]: stderr Warning: True gmin stepping failed
+  [44]: stderr Note: Starting source stepping
+  [45]: stderr Supplies reduced to   0.0000% Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [46]: stderr Trying gmin =   1.0000E-02 Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [47]: stderr Warning: gmin step failed
+  [48]: stderr Warning: source stepping failed
+  [49]: stderr Note: Transient op started
+  [50]: stderr Warning: singular matrix:  check nodes v_ammeter__a1#branch and v_ammeter__a1#branch
+  [58]: stdout Transient solution failed -
+  [59]: stdout Last Node Voltages
+  [60]: stdout ------------------
+  [61]: stdout Node                                   Last Voltage        Previous Iter
+  [62]: stdout ----                                   ------------        -------------
+  [63]: stdout 1                                                 0                    0
+  [64]: stdout x_u1.1                                            0                    0
+  [65]: stdout 2                                                 0                    0
+  [66]: stdout v_ammeter__a2#branch                              0                    0
+  [67]: stdout v_ammeter__a1#branch                              0                    0
+  [68]: stdout v.x_u1.v0#branch                                  0                    9 *
+  [69]: stdout No. of Data Rows : 0
+  [70]: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
+  [71]: stderr tran simulation(s) aborted
 error: ngspice_process_log() found 8 errors
   [parallel_ammeters.ngjs:0:0] in <anonymous>()
     tran().run().chart('I(A1)');
