@@ -194,6 +194,7 @@
 - **ngspice_clear_log** () - Clear ngspice stdout and stderr log to prevent slowdown (done automatically in ngspice_log())
 - **ngspice_command_verbose** (aVerbose) - If argument is true, every ngspice command will be printed on screen
 - **ngspice_version** () - Return version number of ngspice library
+- **ngspicejs_version** (oMin,oMax) - Return ngspicejs version, throw exception if current version is outside allowed range of versions
 - **random_float** (aMin,aMax) - Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
 - **random_int** (aMin,aMax) - Generate random integer from min to max (included), e.g. from 3 to 5 will return 3,4 or 5
 - **read_char** (oPrompt) - Read single char from keyboard input without waiting for ENTER key, displays optional prompt
@@ -217,6 +218,8 @@
 - **sixel_canvas** (aWidth,aHeight) - Create sixel canvas of given size
 - **tally** (oName) - Create tally
 - **temperature** (aDegreesC) - Set simulation temperature, return current temperature
+- **topology_edges** (aElements) - Return all pairs of connected nets as {net1:{net2:true,net3:true},net2:...}
+- **topology_path_exists** (aEdges,aFromNet,aToNet,oStopNets) - Return true if direct path exists from one net to another
 - **tran_ok** (aStep,aInterval,aStart) - Performant way to check if tran will fail on "timestep too small" error, returns true if it will pass
 - **ugly_vector_name** (aVector,aHideWarning) - Convert "I(MIC1.LS)" to "l.x_dynamic_mic__mic1.l_ls#branch"
 - **v8_version** () - Return version string of V8 library
