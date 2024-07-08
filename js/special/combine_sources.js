@@ -27,6 +27,7 @@
     // header
     one('special/header.js');
     one('special/native_functions_description.js');
+    one('ngspicejs_version.js');
 
     // few important first
     one('Exception.js');
@@ -227,6 +228,8 @@
     one('human_vector_name.js');
     one('ugly_vector_name.js');
     one('available_vectors.js');
+    one('topology_edges.js');
+    one('topology_path_exists.js');
 
     // analysis
     one('analysis/ac.js');
