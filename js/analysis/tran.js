@@ -219,6 +219,19 @@ Tran.prototype.value_at = function (aDataKey, aTime) {
     return this.lerp(aDataKey).get(eng(aTime));
 };
 
+Tran.prototype.index_at = function (aTime) {
+    // Get index of data where time reaches given value
+    assert_arguments_length(arguments, 1, 1, 'tran.index_at(time)');
+    aTime = eng(aTime, 1, 'tran.index_at(time)');
+    assert_not_modified(this, 'tran.index_at(time)', 'tran.run()', 'Example: tran().run().interval(0.02).index_at("10m") <-- here you have to call interval() before run()');
+    assert_data_key(this, 'time');
+    for (var i = 0; i < this.data.time.length; i++) {
+        if (this.data.time[i] >= aTime) {
+            return i;
+        }
+    }
+};
+
 Tran.prototype.avg = function (aDataKey) {
     // Get average value of vector
     assert_arguments_length(arguments, 1, 1, 'tran.avg(data_key)');
