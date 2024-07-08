@@ -34,7 +34,7 @@ last_ex
 last_ex 
 stdout ******
 stdout ** ngspice-36 shared library
-stdout ** Creation Date: Sat Jan  1 18:54:42 UTC 2022
+stdout ** Creation Date: Mon Mar 11 21:44:53 UTC 2024
 stdout ******
 stdout ******
 stdout ** ngspice-36 : Circuit level simulation program
@@ -43,7 +43,7 @@ stdout ** Copyright 1985-1994, Regents of the University of California.
 stdout ** Copyright 2001-2020, The ngspice team.
 stdout ** Please get your ngspice manual from http://ngspice.sourceforge.net/docs.html
 stdout ** Please file your bug-reports at http://ngspice.sourceforge.net/bugrep.html
-stdout ** Creation Date: Sat Jan  1 18:54:42 UTC 2022
+stdout ** Creation Date: Mon Mar 11 21:44:53 UTC 2024
 stdout ******
 script_args --no-gif
 script_self ./a_quick_test.ngjs

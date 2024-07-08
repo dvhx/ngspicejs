@@ -10,3 +10,5 @@
   throw "Some error";
   throw new Error('Some message');
   But then the stack would point to the throw line, not where the error occured
+../js/ngspicejs_version.js
+  // Return ngspicejs version, throw exception if current version is outside allowed range of versions
