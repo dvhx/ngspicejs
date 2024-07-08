@@ -1,3 +1,11 @@
+Changes in v0.3 (2024-07-08)
+- Added ngspicejs_version() that returns version (currently 3)
+- Added topology_edges() function
+- Added topology_path_exists() function
+- Added tran.index_at() function
+- Don't print repeated lines in error log
+- Don't throw exception in is_compiled_equation() instead return false
+
 Changes in v0.2 (2024-03-31)
 - Added ctrl+c handler
 - Added indicator if any circuit is loaded
