@@ -1,3 +1,6 @@
+Changes in v0.4 (2025-04-08)
+- Updated code for Ubuntu 24.04, ngspice 42, libv8 10.2.154.26-node.28
+
 Changes in v0.3 (2024-07-08)
 - Added ngspicejs_version() that returns version (currently 3)
 - Added topology_edges() function
