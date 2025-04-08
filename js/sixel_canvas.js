@@ -265,6 +265,7 @@ SixelCanvas.prototype.show = function () {
         this.palette.forEach(one);
     }
     echo_raw(String.fromCharCode(27) + '\\');
+    echo_raw("\n");
     echo_flush();
 };
 
