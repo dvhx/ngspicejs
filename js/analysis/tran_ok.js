@@ -14,7 +14,7 @@ function tran_ok(aStep, aInterval, aStart) {
     Internal.ngspice_command('destroy all');
     Internal.ngspice_netlist(netlist);
     Internal.ngspice_command('tran ' + aStep.fromEng() + ' ' + aInterval.fromEng() + ' ' + aStart.fromEng());
-    var l = Internal.ngspice_log();
+    var l = Internal.ngspice_log().filter((s) => s !== 'stderr Using SPARSE 1.3 as Direct Linear Solver');
     if (l.at(-1) === 'stderr tran simulation(s) aborted') {
         return false;
     }
