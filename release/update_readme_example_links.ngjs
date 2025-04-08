@@ -26,7 +26,7 @@ dir_recursive('../example').concat(dir_recursive('../howto')).filter((fn) => fil
 });
 var n = [''];
 all.sort((a, b) => a.fn.localeCompare(b.fn)).forEach(o => {
-    n.push('- [' + o.comment + '](' + o.fn + ') in ' + file_path(o.fn));
+    n.push('- [' + o.comment + '](' + o.fn + ')'); // ' in ' + file_path(o.fn));
 });
 n.push('');
 readme.splice(p1 + 1, 0, n.join('\n'));
