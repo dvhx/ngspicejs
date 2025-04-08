@@ -10,6 +10,7 @@ void js_ngspice_vectors(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
     v8::Isolate *iso = args.GetIsolate();
     v8::HandleScope handle_scope(iso);
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
 
     // collect all plots
     char **allplots = ngSpice_AllPlots();
@@ -49,7 +50,10 @@ void js_ngspice_vectors(const v8::FunctionCallbackInfo < v8::Value > &args) {
         pvector_info myvec = ngGet_Vec_Info(vecarray[v]);
         // print vec info name (in case there is a formula)
         //printf("v_name=%s v_type=%d\n", myvec->v_name, myvec->v_type);
-        ret->Set(v, v8::String::NewFromUtf8(iso, myvec->v_name));
+        if (!ret->Set(context, v, LocalValueNewFromUtf8(iso, myvec->v_name)).FromMaybe(false)) {
+            std::cerr << "error: failed to set result in js_ngspice_vectors(...)" << std::endl;
+            exit(EXIT_MODERN);
+        }
         v++;
     }
 

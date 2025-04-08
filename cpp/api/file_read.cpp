@@ -74,7 +74,8 @@ void js_file_read(const v8::FunctionCallbackInfo < v8::Value > &args) {
     gchar *contents = system_file_read(fn, &fs, "file_read", iso);
 
     // set return value
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(iso, contents));
+    v8::Local<v8::String> s2 = v8::String::NewFromUtf8(iso, contents, v8::NewStringType::kNormal).ToLocalChecked();
+    args.GetReturnValue().Set(s2);
 
     g_free(contents);
 }
@@ -116,8 +117,17 @@ void js_file_read_binary(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
     // convert buffer to JS array
     v8::Handle<v8::Array> a = v8::Array::New(iso, sz);
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
+    bool err = false;
     for (size_t i = 0; i < sz; i++) {
-        a->Set(i, v8::Number::New(iso, buf[i]));
+        v8::Local<v8::Number> number = v8::Number::New(iso, buf[i]);
+        if (!a->Set(context, i, number).FromMaybe(false)) {
+          err = true;
+        }
+    }
+    if (err) {
+      std::cerr << "error: failed to assign array item in js_file_read_binary(...)" << std::endl;
+      exit(EXIT_MODERN);
     }
     free(buf);
 

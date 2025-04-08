@@ -23,12 +23,18 @@ void js_terminal_size(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
     // returning object
     v8::Handle<v8::Object> o = v8::Object::New(iso);
-    o->Set(v8::String::NewFromUtf8(iso, "result"), v8::Number::New(iso, i));
-    //o->Set(v8::String::NewFromUtf8(iso, "errno"), v8::Number::New(iso, errno));
-    o->Set(v8::String::NewFromUtf8(iso, "columns"), v8::Number::New(iso, w.ws_col));
-    o->Set(v8::String::NewFromUtf8(iso, "rows"), v8::Number::New(iso, w.ws_row));
-    o->Set(v8::String::NewFromUtf8(iso, "pixel_width"), v8::Number::New(iso, w.ws_xpixel));
-    o->Set(v8::String::NewFromUtf8(iso, "pixel_height"), v8::Number::New(iso, w.ws_ypixel));
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
+    bool err = false;
+    if (!o->Set(context, LocalValueNewFromUtf8(iso, "result"), v8::Number::New(iso, i)).FromMaybe(false)) { err = true; };
+    //if (!o->Set(context, v8::String::NewFromUtf8(iso, "errno"), v8::Number::New(iso, errno)).FromMaybe(false)) { err = true; }
+    if (!o->Set(context, LocalValueNewFromUtf8(iso, "columns"), v8::Number::New(iso, w.ws_col)).FromMaybe(false)) { err = true; }
+    if (!o->Set(context, LocalValueNewFromUtf8(iso, "rows"), v8::Number::New(iso, w.ws_row)).FromMaybe(false)) { err = true; }
+    if (!o->Set(context, LocalValueNewFromUtf8(iso, "pixel_width"), v8::Number::New(iso, w.ws_xpixel)).FromMaybe(false)) { err = true; }
+    if (!o->Set(context, LocalValueNewFromUtf8(iso, "pixel_height"), v8::Number::New(iso, w.ws_ypixel)).FromMaybe(false)) { err = true; }
+    if (err) {
+        std::cerr << "error: failed to set result attribute in js_terminal_size(...)" << std::endl;
+        exit(EXIT_MODERN);
+    }
 
     // return
     args.GetReturnValue().Set(o);

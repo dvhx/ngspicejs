@@ -6,6 +6,7 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
     v8::Isolate *iso = args.GetIsolate();
     v8::HandleScope handle_scope(iso);
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
 
     if (!simple_ngspice_context) {
         fatal_msg_stack(globalIsolate, EXIT_WRONG_ORDER, "ngspice_data() was called before ngspice_init()");
@@ -24,7 +25,10 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
         // new object for this plot
         v8::Handle<v8::Object> plotobj = v8::Object::New(iso);
-        o->Set(v8::String::NewFromUtf8(iso, allplots[p]), plotobj);
+        if (!o->Set(context, LocalValueNewFromUtf8(iso, allplots[p]), plotobj).FromMaybe(false)) {
+          std::cerr << "error: failed to set object attribute in js_ngspice_data(...)" << std::endl;
+          exit(EXIT_MODERN);
+        }
 
         // setplot is needed before ngSpice_AllVecs() otherwise older plot data will be missing
         // see https://sourceforge.net/p/ngspice/discussion/127605/thread/34af7de8b6/
@@ -67,7 +71,10 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
                 v8::Handle<v8::Array> a = v8::Array::New(iso, veclength);
 
                 // add v8 array to returning object
-                plotobj->Set(v8::String::NewFromUtf8(iso, vecarray[v]), a);
+                if (!plotobj->Set(context, LocalValueNewFromUtf8(iso, vecarray[v]), a).FromMaybe(false)) {
+                  std::cerr << "error: failed to set object attribute in js_ngspice_data(...) - in while loop" << std::endl;
+                  exit(EXIT_MODERN);
+                }
                 //("X vl=%d\n", veclength);
                 //printf("X v_realdata=%p\n", myvec->v_realdata);
                 //printf("X v_compdata=%p\n", myvec->v_compdata);
@@ -81,7 +88,10 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
                         //printf("i=%d\n", i);
                         //printf("  %ld\n", (size_t)myvec->v_realdata[i]);
                         //printf("R %d = %f\n", i, myvec->v_realdata[i]);
-                        a->Set(i, v8::Number::New(iso, myvec->v_realdata[i]));
+                        if (!a->Set(context, i, v8::Number::New(iso, myvec->v_realdata[i])).FromMaybe(false)) {
+                            std::cerr << "error: failed to set object attribute in js_ngspice_data(...) - in reakl data" << std::endl;
+                            exit(EXIT_MODERN);
+                        }
                     }
                 }
                 // complex data
@@ -95,9 +105,9 @@ void js_ngspice_data(const v8::FunctionCallbackInfo < v8::Value > &args) {
 
                         // v8 array for [real,imag]
                         v8::Handle<v8::Array> ri = v8::Array::New(iso, 2);
-                        ri->Set(0, v8::Number::New(iso, myvec->v_compdata[i].cx_real));
-                        ri->Set(1, v8::Number::New(iso, myvec->v_compdata[i].cx_imag));
-                        a->Set(i, ri);
+                        if (!ri->Set(context, 0, v8::Number::New(iso, myvec->v_compdata[i].cx_real)).FromMaybe(false)) { got_data = false; };
+                        if (!ri->Set(context, 1, v8::Number::New(iso, myvec->v_compdata[i].cx_imag)).FromMaybe(false)) { got_data = false; };
+                        if (!a->Set(context, i, ri).FromMaybe(false)) { got_data = false; };
                     }
                 }
 

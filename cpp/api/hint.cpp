@@ -30,7 +30,11 @@ void js_hint_buffer(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // convert buffer to array
     v8::Handle<v8::Array> a = v8::Array::New(iso, ars_count(hint_buffer));
     for (size_t i = 0; i < ars_count(hint_buffer); i++) {
-        a->Set(i, v8::String::NewFromUtf8(iso, ars_nth(hint_buffer, i)));
+        v8::Local<v8::String> s = v8::String::NewFromUtf8(iso, ars_nth(hint_buffer, i), v8::NewStringType::kNormal).ToLocalChecked();
+        if (!a->Set(iso->GetCurrentContext(), i, s).FromMaybe(false)) {
+          std::cerr << "error: js_hint_buffer(args) failed to set the value in the array" << std::endl;
+          exit(EXIT_MODERN);
+        }
     }
     args.GetReturnValue().Set(a);
 

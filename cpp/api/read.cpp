@@ -26,7 +26,9 @@ void js_read(const v8::FunctionCallbackInfo < v8::Value > &args) {
     }
 
     // set return value
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(iso, s));
+    //args.GetReturnValue().Set(v8::String::NewFromUtf8(iso, s));
+    v8::Local<v8::String> local_string = v8::String::NewFromUtf8(iso, s, v8::NewStringType::kNormal).ToLocalChecked();
+    args.GetReturnValue().Set(local_string);
 
     // add prompt to history (arrow up)
     add_history(s);

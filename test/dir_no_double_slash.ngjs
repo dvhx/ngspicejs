@@ -3,7 +3,7 @@
 // linter: ngspicejs-lint
 "use strict";
 
-echo_json(dir('../js/depend/jsep'));
-echo_json(dir('../js/depend/jsep/'));
-echo_json(dir_recursive('../js/depend/jsep'));
-echo_json(dir_recursive('../js/depend/jsep/'));
+echo_json(dir('../js/depend/jsep').sort());
+echo_json(dir('../js/depend/jsep/').sort());
+echo_json(dir_recursive('../js/depend/jsep').sort());
+echo_json(dir_recursive('../js/depend/jsep/').sort());

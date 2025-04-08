@@ -13,14 +13,29 @@ void include_js_code(v8::Local<v8::Context> context, v8::Isolate* isolate, const
     //global_try_catch = &try_catch;
 
     // convert code do v8 string
-    v8::Local<v8::String> source = v8::String::NewFromUtf8(isolate, code);
+    v8::Local<v8::String> source = v8::String::NewFromUtf8(isolate, code, v8::NewStringType::kNormal).ToLocalChecked();
     check_exception(isolate, &try_catch, "PLACE_0", filename, true);
 
     // Compile the source code.
     v8::Local<v8::Script> script;
-    v8::Local<v8::String> s1 = v8::Local<v8::String>(v8::String::NewFromUtf8(isolate, filename_origin));
+    v8::Local<v8::String> s1 = v8::Local<v8::String>(v8::String::NewFromUtf8(isolate, filename_origin, v8::NewStringType::kNormal).ToLocalChecked());
     v8::Local<v8::Value> v1 = v8::Local<v8::Value>::Cast(s1);
-    v8::ScriptOrigin origin(v1);
+    // old way: v8::ScriptOrigin origin(v1);
+    // new way: v8::ScriptOrigin::ScriptOrigin(v8::Isolate*, v8::Local<v8::Value>, int, int, bool, int, v8::Local<v8::Value>, bool, bool, bool, v8::Local<v8::Data>)
+    v8::ScriptOrigin origin(
+      isolate,
+      v1,                       // Resource name (e.g., file name)
+      0,                        // Resource line offset
+      0,                        // Resource column offset
+      false,                    // Is this a cross-origin script?
+      -1,                       // Script id
+      v8::Local<v8::Value>(),   // Source map URL
+      false,                    // Resource is opaque
+      false,                    // Is the script for wasm?
+      false,                    // Is the script a module?
+      v8::Local<v8::Data>()     // host defined options
+    );
+
     //printf("00 %s\n", filename);
     if (!v8::Script::Compile(context, source, &origin).ToLocal(&script)) {
         check_exception(isolate, &try_catch, "PLACE_1", filename, true);

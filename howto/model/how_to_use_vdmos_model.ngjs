@@ -7,6 +7,7 @@
 vdmos_model("MYMOS").kind('VDMOS').vto(2.5).is(1e-14).rg(200); //!
 battery('U1', 1, 0, 9);
 // use new vdmos model
-mosfet_n('T1', 1, 1, 0, 'MYMOS'); //!
+mosfet_n('T1', 1, 1, 10, 'MYMOS');
+resistor('R1', 10, 0, 1);
 echo('Idss', tran().run().avg('I(U1)').toEng());
 

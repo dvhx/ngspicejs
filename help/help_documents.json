@@ -1,99 +1,31 @@
 [
  {
-  "q": "How to print all available models",
-  "a": "howto/model/how_to_print_all_available_models.ngjs"
+  "q": "How to use beeping source",
+  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
  },
  {
-  "q": "How to use resistor model",
-  "a": "howto/model/how_to_use_resistor_model.ngjs"
+  "q": "beeping supply",
+  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
  },
  {
-  "q": "Define new resistor model",
-  "a": "howto/model/how_to_use_resistor_model.ngjs"
+  "q": "diode and RC filter",
+  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
  },
  {
-  "q": "use new resistor model",
-  "a": "howto/model/how_to_use_resistor_model.ngjs"
+  "q": "How to use npn",
+  "a": "howto/npn/how_to_use_npn.ngjs"
  },
  {
-  "q": "How to use jfet model",
-  "a": "howto/model/how_to_use_jfet_model.ngjs"
+  "q": "change the NPN model",
+  "a": "howto/npn/how_to_use_npn.ngjs"
  },
  {
-  "q": "Define new jfet model",
-  "a": "howto/model/how_to_use_jfet_model.ngjs"
+  "q": "change some extra parameters of NPN transistor",
+  "a": "howto/npn/how_to_use_npn.ngjs"
  },
  {
-  "q": "use new jfet model",
-  "a": "howto/model/how_to_use_jfet_model.ngjs"
- },
- {
-  "q": "How to use diode model",
-  "a": "howto/model/how_to_use_diode_model.ngjs"
- },
- {
-  "q": "Define new 1N276 diode model",
-  "a": "howto/model/how_to_use_diode_model.ngjs"
- },
- {
-  "q": "Use 1N276 diode model",
-  "a": "howto/model/how_to_use_diode_model.ngjs"
- },
- {
-  "q": "How to use bjt model",
-  "a": "howto/model/how_to_use_bjt_model.ngjs"
- },
- {
-  "q": "Define MYBJT1 model with Is=1uA",
-  "a": "howto/model/how_to_use_bjt_model.ngjs"
- },
- {
-  "q": "Use bjt model",
-  "a": "howto/model/how_to_use_bjt_model.ngjs"
- },
- {
-  "q": "How to use mos model",
-  "a": "howto/model/how_to_use_mos_model.ngjs"
- },
- {
-  "q": "Define new mos model",
-  "a": "howto/model/how_to_use_mos_model.ngjs"
- },
- {
-  "q": "use new mosfet model",
-  "a": "howto/model/how_to_use_mos_model.ngjs"
- },
- {
-  "q": "How to use vdmos model",
-  "a": "howto/model/how_to_use_vdmos_model.ngjs"
- },
- {
-  "q": "Define new vdmos model",
-  "a": "howto/model/how_to_use_vdmos_model.ngjs"
- },
- {
-  "q": "use new vdmos model",
-  "a": "howto/model/how_to_use_vdmos_model.ngjs"
- },
- {
-  "q": "How to use spice model",
-  "a": "howto/model/how_to_use_spice_model.ngjs"
- },
- {
-  "q": "Define new resistor model //!",
-  "a": "howto/model/how_to_use_spice_model.ngjs"
- },
- {
-  "q": "Use spice model",
-  "a": "howto/model/how_to_use_spice_model.ngjs"
- },
- {
-  "q": "How to do FFT of a current running through ammeter",
-  "a": "howto/fft/how_to_do_fft_of_a_current_through_ammeter.ngjs"
- },
- {
-  "q": "How to do FFT",
-  "a": "howto/fft/how_to_do_fft.ngjs"
+  "q": "How to use diode",
+  "a": "howto/diode/how_to_use_diode.ngjs"
  },
  {
   "q": "How to change diode model",
@@ -120,96 +52,208 @@
   "a": "howto/diode/how_to_change_diode_parameters.ngjs"
  },
  {
-  "q": "How to use diode",
-  "a": "howto/diode/how_to_use_diode.ngjs"
+  "q": "How to use spice model",
+  "a": "howto/model/how_to_use_spice_model.ngjs"
  },
  {
-  "q": "How to print ngspice netlist",
-  "a": "howto/netlist/how_to_print_netlist.ngjs"
+  "q": "Define new resistor model //!",
+  "a": "howto/model/how_to_use_spice_model.ngjs"
  },
  {
-  "q": "How to print ngspice commands",
-  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
+  "q": "Use spice model",
+  "a": "howto/model/how_to_use_spice_model.ngjs"
  },
  {
-  "q": "first tran will show commands",
-  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
+  "q": "How to print all available models",
+  "a": "howto/model/how_to_print_all_available_models.ngjs"
  },
  {
-  "q": "second tran will not show commands",
-  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
+  "q": "How to use resistor model",
+  "a": "howto/model/how_to_use_resistor_model.ngjs"
  },
  {
-  "q": "How to use engineering prefixes",
-  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
+  "q": "Define new resistor model",
+  "a": "howto/model/how_to_use_resistor_model.ngjs"
  },
  {
-  "q": "Exa prefix is not supported because of the conflict with exponential notation, e.g. 1E3 is 1000",
-  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
+  "q": "use new resistor model",
+  "a": "howto/model/how_to_use_resistor_model.ngjs"
  },
  {
-  "q": "How to assign string in engineering to a variable",
-  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
+  "q": "How to use bjt model",
+  "a": "howto/model/how_to_use_bjt_model.ngjs"
  },
  {
-  "q": "How to convert number to engineering format",
-  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
+  "q": "Define MYBJT1 model with Is=1uA",
+  "a": "howto/model/how_to_use_bjt_model.ngjs"
  },
  {
-  "q": "How to measure minimal voltage using voltmeter",
-  "a": "howto/voltmeter/how_to_measure_minimal_voltage_using_voltmeter.ngjs"
+  "q": "Use bjt model",
+  "a": "howto/model/how_to_use_bjt_model.ngjs"
  },
  {
-  "q": "How to use voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_minimal_voltage_using_voltmeter.ngjs"
+  "q": "How to use jfet model",
+  "a": "howto/model/how_to_use_jfet_model.ngjs"
  },
  {
-  "q": "How to measure voltage swing using voltmeter",
-  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+  "q": "Define new jfet model",
+  "a": "howto/model/how_to_use_jfet_model.ngjs"
  },
  {
-  "q": "How to measure peak-to-peak voltage using voltmeter",
-  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+  "q": "use new jfet model",
+  "a": "howto/model/how_to_use_jfet_model.ngjs"
  },
  {
-  "q": "How to use voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+  "q": "How to use diode model",
+  "a": "howto/model/how_to_use_diode_model.ngjs"
  },
  {
-  "q": "How to measure maximal voltage using voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_maximal_voltage_using_voltmeter.ngjs"
+  "q": "Define new 1N276 diode model",
+  "a": "howto/model/how_to_use_diode_model.ngjs"
  },
  {
-  "q": "How to use voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_maximal_voltage_using_voltmeter.ngjs"
+  "q": "Use 1N276 diode model",
+  "a": "howto/model/how_to_use_diode_model.ngjs"
  },
  {
-  "q": "How to use floating voltmeter that is not connected to ground",
-  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+  "q": "How to use vdmos model",
+  "a": "howto/model/how_to_use_vdmos_model.ngjs"
  },
  {
-  "q": "How to use voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+  "q": "Define new vdmos model",
+  "a": "howto/model/how_to_use_vdmos_model.ngjs"
  },
  {
-  "q": "How to measure voltage between two nets, not against the ground",
-  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+  "q": "use new vdmos model",
+  "a": "howto/model/how_to_use_vdmos_model.ngjs"
  },
  {
-  "q": "How to set voltmeter internal resistance",
-  "a": "howto/voltmeter/how_to_set_voltmeter_resistance.ngjs"
+  "q": "How to use mos model",
+  "a": "howto/model/how_to_use_mos_model.ngjs"
  },
  {
-  "q": "Lower voltmeter resistance to 1G ohm",
-  "a": "howto/voltmeter/how_to_set_voltmeter_resistance.ngjs"
+  "q": "Define new mos model",
+  "a": "howto/model/how_to_use_mos_model.ngjs"
  },
  {
-  "q": "How to measure average voltage using voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_average_voltage_using_voltmeter.ngjs"
+  "q": "use new mosfet model",
+  "a": "howto/model/how_to_use_mos_model.ngjs"
  },
  {
-  "q": "How to use voltmeter in ngspicejs",
-  "a": "howto/voltmeter/how_to_measure_average_voltage_using_voltmeter.ngjs"
+  "q": "How to use sawtooth voltage source",
+  "a": "howto/sawtooth/how_to_use_sawtooth_voltage_source.ngjs"
+ },
+ {
+  "q": "fall time is always equal tran step",
+  "a": "howto/sawtooth/how_to_use_sawtooth_voltage_source.ngjs"
+ },
+ {
+  "q": "How to use ammeter",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "basic tran of ammeter current",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "measure ammeter current at time 1ms",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "measure rms current",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "show AC of ammeter current",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "use AC to measure current at 5kHz",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "fft of ammeter current",
+  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+ },
+ {
+  "q": "How to use piece-wise linear source (pwl)",
+  "a": "howto/pwl/how_to_use_pwl_source.ngjs"
+ },
+ {
+  "q": "How to use inductor coupling with ugly inductor names",
+  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
+ },
+ {
+  "q": "First make circuit without coupling",
+  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
+ },
+ {
+  "q": "Run AC or TRAN to see all available vectors",
+  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
+ },
+ {
+  "q": "Figure out which is the inductor you want to couple and add the coupling",
+  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
+ },
+ {
+  "q": "Run actual AC or TRAN again",
+  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
+ },
+ {
+  "q": "How to use inductor",
+  "a": "howto/inductor/how_to_use_inductor.ngjs"
+ },
+ {
+  "q": "How to use electret mic",
+  "a": "howto/electret_mic/how_to_use_electret_mic.ngjs"
+ },
+ {
+  "q": "How to use pulse source",
+  "a": "howto/pulse/how_to_use_pulse_source.ngjs"
+ },
+ {
+  "q": "How to use pickup",
+  "a": "howto/pickup/how_to_use_pickup.ngjs"
+ },
+ {
+  "q": "custom inductive pickup",
+  "a": "howto/pickup/how_to_use_pickup.ngjs"
+ },
+ {
+  "q": "custom capacitive pickup",
+  "a": "howto/pickup/how_to_use_pickup.ngjs"
+ },
+ {
+  "q": "How to use voltage controlled current source vccs",
+  "a": "howto/vccs/how_to_use_vccs.ngjs"
+ },
+ {
+  "q": "How to use mosfet",
+  "a": "howto/mosfet_n/how_to_use_mosfet.ngjs"
+ },
+ {
+  "q": "How to do FFT of a current running through ammeter",
+  "a": "howto/fft/how_to_do_fft_of_a_current_through_ammeter.ngjs"
+ },
+ {
+  "q": "How to do FFT",
+  "a": "howto/fft/how_to_do_fft.ngjs"
+ },
+ {
+  "q": "How to use square voltage source",
+  "a": "howto/square/how_to_use_square_voltage_source.ngjs"
+ },
+ {
+  "q": "How to control 1P2T switch using timeline, how to set on and off resistance",
+  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
+ },
+ {
+  "q": "control switch using timeline [[time1,state1], ...]",
+  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
+ },
+ {
+  "q": "control switch using state_at(state,time)",
+  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
  },
  {
   "q": "How to find peak frequency in AC data",
@@ -224,32 +268,48 @@
   "a": "howto/arrays/how_to_find_peak_frequency_in_ac_data.ngjs"
  },
  {
-  "q": "How to use battery sensitivity analysis",
-  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
- },
- {
-  "q": "Simple common emitter amplifier 22x",
-  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
- },
- {
-  "q": "battery sensitivity analysis",
-  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
- },
- {
-  "q": "double check with tran",
-  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
- },
- {
-  "q": "How to make dual opamp DIP8 subcircuit",
-  "a": "howto/opamp/how_to_make_dual_opamp.ngjs"
+  "q": "How to use jfet",
+  "a": "howto/jfet_n/how_to_use_jfet.ngjs"
  },
  {
   "q": "How to make a sinusoidal signal generator?",
   "a": "howto/sinewave/how_to_make_a_sinusoidal_signal_generator.ngjs"
  },
  {
-  "q": "How to use electret mic",
-  "a": "howto/electret_mic/how_to_use_electret_mic.ngjs"
+  "q": "How to use small singal AC analysis",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "RC filter",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "Run AC from 16Hz to 50kHz and show chart of V(2) in volts and decibels",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "Find value at specific frequency",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "Run AC with more datapoints",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "Save AC data to CSV file",
+  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
+ },
+ {
+  "q": "How to use voltage reference vref",
+  "a": "howto/vref/how_to_use_vref.ngjs"
+ },
+ {
+  "q": "How to use spice directly",
+  "a": "howto/spice/how_to_use_spice_directly.ngjs"
+ },
+ {
+  "q": "How to use potentiometer",
+  "a": "howto/pot/how_to_use_potentiometer.ngjs"
  },
  {
   "q": "How to write .m sample file",
@@ -280,264 +340,64 @@
   "a": "howto/audio/how_to_use_wav_source.ngjs"
  },
  {
-  "q": "How to use voltage controlled voltage source vcvs with poly",
-  "a": "howto/vcvs/how_to_use_vcvs_poly.ngjs"
+  "q": "How to do transient analysis",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to use voltage controlled voltage source vcvs",
-  "a": "howto/vcvs/how_to_use_vcvs.ngjs"
+  "q": "tran chart voltage",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to use voltage reference vref",
-  "a": "howto/vref/how_to_use_vref.ngjs"
+  "q": "tran chart current",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to use jfet",
-  "a": "howto/jfet_n/how_to_use_jfet.ngjs"
+  "q": "tran calculate gain",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to set battery internal resistance",
-  "a": "howto/battery/how_to_set_battery_internal_resistance.ngjs"
+  "q": "tran min and max current",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to use dynamic mic",
-  "a": "howto/dynamic_mic/how_to_use_dynamic_mic.ngjs"
+  "q": "save tran data to csv",
+  "a": "howto/tran/how_to_do_tran.ngjs"
  },
  {
-  "q": "How to use current controlled current source",
-  "a": "howto/cccs/how_to_use_cccs.ngjs"
+  "q": "How to estimate frequency in tran data",
+  "a": "howto/tran/how_to_estimate_frequency_in_tran_data.ngjs"
  },
  {
-  "q": "battery with resistor",
-  "a": "howto/cccs/how_to_use_cccs.ngjs"
+  "q": "How to use engineering prefixes",
+  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
  },
  {
-  "q": "battery current will create 10x larger current to R2 and ammeter A1",
-  "a": "howto/cccs/how_to_use_cccs.ngjs"
+  "q": "Exa prefix is not supported because of the conflict with exponential notation, e.g. 1E3 is 1000",
+  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
  },
  {
-  "q": "print currents",
-  "a": "howto/cccs/how_to_use_cccs.ngjs"
+  "q": "How to assign string in engineering to a variable",
+  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
  },
  {
-  "q": "How to use AM source (amplitude modulation)",
-  "a": "howto/am/how_to_use_am.ngjs"
+  "q": "How to convert number to engineering format",
+  "a": "howto/eng/how_to_use_engineering_prefixes.ngjs"
  },
  {
-  "q": "amplitude modulated source",
-  "a": "howto/am/how_to_use_am.ngjs"
+  "q": "How to print ngspice commands",
+  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
  },
  {
-  "q": "How to use square voltage source",
-  "a": "howto/square/how_to_use_square_voltage_source.ngjs"
+  "q": "first tran will show commands",
+  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
  },
  {
-  "q": "How to use capacitor",
-  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
+  "q": "second tran will not show commands",
+  "a": "howto/netlist/how_to_print_ngspice_commands.ngjs"
  },
  {
-  "q": "RLC circuit with ideal capacitor",
-  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
- },
- {
-  "q": "ac characteristic",
-  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
- },
- {
-  "q": "real capacitor has some resistance and leads inductance",
-  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
- },
- {
-  "q": "ac characteristic",
-  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
- },
- {
-  "q": "How to use pickup",
-  "a": "howto/pickup/how_to_use_pickup.ngjs"
- },
- {
-  "q": "custom inductive pickup",
-  "a": "howto/pickup/how_to_use_pickup.ngjs"
- },
- {
-  "q": "custom capacitive pickup",
-  "a": "howto/pickup/how_to_use_pickup.ngjs"
- },
- {
-  "q": "How to use beeping source",
-  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
- },
- {
-  "q": "beeping supply",
-  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
- },
- {
-  "q": "diode and RC filter",
-  "a": "howto/beeps/how_to_use_beeping_source.ngjs"
- },
- {
-  "q": "How to use npn",
-  "a": "howto/npn/how_to_use_npn.ngjs"
- },
- {
-  "q": "change the NPN model",
-  "a": "howto/npn/how_to_use_npn.ngjs"
- },
- {
-  "q": "change some extra parameters of NPN transistor",
-  "a": "howto/npn/how_to_use_npn.ngjs"
- },
- {
-  "q": "How to use inductor coupling with ugly inductor names",
-  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
- },
- {
-  "q": "First make circuit without coupling",
-  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
- },
- {
-  "q": "Run AC or TRAN to see all available vectors",
-  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
- },
- {
-  "q": "Figure out which is the inductor you want to couple and add the coupling",
-  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
- },
- {
-  "q": "Run actual AC or TRAN again",
-  "a": "howto/inductor/inductor_coupling_using_ugly_name.ngjs"
- },
- {
-  "q": "How to use inductor",
-  "a": "howto/inductor/how_to_use_inductor.ngjs"
- },
- {
-  "q": "How to use small singal AC analysis",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "RC filter",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "Run AC from 16Hz to 50kHz and show chart of V(2) in volts and decibels",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "Find value at specific frequency",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "Run AC with more datapoints",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "Save AC data to CSV file",
-  "a": "howto/ac/how_to_use_ac_analysis.ngjs"
- },
- {
-  "q": "How to use pulse source",
-  "a": "howto/pulse/how_to_use_pulse_source.ngjs"
- },
- {
-  "q": "How to remove previously set device attribute",
-  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
- },
- {
-  "q": "Real capacitor with parasitic values Rs, Rp and Ls",
-  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
- },
- {
-  "q": "remove attributes",
-  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
- },
- {
-  "q": "How to use current source",
-  "a": "howto/current_source/how_to_use_current_source.ngjs"
- },
- {
-  "q": "How to use piece-wise linear source (pwl)",
-  "a": "howto/pwl/how_to_use_pwl_source.ngjs"
- },
- {
-  "q": "How to use resistor",
-  "a": "howto/resistor/how_to_use_resistor.ngjs"
- },
- {
-  "q": "How to make XY chart from custom data",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "data for x and y axis",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "drawing a XY chart using shortest possible version",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "drawing a XY chart using shortest possible version with custom size",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "drawing a XY chart using simple arguments, few chained setters and show()",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "drawing a XY chart using only object arguments",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "drawing a XY chart using only chained setters",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "Drawing chart to canvas, adding extra label and showing that canvas (you can use multiple canvases to make animated gif)",
-  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
- },
- {
-  "q": "How to use XY chart",
-  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
- },
- {
-  "q": "basic use of chart_xy",
-  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
- },
- {
-  "q": "all settings of chart_xy",
-  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
- },
- {
-  "q": "object parameters of chart_xy and chart with two series",
-  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
- },
- {
-  "q": "How to use mosfet",
-  "a": "howto/mosfet_n/how_to_use_mosfet.ngjs"
- },
- {
-  "q": "How to make scatter chart",
-  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
- },
- {
-  "q": "data for x and y axis and z",
-  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
- },
- {
-  "q": "drawing a XY chart using shortest possible version",
-  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
- },
- {
-  "q": "How to use sawtooth voltage source",
-  "a": "howto/sawtooth/how_to_use_sawtooth_voltage_source.ngjs"
- },
- {
-  "q": "fall time is always equal tran step",
-  "a": "howto/sawtooth/how_to_use_sawtooth_voltage_source.ngjs"
- },
- {
-  "q": "How to use pnp",
-  "a": "howto/how_to_use_pnp/how_to_use_pnp.ngjs"
+  "q": "How to print ngspice netlist",
+  "a": "howto/netlist/how_to_print_netlist.ngjs"
  },
  {
   "q": "How to make a subcircuit",
@@ -576,52 +436,204 @@
   "a": "howto/sub/how_to_use_subcircuit.ngjs"
  },
  {
-  "q": "How to control 1P2T switch using timeline, how to set on and off resistance",
-  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
+  "q": "How to use voltage controlled voltage source vcvs",
+  "a": "howto/vcvs/how_to_use_vcvs.ngjs"
  },
  {
-  "q": "control switch using timeline [[time1,state1], ...]",
-  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
+  "q": "How to use voltage controlled voltage source vcvs with poly",
+  "a": "howto/vcvs/how_to_use_vcvs_poly.ngjs"
  },
  {
-  "q": "control switch using state_at(state,time)",
-  "a": "howto/switch_1p2t/how_to_use_switch_1p2t.ngjs"
+  "q": "How to use resistor",
+  "a": "howto/resistor/how_to_use_resistor.ngjs"
  },
  {
-  "q": "How to use potentiometer",
-  "a": "howto/pot/how_to_use_potentiometer.ngjs"
+  "q": "How to use capacitor",
+  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
  },
  {
-  "q": "How to do transient analysis",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "RLC circuit with ideal capacitor",
+  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
  },
  {
-  "q": "tran chart voltage",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "ac characteristic",
+  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
  },
  {
-  "q": "tran chart current",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "real capacitor has some resistance and leads inductance",
+  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
  },
  {
-  "q": "tran calculate gain",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "ac characteristic",
+  "a": "howto/capacitor/how_to_use_real_capacitor.ngjs"
  },
  {
-  "q": "tran min and max current",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "How to remove previously set device attribute",
+  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
  },
  {
-  "q": "save tran data to csv",
-  "a": "howto/tran/how_to_do_tran.ngjs"
+  "q": "Real capacitor with parasitic values Rs, Rp and Ls",
+  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
  },
  {
-  "q": "How to estimate frequency in tran data",
-  "a": "howto/tran/how_to_estimate_frequency_in_tran_data.ngjs"
+  "q": "remove attributes",
+  "a": "howto/attributes/how_to_remove_previously_set_attribute.ngjs"
  },
  {
-  "q": "How to use voltage controlled current source vccs",
-  "a": "howto/vccs/how_to_use_vccs.ngjs"
+  "q": "How to make scatter chart",
+  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
+ },
+ {
+  "q": "data for x and y axis and z",
+  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using shortest possible version",
+  "a": "howto/chart_scatter/how_to_use_scatter_chart.ngjs"
+ },
+ {
+  "q": "How to set battery internal resistance",
+  "a": "howto/battery/how_to_set_battery_internal_resistance.ngjs"
+ },
+ {
+  "q": "How to use current source",
+  "a": "howto/current_source/how_to_use_current_source.ngjs"
+ },
+ {
+  "q": "How to use pnp",
+  "a": "howto/how_to_use_pnp/how_to_use_pnp.ngjs"
+ },
+ {
+  "q": "How to set voltmeter internal resistance",
+  "a": "howto/voltmeter/how_to_set_voltmeter_resistance.ngjs"
+ },
+ {
+  "q": "Lower voltmeter resistance to 1G ohm",
+  "a": "howto/voltmeter/how_to_set_voltmeter_resistance.ngjs"
+ },
+ {
+  "q": "How to use floating voltmeter that is not connected to ground",
+  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+ },
+ {
+  "q": "How to use voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure voltage between two nets, not against the ground",
+  "a": "howto/voltmeter/how_to_use_floating_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure minimal voltage using voltmeter",
+  "a": "howto/voltmeter/how_to_measure_minimal_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to use voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_minimal_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure average voltage using voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_average_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to use voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_average_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure maximal voltage using voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_maximal_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to use voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_maximal_voltage_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure voltage swing using voltmeter",
+  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to measure peak-to-peak voltage using voltmeter",
+  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to use voltmeter in ngspicejs",
+  "a": "howto/voltmeter/how_to_measure_voltage_swing_using_voltmeter.ngjs"
+ },
+ {
+  "q": "How to make dual opamp DIP8 subcircuit",
+  "a": "howto/opamp/how_to_make_dual_opamp.ngjs"
+ },
+ {
+  "q": "How to use AM source (amplitude modulation)",
+  "a": "howto/am/how_to_use_am.ngjs"
+ },
+ {
+  "q": "amplitude modulated source",
+  "a": "howto/am/how_to_use_am.ngjs"
+ },
+ {
+  "q": "How to use current controlled current source",
+  "a": "howto/cccs/how_to_use_cccs.ngjs"
+ },
+ {
+  "q": "battery with resistor",
+  "a": "howto/cccs/how_to_use_cccs.ngjs"
+ },
+ {
+  "q": "battery current will create 10x larger current to R2 and ammeter A1",
+  "a": "howto/cccs/how_to_use_cccs.ngjs"
+ },
+ {
+  "q": "print currents",
+  "a": "howto/cccs/how_to_use_cccs.ngjs"
+ },
+ {
+  "q": "How to use XY chart",
+  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
+ },
+ {
+  "q": "basic use of chart_xy",
+  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
+ },
+ {
+  "q": "all settings of chart_xy",
+  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
+ },
+ {
+  "q": "object parameters of chart_xy and chart with two series",
+  "a": "howto/chart_xy/how_to_use_chart_xy.ngjs"
+ },
+ {
+  "q": "How to make XY chart from custom data",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "data for x and y axis",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using shortest possible version",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using shortest possible version with custom size",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using simple arguments, few chained setters and show()",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using only object arguments",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "drawing a XY chart using only chained setters",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
+ },
+ {
+  "q": "Drawing chart to canvas, adding extra label and showing that canvas (you can use multiple canvases to make animated gif)",
+  "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
  },
  {
   "q": "How to use current controlled voltage source",
@@ -640,304 +652,52 @@
   "a": "howto/ccvs/how_to_use_ccvs.ngjs"
  },
  {
-  "q": "How to use ammeter",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+  "q": "How to use dynamic mic",
+  "a": "howto/dynamic_mic/how_to_use_dynamic_mic.ngjs"
  },
  {
-  "q": "basic tran of ammeter current",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+  "q": "How to use battery sensitivity analysis",
+  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
  },
  {
-  "q": "measure ammeter current at time 1ms",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+  "q": "Simple common emitter amplifier 22x",
+  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
  },
  {
-  "q": "measure rms current",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
+  "q": "battery sensitivity analysis",
+  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
  },
  {
-  "q": "show AC of ammeter current",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
- },
- {
-  "q": "use AC to measure current at 5kHz",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
- },
- {
-  "q": "fft of ammeter current",
-  "a": "howto/ammeter/how_to_use_ammeter.ngjs"
- },
- {
-  "q": "How to use spice directly",
-  "a": "howto/spice/how_to_use_spice_directly.ngjs"
- },
- {
-  "q": "Weird french 2 BJT amplifier",
-  "a": "example/french_amp/french_amp.ngjs"
- },
- {
-  "q": "Pedal AMZ mosfet booster",
-  "a": "example/pedal_amz_mosfet_booster/pedal_amz_mosfet_booster.ngjs"
- },
- {
-  "q": "Show usage of voltmeter for measuring between 2 nodes",
-  "a": "example/opamp_differential_amplifier_floating_input/opamp_differential_amplifier_floating_input.ngjs"
- },
- {
-  "q": "//resistor('R6', 10, 0, '1G');",
-  "a": "example/opamp_differential_amplifier_floating_input/opamp_differential_amplifier_floating_input.ngjs"
- },
- {
-  "q": "Testing DC coupled gain using opamp, symmetrical supply",
-  "a": "example/opamp_dc_gain/opamp_dc_gain_symmetrical_supply.ngjs"
- },
- {
-  "q": "Testing DC coupled gain using opamp and single supply",
-  "a": "example/opamp_dc_gain/opamp_dc_gain_single_supply.ngjs"
- },
- {
-  "q": "Opamp based narrow band pass filter without inductor",
-  "a": "example/pedal_opamp_inductorless_wah/pedal_opamp_inductorless_wah.ngjs"
- },
- {
-  "q": "Jfet preamp with strange LC network across source resistor and corresponding weird AC",
-  "a": "example/pedal_ovation_preamp/pedal_ovation_preamp.ngjs"
- },
- {
-  "q": "Observing THD of fuzz face pedal with changes in pot P1 position",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_pot1_thd.ngjs"
- },
- {
-  "q": "Save output of fuzz face to wav file",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
- },
- {
-  "q": "pnp fuzz face distortion",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
- },
- {
-  "q": "audio source",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
- },
- {
-  "q": "3s transient analysis",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
- },
- {
-  "q": "save output to wav",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
- },
- {
-  "q": "FFT with beta-correct AC128s and comparison with two identical 2N3906",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_correct_beta_AC128.ngjs"
- },
- {
-  "q": "change transistors to 2n3906",
-  "a": "example/pedal_fuzz_face/pedal_fuzz_face_correct_beta_AC128.ngjs"
+  "q": "double check with tran",
+  "a": "howto/battery_sensitivity/how_to_use_battery_sensitivity_analysis.ngjs"
  },
  {
   "q": "Sallen-key filter monte carlo parameter optimization",
   "a": "example/sallen_key_monte_carlo/sallen_key_monte_carlo.ngjs"
  },
  {
-  "q": "Differential opamp is less susceptible to common mode noise",
-  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+  "q": "Piezo pickup with mosfet source follower as input buffer",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
  },
  {
-  "q": "signal",
-  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+  "q": "first we connect resistor directly to 50k load and show AC",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
  },
  {
-  "q": "noise",
-  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+  "q": "then we make mosfet source follower",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
  },
  {
-  "q": "How linear pot curve changes when parallel resistor is placed across pot",
-  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
+  "q": "Piezo pickup 40x jfet amplifier",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_40x_jfet_amplifier.ngjs"
  },
  {
-  "q": "10k:100k pot divider",
-  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
+  "q": "Piezo pickup 40x amplifier",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_40x_mosfet_amplifier.ngjs"
  },
  {
-  "q": "single resistor only",
-  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
- },
- {
-  "q": "resistor with parallel 100k",
-  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
- },
- {
-  "q": "resistor with parallel 20k",
-  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
- },
- {
-  "q": "By using new Exception() the stack will be deep",
-  "a": "example/exceptions/3_uncaught_new_exception.ngjs"
- },
- {
-  "q": "Show that exception can be caught and program continues",
-  "a": "example/exceptions/2_string_exception_caght.ngjs"
- },
- {
-  "q": "Show how object Exceptions affect the speed compared to faster string exceptions",
-  "a": "example/exceptions/4_caught_new_exception.ngjs"
- },
- {
-  "q": "Show that string throw has no stack trace",
-  "a": "example/exceptions/1_string_exception_uncaught.ngjs"
- },
- {
-  "q": "By using new Error() the stack will be deep",
-  "a": "example/exceptions/3b_uncaught_new_error.ngjs"
- },
- {
-  "q": "Pedal dallas rangemaster treble boost",
-  "a": "example/pedal_dallas_rangemaster_treble_boost/pedal_dallas_rangemaster_treble_boost.ngjs"
- },
- {
-  "q": "sweep pot from 0 to 100% and plot max gain",
-  "a": "example/pedal_dallas_rangemaster_treble_boost/pedal_dallas_rangemaster_treble_boost.ngjs"
- },
- {
-  "q": "Show how resistor value affects sustain with NPN and darlington",
-  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
- },
- {
-  "q": "bazz fuss pedal (10k + NPN_DARLINGTON = ok)",
-  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
- },
- {
-  "q": "bazz fuss pedal (10k + NPN = not enough sustain)",
-  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
- },
- {
-  "q": "bazz fuss pedal (100k + NPN = ok)",
-  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
- },
- {
-  "q": "bazz fuss pedal (100k + NPN with higher beta = ok)",
-  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
- },
- {
-  "q": "Using voltmeter in transient analysis",
-  "a": "example/voltmeter/tran_divider.ngjs"
- },
- {
-  "q": "Using voltmeter in transient analysis to measure average voltage",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "help: how to add voltmeter",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "help: how to measure average voltage using voltmeter",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "help: how to measure maximal voltage using voltmeter",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "help: how to measure minimal voltage using voltmeter",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "help: how to measure voltage swing using voltmeter",
-  "a": "example/voltmeter/tran_average_voltage.ngjs"
- },
- {
-  "q": "Using voltmeter to measure voltage of capacitor and inductor in RLC circuit",
-  "a": "example/voltmeter/ac_rlc.ngjs"
- },
- {
-  "q": "Pedal colorsound wah",
-  "a": "example/pedal_wah/pedal_colorsound_wah.ngjs"
- },
- {
-  "q": "coil switching stage",
-  "a": "example/pedal_wah/pedal_colorsound_wah.ngjs"
- },
- {
-  "q": "Pedal VOX Wah 847",
-  "a": "example/pedal_wah/pedal_vox_wah_v847.ngjs"
- },
- {
-  "q": "Pedal crybaby wah",
-  "a": "example/pedal_wah/pedal_crybaby_wah.ngjs"
- },
- {
-  "q": "coil switching stage",
-  "a": "example/pedal_wah/pedal_crybaby_wah.ngjs"
- },
- {
-  "q": "Pedal maestro boomerang wah wah",
-  "a": "example/pedal_wah/pedal_maestro_boomerang_wah_wah.ngjs"
- },
- {
-  "q": "Pedal wox wah swell and peak frequency by pot position",
-  "a": "example/pedal_wah/pedal_wox_wah_swell.ngjs"
- },
- {
-  "q": "Pedal bespeco weeper wah, AC and pot sweep vs peak frequency",
-  "a": "example/pedal_wah/pedal_bespeco_weeper_wah.ngjs"
- },
- {
-  "q": "Pedal Anderton Wah-Antiwah - filter has two peaks, one is going down, second is going up",
-  "a": "example/pedal_wah/pedal_anderton_wah_antiwah.ngjs"
- },
- {
-  "q": "Pedal wah filter",
-  "a": "example/pedal_wah/pedal_wah_filter.ngjs"
- },
- {
-  "q": "coil switching stage",
-  "a": "example/pedal_wah/pedal_wah_filter.ngjs"
- },
- {
-  "q": "Common emitter with 24x amplification using BC547",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "common emitter 24x amplification",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "//npn('T1', 4, 3, 6, 'TIP120_TI');",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "//npn('T1', 4, 3, 6, 'MPSA13_9000');",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "Show gain of net 2 (input) vs net 5 (output)",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "Maybe you want to ignore the transient in first half?",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "You can also start tran later",
-  "a": "example/common_emitter/common_emitter.ngjs"
- },
- {
-  "q": "Common emitter using darlington npn via custom subcircuit",
-  "a": "example/common_emitter/common_emitter_darlington_subcircuit.ngjs"
- },
- {
-  "q": "common emitter 23x amplification",
-  "a": "example/common_emitter/common_emitter_darlington_subcircuit.ngjs"
- },
- {
-  "q": "Common emitter using darlington npn via existing subcircuit model of TIP120",
-  "a": "example/common_emitter/common_emitter_darlington_existing.ngjs"
- },
- {
-  "q": "common emitter ~20x amplification",
-  "a": "example/common_emitter/common_emitter_darlington_existing.ngjs"
+  "q": "Piezo pickup and sziklai follower",
+  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_sziklai_follower.ngjs"
  },
  {
   "q": "Three stage common emitter using sub_model with parameters",
@@ -976,6 +736,50 @@
   "a": "example/common_emitter/common_emitter_battery_sensitivity.ngjs"
  },
  {
+  "q": "Common emitter with 24x amplification using BC547",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "common emitter 24x amplification",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "//npn('T1', 4, 3, 6, 'TIP120_TI');",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "//npn('T1', 4, 3, 6, 'MPSA13_9000');",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "Show gain of net 2 (input) vs net 5 (output)",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "Maybe you want to ignore the transient in first half?",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "You can also start tran later",
+  "a": "example/common_emitter/common_emitter.ngjs"
+ },
+ {
+  "q": "Common emitter using darlington npn via existing subcircuit model of TIP120",
+  "a": "example/common_emitter/common_emitter_darlington_existing.ngjs"
+ },
+ {
+  "q": "common emitter ~20x amplification",
+  "a": "example/common_emitter/common_emitter_darlington_existing.ngjs"
+ },
+ {
+  "q": "Common emitter using darlington npn via custom subcircuit",
+  "a": "example/common_emitter/common_emitter_darlington_subcircuit.ngjs"
+ },
+ {
+  "q": "common emitter 23x amplification",
+  "a": "example/common_emitter/common_emitter_darlington_subcircuit.ngjs"
+ },
+ {
   "q": "Common emitter using darlington subcircuit that itself uses other model",
   "a": "example/common_emitter/common_emitter_darlington_sub_using_other_models.ngjs"
  },
@@ -996,8 +800,12 @@
   "a": "example/common_emitter/common_emitter_darlington_sub_using_other_models.ngjs"
  },
  {
-  "q": "Summing 100Hz and 700Hz sinewave using opamp",
-  "a": "example/opamp_summing_amplifier/opamp_summing_amplifier.ngjs"
+  "q": "Pedal dallas rangemaster treble boost",
+  "a": "example/pedal_dallas_rangemaster_treble_boost/pedal_dallas_rangemaster_treble_boost.ngjs"
+ },
+ {
+  "q": "sweep pot from 0 to 100% and plot max gain",
+  "a": "example/pedal_dallas_rangemaster_treble_boost/pedal_dallas_rangemaster_treble_boost.ngjs"
  },
  {
   "q": "Use 3.3V to switch 150R load using BJT, optimize values of R1,R2,R3 to have maximal on current and minimal off current",
@@ -1008,16 +816,12 @@
   "a": "example/optimize_bjt_switch/optimize_bjt_switch.ngjs"
  },
  {
-  "q": "Pedal harmonic percolator, measuring correct CE voltages",
-  "a": "example/pedal_harmonic_percolator/pedal_harmonic_percolator.ngjs"
+  "q": "Two npn followers as blend circuit with 50k blending pot and 50k load, measure volume sag",
+  "a": "example/blend_circuit/blend_2x_follower.ngjs"
  },
  {
-  "q": "Measure PNP's hFE",
-  "a": "example/pnp_characteristics/pnp_measure_hfe.ngjs"
- },
- {
-  "q": "https://i0.wp.com/www.biophysicslab.com/wp-content/uploads/2021/04/Simple_Breadboard_hFEa.jpg",
-  "a": "example/pnp_characteristics/pnp_measure_hfe.ngjs"
+  "q": "    calculate sag",
+  "a": "example/blend_circuit/blend_2x_follower.ngjs"
  },
  {
   "q": "In emitter follower measure distortion for different input voltage and different loads",
@@ -1032,12 +836,16 @@
   "a": "example/blend_circuit/follower_distortion_amplitude_vs_load.ngjs"
  },
  {
-  "q": "Two npn followers as blend circuit with 50k blending pot and 50k load, measure volume sag",
-  "a": "example/blend_circuit/blend_2x_follower.ngjs"
+  "q": "Three npn followers as blend circuit with 50k blending pot and 50k load, measure volume sag",
+  "a": "example/blend_circuit/blend_3x_follower.ngjs"
+ },
+ {
+  "q": "You can play with various parameters but adding third follower doesn't really improve the sag much",
+  "a": "example/blend_circuit/blend_3x_follower.ngjs"
  },
  {
   "q": "    calculate sag",
-  "a": "example/blend_circuit/blend_2x_follower.ngjs"
+  "a": "example/blend_circuit/blend_3x_follower.ngjs"
  },
  {
   "q": "Quad opamp blend circuit with 50k blending pot and 50k load, measure volume sag",
@@ -1052,76 +860,156 @@
   "a": "example/blend_circuit/blend_quad_opamp.ngjs"
  },
  {
-  "q": "Three npn followers as blend circuit with 50k blending pot and 50k load, measure volume sag",
-  "a": "example/blend_circuit/blend_3x_follower.ngjs"
+  "q": "Bootstrap amplifier 1000x gain, 2.5mA consumption, muddy AC",
+  "a": "example/bootstrap_amplifier/bootstrap_amplifier_1000x.ngjs"
  },
  {
-  "q": "You can play with various parameters but adding third follower doesn't really improve the sag much",
-  "a": "example/blend_circuit/blend_3x_follower.ngjs"
+  "q": "Convert NPN common emitter to PNP common emitter with these 2 simple tricks",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
  },
  {
-  "q": "    calculate sag",
-  "a": "example/blend_circuit/blend_3x_follower.ngjs"
+  "q": "First NPN common emitter",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "show tran and gain",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "PNP common emitter",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "delete NPN t1",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "insert new PNP",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "flip battery polarity",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "show tran and gain",
+  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+ },
+ {
+  "q": "Switching between different PNP and observing gain",
+  "a": "example/pnp_common_emitter/pnp_different_BD136_models.ngjs"
+ },
+ {
+  "q": "show tran and gain",
+  "a": "example/pnp_common_emitter/pnp_different_BD136_models.ngjs"
+ },
+ {
+  "q": "Converting 22kHz 9V square wave (0-9V) to 32V using four voltage doubler subcircuits",
+  "a": "example/diode_voltage_multiplier/square_wave_9V_to_dc_34V.ngjs"
+ },
+ {
+  "q": "4-stage diode based voltage multiplier",
+  "a": "example/diode_voltage_multiplier/diode_voltage_multiplier.ngjs"
+ },
+ {
+  "q": "Opamp with virtual ground made of resistor divider and caps",
+  "a": "example/opamp_virtual_ground/opamp_virtual_ground.ngjs"
+ },
+ {
+  "q": "virtual ground using 2 resistors and 2 capacitors",
+  "a": "example/opamp_virtual_ground/opamp_virtual_ground.ngjs"
+ },
+ {
+  "q": "Push-pull amplifier driving 66R load",
+  "a": "example/bjt_high_current_output_amps/push_pull_amp.ngjs"
+ },
+ {
+  "q": "Sziklay pair driving same 66R load",
+  "a": "example/bjt_high_current_output_amps/sziklay_pair_amp.ngjs"
+ },
+ {
+  "q": "Common emitter + Common base with feedback",
+  "a": "example/bjt_high_current_output_amps/ce_cb_feedback.ngjs"
+ },
+ {
+  "q": "AC analysis of ideal and real LC circuit",
+  "a": "example/quality_of_lc_filter/quality_of_lc_filter.ngjs"
+ },
+ {
+  "q": "Using existing subckt model",
+  "a": "example/using_subckt_model/using_subckt_model.ngjs"
  },
  {
   "q": "Show that electret mic is passive and needs some power",
   "a": "example/electret_mic/electret_mic.ngjs"
  },
  {
-  "q": "Compare different mosfets for switching 5R load powered from 5V supply using only 3V3 control voltage",
-  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+  "q": "3-opamp instrumentation amplifier, gain controlled by single resistor R2",
+  "a": "example/opamp_instrumentation_amplifier/opamp_instrumentation_amplifier.ngjs"
  },
  {
-  "q": "BS170 - 100mA",
-  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+  "q": "Calculate even and odd harmonics ratios using fft",
+  "a": "example/harmonics/fft_even_odd.ngjs"
  },
  {
-  "q": "IRF540N - 1.5uA (3.3V is not enough to open it)",
-  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+  "q": "Summing 100Hz and 700Hz sinewave using opamp",
+  "a": "example/opamp_summing_amplifier/opamp_summing_amplifier.ngjs"
  },
  {
-  "q": "IRLZ44N - 0.995A (10x better than BS170)",
-  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+  "q": "Compare VA characteristic, timing and AC of 2 diodes",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "Auxiliary PNP to open IRF540N - 0.981A (better than BS170 but needs extra PNP and 1-7mA)",
-  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+  "q": "    Compare 2 diodes",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "Show that saving WAV file requires transient step 40u or lower, otherwise distortion is too high",
-  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+  "q": "    V-A characteristic",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "generate pure sinewave and save it to wav",
-  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+  "q": "    log",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "run transient analysis with different steps",
-  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+  "q": "    linear",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "Pedal peppermill and sweep of P1 and P2 pot and corresponding THD",
-  "a": "example/pedal_peppermill/pedal_peppermill.ngjs"
+  "q": "    timing",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "Piece-wise linear source",
-  "a": "example/pwl_source/pwl_source.ngjs"
+  "q": "    ac with series inductor",
+  "a": "example/diode_va/diode_va_characteristic.ngjs"
  },
  {
-  "q": "Ripple rejection circuit using NPN as \"capacitance multiplier\"",
-  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
+  "q": "N-channel mosfet 10x amplifier with high inductance source, 50k load and reasonably flat AC",
+  "a": "example/mosfet_n_10x_amplifier/mosfet_n_10x_amplifier.ngjs"
  },
  {
-  "q": "ripple rejection circuit",
-  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
+  "q": "Guitar pickup clamped by two antiparallel diodes to get some distortion",
+  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
+ },
+ {
+  "q": "pickup clamped by 2 antiparallel diodes",
+  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
  },
  {
   "q": "transient analysis",
-  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
+  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
  },
  {
-  "q": "measure how much it was stabilised",
-  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
+  "q": "AC analysis",
+  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
+ },
+ {
+  "q": "FFT analysis",
+  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
+ },
+ {
+  "q": "Opamp based narrow band pass filter without inductor",
+  "a": "example/pedal_opamp_inductorless_wah/pedal_opamp_inductorless_wah.ngjs"
  },
  {
   "q": "Testing DC coupled gain using opamp",
@@ -1136,220 +1024,32 @@
   "a": "example/opamp_piezo_buffer/opamp_piezo_buffer.ngjs"
  },
  {
-  "q": "Find model attributes for the zener diode C9V1ST from the measured reverse voltage and current values",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+  "q": "Joule thief powering white LED from single 1.5V AAA battery",
+  "a": "example/joule_thief/joule_thief.ngjs"
  },
  {
-  "q": "make unit tests repeatable",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+  "q": "Response of LC filter to square wave signal (the \"ringing\")",
+  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
  },
  {
-  "q": "Load table of measured reverse voltages and currents",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "Run several times",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "    clear netlist before next simulation",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "    Simulate circuit",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "    run transient analysis",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "    Create lerp Vreverse => Ireverse",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "    calculate error against measured values",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        physically measured voltages and amps",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        //echo(vr, ir.toEng());",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        get simulated current for given voltage",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        square error",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        relative error to the ir",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        sum relative errors",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        //echo('#', i, 'vr', vr, 'ir', ir.toEng(3), 'isim', isim.toEng(3), 'ce^2', ce.toEng(3));",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        show chart",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "        chart linear",
-  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
- },
- {
-  "q": "Draw V-A curve using ZENER_C9V1ST model from the model/DIODE/ZENER_C9V1ST.sub",
-  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
- },
- {
-  "q": "Simulate circuit",
-  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
- },
- {
-  "q": "Load table of measured reverse voltages and currents (for comparison)",
-  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
- },
- {
-  "q": "log chart",
-  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
- },
- {
-  "q": "chart linear",
-  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
- },
- {
-  "q": "Find model attributes for the zener diode C9V1ST from the measured reverse voltage and current values",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "make unit tests repeatable",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "Load table of measured reverse voltages and currents",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "Run several times",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "    clear netlist before next simulation",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "    Simulate circuit",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "    run transient analysis",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "    Create lerp Vreverse => Ireverse",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "    calculate error against measured values",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        physically measured voltages and amps",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        //echo(vr, ir.toEng());",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        get simulated current for given voltage",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        ignore current below minimal measured current",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        square error",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        relative error to the ir",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        sum relative errors",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        //echo('#', i, 'vr', vr, 'ir', ir.toEng(3), 'isim', isim.toEng(3), 'ce^2', ce.toEng(3));",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        show chart",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "        chart linear",
-  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
- },
- {
-  "q": "Draw V-A curve using ZENER_C2V4ST model from the model/DIODE/ZENER_C2V4ST.sub",
-  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
- },
- {
-  "q": "Simulate circuit",
-  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
- },
- {
-  "q": "Load table of measured reverse voltages and currents (for comparison)",
-  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
- },
- {
-  "q": "show chart",
-  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
- },
- {
-  "q": "chart linear",
-  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
- },
- {
-  "q": "Square wave signal",
-  "a": "example/square_wave_signal/square_wave_signal.ngjs"
- },
- {
-  "q": "pulse voltage supply, and lc filter",
-  "a": "example/square_wave_signal/square_wave_signal.ngjs"
+  "q": "square wave voltage supply, and lc filter response",
+  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
  },
  {
   "q": "transient analysis",
-  "a": "example/square_wave_signal/square_wave_signal.ngjs"
+  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
  },
  {
-  "q": "Using dynamic_mic device",
-  "a": "example/dynamic_mic/dynamic_mic_using_model.ngjs"
+  "q": "Using single pulse source",
+  "a": "example/pulse_source/single_pulse.ngjs"
  },
  {
-  "q": "Making a dumb spice model of dynamic microphone",
-  "a": "example/dynamic_mic/dynamic_mic.ngjs"
+  "q": "pulse voltage supply, and lc filter",
+  "a": "example/pulse_source/single_pulse.ngjs"
  },
  {
-  "q": "Another dynamic mic preamp with npn and pnp",
-  "a": "example/dynamic_mic/dynamic_mic_amp_npn_pnp.ngjs"
- },
- {
-  "q": "JFET source follower has much flatter AC than BJTs",
-  "a": "example/singlecoil_pickup_ac/jfet_follower.ngjs"
+  "q": "transient analysis",
+  "a": "example/pulse_source/single_pulse.ngjs"
  },
  {
   "q": "Find C0 and L0 of a singlecoil pickup from frequency responses measured using different bypass capacitors",
@@ -1452,28 +1152,252 @@
   "a": "example/singlecoil_pickup_ac/bjt_follower_muddy.ngjs"
  },
  {
-  "q": "Opamp howland current pump",
-  "a": "example/opamp_howland_current_pump/opamp_howland_current_pump.ngjs"
+  "q": "JFET source follower has much flatter AC than BJTs",
+  "a": "example/singlecoil_pickup_ac/jfet_follower.ngjs"
  },
  {
-  "q": "howland current pump",
-  "a": "example/opamp_howland_current_pump/opamp_howland_current_pump.ngjs"
+  "q": "Common base 50x amplifier driving 5k load",
+  "a": "example/common_base/common_base.ngjs"
  },
  {
-  "q": "Single opamp as vccs, p-channel mosfet and grounded load",
-  "a": "example/opamp_howland_current_pump/opamp_vccs_mosfet_p.ngjs"
+  "q": "common base amplifier",
+  "a": "example/common_base/common_base.ngjs"
  },
  {
-  "q": "Voltage controlled current source using sensing resistor",
-  "a": "example/opamp_howland_current_pump/opamp_vccs_sensing_resistor.ngjs"
+  "q": "Show gain of net 6 (input) vs net 5 (output)",
+  "a": "example/common_base/common_base.ngjs"
  },
  {
-  "q": "Dual opamp voltage controlled current source, voltage = 0-2.5V, current=0-25mA",
-  "a": "example/opamp_howland_current_pump/dual_opamp_vccs.ngjs"
+  "q": "Supply sensitivity",
+  "a": "example/common_base/common_base.ngjs"
  },
  {
-  "q": "replace resistor R4 with diode",
-  "a": "example/opamp_howland_current_pump/dual_opamp_vccs.ngjs"
+  "q": "Load sensitivity",
+  "a": "example/common_base/common_base.ngjs"
+ },
+ {
+  "q": "Using motor driver L272M",
+  "a": "example/motor_driver_L272M/motor_driver_L272M.ngjs"
+ },
+ {
+  "q": "DIP8 L272M = out1 vcc out2 gnd in2- in2+ in1+ in1-",
+  "a": "example/motor_driver_L272M/motor_driver_L272M.ngjs"
+ },
+ {
+  "q": "Three phase astable multivibrator",
+  "a": "example/three_phase_oscillator/three_phase_oscillator.ngjs"
+ },
+ {
+  "q": "you can show multiple charts at once",
+  "a": "example/three_phase_oscillator/three_phase_oscillator.ngjs"
+ },
+ {
+  "q": "4-transistor amplifier for 8ohm load",
+  "a": "example/four_bjt_8ohm_amplifier/four_bjt_8ohm_amplifier.ngjs"
+ },
+ {
+  "q": "Square wave signal",
+  "a": "example/square_wave_signal/square_wave_signal.ngjs"
+ },
+ {
+  "q": "pulse voltage supply, and lc filter",
+  "a": "example/square_wave_signal/square_wave_signal.ngjs"
+ },
+ {
+  "q": "transient analysis",
+  "a": "example/square_wave_signal/square_wave_signal.ngjs"
+ },
+ {
+  "q": "Pedal peppermill and sweep of P1 and P2 pot and corresponding THD",
+  "a": "example/pedal_peppermill/pedal_peppermill.ngjs"
+ },
+ {
+  "q": "Jfet preamp with strange LC network across source resistor and corresponding weird AC",
+  "a": "example/pedal_ovation_preamp/pedal_ovation_preamp.ngjs"
+ },
+ {
+  "q": "Guitar pedal \"Electra distortion\" with original 1N4148+1N34A vs 1N4148+1N4148",
+  "a": "example/pedal_electra_distortion/pedal_electra_distortion.ngjs"
+ },
+ {
+  "q": "Show how resistor value affects sustain with NPN and darlington",
+  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
+ },
+ {
+  "q": "bazz fuss pedal (10k + NPN_DARLINGTON = ok)",
+  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
+ },
+ {
+  "q": "bazz fuss pedal (10k + NPN = not enough sustain)",
+  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
+ },
+ {
+  "q": "bazz fuss pedal (100k + NPN = ok)",
+  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
+ },
+ {
+  "q": "bazz fuss pedal (100k + NPN with higher beta = ok)",
+  "a": "example/pedal_bazz_fuss_sustain/pedal_bazz_fuss_sustain.ngjs"
+ },
+ {
+  "q": "Active envelope follower (AM signal)",
+  "a": "example/envelope_follower/active_envelope_follower_am.ngjs"
+ },
+ {
+  "q": "Passive envelope follower (AM signal)",
+  "a": "example/envelope_follower/passive_envelope_follower_am.ngjs"
+ },
+ {
+  "q": "Active envelope follower (beeping signal)",
+  "a": "example/envelope_follower/active_envelope_follower.ngjs"
+ },
+ {
+  "q": "Active envelope follower using opamp",
+  "a": "example/envelope_follower/active_envelope_follower_opamp.ngjs"
+ },
+ {
+  "q": "Differential opamp is less susceptible to common mode noise",
+  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+ },
+ {
+  "q": "signal",
+  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+ },
+ {
+  "q": "noise",
+  "a": "example/opamp_diff_amp_common_mode_noise/opamp_diff_amp_common_mode_noise.ngjs"
+ },
+ {
+  "q": "Show that saving WAV file requires transient step 40u or lower, otherwise distortion is too high",
+  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+ },
+ {
+  "q": "generate pure sinewave and save it to wav",
+  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+ },
+ {
+  "q": "run transient analysis with different steps",
+  "a": "example/audio/tran_step_and_audio_quality.ngjs"
+ },
+ {
+  "q": "Simple emitter follower test",
+  "a": "example/emitter_follower/simple_test.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/simple_test.ngjs"
+ },
+ {
+  "q": "Emitter follower chart of gain by input offset for different loads",
+  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
+ },
+ {
+  "q": "symmetrical 24v supply",
+  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
+ },
+ {
+  "q": "//capacitor('C1', 6, 2, '100u'); - not used so that offset can be changed",
+  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
+ },
+ {
+  "q": "    input is 1V offset changes from -20 to +20V",
+  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
+ },
+ {
+  "q": "This file will be included by other examples",
+  "a": "example/emitter_follower/emitter_follower.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/emitter_follower.ngjs"
+ },
+ {
+  "q": "Emitter follower chart THD by input amplitude for different loads",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "symmetrical 24v supply",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "input amplitude from 1V to 10V",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "        have to increase interval from 0.1 to 0.3 otherwise there would be",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "        weird raise at low input amplitudes for 1M load",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+ },
+ {
+  "q": "Changing R1 and R2 and R3 measure gain, current and thd and find the best score",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "gain is <1 but we need at least 0.9",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "current should be smallest but must be below 1mA",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "thd should be smallest and must be below 0.02",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "//series_e3('1k', '100k').forEach(c => {",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "//});",
+  "a": "example/emitter_follower/r1_r2_r3.ngjs"
+ },
+ {
+  "q": "Emitter follower with constant current source, chart THD by input amplitude for different loads",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "symmetrical 24v supply",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "input amplitude from 1V to 10V",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "        have to increase interval from 0.1 to 0.3 otherwise there would be",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "        weird raise at low input amplitudes for 1M load",
+  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+ },
+ {
+  "q": "Changing R1 and R2 and measure gain, current and thd",
+  "a": "example/emitter_follower/r1_r2.ngjs"
+ },
+ {
+  "q": "emitter follower",
+  "a": "example/emitter_follower/r1_r2.ngjs"
  },
  {
   "q": "High-gain (5000x) 2-stage common emitter",
@@ -1496,44 +1420,64 @@
   "a": "example/high_gain_ce_ce_amplifier/low_inductance_pickup_ac.ngjs"
  },
  {
-  "q": "White noise generator using unconnected collector on NPN transistor",
-  "a": "example/white_noise_generator_npn/white_noise_generator_npn.ngjs"
+  "q": "Square wave supply",
+  "a": "example/signal_sources/square.ngjs"
  },
  {
-  "q": "change battery voltage to 5V (in real circuit noise drops to zero so the simulation is not realistic)",
-  "a": "example/white_noise_generator_npn/white_noise_generator_npn.ngjs"
+  "q": "Sinewave supply",
+  "a": "example/signal_sources/sinewave.ngjs"
+ },
+ {
+  "q": "Sawtooth supply",
+  "a": "example/signal_sources/sawtooth.ngjs"
+ },
+ {
+  "q": "Beeping voltage supply",
+  "a": "example/signal_sources/beeps.ngjs"
+ },
+ {
+  "q": "Single pulse supply",
+  "a": "example/signal_sources/pulse.ngjs"
+ },
+ {
+  "q": "Amplitude modulated voltage source",
+  "a": "example/signal_sources/am.ngjs"
+ },
+ {
+  "q": "Pedal harmonic percolator, measuring correct CE voltages",
+  "a": "example/pedal_harmonic_percolator/pedal_harmonic_percolator.ngjs"
  },
  {
   "q": "Pedal metal simplex, sweep pot 1 and pot 2 and show THD in 2D colored chart",
   "a": "example/pedal_metal_simplex/pedal_metal_simplex.ngjs"
  },
  {
-  "q": "Piezo pickup 40x jfet amplifier",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_40x_jfet_amplifier.ngjs"
+  "q": "How linear pot curve changes when parallel resistor is placed across pot",
+  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
  },
  {
-  "q": "Piezo pickup with mosfet source follower as input buffer",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
+  "q": "10k:100k pot divider",
+  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
  },
  {
-  "q": "first we connect resistor directly to 50k load and show AC",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
+  "q": "single resistor only",
+  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
  },
  {
-  "q": "then we make mosfet source follower",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
+  "q": "resistor with parallel 100k",
+  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
  },
  {
-  "q": "Piezo pickup and sziklai follower",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_sziklai_follower.ngjs"
+  "q": "resistor with parallel 20k",
+  "a": "example/pot_curves/pot_curves_parallel_resistor.ngjs"
  },
  {
-  "q": "Piezo pickup 40x amplifier",
-  "a": "example/piezo_pickup_amplifier/piezo_pickup_and_40x_mosfet_amplifier.ngjs"
+  "q": "Measure PNP's hFE",
+  "a": "example/pnp_characteristics/pnp_measure_hfe.ngjs"
  },
  {
-  "q": "Pedal alembic stratoblaster, output, ac, pot sweep (thd and gain)",
-  "a": "example/pedal_alembic_stratoblaster/pedal_alembic_stratoblaster.ngjs"
+  "q": "https://i0.wp.com/www.biophysicslab.com/wp-content/uploads/2021/04/Simple_Breadboard_hFEa.jpg",
+  "a": "example/pnp_characteristics/pnp_measure_hfe.ngjs"
  },
  {
   "q": "Show using switch timeline feature where switch states are defined for different times",
@@ -1544,84 +1488,304 @@
   "a": "example/switch/switch_1p2t.ngjs"
  },
  {
-  "q": "Using existing subckt model",
-  "a": "example/using_subckt_model/using_subckt_model.ngjs"
+  "q": "Single opamp as vccs, p-channel mosfet and grounded load",
+  "a": "example/opamp_howland_current_pump/opamp_vccs_mosfet_p.ngjs"
  },
  {
-  "q": "Opamp with virtual ground made of resistor divider and caps",
-  "a": "example/opamp_virtual_ground/opamp_virtual_ground.ngjs"
+  "q": "Dual opamp voltage controlled current source, voltage = 0-2.5V, current=0-25mA",
+  "a": "example/opamp_howland_current_pump/dual_opamp_vccs.ngjs"
  },
  {
-  "q": "virtual ground using 2 resistors and 2 capacitors",
-  "a": "example/opamp_virtual_ground/opamp_virtual_ground.ngjs"
+  "q": "replace resistor R4 with diode",
+  "a": "example/opamp_howland_current_pump/dual_opamp_vccs.ngjs"
  },
  {
-  "q": "Switching between different PNP and observing gain",
-  "a": "example/pnp_common_emitter/pnp_different_BD136_models.ngjs"
+  "q": "Opamp howland current pump",
+  "a": "example/opamp_howland_current_pump/opamp_howland_current_pump.ngjs"
  },
  {
-  "q": "show tran and gain",
-  "a": "example/pnp_common_emitter/pnp_different_BD136_models.ngjs"
+  "q": "howland current pump",
+  "a": "example/opamp_howland_current_pump/opamp_howland_current_pump.ngjs"
  },
  {
-  "q": "Convert NPN common emitter to PNP common emitter with these 2 simple tricks",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "Voltage controlled current source using sensing resistor",
+  "a": "example/opamp_howland_current_pump/opamp_vccs_sensing_resistor.ngjs"
  },
  {
-  "q": "First NPN common emitter",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "Ripple rejection circuit using NPN as \"capacitance multiplier\"",
+  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
  },
  {
-  "q": "show tran and gain",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "ripple rejection circuit",
+  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
  },
  {
-  "q": "PNP common emitter",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "transient analysis",
+  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
  },
  {
-  "q": "delete NPN t1",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "measure how much it was stabilised",
+  "a": "example/ripple_rejection_using_npn/ripple_rejection_using_npn.ngjs"
  },
  {
-  "q": "insert new PNP",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "Shows how to include other files",
+  "a": "example/include/using_include.ngjs"
  },
  {
-  "q": "flip battery polarity",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "//echo(Object.keys(this).sort().join('\\n'))",
+  "a": "example/include/using_include.ngjs"
  },
  {
-  "q": "show tran and gain",
-  "a": "example/pnp_common_emitter/pnp_common_emitter.ngjs"
+  "q": "Weird french 2 BJT amplifier",
+  "a": "example/french_amp/french_amp.ngjs"
  },
  {
-  "q": "Using TL431_2 as 2.5V reference",
-  "a": "example/undervoltage_protection/TL431_2_as_2V5_ref.ngjs"
+  "q": "Find model attributes for the zener diode C9V1ST from the measured reverse voltage and current values",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "3.7V undervoltage protection using P-channel mosfet transistor and TL431 voltage reference",
-  "a": "example/undervoltage_protection/undervoltage_protection_mosfet_p.ngjs"
+  "q": "make unit tests repeatable",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "3.7V undervoltage protection using PNP transistor and TL431 voltage reference",
-  "a": "example/undervoltage_protection/undervoltage_protection_pnp.ngjs"
+  "q": "Load table of measured reverse voltages and currents",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "Using TL431 to turn on low-battery indicator",
-  "a": "example/undervoltage_protection/low_battery_indicator.ngjs"
+  "q": "Run several times",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "This sets the warning level to ~8V",
-  "a": "example/undervoltage_protection/low_battery_indicator.ngjs"
+  "q": "    clear netlist before next simulation",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "Using TL431 as 2.5V reference",
-  "a": "example/undervoltage_protection/TL431_as_2V5_ref.ngjs"
+  "q": "    Simulate circuit",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
  },
  {
-  "q": "NPN phase splitter",
-  "a": "example/npn_phase_splitter/npn_phase_splitter.ngjs"
+  "q": "    run transient analysis",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "    Create lerp Vreverse => Ireverse",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "    calculate error against measured values",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        physically measured voltages and amps",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        //echo(vr, ir.toEng());",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        get simulated current for given voltage",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        ignore current below minimal measured current",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        square error",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        relative error to the ir",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        sum relative errors",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        //echo('#', i, 'vr', vr, 'ir', ir.toEng(3), 'isim', isim.toEng(3), 'ce^2', ce.toEng(3));",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        show chart",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "        chart linear",
+  "a": "example/zener_diode_model_maker/find_model_zener_2V4.ngjs"
+ },
+ {
+  "q": "Draw V-A curve using ZENER_C2V4ST model from the model/DIODE/ZENER_C2V4ST.sub",
+  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
+ },
+ {
+  "q": "Simulate circuit",
+  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
+ },
+ {
+  "q": "Load table of measured reverse voltages and currents (for comparison)",
+  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
+ },
+ {
+  "q": "show chart",
+  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
+ },
+ {
+  "q": "chart linear",
+  "a": "example/zener_diode_model_maker/zener_test_model_2V4.ngjs"
+ },
+ {
+  "q": "Find model attributes for the zener diode C9V1ST from the measured reverse voltage and current values",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "make unit tests repeatable",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "Load table of measured reverse voltages and currents",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "Run several times",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "    clear netlist before next simulation",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "    Simulate circuit",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "    run transient analysis",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "    Create lerp Vreverse => Ireverse",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "    calculate error against measured values",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        physically measured voltages and amps",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        //echo(vr, ir.toEng());",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        get simulated current for given voltage",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        square error",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        relative error to the ir",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        sum relative errors",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        //echo('#', i, 'vr', vr, 'ir', ir.toEng(3), 'isim', isim.toEng(3), 'ce^2', ce.toEng(3));",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        show chart",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "        chart linear",
+  "a": "example/zener_diode_model_maker/find_model_zener_9V1.ngjs"
+ },
+ {
+  "q": "Draw V-A curve using ZENER_C9V1ST model from the model/DIODE/ZENER_C9V1ST.sub",
+  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
+ },
+ {
+  "q": "Simulate circuit",
+  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
+ },
+ {
+  "q": "Load table of measured reverse voltages and currents (for comparison)",
+  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
+ },
+ {
+  "q": "log chart",
+  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
+ },
+ {
+  "q": "chart linear",
+  "a": "example/zener_diode_model_maker/zener_test_model_9V1.ngjs"
+ },
+ {
+  "q": "By using new Exception() the stack will be deep",
+  "a": "example/exceptions/3_uncaught_new_exception.ngjs"
+ },
+ {
+  "q": "Show that string throw has no stack trace",
+  "a": "example/exceptions/1_string_exception_uncaught.ngjs"
+ },
+ {
+  "q": "Show that exception can be caught and program continues",
+  "a": "example/exceptions/2_string_exception_caght.ngjs"
+ },
+ {
+  "q": "By using new Error() the stack will be deep",
+  "a": "example/exceptions/3b_uncaught_new_error.ngjs"
+ },
+ {
+  "q": "Show how object Exceptions affect the speed compared to faster string exceptions",
+  "a": "example/exceptions/4_caught_new_exception.ngjs"
+ },
+ {
+  "q": "Using current mirror as a resistor-controlled constant current source",
+  "a": "example/current_mirror/pnp_current_mirror.ngjs"
+ },
+ {
+  "q": "PNP current mirror",
+  "a": "example/current_mirror/pnp_current_mirror.ngjs"
+ },
+ {
+  "q": "Mosfet_n current mirror",
+  "a": "example/current_mirror/mosfet_n_current_mirror.ngjs"
+ },
+ {
+  "q": "Show usage of voltmeter for measuring between 2 nodes",
+  "a": "example/opamp_differential_amplifier_floating_input/opamp_differential_amplifier_floating_input.ngjs"
+ },
+ {
+  "q": "//resistor('R6', 10, 0, '1G');",
+  "a": "example/opamp_differential_amplifier_floating_input/opamp_differential_amplifier_floating_input.ngjs"
+ },
+ {
+  "q": "Compare different mosfets for switching 5R load powered from 5V supply using only 3V3 control voltage",
+  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+ },
+ {
+  "q": "BS170 - 100mA",
+  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+ },
+ {
+  "q": "IRF540N - 1.5uA (3.3V is not enough to open it)",
+  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+ },
+ {
+  "q": "IRLZ44N - 0.995A (10x better than BS170)",
+  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
+ },
+ {
+  "q": "Auxiliary PNP to open IRF540N - 0.981A (better than BS170 but needs extra PNP and 1-7mA)",
+  "a": "example/mosfet_switching_with_3V3/mosfet_switching_with_3V3.ngjs"
  },
  {
   "q": "Optimizing volume pot linearity and range in a condenser mic preamp",
@@ -1672,28 +1836,8 @@
   "a": "example/condenser_mic_optimizing_volume_pot/condenser_mic_optimizing_volume_pot.ngjs"
  },
  {
-  "q": "Pulse-induction metal detector, after decay the output V(19) is in the middle of 3.3V range",
-  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
- },
- {
-  "q": "coil switching stage",
-  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
- },
- {
-  "q": "control voltage",
-  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
- },
- {
-  "q": "opamp amplifier",
-  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
- },
- {
-  "q": "Decent octave up pedal with input jfet buffer",
-  "a": "example/pedal_octaver/pedal_decent_octave_up_with_jfet_buffer.ngjs"
- },
- {
-  "q": "Octave pedal made of 4 ideal diodes",
-  "a": "example/pedal_octaver/pedal_octaver_ideal.ngjs"
+  "q": "NPN phase splitter",
+  "a": "example/npn_phase_splitter/npn_phase_splitter.ngjs"
  },
  {
   "q": "Dan Armstrong Green Ringer octaver",
@@ -1701,6 +1845,10 @@
  },
  {
   "q": "//resistor('RLOAD', 17, 0, '50k');",
+  "a": "example/pedal_octaver/pedal_green_ringer.ngjs"
+ },
+ {
+  "q": "damping looks nice in tran but fft f0 would be too low and DC too high, so stop the damping",
   "a": "example/pedal_octaver/pedal_green_ringer.ngjs"
  },
  {
@@ -1732,292 +1880,76 @@
   "a": "example/pedal_octaver/pedal_green_ringer.ngjs"
  },
  {
-  "q": "4-transistor amplifier for 8ohm load",
-  "a": "example/four_bjt_8ohm_amplifier/four_bjt_8ohm_amplifier.ngjs"
+  "q": "Decent octave up pedal with input jfet buffer",
+  "a": "example/pedal_octaver/pedal_decent_octave_up_with_jfet_buffer.ngjs"
  },
  {
-  "q": "Shows how to include other files",
-  "a": "example/include/using_include.ngjs"
+  "q": "Octave pedal made of 4 ideal diodes",
+  "a": "example/pedal_octaver/pedal_octaver_ideal.ngjs"
  },
  {
-  "q": "//echo(Object.keys(this).sort().join('\\n'))",
-  "a": "example/include/using_include.ngjs"
+  "q": "Testing DC coupled gain using opamp, symmetrical supply",
+  "a": "example/opamp_dc_gain/opamp_dc_gain_symmetrical_supply.ngjs"
  },
  {
-  "q": "Emitter follower chart THD by input amplitude for different loads",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "Testing DC coupled gain using opamp and single supply",
+  "a": "example/opamp_dc_gain/opamp_dc_gain_single_supply.ngjs"
  },
  {
-  "q": "symmetrical 24v supply",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "FFT with beta-correct AC128s and comparison with two identical 2N3906",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_correct_beta_AC128.ngjs"
  },
  {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "change transistors to 2n3906",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_correct_beta_AC128.ngjs"
  },
  {
-  "q": "input amplitude from 1V to 10V",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "Save output of fuzz face to wav file",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
  },
  {
-  "q": "        have to increase interval from 0.1 to 0.3 otherwise there would be",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "pnp fuzz face distortion",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
  },
  {
-  "q": "        weird raise at low input amplitudes for 1M load",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load.ngjs"
+  "q": "audio source",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
  },
  {
-  "q": "Emitter follower with constant current source, chart THD by input amplitude for different loads",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "3s transient analysis",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
  },
  {
-  "q": "symmetrical 24v supply",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "save output to wav",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_save_audio.ngjs"
  },
  {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "Observing THD of fuzz face pedal with changes in pot P1 position",
+  "a": "example/pedal_fuzz_face/pedal_fuzz_face_pot1_thd.ngjs"
  },
  {
-  "q": "input amplitude from 1V to 10V",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "3.7V undervoltage protection using PNP transistor and TL431 voltage reference",
+  "a": "example/undervoltage_protection/undervoltage_protection_pnp.ngjs"
  },
  {
-  "q": "        have to increase interval from 0.1 to 0.3 otherwise there would be",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "Using TL431 as 2.5V reference",
+  "a": "example/undervoltage_protection/TL431_as_2V5_ref.ngjs"
  },
  {
-  "q": "        weird raise at low input amplitudes for 1M load",
-  "a": "example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs"
+  "q": "Using TL431 to turn on low-battery indicator",
+  "a": "example/undervoltage_protection/low_battery_indicator.ngjs"
  },
  {
-  "q": "Simple emitter follower test",
-  "a": "example/emitter_follower/simple_test.ngjs"
+  "q": "This sets the warning level to ~8V",
+  "a": "example/undervoltage_protection/low_battery_indicator.ngjs"
  },
  {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/simple_test.ngjs"
+  "q": "3.7V undervoltage protection using P-channel mosfet transistor and TL431 voltage reference",
+  "a": "example/undervoltage_protection/undervoltage_protection_mosfet_p.ngjs"
  },
  {
-  "q": "Changing R1 and R2 and measure gain, current and thd",
-  "a": "example/emitter_follower/r1_r2.ngjs"
- },
- {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/r1_r2.ngjs"
- },
- {
-  "q": "This file will be included by other examples",
-  "a": "example/emitter_follower/emitter_follower.ngjs"
- },
- {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/emitter_follower.ngjs"
- },
- {
-  "q": "Emitter follower chart of gain by input offset for different loads",
-  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
- },
- {
-  "q": "symmetrical 24v supply",
-  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
- },
- {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
- },
- {
-  "q": "//capacitor('C1', 6, 2, '100u'); - not used so that offset can be changed",
-  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
- },
- {
-  "q": "    input is 1V offset changes from -20 to +20V",
-  "a": "example/emitter_follower/input_offset_and_gain.ngjs"
- },
- {
-  "q": "Changing R1 and R2 and R3 measure gain, current and thd and find the best score",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "emitter follower",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "gain is <1 but we need at least 0.9",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "current should be smallest but must be below 1mA",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "thd should be smallest and must be below 0.02",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "//series_e3('1k', '100k').forEach(c => {",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "//});",
-  "a": "example/emitter_follower/r1_r2_r3.ngjs"
- },
- {
-  "q": "Active envelope follower using opamp",
-  "a": "example/envelope_follower/active_envelope_follower_opamp.ngjs"
- },
- {
-  "q": "Passive envelope follower (AM signal)",
-  "a": "example/envelope_follower/passive_envelope_follower_am.ngjs"
- },
- {
-  "q": "Active envelope follower (beeping signal)",
-  "a": "example/envelope_follower/active_envelope_follower.ngjs"
- },
- {
-  "q": "Active envelope follower (AM signal)",
-  "a": "example/envelope_follower/active_envelope_follower_am.ngjs"
- },
- {
-  "q": "Using motor driver L272M",
-  "a": "example/motor_driver_L272M/motor_driver_L272M.ngjs"
- },
- {
-  "q": "DIP8 L272M = out1 vcc out2 gnd in2- in2+ in1+ in1-",
-  "a": "example/motor_driver_L272M/motor_driver_L272M.ngjs"
- },
- {
-  "q": "Joule thief powering white LED from single 1.5V AAA battery",
-  "a": "example/joule_thief/joule_thief.ngjs"
- },
- {
-  "q": "Calculate even and odd harmonics ratios using fft",
-  "a": "example/harmonics/fft_even_odd.ngjs"
- },
- {
-  "q": "N-channel mosfet 10x amplifier with high inductance source, 50k load and reasonably flat AC",
-  "a": "example/mosfet_n_10x_amplifier/mosfet_n_10x_amplifier.ngjs"
- },
- {
-  "q": "3-opamp instrumentation amplifier, gain controlled by single resistor R2",
-  "a": "example/opamp_instrumentation_amplifier/opamp_instrumentation_amplifier.ngjs"
- },
- {
-  "q": "Square wave supply",
-  "a": "example/signal_sources/square.ngjs"
- },
- {
-  "q": "Sinewave supply",
-  "a": "example/signal_sources/sinewave.ngjs"
- },
- {
-  "q": "Amplitude modulated voltage source",
-  "a": "example/signal_sources/am.ngjs"
- },
- {
-  "q": "Beeping voltage supply",
-  "a": "example/signal_sources/beeps.ngjs"
- },
- {
-  "q": "Single pulse supply",
-  "a": "example/signal_sources/pulse.ngjs"
- },
- {
-  "q": "Sawtooth supply",
-  "a": "example/signal_sources/sawtooth.ngjs"
- },
- {
-  "q": "Three phase astable multivibrator",
-  "a": "example/three_phase_oscillator/three_phase_oscillator.ngjs"
- },
- {
-  "q": "you can show multiple charts at once",
-  "a": "example/three_phase_oscillator/three_phase_oscillator.ngjs"
- },
- {
-  "q": "Common base 50x amplifier driving 5k load",
-  "a": "example/common_base/common_base.ngjs"
- },
- {
-  "q": "common base amplifier",
-  "a": "example/common_base/common_base.ngjs"
- },
- {
-  "q": "Show gain of net 6 (input) vs net 5 (output)",
-  "a": "example/common_base/common_base.ngjs"
- },
- {
-  "q": "Supply sensitivity",
-  "a": "example/common_base/common_base.ngjs"
- },
- {
-  "q": "Load sensitivity",
-  "a": "example/common_base/common_base.ngjs"
- },
- {
-  "q": "JFET colpitts oscillator",
-  "a": "example/metal_detector_transmitter/jfet_colpitts.ngjs"
- },
- {
-  "q": "This is oscillator used in metal detectors by Charles D. Rakes",
-  "a": "example/metal_detector_transmitter/rakes.ngjs"
- },
- {
-  "q": "Fig. 7 in https://www.geotech1.com/pages/metdet/projects/rakes/rakes2_150.pdf",
-  "a": "example/metal_detector_transmitter/rakes.ngjs"
- },
- {
-  "q": "Peltz oscillator",
-  "a": "example/metal_detector_transmitter/peltz.ngjs"
- },
- {
-  "q": "20kHz colpitts oscillator using n-channel mosfet BS170 and extra resistor from gate to drain",
-  "a": "example/metal_detector_transmitter/mosfet_colpitts.ngjs"
- },
- {
-  "q": "Two NPN colpitts oscillator",
-  "a": "example/metal_detector_transmitter/two_npn_colpitts_oscillator.ngjs"
- },
- {
-  "q": "Oscillator from treasure witcher metal detector",
-  "a": "example/metal_detector_transmitter/treasure_witcher.ngjs"
- },
- {
-  "q": "Colpitts oscillator with NPN",
-  "a": "example/metal_detector_transmitter/npn_colpitts.ngjs"
- },
- {
-  "q": "Using single pulse source",
-  "a": "example/pulse_source/single_pulse.ngjs"
- },
- {
-  "q": "pulse voltage supply, and lc filter",
-  "a": "example/pulse_source/single_pulse.ngjs"
- },
- {
-  "q": "transient analysis",
-  "a": "example/pulse_source/single_pulse.ngjs"
- },
- {
-  "q": "Mosfet_n current mirror",
-  "a": "example/current_mirror/mosfet_n_current_mirror.ngjs"
- },
- {
-  "q": "Using current mirror as a resistor-controlled constant current source",
-  "a": "example/current_mirror/pnp_current_mirror.ngjs"
- },
- {
-  "q": "PNP current mirror",
-  "a": "example/current_mirror/pnp_current_mirror.ngjs"
- },
- {
-  "q": "Guitar pedal \"Electra distortion\" with original 1N4148+1N34A vs 1N4148+1N4148",
-  "a": "example/pedal_electra_distortion/pedal_electra_distortion.ngjs"
- },
- {
-  "q": "NPN Amplifier to amplify signal to measure LC ringing",
-  "a": "example/measure_lc_ringing/measure_lc_ringing.ngjs"
+  "q": "Using TL431_2 as 2.5V reference",
+  "a": "example/undervoltage_protection/TL431_2_as_2V5_ref.ngjs"
  },
  {
   "q": "Transformer from 230V to 12V",
@@ -2032,44 +1964,32 @@
   "a": "example/transformer/transformer_230V_to_12V.ngjs"
  },
  {
-  "q": "Calculate BETA from Idss and Vto",
-  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+  "q": "Pedal alembic stratoblaster, output, ac, pot sweep (thd and gain)",
+  "a": "example/pedal_alembic_stratoblaster/pedal_alembic_stratoblaster.ngjs"
  },
  {
-  "q": "        VTO = VGSoff",
-  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+  "q": "White noise generator using unconnected collector on NPN transistor",
+  "a": "example/white_noise_generator_npn/white_noise_generator_npn.ngjs"
  },
  {
-  "q": "        BETA = IDSS / (VGSoff^2)",
-  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+  "q": "change battery voltage to 5V (in real circuit noise drops to zero so the simulation is not realistic)",
+  "a": "example/white_noise_generator_npn/white_noise_generator_npn.ngjs"
  },
  {
-  "q": "    print model attributes",
-  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+  "q": "Pedal AMZ mosfet booster",
+  "a": "example/pedal_amz_mosfet_booster/pedal_amz_mosfet_booster.ngjs"
  },
  {
-  "q": "Testing different jfets in jfet matcher jig",
-  "a": "example/jfet_matcher/jfet_matcher.ngjs"
+  "q": "Maximize gain of common emitter, manually tuned to 22.0, then optimized to 22.8x",
+  "a": "example/maximize_gain/maximize_gain.ngjs"
  },
  {
-  "q": "http://tagboardeffects.blogspot.com/2012/07/greatly-improved-jfet-matcher.html",
-  "a": "example/jfet_matcher/jfet_matcher.ngjs"
+  "q": "Common emitter",
+  "a": "example/maximize_gain/maximize_gain.ngjs"
  },
  {
-  "q": "AC analysis of ideal and real LC circuit",
-  "a": "example/quality_of_lc_filter/quality_of_lc_filter.ngjs"
- },
- {
-  "q": "Response of LC filter to square wave signal (the \"ringing\")",
-  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
- },
- {
-  "q": "square wave voltage supply, and lc filter response",
-  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
- },
- {
-  "q": "transient analysis",
-  "a": "example/square_wave_and_lc_filter/square_wave_and_lc_filter.ngjs"
+  "q": "Try R1 R2 from 10R to 10M",
+  "a": "example/maximize_gain/maximize_gain.ngjs"
  },
  {
   "q": "Maximize gain of common emitter, manually tuned to 209x, then optimized to 224x",
@@ -2086,18 +2006,6 @@
  {
   "q": "file_write_csv('scatter.csv', csv);",
   "a": "example/maximize_gain/maximize_gain_v2.ngjs"
- },
- {
-  "q": "Maximize gain of common emitter with 3.3V battery, manually tuned to 22.1x, then optimized to 22.8x",
-  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
- },
- {
-  "q": "Common emitter",
-  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
- },
- {
-  "q": "Try R1 R2 from 10R to 10M",
-  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
  },
  {
   "q": "Maximize gain of common emitter, manually tuned to 217, then optimized to 224",
@@ -2128,16 +2036,88 @@
   "a": "example/maximize_gain/maximize_gain_singlecoil.ngjs"
  },
  {
-  "q": "Maximize gain of common emitter, manually tuned to 22.0, then optimized to 22.8x",
-  "a": "example/maximize_gain/maximize_gain.ngjs"
+  "q": "Maximize gain of common emitter with 3.3V battery, manually tuned to 22.1x, then optimized to 22.8x",
+  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
  },
  {
   "q": "Common emitter",
-  "a": "example/maximize_gain/maximize_gain.ngjs"
+  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
  },
  {
   "q": "Try R1 R2 from 10R to 10M",
-  "a": "example/maximize_gain/maximize_gain.ngjs"
+  "a": "example/maximize_gain/maximize_gain_3V3.ngjs"
+ },
+ {
+  "q": "JFET colpitts oscillator",
+  "a": "example/metal_detector_transmitter/jfet_colpitts.ngjs"
+ },
+ {
+  "q": "Peltz oscillator",
+  "a": "example/metal_detector_transmitter/peltz.ngjs"
+ },
+ {
+  "q": "Colpitts oscillator with NPN",
+  "a": "example/metal_detector_transmitter/npn_colpitts.ngjs"
+ },
+ {
+  "q": "20kHz colpitts oscillator using n-channel mosfet BS170 and extra resistor from gate to drain",
+  "a": "example/metal_detector_transmitter/mosfet_colpitts.ngjs"
+ },
+ {
+  "q": "Two NPN colpitts oscillator",
+  "a": "example/metal_detector_transmitter/two_npn_colpitts_oscillator.ngjs"
+ },
+ {
+  "q": "Oscillator from treasure witcher metal detector",
+  "a": "example/metal_detector_transmitter/treasure_witcher.ngjs"
+ },
+ {
+  "q": "This is oscillator used in metal detectors by Charles D. Rakes",
+  "a": "example/metal_detector_transmitter/rakes.ngjs"
+ },
+ {
+  "q": "Fig. 7 in https://www.geotech1.com/pages/metdet/projects/rakes/rakes2_150.pdf",
+  "a": "example/metal_detector_transmitter/rakes.ngjs"
+ },
+ {
+  "q": "Piece-wise linear source",
+  "a": "example/pwl_source/pwl_source.ngjs"
+ },
+ {
+  "q": "Pedal opamp fuzz and THD related to R2 value",
+  "a": "example/pedal_opamp_fuzz/pedal_opamp_fuzz.ngjs"
+ },
+ {
+  "q": "Using voltmeter to measure voltage of capacitor and inductor in RLC circuit",
+  "a": "example/voltmeter/ac_rlc.ngjs"
+ },
+ {
+  "q": "Using voltmeter in transient analysis to measure average voltage",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "help: how to add voltmeter",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "help: how to measure average voltage using voltmeter",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "help: how to measure maximal voltage using voltmeter",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "help: how to measure minimal voltage using voltmeter",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "help: how to measure voltage swing using voltmeter",
+  "a": "example/voltmeter/tran_average_voltage.ngjs"
+ },
+ {
+  "q": "Using voltmeter in transient analysis",
+  "a": "example/voltmeter/tran_divider.ngjs"
  },
  {
   "q": "FFT of various non-trivial vectors (real inductors, ammeters, floating voltmeters)",
@@ -2176,76 +2156,20 @@
   "a": "example/fft_of_ammeter_current/fft_of_ammeter_current.ngjs"
  },
  {
-  "q": "Compare VA characteristic, timing and AC of 2 diodes",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
+  "q": "Pulse-induction metal detector, after decay the output V(19) is in the middle of 3.3V range",
+  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
  },
  {
-  "q": "    Compare 2 diodes",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
+  "q": "coil switching stage",
+  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
  },
  {
-  "q": "    V-A characteristic",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
+  "q": "control voltage",
+  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
  },
  {
-  "q": "    log",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
- },
- {
-  "q": "    linear",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
- },
- {
-  "q": "    timing",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
- },
- {
-  "q": "    ac with series inductor",
-  "a": "example/diode_va/diode_va_characteristic.ngjs"
- },
- {
-  "q": "Bootstrap amplifier 1000x gain, 2.5mA consumption, muddy AC",
-  "a": "example/bootstrap_amplifier/bootstrap_amplifier_1000x.ngjs"
- },
- {
-  "q": "Sziklay pair driving same 66R load",
-  "a": "example/bjt_high_current_output_amps/sziklay_pair_amp.ngjs"
- },
- {
-  "q": "Common emitter + Common base with feedback",
-  "a": "example/bjt_high_current_output_amps/ce_cb_feedback.ngjs"
- },
- {
-  "q": "Push-pull amplifier driving 66R load",
-  "a": "example/bjt_high_current_output_amps/push_pull_amp.ngjs"
- },
- {
-  "q": "Guitar pickup clamped by two antiparallel diodes to get some distortion",
-  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
- },
- {
-  "q": "pickup clamped by 2 antiparallel diodes",
-  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
- },
- {
-  "q": "transient analysis",
-  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
- },
- {
-  "q": "AC analysis",
-  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
- },
- {
-  "q": "FFT analysis",
-  "a": "example/pickup_and_two_antiparallel_diodes/pickup_and_two_antiparallel_diodes.ngjs"
- },
- {
-  "q": "Pedal opamp fuzz and THD related to R2 value",
-  "a": "example/pedal_opamp_fuzz/pedal_opamp_fuzz.ngjs"
- },
- {
-  "q": "Measure hFE using two ammeters",
-  "a": "example/npn_characteristics/npn_measure_hfe_with_two_ammeters.ngjs"
+  "q": "opamp amplifier",
+  "a": "example/metal_detector_pi/metal_detector_pi.ngjs"
  },
  {
   "q": "Trying to find if hFE can be measured accurately",
@@ -2256,8 +2180,8 @@
   "a": "example/npn_characteristics/npn_measure_hfe_shared_collector_resistor.ngjs"
  },
  {
-  "q": "Measuring hFE using opamp",
-  "a": "example/npn_characteristics/npn_measure_hfe_using_opamp.ngjs"
+  "q": "Show Ic/Vce in chart_xy with multiple series in one chart",
+  "a": "example/npn_characteristics/npn_measure_vce_ic_using_current_source_chart.ngjs"
  },
  {
   "q": "Measure forward early voltage VAF",
@@ -2272,14 +2196,6 @@
   "a": "example/npn_characteristics/npn_measure_vaf.ngjs"
  },
  {
-  "q": "Can hFE be reliably measured using 2 resistors?",
-  "a": "example/npn_characteristics/npn_measure_hfe_using_2_resistors.ngjs"
- },
- {
-  "q": "Show Ic/Vce in chart_xy with multiple series in one chart",
-  "a": "example/npn_characteristics/npn_measure_vce_ic_using_current_source_chart.ngjs"
- },
- {
   "q": "Measure Vce:Ic characteristic of NPN transistor using current source",
   "a": "example/npn_characteristics/npn_measure_vce_ic_using_current_source.ngjs"
  },
@@ -2292,11 +2208,99 @@
   "a": "example/npn_characteristics/npn_measure_vce_ic_using_current_source.ngjs"
  },
  {
-  "q": "4-stage diode based voltage multiplier",
-  "a": "example/diode_voltage_multiplier/diode_voltage_multiplier.ngjs"
+  "q": "Measuring hFE using opamp",
+  "a": "example/npn_characteristics/npn_measure_hfe_using_opamp.ngjs"
  },
  {
-  "q": "Converting 22kHz 9V square wave (0-9V) to 32V using four voltage doubler subcircuits",
-  "a": "example/diode_voltage_multiplier/square_wave_9V_to_dc_34V.ngjs"
+  "q": "Can hFE be reliably measured using 2 resistors?",
+  "a": "example/npn_characteristics/npn_measure_hfe_using_2_resistors.ngjs"
+ },
+ {
+  "q": "Measure hFE using two ammeters",
+  "a": "example/npn_characteristics/npn_measure_hfe_with_two_ammeters.ngjs"
+ },
+ {
+  "q": "Calculate BETA from Idss and Vto",
+  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+ },
+ {
+  "q": "        VTO = VGSoff",
+  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+ },
+ {
+  "q": "        BETA = IDSS / (VGSoff^2)",
+  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+ },
+ {
+  "q": "    print model attributes",
+  "a": "example/jfet_matcher/jfet_calculate_beta.ngjs"
+ },
+ {
+  "q": "Testing different jfets in jfet matcher jig",
+  "a": "example/jfet_matcher/jfet_matcher.ngjs"
+ },
+ {
+  "q": "http://tagboardeffects.blogspot.com/2012/07/greatly-improved-jfet-matcher.html",
+  "a": "example/jfet_matcher/jfet_matcher.ngjs"
+ },
+ {
+  "q": "Another dynamic mic preamp with npn and pnp",
+  "a": "example/dynamic_mic/dynamic_mic_amp_npn_pnp.ngjs"
+ },
+ {
+  "q": "Making a dumb spice model of dynamic microphone",
+  "a": "example/dynamic_mic/dynamic_mic.ngjs"
+ },
+ {
+  "q": "Using dynamic_mic device",
+  "a": "example/dynamic_mic/dynamic_mic_using_model.ngjs"
+ },
+ {
+  "q": "NPN Amplifier to amplify signal to measure LC ringing",
+  "a": "example/measure_lc_ringing/measure_lc_ringing.ngjs"
+ },
+ {
+  "q": "Pedal crybaby wah",
+  "a": "example/pedal_wah/pedal_crybaby_wah.ngjs"
+ },
+ {
+  "q": "coil switching stage",
+  "a": "example/pedal_wah/pedal_crybaby_wah.ngjs"
+ },
+ {
+  "q": "Pedal wox wah swell and peak frequency by pot position",
+  "a": "example/pedal_wah/pedal_wox_wah_swell.ngjs"
+ },
+ {
+  "q": "Pedal bespeco weeper wah, AC and pot sweep vs peak frequency",
+  "a": "example/pedal_wah/pedal_bespeco_weeper_wah.ngjs"
+ },
+ {
+  "q": "Pedal colorsound wah",
+  "a": "example/pedal_wah/pedal_colorsound_wah.ngjs"
+ },
+ {
+  "q": "coil switching stage",
+  "a": "example/pedal_wah/pedal_colorsound_wah.ngjs"
+ },
+ {
+  "q": "Pedal maestro boomerang wah wah",
+  "a": "example/pedal_wah/pedal_maestro_boomerang_wah_wah.ngjs"
+ },
+ {
+  "q": "Pedal Anderton Wah-Antiwah - filter has two peaks, one is going down, second is going up",
+  "a": "example/pedal_wah/pedal_anderton_wah_antiwah.ngjs"
+ },
+ {
+  "q": "Pedal VOX Wah 847",
+  "a": "example/pedal_wah/pedal_vox_wah_v847.ngjs"
+ },
+ {
+  "q": "Pedal wah filter",
+  "a": "example/pedal_wah/pedal_wah_filter.ngjs"
+ },
+ {
+  "q": "coil switching stage",
+  "a": "example/pedal_wah/pedal_wah_filter.ngjs"
  }
 ]

@@ -9,6 +9,7 @@ function files() {
         | grep -v jsep.js \
         | grep -v js-beautify.js \
         | grep -v jshint-2.13.6.js \
+        | sort
 
 }
 

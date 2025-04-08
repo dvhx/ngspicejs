@@ -29,7 +29,14 @@ void js_file_write_binary(const v8::FunctionCallbackInfo < v8::Value > &args) {
         exit(EXIT_UNREACHABLE);
     }
     for (size_t i = 0; i < sz; i++) {
-        v8::Local<v8::Value> n = arr->Get(i);
+        v8::Local<v8::Value> n; // = arr->Get(i);
+        if (!arr->Get(iso->GetCurrentContext(), i).ToLocal(&n)) {
+          // Successfully retrieved the value at index `i`
+          //n = v8::Undefined(isolate); // Assign undefined if retrieval failed
+          std::cerr << "error: js_file_write_binary(...) failed to get array item" << std::endl;
+          exit(EXIT_MODERN);
+        }
+
         v8::Maybe<uint32_t> maybe_uint = n->Uint32Value(globalContext);
         if (!maybe_uint.IsJust()) {
             fatal_msg_stack(iso, EXIT_FILE, "file_write_binary(%s) conversion to uint failed after %ld bytes", fn, sz);

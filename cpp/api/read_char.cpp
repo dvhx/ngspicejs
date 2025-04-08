@@ -37,7 +37,9 @@ void js_read_char(const v8::FunctionCallbackInfo < v8::Value > &args) {
     s[1] = '\0';
 
     // set return value
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(iso, s));
+    // args.GetReturnValue().Set(v8::String::NewFromUtf8(iso, s));
+    v8::Local<v8::String> local_string = v8::String::NewFromUtf8(iso, s, v8::NewStringType::kNormal).ToLocalChecked();
+    args.GetReturnValue().Set(local_string);
 
     free(s);
 }

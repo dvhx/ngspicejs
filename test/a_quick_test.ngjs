@@ -20,7 +20,7 @@ echo('asdf', 123);
 clear_screen();
 echo(script_shell_full().replace(env('HOME'), '~') + ' <-- make sure you are running tests using ngspicejs binary from correct dir');
 delay_ms(10);
-echo(dir('../js/depend'));
+echo(dir('../js/depend').sort());
 //echo(dir_current());
 echo(env('TERM'));
 echo(file_exists('../Makefile'), file_exists('../banana'));

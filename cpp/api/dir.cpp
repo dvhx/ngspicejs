@@ -45,7 +45,11 @@ void js_dir(const v8::FunctionCallbackInfo < v8::Value > &args) {
     // fill array with filenames
     v8::Handle<v8::Array> a = v8::Array::New(iso, ars_count(p));
     for (size_t i = 0; i < ars_count(p); i++) {
-        a->Set(i, v8::String::NewFromUtf8(iso, ars_nth(p, i)));
+        v8::Local<v8::String> s = v8::String::NewFromUtf8(iso, ars_nth(p, i), v8::NewStringType::kNormal).ToLocalChecked();
+        if (!a->Set(iso->GetCurrentContext(), i, s).FromMaybe(false)) {
+          std::cerr << "error: failed to set string in dir(...)" << std::endl;
+          exit(EXIT_MODERN);
+        }
     }
     ars_free(p);
 

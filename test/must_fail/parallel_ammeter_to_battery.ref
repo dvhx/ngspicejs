@@ -1,15 +1,16 @@
 warn: Device ammeter A2 is parallel to device battery U1 (anode 1, cathode 0), this may cause problems!
-error: Problem with nets v_u1#branch,v_u1#branch (check if capacitors have path to ground)
-hint: Net v_u1#branch contains: 
-hint: If 2 capacitors are in series, their common pin must have path to ground, use e.g. 10G resistor to ground
-hint: Unconnected pins of capacitors must be connected to ground, use e.g. 10G resistor to ground
 error: Transient analysis timestep too small
 hint: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
-error: Unhandled error in the output of ngspice: stderr Warning: Last gmin step failed
-error: Unhandled error in the output of ngspice: stderr Warning: Last gmin step failed
-error: Unhandled error in the output of ngspice: stderr Supplies reduced to   0.0000% Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-error: Unhandled error in the output of ngspice: stderr Warning: gmin step failed
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
+error: Unhandled error in the output of ngspice: stderr Warning: singular matrix:  check node v_u1#branch
 error: Unhandled error in the output of ngspice: stderr Warning: source stepping failed
+error: Unhandled error in the output of ngspice: stderr Error: Transient op failed, timestep too small
+error: Unhandled error in the output of ngspice: stderr Error: The operating point could not be simulated successfully.
+error: Unhandled error in the output of ngspice: stderr Any of the following steps may fail.!
 error: Unhandled error in the output of ngspice: stdout Transient solution failed -
 netlist : string[113] = ** netlist_render BEGIN
 * battery U1
@@ -20,68 +21,31 @@ V_AMMETER__A2 1 0 DC 0
 .end
 log
   [0]: stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
-  [1]: stderr Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [2]: stderr Note: Starting dynamic gmin stepping
-  [3]: stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [4]: stderr Warning: Further gmin increment
-  [5]: stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [6]: stderr Warning: Further gmin increment
-  [7]: stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [8]: stderr Warning: Further gmin increment
-  [9]: stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [10]: stderr Warning: Further gmin increment
-  [11]: stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [12]: stderr Warning: Further gmin increment
-  [13]: stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [14]: stderr Warning: Further gmin increment
-  [15]: stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [16]: stderr Warning: Further gmin increment
-  [17]: stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [18]: stderr Warning: Further gmin increment
-  [19]: stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [20]: stderr Warning: Last gmin step failed
-  [21]: stderr Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [22]: stderr Warning: Dynamic gmin stepping failed
-  [23]: stderr Note: Starting true gmin stepping
-  [24]: stderr Trying gmin =   1.0000E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [25]: stderr Warning: Further gmin increment
-  [26]: stderr Trying gmin =   5.6234E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [27]: stderr Warning: Further gmin increment
-  [28]: stderr Trying gmin =   8.6596E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [29]: stderr Warning: Further gmin increment
-  [30]: stderr Trying gmin =   9.6466E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [31]: stderr Warning: Further gmin increment
-  [32]: stderr Trying gmin =   9.9105E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [33]: stderr Warning: Further gmin increment
-  [34]: stderr Trying gmin =   9.9775E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [35]: stderr Warning: Further gmin increment
-  [36]: stderr Trying gmin =   9.9944E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [37]: stderr Warning: Further gmin increment
-  [38]: stderr Trying gmin =   9.9986E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [39]: stderr Warning: Further gmin increment
-  [40]: stderr Trying gmin =   9.9996E-03 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [41]: stderr Warning: Last gmin step failed
-  [42]: stderr Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [43]: stderr Warning: True gmin stepping failed
-  [44]: stderr Note: Starting source stepping
-  [45]: stderr Supplies reduced to   0.0000% Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [46]: stderr Trying gmin =   1.0000E-02 Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [47]: stderr Warning: gmin step failed
-  [48]: stderr Warning: source stepping failed
-  [49]: stderr Note: Transient op started
-  [50]: stderr Warning: singular matrix:  check nodes v_u1#branch and v_u1#branch
-  [58]: stdout Transient solution failed -
-  [59]: stdout Last Node Voltages
-  [60]: stdout ------------------
-  [61]: stdout Node                                   Last Voltage        Previous Iter
-  [62]: stdout ----                                   ------------        -------------
-  [63]: stdout 1                                                 0                    0
-  [64]: stdout v_ammeter__a2#branch                              0                    0
-  [65]: stdout v_u1#branch                                       0                    9 *
-  [66]: stdout No. of Data Rows : 0
-  [67]: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
-  [68]: stderr tran simulation(s) aborted
-error: ngspice_process_log() found 8 errors
+  [1]: stderr Using SPARSE 1.3 as Direct Linear Solver
+  [2]: stderr Warning: singular matrix:  check node v_u1#branch
+  [3]: stderr Note: Starting dynamic gmin stepping
+  [4]: stderr Warning: singular matrix:  check node v_u1#branch
+  [9]: stderr Warning: Dynamic gmin stepping failed
+  [10]: stderr Note: Starting true gmin stepping
+  [11]: stderr Warning: True gmin stepping failed
+  [12]: stderr Note: Starting source stepping
+  [13]: stderr Warning: source stepping failed
+  [14]: stderr Note: Transient op started
+  [15]: stderr Error: Transient op failed, timestep too small
+  [16]: stderr Error: The operating point could not be simulated successfully.
+  [17]: stderr Any of the following steps may fail.!
+  [18]: stdout Transient solution failed -
+  [19]: stdout Last Node Voltages
+  [20]: stdout ------------------
+  [21]: stdout Node                                   Last Voltage        Previous Iter
+  [22]: stdout ----                                   ------------        -------------
+  [23]: stdout 1                                                 0                    0
+  [24]: stdout v_ammeter__a2#branch                              0                    0
+  [25]: stdout v_u1#branch                                       0                    9 *
+  [26]: stdout No. of Data Rows : 0
+  [27]: stderr doAnalyses: TRAN:  Timestep too small; initial timepoint: cause unrecorded.
+  [28]: stderr tran simulation(s) aborted
+error: ngspice_process_log() found 12 errors
   [parallel_ammeter_to_battery.ngjs:0:0] in <anonymous>()
     tran().run().chart('I(A1)');
            ^

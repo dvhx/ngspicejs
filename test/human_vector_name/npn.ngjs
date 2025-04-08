@@ -20,6 +20,6 @@ var t = tran().run();
 echo(Object.keys(t.data).sort().join('\n'));
 
 echo('FFT:');
-var f = fft().run('I(Q3.Q2.IC)');
+var f = fft().run('V(Q4.MID)');
 echo(Object.keys(f.data).sort().join('\n'));
 

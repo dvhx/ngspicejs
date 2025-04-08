@@ -120,13 +120,23 @@ void check_exception(v8::Isolate* isolate, v8::TryCatch* try_catch, const char *
         v8::Local<v8::Value> ex = try_catch->Exception();
         if (ex->IsObject()) {
             v8::Local<v8::Object> obj = v8::Local<v8::Object>::Cast(ex);
-            v8::Local<v8::Value> key = v8::String::NewFromUtf8(globalIsolate, "stack");
-            v8::Local<v8::Value> stack = obj->Get(key);
-            if (stack->IsString()) {
+            // Use v8::String for the key
+            v8::Local<v8::String> key = v8::String::NewFromUtf8(globalIsolate, "stack", v8::NewStringType::kNormal).ToLocalChecked();
+            // Get the property
+            v8::Local<v8::Value> stack;
+            if (obj->Get(globalIsolate->GetCurrentContext(), key).ToLocal(&stack)) {
+              // Successfully retrieved the "stack" property
+              // You can now use the `stack` variable
+              if (stack->IsString()) {
                 v8::String::Utf8Value s(globalIsolate, stack);
                 const char *ss = ToCString(s);
                 hint_buffer_print();
                 stack_parser(ss, false);
+              }
+            } else {
+              // Handle the case where "stack" property doesn't exist
+              std::cerr << "error: Property 'stack' not found (when trying to print better stack)" << std::endl;
+              exit(EXIT_MODERN);
             }
         }
     }

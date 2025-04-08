@@ -26,8 +26,11 @@ void js_gif_begin(const v8::FunctionCallbackInfo < v8::Value > &args) {
         exit(EXIT_UNREACHABLE);
     }
 
+    v8::Isolate *iso = args.GetIsolate();
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
+
     // filename
-    v8::String::Utf8Value s(args.GetIsolate(), args[0]);
+    v8::String::Utf8Value s(iso, args[0]);
     const char *filename = ToCString(s);
     // width
     uint32_t width = v8_value_to_int(args[1]);
@@ -39,7 +42,12 @@ void js_gif_begin(const v8::FunctionCallbackInfo < v8::Value > &args) {
     uint8_t *palette = (uint8_t*)malloc(sizeof(uint8_t) * pal->Length());
     //printf("size %d\n", pal->Length());
     for (size_t i = 0; i < pal->Length(); i++) {
-        palette[i] = v8_value_to_int(pal->Get(i));
+        v8::Local<v8::Value> val;
+        if (!pal->Get(context, i).ToLocal(&val)) {
+            std::cerr << "error: failed to get value in gif_begin(...)" << std::endl;
+            exit(EXIT_MODERN);
+        }
+        palette[i] = v8_value_to_int(val);
         if (palette[i] > 255) {
             fatal_msg_stack(globalIsolate, EXIT_LIB, "gif_begin() palette value %ld must be between 0 and 255\n", palette[i]);
             exit(EXIT_UNREACHABLE);
@@ -98,9 +106,17 @@ void js_gif_frame(const v8::FunctionCallbackInfo < v8::Value > &args) {
     v8::Local<v8::Array> pix = v8::Local<v8::Array>::Cast(args[0]);
     uint8_t *pixels = (uint8_t*)malloc(sizeof(uint8_t) * pix->Length());
 
+    v8::Isolate *iso = args.GetIsolate();
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
+
     //printf("px length %d\n", pix->Length());
+    v8::Local<v8::Value> val;
     for (size_t i = 0; i < pix->Length(); i++) {
-        pixels[i] = v8_value_to_int(pix->Get(i));
+        if (!pix->Get(context, i).ToLocal(&val)) {
+            std::cerr << "error: failed to get pixel in js_gif_frame(...)" << std::endl;
+            exit(EXIT_MODERN);
+        }
+        pixels[i] = v8_value_to_int(val);
         if (pixels[i] > 255) {
             fatal_msg_stack(globalIsolate, EXIT_LIB, "gif_frame(pixels,delay) color value %ld must be between 0 and 255\n", pixels[i]);
             exit(EXIT_UNREACHABLE);

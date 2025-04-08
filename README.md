@@ -83,9 +83,9 @@ This script will print:
 
 ![Scatter chart of gain depending on R1 and R2](hello_gain.gif)
 
-# Requirements
+# Requirements (tested on Ubuntu 22.04.LTS (<=v0.2) and Ubuntu 24.04.LTS (current, >=0.3))
 
-    sudo apt-get install ngspice ngspice-dev libnode-dev libasound2-dev libreadline-dev
+    sudo apt-get install ngspice ngspice-dev libngspice0-dev libnode-dev libasound2-dev libreadline-dev
 
 # Compilation
 

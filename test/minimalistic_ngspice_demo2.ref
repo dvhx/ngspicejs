@@ -1,0 +1,22 @@
+n true
+c1 true
+c2 true
+c3 true
+Array (16 items): (Object #1.1)
+    [0]: string[13] = stdout ******
+    [1]: string[35] = stdout ** ngspice-42 shared library
+    [2]: string[53] = stdout ** Creation Date: Sun Mar 31 20:15:14 UTC 2024
+    [3]: string[13] = stdout ******
+    [4]: string[44] = stdout Note: No compatibility mode selected!
+    [5]: string[39] = stdout Circuit: * first line is ignored
+    [6]: string[62] = stdout Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+    [7]: string[47] = stderr Using SPARSE 1.3 as Direct Linear Solver
+    [8]: string[33] = stdout Initial Transient Solution
+    [9]: string[33] = stdout --------------------------
+    [10]: string[53] = stdout Node                                   Voltage
+    [11]: string[53] = stdout ----                                   -------
+    [12]: string[53] = stdout 1                                            9
+    [13]: string[53] = stdout 2                                          4.5
+    [14]: string[53] = stdout v_u1#branch                            -0.0045
+    [15]: string[28] = stdout No. of Data Rows : 59
+4.5

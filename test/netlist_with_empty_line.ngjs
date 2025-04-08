@@ -15,4 +15,4 @@ R2 2 0 100
 Internal.ngspice_command('run');
 
 var log = Internal.ngspice_log();
-echo_json(log.filter((a) => a.match(/err|warn|fail/)));
+echo_json(log.filter((a) => a.match(/err|warn|fail/) && a !== 'stderr Using SPARSE 1.3 as Direct Linear Solver'));

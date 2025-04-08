@@ -31,14 +31,17 @@ npn('T1', 5, 3, 4, 'BC547');
 pnp('T2', 12, 5, 6, 'BC557');
 npn('T3', 2, 14, 8, 'BC547');
 
-pickup_singlecoil('L1', 11, 0).v(0.1).f(196);
+var l1 = pickup_singlecoil('L1', 11, 0).v(0.1).f(196);
 
 tran().run().chart('V(17)');
 
 battery_sensitivity('U1', 11, 17, 0, 15).run().chart().last_chart.gif('bat_sens_green_ringer_octaver.gif');
 
-echo('Input frequency: ' + fft().run('V(11)').f0().frequency);
-echo('Output frequency: ' + fft().run('V(17)').f0().frequency);
+// damping looks nice in tran but fft f0 would be too low and DC too high, so stop the damping
+l1.damping(0);
+
+echo('Input frequency: ' + fft().run('V(11)').f0().frequency.toEng());
+echo('Output frequency: ' + fft().run('V(17)').f0().frequency.toEng());
 
 // make animated gif where blend pot goes from 0 to 100%
 var frames = [];
@@ -79,5 +82,6 @@ frames = frames.concat(frames.slice().reverse());
 
 if (frames[0].type === 'sixel_canvas') {
     gif('pedal_green_ringer.gif', frames, 10);
+    echo('gif saved');
 }
 echo(Math.floor(script_ms() / 1000), 'seconds');

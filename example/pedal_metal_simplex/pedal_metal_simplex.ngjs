@@ -34,7 +34,7 @@ for (a = 0; a <= 100; a += 10) {
         p1.percent(a);
         p2.percent(b);
         var thd = fft().run('V(13)').thd(196);
-        echo('P1', a, 'P2', b, 'THD', thd);
+        echo('P1', a, 'P2', b, 'THD', thd.toFixed(6));
         csv.push([a, b, thd]);
         x.push(a);
         y.push(b);

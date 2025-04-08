@@ -254,12 +254,24 @@ Fft.prototype.peaks = function (aPercentile) {
     var p = this.extrema();
     // find tallest peak
     var m = 0;
-    p.forEach(a => m = Math.max(a.value, m));
+    p.forEach((a, i) => {if (i > 1) { m = Math.max(a.value, m); }});
     // Keep max peaks that are at least 1% of maximum
     p = p.filter(a => (a.max && a.value > aPercentile * m));
     // mark fundamental frequency
+    var found_fundamental = false;
     for (var i = 0; i < p.length; i++) {
-        p[i].fundamental = p[i].value === m;
+        p[i].fundamental = (i > 1) && (p[i].value === m);
+        if (p[i].fundamental) {
+            found_fundamental = true;
+        }
+    }
+    // did not found?
+    m = 0;
+    p.forEach((a) => {m = Math.max(a.value, m);});
+    if (!found_fundamental) {
+        for (i = 0; i < p.length; i++) {
+            p[i].fundamental = (p[i].value === m);
+        }
     }
     return p;
 };

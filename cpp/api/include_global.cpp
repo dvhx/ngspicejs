@@ -33,16 +33,26 @@ void js_include_global(const v8::FunctionCallbackInfo < v8::Value > &args) {
     sprintf(wrapped, "(function () {%s\n}())", contents);
 
     // set globalThis.exports to null (so that we can detect if included function did not export anything)
-    globalContext->Global()->Set(
-        v8::String::NewFromUtf8(iso, "exports"),
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
+    v8::Local<v8::String> sExports = v8::String::NewFromUtf8(iso, "exports", v8::NewStringType::kNormal).ToLocalChecked();
+    if (!globalContext->Global()->Set(
+        context,
+        sExports,
         v8::Null(iso)
-    );
+    ).FromMaybe(false)) {
+        std::cerr << "error: failed to set exports in js_include_global(...)" << std::endl;
+        exit(EXIT_MODERN);
+    }
 
     // evaluate it
     include_js_code(globalContext, iso, wrapped, fn, fn);
 
     // set return value to globalThis.exports
-    v8::Local<v8::Value> exports = globalContext->Global()->Get(v8::String::NewFromUtf8(iso, "exports"));
+    v8::Local<v8::Value> exports;
+    if (!globalContext->Global()->Get(context, sExports).ToLocal(&exports)) {
+        std::cerr << "error: failed to get exports in js_include_global(...)" << std::endl;
+        exit(EXIT_MODERN);
+    }
     if (!exports->IsObject() || exports->IsNull()) {
         fatal_msg_stack(iso, EXIT_INCLUDE_MISSING_EXPORTS, "include(%s) - included file did not set globalThis.exports = {mathods,to,export};\n", fn);
         exit(EXIT_UNREACHABLE);

@@ -29,6 +29,7 @@
 #include "utils/beep.h"
 
 // v8
+#include "v8/local_value_new_from_utf8.h"
 #include "v8/check_exception.h"
 #include "v8/v8_buffered_stack_trace.h"
 #include "v8/fatal.h"
@@ -78,6 +79,7 @@
 #include "utils/warn.c"
 #include "utils/stack_parser.c"
 #include "utils/beep.c"
+#include "v8/local_value_new_from_utf8.cpp"
 #include "v8/check_exception.cpp"
 #include "v8/v8_buffered_stack_trace.cpp"
 #include "v8/fatal.cpp"

@@ -31,7 +31,6 @@ function all_tests() {
     echo ../example/emitter_follower/thd_by_amplitude_and_load_constant_current_emitter_follower.ngjs
     echo ../example/emitter_follower/r1_r2.ngjs
     echo ../example/singlecoil_pickup_ac/measure_C0_and_L0.ngjs
-    echo ../example/singlecoil_pickup_ac/measure_C0_and_L0.ngjs
     echo ../example/emitter_follower/input_offset_and_gain.ngjs
     echo ../example/npn_characteristics/npn_measure_hfe_using_opamp.ngjs
     echo ../example/pnp_characteristics/pnp_measure_hfe.ngjs
@@ -113,5 +112,5 @@ done
 
 T2=`date +%s`
 DUR=$(($T2 - $T1))
-echo "All tests done in $DUR seconds, expected time 549s"
+echo "All tests done in $DUR seconds, expected time 450s"
 beep

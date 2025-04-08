@@ -6,9 +6,9 @@ void js_last_exception_string(const v8::FunctionCallbackInfo < v8::Value > &args
 
     // set return value
     if (last_exception_string == NULL) {
-        args.GetReturnValue().Set(v8::String::NewFromUtf8(args.GetIsolate(), ""));
+        args.GetReturnValue().Set(LocalValueNewFromUtf8(args.GetIsolate(), ""));
     } else {
-        args.GetReturnValue().Set(v8::String::NewFromUtf8(args.GetIsolate(), last_exception_string));
+        args.GetReturnValue().Set(LocalValueNewFromUtf8(args.GetIsolate(), last_exception_string));
     }
 }
 

@@ -1,0 +1,22 @@
+#!/usr/bin/env ngspicejs
+// calling spice directly
+// linter: ngspicejs-lint
+"use strict";
+
+var n = Internal.ngspice_netlist(`* first line is ignored
+V_U1 1 0 DC 9
+R_R1 1 2 1000
+R_R2 2 0 1000
+.end`);
+echo('n', n);
+var c1 = Internal.ngspice_command(`destroy all`);
+echo('c1', c1);
+var c2 = Internal.ngspice_command(`unset ngbehavior`);
+echo('c2', c2);
+var c3 = Internal.ngspice_command(`tran 10e-6 0.1e-3 0`);
+echo('c3', c3);
+var l = Internal.ngspice_log();
+echo_json(l);
+var d = Internal.ngspice_data();
+echo(d.tran1['V(2)'].avg().toEng());
+

@@ -72,6 +72,7 @@
 
     // error parsers
     one('error_parser/common.js');
+    one('error_parser/ngspice_42.js');
     one('error_parser/ac_error.js');
     one('error_parser/missing_end_statement.js');
     one('error_parser/tran_unknown_param.js');

@@ -7,7 +7,7 @@ function available_vectors(aUgly) {
     assert_arguments_length(arguments, 0, 1, 'available_vectors(ugly)');
     ngspice_command('destroy all');
     var a = Internal.netlist_done();
-    ngspice_command('ac dec 1 10 20');
+    ngspice_command('ac dec 5 10 20');
     var l = Internal.ngspice_log();
     ngspice_process_log(l, a.netlist);
     var vn = ngspice_vectors();

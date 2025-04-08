@@ -9,6 +9,7 @@ void js_assign_core_library(const v8::FunctionCallbackInfo < v8::Value > &args) 
 
     v8::Isolate *iso = args.GetIsolate();
     v8::HandleScope handle_scope(iso);
+    v8::Local<v8::Context> context = iso->GetCurrentContext();
 
     // lines of code (core_lines)
     v8::Local<v8::Value> a0 = args[0];
@@ -18,7 +19,11 @@ void js_assign_core_library(const v8::FunctionCallbackInfo < v8::Value > &args) 
     }
     core_lines = saos(p0->Length());
     for (size_t i = 0; i < core_lines->length; i++) {
-        v8::Local<v8::Value> val = p0->Get(i);
+        v8::Local<v8::Value> val;
+        if (!p0->Get(context, i).ToLocal(&val)) {
+          std::cerr << "error: failed to get core line in js_assign_core_library(...)" << std::endl;
+          exit(EXIT_MODERN);
+        }
         v8::String::Utf8Value st(iso, val);
         const char *s = ToCString(st);
         saos_add(core_lines, s);
@@ -32,7 +37,11 @@ void js_assign_core_library(const v8::FunctionCallbackInfo < v8::Value > &args) 
     }
     core_files = saos(p1->Length());
     for (size_t i = 0; i < core_files->length; i++) {
-        v8::Local<v8::Value> val = p1->Get(i);
+        v8::Local<v8::Value> val;
+        if (!p1->Get(context, i).ToLocal(&val)) {
+          std::cerr << "error: failed to get file name in js_assign_core_library(...)" << std::endl;
+          exit(EXIT_MODERN);
+        }
         v8::String::Utf8Value st(iso, val);
         const char *s = ToCString(st);
         saos_add(core_files, s);
@@ -46,7 +55,11 @@ void js_assign_core_library(const v8::FunctionCallbackInfo < v8::Value > &args) 
     }
     core_offsets = saoi(p2->Length());
     for (size_t i = 0; i < core_offsets->length; i++) {
-        v8::Local<v8::Value> val = p2->Get(i);
+        v8::Local<v8::Value> val;
+        if (!p2->Get(context, i).ToLocal(&val)) {
+          std::cerr << "error: failed to get line offset in js_assign_core_library(...)" << std::endl;
+          exit(EXIT_MODERN);
+        }
         v8::String::Utf8Value st(iso, val);
         const char *s = ToCString(st);
         saoi_add(core_offsets, atoi(s));

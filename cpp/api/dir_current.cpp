@@ -19,7 +19,8 @@ void js_dir_current(const v8::FunctionCallbackInfo < v8::Value > &args) {
     cwd[len + 1] = '\0';
 
     // set return value
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(args.GetIsolate(), cwd));
+    v8::Local<v8::String> s = v8::String::NewFromUtf8(globalIsolate, cwd, v8::NewStringType::kNormal).ToLocalChecked();
+    args.GetReturnValue().Set(s);
 }
 
 

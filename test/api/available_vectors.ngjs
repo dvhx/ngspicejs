@@ -1,0 +1,10 @@
+#!/usr/bin/env ngspicejs
+// Show available vectors
+// linter: ngspicejs-lint
+"use strict";
+
+sinewave('U1', 1, 0).v(5).f(50);
+var v = available_vectors();
+echo_json(v);
+exit(1);
+

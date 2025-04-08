@@ -47,8 +47,8 @@ Battery sensitivity(0=Gain)
 0                                                                                                   15        
                                                                                                               
 warn: gif(bat_sens_green_ringer_octaver.gif,canvases,delay) - not saving gif because of the --no-gif param (perhaps a unit test?)
-Input frequency: 195.36132812501356
-Output frequency: 390.7226562500271
+Input frequency: 195.4
+Output frequency: 390.7
 Rendering pot 0%
 Rendering pot 5%
 Rendering pot 10%

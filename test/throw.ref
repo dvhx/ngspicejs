@@ -1,14 +1,14 @@
 ../js/device/switch_1p2t.js
   // Single pole double throw switch 1P2T
-../js/special/beautify.js
-  throw "NGSPICEJS_SOFT_EXIT";
-  throw "NGSPICEJS_SOFT_EXIT";
-../js/exit.js
-  throw "NGSPICEJS_SOFT_EXIT";
 ../js/Exception.js
   // This fixes missing stack traces in js-thrown string exceptions
   throw "Some error";
   throw new Error('Some message');
   But then the stack would point to the throw line, not where the error occured
+../js/exit.js
+  throw "NGSPICEJS_SOFT_EXIT";
 ../js/ngspicejs_version.js
   // Return ngspicejs version, throw exception if current version is outside allowed range of versions
+../js/special/beautify.js
+  throw "NGSPICEJS_SOFT_EXIT";
+  throw "NGSPICEJS_SOFT_EXIT";

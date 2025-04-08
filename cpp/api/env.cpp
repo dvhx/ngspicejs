@@ -15,6 +15,7 @@ void js_env(const v8::FunctionCallbackInfo < v8::Value > &args) {
     }
 
     // set return value
-    args.GetReturnValue().Set(v8::String::NewFromUtf8(args.GetIsolate(), b));
+    v8::Local<v8::String> s = v8::String::NewFromUtf8(globalIsolate, b, v8::NewStringType::kNormal).ToLocalChecked();
+    args.GetReturnValue().Set(s);
 }
 
