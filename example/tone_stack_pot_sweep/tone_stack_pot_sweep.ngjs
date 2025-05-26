@@ -41,12 +41,12 @@ capacitor('C10', 10, 11, '1u');
 //tran().run().chart(['V(4)', 'V(99)']);
 //ac().run().chart('V(99)', {log_x: true});
 
-function one(aPot, aTitle, aGifFileName) {
+function one(aPot, aOtherPercent, aTitle, aGifFileName) {
     // hi
-    Phi.percent(50);
-    Plo.percent(50);
-    Ptr.percent(50);
-    Pba.percent(50);
+    Phi.percent(aOtherPercent);
+    Plo.percent(aOtherPercent);
+    Ptr.percent(aOtherPercent);
+    Pba.percent(aOtherPercent);
     var c = chart_xy().title(aTitle).log_x(true).min_y(0).label_x('f/Hz').label_y('Vout/V');
     for (var p = 0; p <= 100; p += 10) {
         aPot.percent(p);
@@ -57,8 +57,21 @@ function one(aPot, aTitle, aGifFileName) {
     c.show().gif(aGifFileName);
 }
 
-one(Phi, 'AC for different hi-mid pot positions (other pots 50%)', 'chart_himid.gif');
-one(Plo, 'AC for different lo-mid pot positions (other pots 50%)', 'chart_lomid.gif');
-one(Ptr, 'AC for different treble pot positions (other pots 50%)', 'chart_treble.gif');
-one(Pba, 'AC for different bass pot positions (other pots 50%)', 'chart_bass.gif');
+var other = 25;
+one(Phi, other, 'AC for different hi-mid pot positions (other pots ' + other + '%)', 'chart_himid_' + other + '.gif');
+one(Plo, other, 'AC for different lo-mid pot positions (other pots ' + other + '%)', 'chart_lomid_' + other + '.gif');
+one(Ptr, other, 'AC for different treble pot positions (other pots ' + other + '%)', 'chart_treble_' + other + '.gif');
+one(Pba, other, 'AC for different bass pot positions (other pots ' + other + '%)', 'chart_bass_' + other + '.gif');
+
+var other = 50;
+one(Phi, other, 'AC for different hi-mid pot positions (other pots ' + other + '%)', 'chart_himid_' + other + '.gif');
+one(Plo, other, 'AC for different lo-mid pot positions (other pots ' + other + '%)', 'chart_lomid_' + other + '.gif');
+one(Ptr, other, 'AC for different treble pot positions (other pots ' + other + '%)', 'chart_treble_' + other + '.gif');
+one(Pba, other, 'AC for different bass pot positions (other pots ' + other + '%)', 'chart_bass_' + other + '.gif');
+
+var other = 75;
+one(Phi, other, 'AC for different hi-mid pot positions (other pots ' + other + '%)', 'chart_himid_' + other + '.gif');
+one(Plo, other, 'AC for different lo-mid pot positions (other pots ' + other + '%)', 'chart_lomid_' + other + '.gif');
+one(Ptr, other, 'AC for different treble pot positions (other pots ' + other + '%)', 'chart_treble_' + other + '.gif');
+one(Pba, other, 'AC for different bass pot positions (other pots ' + other + '%)', 'chart_bass_' + other + '.gif');
 
