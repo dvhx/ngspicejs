@@ -1,0 +1,64 @@
+#!/usr/bin/env ngspicejs
+// Analyzing pot behavior of this tone stack: https://www.reddit.com/r/diypedals/comments/1kvlgsq/updated_tonestack_for_jfet_preamp_thoughts/
+// linter: ngspicejs-lint
+"use strict";
+
+pickup_singlecoil('U2', 4, 0);
+
+// follower
+battery('U1', 1, 0, 9);
+npn('T1', 1, 2, 3, '2N2222A');
+capacitor('C1', 4, 2, '16u');
+resistor('R1', 2, 1, '1M');
+resistor('R2', 3, 0, '10k');
+capacitor('C2', 3, 33, '10u');
+resistor('RC2GND', 33, 0, '500k');
+// tran().run().chart(['V(4)', 'V(33)']);
+// ac().run().chart('V(33)');
+
+// tone stack
+var Phi = pot('Phi', 5, 33, 6, '20k').percent(50);
+var Plo = pot('Plo', 9, 10, 19, '5k').percent(50);
+var Ptr = pot('Ptr', 8, 16, 18, '50k').percent(50);
+var Pba = pot('Pba', 12, 14, 13, '50k').percent(50);
+resistor('R3', 5, 0, '2k2');
+resistor('R4', 6, 9, '2k2');
+resistor('R5', 17, 0, '6k8');
+resistor('R6', 7, 16, '1k');
+resistor('R7', 16, 14, '2k2');
+resistor('R8', 14, 15, '10k');
+resistor('R9', 11, 12, '2k2');
+resistor('R10', 13, 0, '10k');
+resistor('RLOAD', 99, 0, '500k');
+capacitor('C3', 6, 7, '33n');
+capacitor('C4', 10, 0, '68n');
+capacitor('C5', 7, 8, '22n');
+capacitor('C6', 18, 0, '22n');
+capacitor('C7', 16, 99, '10u');
+capacitor('C8', 16, 0, '68n');
+capacitor('C9', 15, 10, '33n');
+capacitor('C10', 10, 11, '1u');
+//tran().run().chart(['V(4)', 'V(99)']);
+//ac().run().chart('V(99)', {log_x: true});
+
+function one(aPot, aTitle, aGifFileName) {
+    // hi
+    Phi.percent(50);
+    Plo.percent(50);
+    Ptr.percent(50);
+    Pba.percent(50);
+    var c = chart_xy().title(aTitle).log_x(true).min_y(0).label_x('f/Hz').label_y('Vout/V');
+    for (var p = 0; p <= 100; p += 10) {
+        aPot.percent(p);
+        var a = ac().run();
+        //.chart('V(99)', {log_x: true});
+        c.add_series(a.data.frequency, a.data['V(99)'].modulus(), p + '%');
+    }
+    c.show().gif(aGifFileName);
+}
+
+one(Phi, 'AC for different hi-mid pot positions (other pots 50%)', 'chart_himid.gif');
+one(Plo, 'AC for different lo-mid pot positions (other pots 50%)', 'chart_lomid.gif');
+one(Ptr, 'AC for different treble pot positions (other pots 50%)', 'chart_treble.gif');
+one(Pba, 'AC for different bass pot positions (other pots 50%)', 'chart_bass.gif');
+
