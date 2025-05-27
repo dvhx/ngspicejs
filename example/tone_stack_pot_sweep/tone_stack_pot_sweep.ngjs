@@ -13,31 +13,33 @@ resistor('R1', 2, 1, '1M');
 resistor('R2', 3, 0, '10k');
 capacitor('C2', 3, 33, '10u');
 resistor('RC2GND', 33, 0, '500k');
+pot('PINPUT', 33, 6, 0, '20k').percent(50);
 // tran().run().chart(['V(4)', 'V(33)']);
 // ac().run().chart('V(33)');
 
 // tone stack
-var Phi = pot('Phi', 5, 33, 6, '20k').percent(50);
-var Plo = pot('Plo', 9, 10, 19, '5k').percent(50);
-var Ptr = pot('Ptr', 8, 16, 18, '50k').percent(50);
-var Pba = pot('Pba', 12, 14, 13, '50k').percent(50);
-resistor('R3', 5, 0, '2k2');
-resistor('R4', 6, 9, '2k2');
-resistor('R5', 17, 0, '6k8');
-resistor('R6', 7, 16, '1k');
-resistor('R7', 16, 14, '2k2');
-resistor('R8', 14, 15, '10k');
-resistor('R9', 11, 12, '2k2');
-resistor('R10', 13, 0, '10k');
+var Plo = pot('Plo', 19, 10, 9, '10k').percent(50);
+var Phi = pot('Phi', 14, 16, 16, '20k').percent(50);
+var Ptr = pot('Ptr', 7, 12, 11, '10k').percent(50);
+var Pba = pot('Pba', 0, 17, 17, '50k').percent(50);
+
+resistor('R3', 8, 11, '1k5');
+resistor('R4', 6, 9, '4k7');
+resistor('R5', 14, 0, '4k7');
+resistor('R6', 16, 13, '1k');
+resistor('R7', 12, 13, '2k2');
+resistor('R8', 13, 15, '1k5');
+resistor('R9', 15, 17, '1k5');
 resistor('RLOAD', 99, 0, '500k');
-capacitor('C3', 6, 7, '33n');
-capacitor('C4', 10, 0, '68n');
-capacitor('C5', 7, 8, '22n');
-capacitor('C6', 18, 0, '22n');
-capacitor('C7', 16, 99, '10u');
-capacitor('C8', 16, 0, '68n');
-capacitor('C9', 15, 10, '33n');
-capacitor('C10', 10, 11, '1u');
+resistor('RX', 6, 0, '100M'); // floating caps need path to ground
+
+capacitor('C3', 6, 8, '6n8');
+capacitor('C4', 6, 16, '3n3');
+capacitor('C5', 7, 0, '4n7');
+capacitor('C6', 13, 0, '6n8');
+capacitor('C7', 12, 99, '10u');
+capacitor('C8', 10, 0, '68n');
+capacitor('C9', 10, 15, '1u');
 //tran().run().chart(['V(4)', 'V(99)']);
 //ac().run().chart('V(99)', {log_x: true});
 
