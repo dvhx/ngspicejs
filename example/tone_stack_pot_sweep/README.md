@@ -1,3 +1,5 @@
+![Schematic](tonestack2.jpg)
+
 # Results (other pots 25%)
 
 ![AC hi-mid](chart_himid_25.gif)
