@@ -1,0 +1,11 @@
+#!/usr/bin/env ngspicejs
+// How to hide chart_xy border
+// linter: ngspicejs-lint
+"use strict";
+
+// basic use of chart_xy
+chart_xy().add_series([1,2,3,4], [1,4,9,16]).show();
+
+// how to hide border of chart_xy
+chart_xy().add_series([1,2,3,4], [1,4,9,16]).border(false).show();
+
