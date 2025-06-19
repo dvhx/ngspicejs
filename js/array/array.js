@@ -137,6 +137,12 @@ Array.prototype.imag = function () {
     return array_imag(this);
 };
 
+Array.prototype.indices = function () {
+    // Convert array ['foo',true,3.14] to [0,1,2], useful in chart_xy for data without x-axis
+    assert_arguments_length(arguments, 0, 0, 'Array.indices()');
+    return array_indices(this);
+};
+
 Array.prototype.max = function () {
     // Return maximal value of array
     assert_arguments_length(arguments, 0, 0, 'Array.max()');
