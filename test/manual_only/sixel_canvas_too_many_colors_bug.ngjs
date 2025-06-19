@@ -1,0 +1,42 @@
+#!/usr/bin/env ngspicejs
+// Weird bug in sixel canvas if the size is 640x480 and there are 12 colors it will be printed blank!
+// linter: ngspicejs-lint
+"use strict";
+
+// This 640x480 sixel canvas with 11 colors works
+var c = sixel_canvas(640, 480);
+var col1 = c.color(100, 100, 100);
+var col2 = c.color(66, 66, 66);
+var col3 = c.color(0, 0, 0);
+var col4 = c.color(0,0,10);
+var col5 = c.color(0,0,20);
+var col6 = c.color(0,0,30);
+var col7 = c.color(0,0,40);
+var col8 = c.color(0,0,50);
+var col9 = c.color(0,0,60);
+var col10 = c.color(0,0,70);
+var col11 = c.color(0,0,80);
+c.clear(col1);
+c.show();
+echo("end of first canvas");
+
+// This 640x480 sixel canvas with 12 colors does not work! (will print empty space)
+var c = sixel_canvas(640, 480);
+var col1 = c.color(100, 100, 100);
+var col2 = c.color(66, 66, 66);
+var col3 = c.color(0, 0, 0);
+var col4 = c.color(0,0,10);
+var col5 = c.color(0,0,20);
+var col6 = c.color(0,0,30);
+var col7 = c.color(0,0,40);
+var col8 = c.color(0,0,50);
+var col9 = c.color(0,0,60);
+var col10 = c.color(0,0,70);
+var col11 = c.color(0,0,80);
+//var col12 = c.color(0,0,90); // comment out col12 and it will work again
+c.clear(col1);
+c.show();
+echo("end of second canvas");
+
+exit(1);
+
