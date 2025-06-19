@@ -3,7 +3,6 @@
 // linter: ngspicejs-lint
 "use strict";
 
-
 function foo(a,b,c) {
     echo(a,b,c);
     Internal.hint_args('foo(a,b,c)', arguments);
@@ -68,6 +67,7 @@ echo_json(terminal_size());
 echo('terminal_size', JSON.stringify(terminal_size()));
 echo('v8_version', v8_version());
 echo('ngspice_version', ngspice_version());
+echo('ngspicejs_version', ngspicejs_version());
 
 sinewave('U1', 1, 0).v(5).f(50);
 resistor('R1', 1, 2, 1000);

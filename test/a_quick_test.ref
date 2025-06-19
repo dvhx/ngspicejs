@@ -20,7 +20,8 @@ true false
 #1???????A?GO_$
 #2^AAA^?^?V???$
 #3????????????$-
-\98
+\
+98
 warn: Following error messages are not real errors:
 error: this is not an error, just a test, followed by 1 hint:
 hint: function 'foo(a,b,c)' was called with 3 arguments
@@ -59,6 +60,7 @@ Object (5 keys): (Object #1.1)
 terminal_size {"result":-1,"columns":0,"rows":0,"pixel_width":0,"pixel_height":0}
 v8_version 10.2.154.26-node.28
 ngspice_version 42
+ngspicejs_version 5
 Transient analysis(0=V(2))                                                                                    
 ------------------------***---------------------------------------------------------------------------    2.80
 --------------------****---*****----------------------------------------------------------------------    2.65
