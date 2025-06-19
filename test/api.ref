@@ -1,6 +1,6 @@
-API: object globalThis (204 properties) - Global object
-FUNCTIONS (200):
-                       ChartXy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) Constructor
+API: object globalThis (206 properties) - Global object
+FUNCTIONS (202):
+                       ChartXy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries,aBorder) Constructor
                      Exception (aMessage)                           Use throw new Exception(message) for deeper and better stack trace
                             ac (aFstart,aFstop,aPoints,aVariation)  AC analysis
                        ac_fast (aFStart,aFStop,aNetName,aFrequencies,aSkipChecks) Faster version of AC run only for few frequencies (1ms vs 30ms for standard AC)
@@ -23,6 +23,7 @@ FUNCTIONS (200):
              array_extrema_max (a)                                  Returns item with largest value from array_extrema()
              array_extrema_min (a)                                  Returns item with lowest value from array_extrema()
                     array_imag (aComplexArray)                      Return only imaginary part of array of complex values
+                 array_indices (aArray)                             Convert array ['foo',true,3.14] to [0,1,2], useful in chart_xy for data without x-axis
                      array_max (a)                                  Return maximal value in array
                      array_min (a)                                  Return minimal value in array
                  array_modulus (aComplexArray)                      Convert array of complex values to array of absolute values (length of a vector)
@@ -54,7 +55,7 @@ FUNCTIONS (200):
                           cccs (aName,aAnode,aCathode,aVname,aGain) Add cccs to netlist
                           ccvs (aName,aAnode,aCathode,aVname,aGain) Add ccvs to netlist
                  chart_scatter (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize,aLevels) Create scatter chart
-                      chart_xy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) Create XY chart
+                      chart_xy (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries,aBorder) Create XY chart
                   clear_screen ()                                   Clear screen of the terminal
                        complex (aReal,aImaginary)                   Return new complex number
                    config_path ()                                   Return full path including trailing slash to the user's config directory ~/.config/ngspicejs/
@@ -101,6 +102,7 @@ FUNCTIONS (200):
                 file_read_json (aFilename)                          Read json file
                  file_read_tsv (filename)                           Read tsv file and return it as 2D array
                  file_read_wav (aFileName)                          Read wav file, return sample rate, times and samples
+                     file_sha1 (aFileName)                          Calculate SHA1 hash of a file
                      file_size (aPath)                              Return size of a file in bytes
                      file_stat (aFilename)                          Return type of a file (file/dir/pipe/symlink)
                     file_touch (aFilename,oAccessTime,oModificationTime) Update access and modification time of a file

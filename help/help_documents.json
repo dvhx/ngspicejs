@@ -636,6 +636,18 @@
   "a": "howto/chart_xy/how_to_make_xy_chart_from_custom_data.ngjs"
  },
  {
+  "q": "How to hide chart_xy border",
+  "a": "howto/chart_xy/how_to_hide_chart_xy_border.ngjs"
+ },
+ {
+  "q": "basic use of chart_xy",
+  "a": "howto/chart_xy/how_to_hide_chart_xy_border.ngjs"
+ },
+ {
+  "q": "how to hide border of chart_xy",
+  "a": "howto/chart_xy/how_to_hide_chart_xy_border.ngjs"
+ },
+ {
   "q": "How to use current controlled voltage source",
   "a": "howto/ccvs/how_to_use_ccvs.ngjs"
  },

@@ -80,6 +80,7 @@
 - **array_extrema_max** (a) - Returns item with largest value from array_extrema()
 - **array_extrema_min** (a) - Returns item with lowest value from array_extrema()
 - **array_imag** (aComplexArray) - Return only imaginary part of array of complex values
+- **array_indices** (aArray) - Convert array ['foo',true,3.14] to [0,1,2], useful in chart_xy for data without x-axis
 - **array_max** (a) - Return maximal value in array
 - **array_min** (a) - Return minimal value in array
 - **array_modulus** (aComplexArray) - Convert array of complex values to array of absolute values (length of a vector)
@@ -138,6 +139,7 @@
 - **file_read_json** (aFilename) - Read json file
 - **file_read_tsv** (filename) - Read tsv file and return it as 2D array
 - **file_read_wav** (aFileName) - Read wav file, return sample rate, times and samples
+- **file_sha1** (aFileName) - Calculate SHA1 hash of a file
 - **file_size** (aPath) - Return size of a file in bytes
 - **file_stat** (aFilename) - Return type of a file (file/dir/pipe/symlink)
 - **file_touch** (aFilename,oAccessTime,oModificationTime) - Update access and modification time of a file
@@ -167,7 +169,7 @@
 - **available_vectors** (aUgly) - Return array of available vectors for tran/ac/fft
 - **beep** (oFrequency,oDuration) - Beep with given frequency (default 440Hz) for given duration in milliseconds (default 300ms)
 - **chart_scatter** (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize,aLevels) - Create scatter chart
-- **chart_xy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) - Create XY chart
+- **chart_xy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries,aBorder) - Create XY chart
 - **complex** (aReal,aImaginary) - Return new complex number
 - **config_path** () - Return full path including trailing slash to the user's config directory ~/.config/ngspicejs/
 - **ctrl_c_pressed** () - Sets up Ctrl+C handler and if Ctrl+C was pressed, returns true
@@ -226,7 +228,7 @@
 
 #### Constructors
 
-- **ChartXy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries) - Constructor
+- **ChartXy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries,aBorder) - Constructor
 - **Exception** (aMessage) - Use throw new Exception(message) for deeper and better stack trace
 
 #### Objects
