@@ -14,8 +14,6 @@ resistor('R2', 3, 0, '10k');
 capacitor('C2', 3, 33, '10u');
 resistor('RC2GND', 33, 0, '500k');
 pot('PINPUT', 33, 6, 0, '20k').percent(50);
-// tran().run().chart(['V(4)', 'V(33)']);
-// ac().run().chart('V(33)');
 
 // tone stack
 var Plo = pot('Plo', 19, 10, 9, '10k').percent(50);
@@ -40,11 +38,8 @@ capacitor('C6', 13, 0, '6n8');
 capacitor('C7', 12, 99, '10u');
 capacitor('C8', 10, 0, '68n');
 capacitor('C9', 10, 15, '1u');
-//tran().run().chart(['V(4)', 'V(99)']);
-//ac().run().chart('V(99)', {log_x: true});
 
 function one(aPot, aOtherPercent, aTitle, aGifFileName) {
-    // hi
     Phi.percent(aOtherPercent);
     Plo.percent(aOtherPercent);
     Ptr.percent(aOtherPercent);
@@ -53,7 +48,6 @@ function one(aPot, aOtherPercent, aTitle, aGifFileName) {
     for (var p = 0; p <= 100; p += 10) {
         aPot.percent(p);
         var a = ac().run();
-        //.chart('V(99)', {log_x: true});
         c.add_series(a.data.frequency, a.data['V(99)'].modulus(), p + '%');
     }
     c.show().gif(aGifFileName);

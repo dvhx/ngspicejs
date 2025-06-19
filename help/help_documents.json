@@ -676,6 +676,18 @@
   "a": "example/sallen_key_monte_carlo/sallen_key_monte_carlo.ngjs"
  },
  {
+  "q": "Analyzing pot behavior of this tone stack: https://www.reddit.com/r/diypedals/comments/1kvlgsq/updated_tonestack_for_jfet_preamp_thoughts/",
+  "a": "example/tone_stack_pot_sweep/tone_stack_pot_sweep.ngjs"
+ },
+ {
+  "q": "follower",
+  "a": "example/tone_stack_pot_sweep/tone_stack_pot_sweep.ngjs"
+ },
+ {
+  "q": "tone stack",
+  "a": "example/tone_stack_pot_sweep/tone_stack_pot_sweep.ngjs"
+ },
+ {
   "q": "Piezo pickup with mosfet source follower as input buffer",
   "a": "example/piezo_pickup_amplifier/piezo_pickup_and_mosfet_source_follower.ngjs"
  },
