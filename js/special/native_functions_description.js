@@ -88,6 +88,10 @@ var native_functions_description = {
         "summary": "Read file and return it's content as a string",
         "args": ["aFileName"]
     },
+    "file_sha1": {
+        "summary": "Calculate SHA1 hash of a file",
+        "args": ["aFileName"]
+    },
     "file_write": {
         "summary": "Write string to a file",
         "args": ["aFileName", "aString"]

@@ -125,6 +125,7 @@
     one('array/array_avg.js');
     one('array/array_rms.js');
     one('array/array_imag.js');
+    one('array/array_indices.js');
     one('array/array_modulus.js');
     one('array/array_argument.js');
     one('array/array_distribution.js');
