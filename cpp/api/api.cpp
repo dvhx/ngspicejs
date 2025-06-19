@@ -27,6 +27,7 @@
 #include "file_mode.cpp"
 #include "file_stat.cpp"
 #include "file_touch.cpp"
+#include "file_sha1.cpp"
 #include "include_global.cpp"
 #include "terminal_size.cpp"
 #include "terminal_colors.cpp"
@@ -110,6 +111,7 @@ v8::Local<v8::Context> CreateShellContext(v8::Isolate* isolate) {
     global->Set(isolate, "file_write", v8::FunctionTemplate::New(isolate, js_file_write));
     global->Set(isolate, "file_write_binary", v8::FunctionTemplate::New(isolate, js_file_write_binary));
     global->Set(isolate, "file_mode", v8::FunctionTemplate::New(isolate, js_file_mode));
+    global->Set(isolate, "file_sha1", v8::FunctionTemplate::New(isolate, js_file_sha1));
     global->Set(isolate, "dir", v8::FunctionTemplate::New(isolate, js_dir));
     global->Set(isolate, "dir_current", v8::FunctionTemplate::New(isolate, js_dir_current));
     global->Set(isolate, "dir_create", v8::FunctionTemplate::New(isolate, js_dir_create));
