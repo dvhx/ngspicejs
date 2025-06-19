@@ -15,6 +15,7 @@ function lint(aInternal) {
     var show_ignored = false; // --show-ignored will show ignored hints at the bottom
     var show_implieds = false; // --show-implieds will show some extra stuff
     var show_speed = false; // --show-speed will show linting speed
+    var browser = false; // --browser will add browser globals (document, window, ...)
 
     // command line switches
     if (script_args().includes('--no-linting')) {
@@ -31,6 +32,9 @@ function lint(aInternal) {
     }
     if (script_args().includes('--show-speed')) {
         show_speed = true;
+    }
+    if (script_args().includes('--browser')) {
+        browser = true;
     }
 
     // extra arguments could be taken from the linter directive in the source
@@ -51,6 +55,9 @@ function lint(aInternal) {
         }
         if (linter_args.match('--show-speed')) {
             show_speed = true;
+        }
+        if (linter_args.match('--browser')) {
+            browser = true;
         }
     }
 
@@ -413,6 +420,12 @@ function lint(aInternal) {
 "update_expected_prefix",
 "warn_source_arguments_length"
 ]);
+    }
+
+    // browser
+    if (browser) {
+        glob = ['window', 'document', 'console', 'localStorage', 'JSON', 'fetch', 'alert',
+            'prompt', 'confirm', 'Blob', 'URL', 'Image'];
     }
 
     // global: aaa, bbb, ccc
