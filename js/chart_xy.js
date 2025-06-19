@@ -2,11 +2,11 @@
 // linter: ngspicejs-lint --internal
 "use strict";
 
-function ChartXy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries) {
+function ChartXy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries, aBorder) {
     // Constructor
-    assert_arguments_length(arguments, 0, 14, 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,series)');
+    assert_arguments_length(arguments, 0, 14, 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,series,border)');
     this.type = 'chart_xy';
-    this.attr = {width: 640, height: 240, series: []};
+    this.attr = {width: 640, height: 240, series: [], border: true};
     // all attr as object in first argument
     if (arguments.length === 1 && typeof aWidth === 'object') {
         for (const [k, v] of Object.entries(aWidth)) {
@@ -50,8 +50,11 @@ function ChartXy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, a
         this.log_y(aLogY);
     }
     if (aSeries !== undefined) {
-        assert_array(aSeries, 'series', 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,series)');
+        assert_array(aSeries, 'series', 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,series,border)');
         aSeries.forEach(ser => this.add_series(ser.data_x, ser.data_y, ser.label));
+    }
+    if (aBorder !== undefined) {
+        this.border(aBorder);
     }
 }
 
@@ -61,16 +64,16 @@ ChartXy.ascii_scale_width = 0.16;
 ChartXy.ascii_scale_height = 0.09;
 ChartXy.force_ascii = false;
 
-function chart_xy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries) {
+function chart_xy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries, aBorder) {
     // Create XY chart
-    assert_arguments_length(arguments, 0, 14, 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,series)');
+    assert_arguments_length(arguments, 0, 14, 'chart_xy(width,height,minX,maxX,minY,maxY,title,labelX,labelY,logX,logY,series,border)');
     if (arguments.length === 1 && typeof aWidth === 'object') {
         return new ChartXy(aWidth);
     }
     if (arguments.length === 2 && Array.isArray(aWidth) && Array.isArray(aHeight) && aWidth.length === aHeight.length) {
         return new ChartXy().add_series(aWidth, aHeight);
     }
-    return new ChartXy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries);
+    return new ChartXy(aWidth, aHeight, aMinX, aMaxX, aMinY, aMaxY, aTitle, aLabelX, aLabelY, aLogX, aLogY, aSeries, aBorder);
 }
 
 ChartXy.prototype.data_x = function (aValue) {
@@ -171,6 +174,14 @@ ChartXy.prototype.log_y = function (aValue) {
     return this;
 };
 
+ChartXy.prototype.border = function (aValue) {
+    // Make y-axis logarithmic
+    assert_arguments_length(arguments, 1, 1, 'chart_xy.border(value)');
+    assert_boolean(aValue,'value','chart_xy.border(value)');
+    this.attr.border = aValue;
+    return this;
+};
+
 ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel, oDotSize) {
     // Add one series (x data, y data and series label)
     oDotSize = oDotSize || 0;
@@ -218,6 +229,7 @@ ChartXy.prototype.validate = function () {
         "log_x": {type: "boolean", required: false},
         "log_y": {type: "boolean", required: false},
         "series": {type: "array", required: false},
+        "border": {type: "boolean", required: false},
     });
     device_attr_assign(this, this.attr, ['series']);
 };
@@ -429,6 +441,15 @@ ChartXy.prototype.render_sixel = function () {
     });
     border_right += 2 * 8;
 
+    // no border
+    if (this.attr.border === false) {
+        w--;
+        h--;
+        by = 0;
+        border_left = 0;
+        border_right = 0;
+    }
+
     // canvas transformation functions
     var tx = ChartXy.transform_function(w, border_left, border_right, bbox.min_x, bbox.max_x, this.attr.log_x, false);
     var ty = ChartXy.transform_function(h, by, by, bbox.min_y, bbox.max_y, this.attr.log_y, true);
@@ -447,18 +468,18 @@ ChartXy.prototype.render_sixel = function () {
     // y axis grid
     gridy.forEach((tick) => {
         var l = tick.str || '?'; //real.toEng(); // y_digits
-        s.label(l, border_left - s.label_size(l).width - 1, tick.canvas + f.height / 2 - 1, s.black);
         if (!tick.extreme) {
             s.line(border_left + 1, tick.canvas, w - border_right - 1, tick.canvas, s.gray);
         }
+        s.label(l, border_left - s.label_size(l).width - 1, tick.canvas + f.height / 2 - 1, s.black);
     });
     // x axis grid
     gridx.forEach((tick) => {
         var l = tick.str || '?'; //real.toEng();
-        s.label(l, Math.round(tick.canvas - s.label_size(l).width / 2), h - 2, s.black);
         if (!tick.extreme) {
             s.line(tick.canvas, by + 1, tick.canvas, h - by - 1, s.gray);
         }
+        s.label(l, Math.round(tick.canvas - s.label_size(l).width / 2), h - 2, s.black);
     });
 
     // prevent series to draw outside the viewport
@@ -510,6 +531,9 @@ ChartXy.prototype.render_sixel = function () {
 
     // title
     if (this.attr.title) {
+        if (by - 6 < f.height) {
+            by = f.height + 6;
+        }
         s.label(this.attr.title, Math.round(w / 2 - s.label_size(this.attr.title).width / 2), by - 6, s.black);
     }
 
