@@ -1,3 +1,11 @@
+Changes in v0.5 (2025-06-19)
+- Fixed ngspicejs_version() output (v4 incorrectly returned 3, now v5 returns 5)
+- Added extra line to sixel output
+- Added border attribute to chart_xy (use border(false) to hide border)
+- Added file_sha1(filename) function
+- Added array_indices() and Array.indices() for making chart_xy without x-axis data
+- Added --browser option to linter, use // linter: ngspicejs-lint --browser
+
 Changes in v0.4 (2025-04-08)
 - Updated code for Ubuntu 24.04, ngspice 42, libv8 10.2.154.26-node.28
 

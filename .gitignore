@@ -49,3 +49,6 @@ example/pedal_peppermill/*.gif
 example/pickup_and_two_antiparallel_diodes/*.gif
 test/*.gif
 example/french_amp/bat_sens_french_amp.gif
+example/tone_stack_pot_sweep/README.html
+z.ngjs
+z.tpr
