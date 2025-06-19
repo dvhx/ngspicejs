@@ -40,6 +40,8 @@ series_e12(10, '1M').forEach(a => {
 
 // Show chart and save it as gif
 chart_scatter(x, y, gain)
+    .width(480)
+    .height(300)
     .title('Common emitter gain depending on R1 and R2')
     .log_x(true)
     .log_y(true)
