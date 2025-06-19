@@ -1,3 +1,0 @@
-../js/bounding_box.js:11:1: error - Expected an assignment or function call and instead saw an expression. [W030], // jshint -W030
-../js/bounding_box.js:11:5: error - Missing semicolon. [E058], // jshint -E058
-../js/bounding_box.js:11:1: error - 'asdf' is not defined. [W117], // jshint -W117
