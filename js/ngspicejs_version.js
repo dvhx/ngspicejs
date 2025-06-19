@@ -5,7 +5,7 @@
 function ngspicejs_version(oMin, oMax) {
     // Return ngspicejs version, throw exception if current version is outside allowed range of versions
     assert_arguments_length(arguments, 0, 2, 'ngspicejs_version(min,max)');
-    var v = 3;
+    var v = 5;
     if (Number.isInteger(oMin) && (v < oMin)) {
         throw new Exception('This script requires minimal ngspicejs version ' + oMin + ' but current ngspicejs version is ' + v);
     }
