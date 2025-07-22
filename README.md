@@ -114,6 +114,18 @@ To allow displaying sixel graphics in xterm, you need to enable sixel support fi
     echo "XTerm*disallowedWindowOps: 1,2,3,4,5,6,7,8,9,11,13,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop" >> $HOME/.Xresources
     xrdb $HOME/.Xresources
 
+If you get following error when making large charts with lots of colors:
+
+    xterm: Ignoring too-long string (657483) for mode 0x90
+
+You may also need to increase maximal string length in xterm:
+
+    echo "XTerm*maxStringParse: 2000000" >> $HOME/.Xresources
+    xrdb $HOME/.Xresources
+
+Then restart your terminals and it should work.
+
+
 # API
 
 [ngspicejs API](doc/api.md) is described in separate file. In code you can use api(anything) to print API of anything, for example:
