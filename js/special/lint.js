@@ -425,7 +425,7 @@ function lint(aInternal) {
     // browser
     if (browser) {
         glob = ['window', 'document', 'console', 'localStorage', 'JSON', 'fetch', 'alert',
-            'prompt', 'confirm', 'Blob', 'URL', 'Image'];
+            'prompt', 'confirm', 'Blob', 'URL', 'Image', 'URLSearchParams'];
     }
 
     // global: aaa, bbb, ccc
