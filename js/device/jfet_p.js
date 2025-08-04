@@ -141,7 +141,7 @@ JFetP.prototype.render = function () {
     // Render spice netlist for this jfet_p
     assert_arguments_length(arguments, 0, 0, 'jfet_p.render()');
     var spice = ["* jfet_p " + this.attr.name];
-    var m = find_model(this, 'PNP', this.attr.model);
+    var m = find_model(this, 'JFET_P', this.attr.model);
     if (m.type === 'jfet_model') {
         spice.push("J_" + this.attr.name + ' ' + this.attr.d + ' ' + this.attr.g + ' ' + this.attr.s + ' Q' + this.attr.model);
         return spice.join('\n');
