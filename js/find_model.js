@@ -38,6 +38,11 @@ var constructors = {
         assert_kind_model(o, aKind, aModel, aFn);
         return o;
     },
+    'JFET_P,json': function (aModel, aKind, aFn) {
+        var o = jfet_model(file_read_json(aFn));
+        assert_kind_model(o, aKind, aModel, aFn);
+        return o;
+    },
     'MOSFET_N,json': function (aModel, aKind, aFn) {
         var j = file_read_json(aFn), o;
         if (j.kind === 'VDMOS') {
