@@ -3,6 +3,7 @@
 "use strict";
 
 function csv_to_obj(aCsvTable) {
+    // Convert 2D csv table to array of objects, header is the name of the properties
     var header = aCsvTable[0];
     var ret = [];
     aCsvTable.forEach((r,row) => {
