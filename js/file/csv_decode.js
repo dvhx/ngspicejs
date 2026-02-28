@@ -1,11 +1,24 @@
-// Decode CSV-encoded string and return 2D array
+// Decode CSV-encoded string and return 2D array (optionally as array of objects)
 // linter: ngspicejs-lint --internal
 "use strict";
 
-function csv_decode(text) {
-    // Decode CSV-encoded string and return 2D array
-    assert_arguments_length(arguments, 1, 1, 'csv_decode(text)');
-    assert_string(text, 'text', 'csv_decode(text)');
+function csv_to_obj(aCsvTable) {
+    var header = aCsvTable[0];
+    var ret = [];
+    aCsvTable.forEach((r,row) => {
+        if (row > 0) {
+            var o = {};
+            header.forEach((c,col) => o[c] = r[col]);
+            ret.push(o);
+        }
+    });
+    return ret;
+}
+
+function csv_decode(text,as_assoc) {
+    // Decode CSV-encoded string and return 2D array (optionally as array of objects)
+    assert_arguments_length(arguments, 1, 2, 'csv_decode(text,as_assoc)');
+    assert_string(text, 'text', 'csv_decode(text,as_assoc)');
     var p = '';
     var row = [''];
     var ret = [row];
@@ -32,6 +45,9 @@ function csv_decode(text) {
             row[i] += l;
         }
         p = l;
+    }
+    if (as_assoc) {
+        return csv_to_obj(ret);
     }
     return ret;
 }
