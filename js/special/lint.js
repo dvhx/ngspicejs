@@ -109,6 +109,7 @@ function lint(aInternal) {
 "array_rms",
 "array_running_avg",
 "array_scale",
+"array_indices",
 "array_shuffle",
 "array_stats",
 "array_std",
