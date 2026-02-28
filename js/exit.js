@@ -11,6 +11,9 @@ function exit(aCode) {
         assert_integer(aCode, 'code', 'exit(code)');
     }
     exit_code(aCode);
+    if (aCode === 24) {
+        throw "NGSPICEJS_HARD_EXIT";
+    }
     throw "NGSPICEJS_SOFT_EXIT";
 }
 
