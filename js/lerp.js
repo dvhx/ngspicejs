@@ -15,6 +15,7 @@ function Lerp(aValues, aValues2) {
         for (var i = 0; i < aValues.length; i++) {
             this.values.push([aValues[i], aValues2[i]]);
         }
+        Lerp.validate(this.values);
         return;
     }
     // another lerp
@@ -34,10 +35,9 @@ function Lerp(aValues, aValues2) {
     // one complex array
     if (aValues) {
         assert_array_of_complex(aValues, 'xy_values', 'lerp(xy_values)', true);
-        if (Lerp.valid(aValues)) {
-            this.values = JSON.parse(JSON.stringify(aValues));
-            return;
-        }
+        this.values = JSON.parse(JSON.stringify(aValues));
+        Lerp.validate(this.values);
+        return;
     }
     this.values = [];
 }
@@ -56,28 +56,32 @@ Lerp.prototype.dup = function () {
     return new Lerp(this);
 };
 
-Lerp.valid = function (aValues) {
-    // return true if aValues is valid lerp
-    assert_arguments_length(arguments, 1, 1, 'Lerp.valid(values)');
+Lerp.validate = function (aValues) {
+    // Validate lerp aValues, throw exception on error
+    assert_arguments_length(arguments, 1, 1, 'Lerp.validate(values)');
     var i;
     if (!Array.isArray(aValues)) {
-        return false;
+        throw new Exception('Lerp values must be array');
     }
     if (aValues.length <= 0) {
-        return false;
+        throw new Exception('Lerp values is empty array');
     }
+    var oldx = aValues && aValues[i] && aValues[i][0];
     for (i = 0; i < aValues.length; i++) {
         if (!Array.isArray(aValues[i])) {
-            return false;
+            throw new Exception('Lerp item #' + i + ' is not an array');
         }
         if (aValues[i].length !== 2) {
-            return false;
+            throw new Exception('Lerp item #' + i + ' is not 2D array but [' + aValues[i].join(', ') + ']');
         }
         if (Number.isNaN(aValues[i][0]) || Number.isNaN(aValues[i][1])) {
-            return false;
+            throw new Exception('Lerp item #' + i + ' has NaN in [' + aValues[i].join(', ') + ']');
         }
+        if (aValues[i][0] < oldx) {
+            throw new Exception('Lerp x-values must be increasing, but values[' + i + '][0] went from ' + oldx + ' to ' + aValues[i][0]);
+        }
+        oldx = aValues[i][0];
     }
-    return true;
 };
 
 Lerp.prototype.add = function (aX, aY) {
