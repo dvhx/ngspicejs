@@ -7,6 +7,8 @@ function netlist_export_schematic_url(aOmmitNames) {
     assert_arguments_length(arguments, 0, 1, 'netlist_export_schematic_url(ommit_names_array)');
     var ret = [];
     var t = {
+        jfet_n: "transistor_n_jfet",
+        jfet_p: "transistor_p_jfet",
         npn: "transistor_npn",
         pnp: "transistor_pnp"
     };
