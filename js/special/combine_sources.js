@@ -126,12 +126,16 @@
     one('array/array_rms.js');
     one('array/array_imag.js');
     one('array/array_indices.js');
+    one('array/array_is_monotonic.js');
     one('array/array_modulus.js');
     one('array/array_argument.js');
     one('array/array_distribution.js');
+    one('array/array_div.js');
+    one('array/array_from_eng.js');
     one('array/array_real.js');
     one('array/array_scale.js');
     one('array/array_sort_numerically.js');
+    one('array/array_nearest.js');
     one('array/array_normalize.js');
     one('array/array_extrema.js');
     one('array/array_extrema_max.js');
@@ -262,6 +266,7 @@
     one('device/square.js');
     one('device/sinewave.js');
     one('device/inductor.js');
+    one('device/inductor_tapped.js');
     one('device/inductor_coupling.js');
     one('device/capacitor.js');
     one('device/npn.js');
