@@ -35,6 +35,12 @@ void check_exception(v8::Isolate* isolate, v8::TryCatch* try_catch, const char *
         soft_exit_triggered = true;
         return;
     }
+    // hard exit by throwing "NGSPICEJS_HARD_EXIT" exception from JS
+    if (strcmp(exception_string, "NGSPICEJS_HARD_EXIT") == 0) {
+        printf("EXIT(%d)\n", EXIT_HARD);
+        exit(EXIT_HARD);
+        return;
+    }
 
     // get message
     v8::Local<v8::Message> message = try_catch->Message();

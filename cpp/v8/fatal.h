@@ -44,6 +44,8 @@
 #define EXIT_CTRL_C_IMMEDIATE 21
 // "Modern" errors are caused by the Ubuntu 22.04 to 24.04 upgrade
 #define EXIT_MODERN 23
+// Hard exit
+#define EXIT_HARD 24
 // Segfault
 #define EXIT_SEGFAULT 139
 
