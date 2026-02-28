@@ -1864,6 +1864,54 @@
   "a": "example/npn_phase_splitter/npn_phase_splitter.ngjs"
  },
  {
+  "q": "2-pin ternary DAC monte carlo analysis",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "MCU pins",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "Ternary DAC, 5=output",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    Change MCU pins state to H, L, Z",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    pin1",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    pin2",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    Measure output voltage at node 5",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    Randomly change DAC resistors",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "Monte carlo",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    randomize DAC resistors",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    measure output in all 9 states possible by two tri-state pins",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
+  "q": "    Comapare with goal and calculate score (lower is better)",
+  "a": "example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs"
+ },
+ {
   "q": "Dan Armstrong Green Ringer octaver",
   "a": "example/pedal_octaver/pedal_green_ringer.ngjs"
  },
