@@ -1,0 +1,9 @@
+* SOD-323 1N5819WS schottky Vr=40V Vf=80mV@10uA,140mV@0.1mA,200mV@1mA,260mV@10mA(measured) If=1A(25A) Ir=2.3uA@26V(measured)
+* https://lcsc.com/product-detail/Schottky-Diodes_Guangdong-Hottech-1N5819WS_C191023.html
+* Diode model attributes were found using https://dvhx.github.io/spice-diode-model-js/
+* NETS 2
+.subckt 1N5819WS A K
+D1 A K DMOD
+R1 A K 13900000
+.model DMOD D(IS=5.04594e-7 N=1.01436 RS=0.0680755 CJO=0.5p BV=40 IBV=4e-6 VJ=1.45 M=0.6 XTI=2 EG=0.69 TT=7e-11)
+.ends
