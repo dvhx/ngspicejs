@@ -102,6 +102,19 @@ Array.prototype.distribution = function (aCount, oMin, oMax) {
     return array_distribution(this, aCount, oMin, oMax);
 };
 
+Array.prototype.div = function (aDenominatorArray) {
+    // Divide 2 arrays by items, only works for numbers and complex numbers
+    assert_arguments_length(arguments, 1, 1, 'Array.div(denominator_array)');
+    if (typeof aDenominatorArray[0] === 'number') {
+        assert_array_of_numbers(this, 'this', 'Array.div(denominator_array)', true);
+        assert_array_of_numbers(aDenominatorArray, 'this', 'Array.div(denominator_array)', true);
+    } else {
+        assert_array_of_complex(this, 'this', 'Array.div(denominator_array)', true);
+        assert_array_of_complex(aDenominatorArray, 'this', 'Array.div(denominator_array)', true);
+    }
+    return array_div(this, aDenominatorArray);
+};
+
 Array.prototype.echo = function (oGlue) {
     // Print array to output, separate items by glue string (default is comma)
     assert_arguments_length(arguments, 0, 1, 'Array.echo(glue)');
@@ -131,6 +144,12 @@ Array.prototype.extremaMin = function () {
     return array_extrema_min(this);
 };
 
+Array.prototype.fromEng = function () {
+    // Convert array of engineering strings ["22k","4u7"] to numbers [22000,4.7e-6]
+    assert_arguments_length(arguments, 0, 0, 'Array.fromEng()');
+    return array_from_eng(this);
+};
+
 Array.prototype.imag = function () {
     // Return only imaginary parts of complex array
     assert_arguments_length(arguments, 0, 0, 'Array.imag()');
@@ -141,6 +160,12 @@ Array.prototype.indices = function () {
     // Convert array ['foo',true,3.14] to [0,1,2], useful in chart_xy for data without x-axis
     assert_arguments_length(arguments, 0, 0, 'Array.indices()');
     return array_indices(this);
+};
+
+Array.prototype.isMonotonic = function () {
+    // Return true if array is monotonic
+    assert_arguments_length(arguments, 0, 0, 'Array.isMonotonic()');
+    return array_is_monotonic(this);
 };
 
 Array.prototype.max = function () {
@@ -159,6 +184,13 @@ Array.prototype.modulus = function () {
     // Return modulus of complex array
     assert_arguments_length(arguments, 0, 0, 'Array.modulus()');
     return array_modulus(this);
+};
+
+Array.prototype.nearest = function (aConstant) {
+    // Return nearest value in the array of numbers
+    assert_arguments_length(arguments, 1, 1, 'Array.nearest(constant)');
+    assert_number(aConstant, 'constant', 'Array.nearest(constant)');
+    return array_nearest(this, aConstant);
 };
 
 Array.prototype.normalize = function (oMin, oMax) {
