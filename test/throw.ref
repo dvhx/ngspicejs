@@ -6,7 +6,10 @@
   throw new Error('Some message');
   But then the stack would point to the throw line, not where the error occured
 ../js/exit.js
+  throw "NGSPICEJS_HARD_EXIT";
   throw "NGSPICEJS_SOFT_EXIT";
+../js/lerp.js
+  // Validate lerp aValues, throw exception on error
 ../js/ngspicejs_version.js
   // Return ngspicejs version, throw exception if current version is outside allowed range of versions
 ../js/special/beautify.js
