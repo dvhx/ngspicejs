@@ -74,7 +74,7 @@ function api_one(aFunctionOrInstance, oName) {
         args = [];
         return {subject: aFunctionOrInstance, type, name: oName, args, summary};
     }
-    var a = code[0].match(/\(([a-zA-Z0-9,\u0020]+)\)/);
+    var a = code[0].match(/\(([a-zA-Z0-9_,\u0020]+)\)/);
     if (a) {
         args = a[1].split(', ');
         return {subject: aFunctionOrInstance, type, name: oName, args, summary};
