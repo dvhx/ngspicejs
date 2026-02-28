@@ -60,7 +60,7 @@ Object (5 keys): (Object #1.1)
 terminal_size {"result":-1,"columns":0,"rows":0,"pixel_width":0,"pixel_height":0}
 v8_version 10.2.154.26-node.28
 ngspice_version 42
-ngspicejs_version 6
+ngspicejs_version 7
 Transient analysis(0=V(2))                                                                                    
 ------------------------***---------------------------------------------------------------------------    2.80
 --------------------****---*****----------------------------------------------------------------------    2.65
