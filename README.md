@@ -288,6 +288,7 @@ You can use built-in function help(query) to perform full text searches, for exa
 - [Square wave signal](/example/square_wave_signal/square_wave_signal.ngjs)
 - [Show using switch timeline feature where switch states are defined for different times](/example/switch/switch_1p2t_timeline.ngjs)
 - [Switching between 2 different resistors using 1P2T switch changes the current](/example/switch/switch_1p2t.ngjs)
+- [2-pin ternary DAC monte carlo analysis](/example/ternary_dac_monte_carlo/ternary_dac_monte_carlo.ngjs)
 - [Three phase astable multivibrator](/example/three_phase_oscillator/three_phase_oscillator.ngjs)
 - [Analyzing pot behavior of this tone stack: https://www.reddit.com/r/diypedals/comments/1kvlgsq/updated_tonestack_for_jfet_preamp_thoughts/](/example/tone_stack_pot_sweep/tone_stack_pot_sweep.ngjs)
 - [Transformer from 230V to 12V](/example/transformer/transformer_230V_to_12V.ngjs)
