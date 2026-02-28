@@ -165,6 +165,7 @@ function lint(aInternal) {
 "error",
 "exit",
 "fft",
+"file_sha1",
 "file_exists",
 "file_ext",
 "file_ext_replace",
