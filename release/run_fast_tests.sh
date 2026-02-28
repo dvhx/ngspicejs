@@ -25,6 +25,7 @@ function all_tests() {
 
     find ../example | grep -v help_indexer.ngjs \
         | grep -v 0_run_tests.sh \
+        | grep -v ternary_dac_monte_carlo.ngjs \
         | grep -v find_model_zener_9V1.ngjs \
         | grep -v find_model_zener_2V4.ngjs \
         | grep -v 4_caught_new_exception.ngjs \
