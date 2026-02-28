@@ -49,3 +49,8 @@ echo([0,1,2,3,4,5].sum());
 [1,2,3].union([2,3,4]).echo();
 [1,2,2,3,4,4,4].unique().echo();
 [1,-2,3,-4].abs().echo();
+echo([1,2,3].isMonotonic());
+echo([3,2,1].isMonotonic());
+echo([1,3,2].isMonotonic());
+echo([3,1,2].isMonotonic());
+
