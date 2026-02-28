@@ -12,7 +12,7 @@ var models = [
     'bjt_model', 'diode_model', 'jfet_model', 'mos_model', 'resistor_model',
     'spice_model', 'sub_model', 'vdmos_model'];
 var devices = [
-    'resistor', 'capacitor',
+    'resistor', 'capacitor', 'inductor_tapped',
     "audio",
     'am', 'ammeter', 'battery', 'beeps', 'capacitor',
     'cccs', 'ccvs', 'current_source', 'diode', 'dynamic_mic', 'electret_mic',

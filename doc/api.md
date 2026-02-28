@@ -17,6 +17,7 @@
 - **electret_mic** (aName,aAnode,aCathode,aV,aF,aDamping,aPhase) - Add electret mic to netlist
 - **inductor** (aName,aAnode,aCathode,aL,aRs,aCp) - Add inductor to netlist
 - **inductor_coupling** (aName,aL1,aL2,aRatio) - Add inductor_coupling to netlist
+- **inductor_tapped** (aName,aStart,aWiper,aEnd,aL,aRt1,aRt2,aNTurns,aPercent) - Add tapped inductor to netlist
 - **jfet_n** (aName,aD,aG,aS,aModel) - Add jfet_n to netlist
 - **jfet_p** (aName,aD,aG,aS,aModel) - Add jfet_p to netlist
 - **mosfet_n** (aName,aD,aG,aS,aModel) - Add mosfet_n to netlist
@@ -76,14 +77,18 @@
 - **array_complement** (a,b) - Return items of a not present in b
 - **array_db** (aArray) - Convert array of real or complex values to decibels
 - **array_distribution** (aArray,aCount,aMin,aMax) - Split data into equal brackets and return counts in those brackets
+- **array_div** (a,b) - Divide 2 arrays by items, only works for numbers and complex numbers
 - **array_extrema** (a) - Find local extrema in array, return array of {index, value, min, max}
 - **array_extrema_max** (a) - Returns item with largest value from array_extrema()
 - **array_extrema_min** (a) - Returns item with lowest value from array_extrema()
+- **array_from_eng** (aStringArray) - Convert array of engineering strings ["22k","4u7"] to numbers [22000,4.7e-6]
 - **array_imag** (aComplexArray) - Return only imaginary part of array of complex values
 - **array_indices** (aArray) - Convert array ['foo',true,3.14] to [0,1,2], useful in chart_xy for data without x-axis
+- **array_is_monotonic** (aArray) - Return true if array is monotonic
 - **array_max** (a) - Return maximal value in array
 - **array_min** (a) - Return minimal value in array
 - **array_modulus** (aComplexArray) - Convert array of complex values to array of absolute values (length of a vector)
+- **array_nearest** (aArray,aConstant) - Find nearest value in array of numbers
 - **array_normalize** (aArray,aMin,aMax) - Normalize array for lowest value to be aMin a largest to be aMax
 - **array_quantize** (aData,aCount) - Quantize array values range into discreet values from 0 to aCount-1
 - **array_random_item** (aArray) - Return random item of array
@@ -135,7 +140,8 @@
 - **file_path** (aPath) - Return only file path, without filename
 - **file_read** (aFileName) - Read file and return it's content as a string
 - **file_read_binary** (aFilename) - Load file content from disk and return it as array of bytes
-- **file_read_csv** (filename) - Read csv file and return it as 2D array
+- **file_read_csv** (filename,as_assoc) - Read csv file and return it as 2D array (optionally as array of objects)
+- **file_read_ini** (filename) - Read ini file and return it as array of section data
 - **file_read_json** (aFilename) - Read json file
 - **file_read_tsv** (filename) - Read tsv file and return it as 2D array
 - **file_read_wav** (aFileName) - Read wav file, return sample rate, times and samples
@@ -156,7 +162,7 @@
 
 #### CSV functions
 
-- **csv_decode** (text) - Decode CSV-encoded string and return 2D array
+- **csv_decode** (text,as_assoc) - Decode CSV-encoded string and return 2D array (optionally as array of objects)
 - **csv_encode** (arr,separator) - Encode 2D array into csv file format
 - **csv_insert** (aCsv,aCol,aRow,aData) - Insert data to csv data (from given col/row down)
 - **csv_to_array_of_objects** (aCsvTable) - Convert CSV table to array of objects using header as property name
