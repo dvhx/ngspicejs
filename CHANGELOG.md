@@ -1,3 +1,26 @@
+Changes in v0.7 (2026-02-28)
+- Added sample JFET_P model for MMBFJ177LT1G
+- Added sample lavel 2 JFET model for 2N5457
+- Added 1N5819WS diode model
+- Added hard exit function (exit code 24)
+- Added tapped inductor device
+- Added array_find_nearest(a,v) that finds nearest value v in array a
+- Added array_is_monotonic(a) that returns true if array is monotonic
+- Added array_from_eng(a) to convert array of engineering strings to numbers
+- Added array_div(a,b) to divide 2 arrays by members
+- Added check to lerp constructor if x-values are rising
+- Added file_read_ini(filename) function
+- Function netlist_export_schematic_url() now supports jfets
+- Function array_sort_numerically(a) now returns sorted slice
+- Function Lerp.valid() returning bool changed to Lerp.validate() that throws exception with meaningful error
+- Function file_read_csv(filename,as_assoc) now supports returning csv as array of objects
+- Fixed ars_first() if ars is empty
+- Updated tests
+
+Changes in v0.6 (2025-08-04)
+- Fixed jfet_p() device
+- Added support for JFET_P models in find_model()
+
 Changes in v0.5 (2025-06-19)
 - Fixed ngspicejs_version() output (v4 incorrectly returned 3, now v5 returns 5)
 - Added extra line to sixel output
