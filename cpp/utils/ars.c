@@ -135,6 +135,13 @@ size_t ars_count(Ars *a) {
 char*  ars_nth(Ars *a, size_t index) {
     // Return pointer to the nth item
     assert(a);
+
+    if (index >= a->count) {
+        fprintf(stderr, "index=%ld count=%ld\n", index, a->count);
+        fflush(stderr);
+        ars_debug(a);
+    }
+
     assert(index < a->count);
     return a->items[index];
 }
@@ -266,6 +273,9 @@ void ars_split_char(Ars *a, char delimiter) {
 char* ars_first(Ars *a) {
     // Return first item
     assert(a);
+    if (ars_count(a) == 0) {
+        return (char*)"";
+    }
     return ars_nth(a, 0);
 }
 
