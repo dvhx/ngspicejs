@@ -98,6 +98,7 @@
     one('file/file_name.js');
     one('file/file_ext.js');
     one('file/file_read_csv.js');
+    one('file/file_read_ini.js');
     one('file/file_read_json.js');
     one('file/file_read_wav.js');
     one('file/file_write_csv.js');
