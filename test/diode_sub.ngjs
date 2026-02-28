@@ -1,0 +1,9 @@
+#!/usr/bin/env ngspicejs
+// Leaky 1N5819WS should have approx -2.3uA at reverse 26V, this tests .sub diode model
+// linter: ngspicejs-lint
+"use strict";
+
+battery('U1', 1, 0, 26);
+diode('D1', 0, 1, '1N5819WS');
+echo(tran().run().avg('I(U1)').toEng());
+
