@@ -38,6 +38,7 @@ var public_functions = [
     'levenshtein', 'random_float',
     'similar_strings',
     'search',
+    'color_gradient', 'color_to_rgb', 'color_to_sixel', 's_expression',
     'temperature',
     'round_up',
     'round_down',

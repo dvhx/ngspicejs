@@ -141,7 +141,7 @@
 - **file_read** (aFileName) - Read file and return it's content as a string
 - **file_read_binary** (aFilename) - Load file content from disk and return it as array of bytes
 - **file_read_csv** (filename,as_assoc) - Read csv file and return it as 2D array (optionally as array of objects)
-- **file_read_ini** (filename) - Read ini file and return it as array of section data
+- **file_read_ini** (aFilename) - Read ini file and return it as array of section data
 - **file_read_json** (aFilename) - Read json file
 - **file_read_tsv** (filename) - Read tsv file and return it as 2D array
 - **file_read_wav** (aFileName) - Read wav file, return sample rate, times and samples
@@ -176,6 +176,9 @@
 - **beep** (oFrequency,oDuration) - Beep with given frequency (default 440Hz) for given duration in milliseconds (default 300ms)
 - **chart_scatter** (aDataX,aDataY,aValues,aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSize,aLevels) - Create scatter chart
 - **chart_xy** (aWidth,aHeight,aMinX,aMaxX,aMinY,aMaxY,aTitle,aLabelX,aLabelY,aLogX,aLogY,aSeries,aBorder) - Create XY chart
+- **color_gradient** (aFrom,aTo,aSteps) - Create a gradient between 2 colors with given number of steps
+- **color_to_rgb** (aColor) - Convert color in various formats into [R,G,B] 0..255
+- **color_to_sixel** (aColor) - Convert color in various formats into [R,G,B] 0..100
 - **complex** (aReal,aImaginary) - Return new complex number
 - **config_path** () - Return full path including trailing slash to the user's config directory ~/.config/ngspicejs/
 - **ctrl_c_pressed** () - Sets up Ctrl+C handler and if Ctrl+C was pressed, returns true
@@ -209,6 +212,7 @@
 - **round_down** (aValue,aDigits) - Round down to specified number of digits
 - **round_to** (aValue,aDigits) - Round to specified number of digits
 - **round_up** (aValue,aDigits) - Round up to specified number of digits
+- **s_expression** (aText) - Convert s-expression to json
 - **script_args** () - Return array of strings containing arguments of the script, first argument is path to ngspicejs shell, second argument is ngspicejs script filename, the rest are any extra arguments
 - **script_ms** () - Return milliseconds since script started
 - **script_self** () - Return path to this script, e.g. script_args()[1]
