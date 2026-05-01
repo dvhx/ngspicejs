@@ -182,9 +182,10 @@ ChartXy.prototype.border = function (aValue) {
     return this;
 };
 
-ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel, oDotSize) {
+ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel, oDotSize, oColor) {
     // Add one series (x data, y data and series label)
     oDotSize = oDotSize || 0;
+    oColor = oColor || undefined;
     if (aDataY.includes(Infinity) || aDataY.includes(-Infinity)) {
         throw new Exception('ChartXy cannot display infinity (y value)');
     }
@@ -194,21 +195,22 @@ ChartXy.prototype.add_series = function (aDataX, aDataY, aLabel, oDotSize) {
         y = aDataX.data_y;
         oDotSize = aDataX.dot_size;
     } else {
-        assert_arguments_length(arguments, 2, 4, 'chart_xy.series(data_x,data_y,label,dot_size)');
+        assert_arguments_length(arguments, 2, 5, 'chart_xy.series(data_x,data_y,label,dot_size,color)');
         x = aDataX;
         y = aDataY;
     }
-    assert_array_of_numbers(x, 'data_x', 'chart_xy.series(data_x,data_y,label,dot_size)', true);
-    assert_array_of_numbers(y, 'data_y', 'chart_xy.series(data_x,data_y,label,dot_size)', true);
+    assert_array_of_numbers(x, 'data_x', 'chart_xy.series(data_x,data_y,label,dot_size,color)', true);
+    assert_array_of_numbers(y, 'data_y', 'chart_xy.series(data_x,data_y,label,dot_size,color)', true);
     if (aLabel) {
-        assert_string(aLabel, 'label', 'chart_xy.add_series(data_x,data_y,label,dot_size)');
+        assert_string(aLabel, 'label', 'chart_xy.add_series(data_x,data_y,label,dot_size,color)');
     }
     this.attr.series = this.attr.series || [];
     this.attr.series.push({
         data_x: x,
         data_y: y,
         label: aLabel || '',
-        dot_size: oDotSize
+        dot_size: oDotSize,
+        color: oColor
     });
     return this;
 };
@@ -402,17 +404,27 @@ ChartXy.prototype.render_sixel = function () {
     var w = this.attr.width,
         h = this.attr.height;
     var s = sixel_canvas(w, h);
+    // background color
     s.white = s.color(100, 100, 100);
+    // grid color
     s.gray = s.color(66, 66, 66);
+    // border color
     s.black = s.color(0, 0, 0);
     //s.red = s.color(100, 0, 0);
     var series_color = [], dc, dc_r, dc_g, dc_b;
     var pal = Object.values(globalThis.distinct_colors);
     for (i = 0; i < this.attr.series.length + 1; i++) {
-        dc = pal[i];
+        if (this.attr.series[i] && this.attr.series[i].color) {
+            var cts = color_to_sixel(this.attr.series[i].color);
+            series_color.push(s.color(cts[0], cts[1], cts[2]));
+            continue;
+        }
+        dc = pal[i] || [0,0,0];
         dc_r = Math.round(100 * dc[0] / 255);
         dc_g = Math.round(100 * dc[1] / 255);
         dc_b = Math.round(100 * dc[2] / 255);
+        //echo(i, this.attr.series[i] && this.attr.series[i].color);
+        //echo(color_to_sixel(this.attr.series[i].color));
         //echo('color', i, dc, dc_r, dc_g, dc_b);
         series_color.push(s.color(dc_r, dc_g, dc_b));
     }
