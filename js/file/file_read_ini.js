@@ -2,11 +2,11 @@
 // linter: ngspicejs-lint --internal
 "use strict";
 
-function file_read_ini(filename) {
+function file_read_ini(aFilename) {
     // Read ini file and return it as array of section data
     assert_arguments_length(arguments, 1, 1, 'file_read_ini(filename)');
-    assert_string(filename, 'filename', 'file_read_ini(filename)');
-    var lines = file_read(aFileName).split('\n');
+    assert_string(aFilename, 'filename', 'file_read_ini(filename)');
+    var lines = file_read(aFilename).split('\n');
     var sec;
     var ret = [];
     var cur_sec = {};
