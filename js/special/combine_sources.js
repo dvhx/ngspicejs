@@ -191,6 +191,7 @@
     one('netlist/netlist_export_schematic_url.js');
 
     // various functions
+    one('color_to_rgb.js');
     one('check_parallel_sources.js');
     one('device_summary.js');
     one('bounding_box.js');
@@ -237,6 +238,7 @@
     one('available_vectors.js');
     one('topology_edges.js');
     one('topology_path_exists.js');
+    one('s_expression.js');
 
     // analysis
     one('analysis/ac.js');
