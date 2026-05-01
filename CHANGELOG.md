@@ -1,3 +1,14 @@
+Changes in v0.8 (2026-05-01)
+- Added color support to chart_xy().add_series(x,y,label,size,color)
+- Added NPN model BC850C and PNP model BC860C
+- Added BAV99W diode model
+- Added s-expression parser
+- Trim string when using eng()
+- Reformated distinct_colors
+- Convert hex color to rgb or sixel colors and gradients
+- Allow audacity's files when reading wav file
+- Fixed file_read_ini(filename)
+
 Changes in v0.7 (2026-02-28)
 - Added sample JFET_P model for MMBFJ177LT1G
 - Added sample lavel 2 JFET model for 2N5457
