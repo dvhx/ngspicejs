@@ -34,6 +34,7 @@ function eng(aNumberOrString, aArgumentIndex, aFunctionName, aCustomMessage, aAt
         return aNumberOrString;
     }
     if (typeof aNumberOrString === 'string') {
+        aNumberOrString = aNumberOrString.trim();
         if (is_equation(aNumberOrString)) {
             return equation(aNumberOrString);
         }
