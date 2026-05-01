@@ -53,7 +53,7 @@ function file_read_wav(aFileName) {
     }
     // @40..43 data size
     var data_size = h[40] + h[41] * 256 + h[42] * 256 * 256 + h[43] * 256 * 256 * 256;
-    if (data_size !== b.length - 44) {
+    if (data_size !== b.length - 44 && data_size !== b.length - 44 - 4) {
         throw new Exception("file_read_wav('" + aFileName + "') - expected data size " + b.length + "-44 but got " + data_size);
     }
     // parse data
