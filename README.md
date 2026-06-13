@@ -1,5 +1,5 @@
 # ngspicejs
-JS frontend to ngspice electronics simulation software
+JS frontend to ngspice electronics simulation software.
 
 # Goals
 
